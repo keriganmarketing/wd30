@@ -1083,8 +1083,6 @@ module.exports = __webpack_require__(43);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 __webpack_require__(12);
 
 window.Vue = __webpack_require__(34);
@@ -1094,12 +1092,50 @@ window.Vue = __webpack_require__(34);
 Vue.component('example-component', __webpack_require__(37));
 Vue.component('bio-card', __webpack_require__(40));
 
-var User = function User() {
-    _classCallCheck(this, User);
-};
-
 var app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        user: {
+            id: '',
+            name: '',
+            email: '',
+            phone: '',
+            address: '',
+            mlsNumber: ''
+        }
+    },
+    methods: {
+        sbc: function sbc(updated) {
+            var _this = this;
+
+            this.user = updated;
+            __WEBPACK_IMPORTED_MODULE_0_axios__({
+                method: 'patch',
+                url: '/users/' + this.user.id,
+                data: {
+                    name: this.user.name,
+                    email: this.user.email,
+                    phone_number: this.user.phone,
+                    mls_id: this.user.mlsNumber,
+                    address: this.user.address
+                }
+            }).then(function (response) {
+                _this.user = response.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios__["get"]('/authenticate').then(function (response) {
+            _this2.user.id = response.data.id;
+            _this2.user.name = response.data.name;
+            _this2.user.email = response.data.email;
+            _this2.user.phone = response.data.phone_number;
+            _this2.user.mlsNumber = response.data.mls_id;
+            _this2.user.address = response.data.address;
+        });
+    }
 });
 
 /***/ }),
@@ -30432,60 +30468,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['data-user'],
     data: function data() {
         return {
-            id: '',
-            name: '',
-            email: '',
-            phone: '',
-            address: '',
-            mlsNumber: '',
-            editing: false
+            editing: false,
+            user: this.dataUser
         };
     },
 
-    computed: {
-        buttonText: function buttonText() {
-            return this.editing ? 'Submit' : 'Edit';
-        }
-    },
     methods: {
-        buttonClick: function buttonClick() {
-            var _this = this;
-
-            axios({
-                method: 'patch',
-                url: '/users/' + this.id,
-                data: {
-                    name: this.name,
-                    email: this.email,
-                    address: this.address,
-                    mls_id: this.mlsNumber,
-                    phone_number: this.phone
-                }
-            }).then(function (response) {
-                _this.name = response.data.name;
-                _this.email = response.data.email;
-                _this.address = response.data.address;
-                _this.mlsNumber = response.data.mls_id;
-                _this.phone = response.data.phone_number;
-            });
-            this.editing = !this.editing;
+        editButtonClick: function editButtonClick() {
+            this.editing = true;
+        },
+        submitButtonClick: function submitButtonClick() {
+            this.$emit('submit-button-clicked', this.user);
+            this.editing = false;
         }
-    },
-    mounted: function mounted() {
-        var _this2 = this;
-
-        axios.get('/authenticate').then(function (response) {
-            _this2.id = response.data.id;
-            _this2.name = response.data.name;
-            _this2.email = response.data.email;
-            _this2.phone = response.data.phone_number;
-            _this2.mlsNumber = response.data.mls_id;
-            _this2.address = response.data.address;
-        });
     }
 });
 
@@ -30508,7 +30509,7 @@ var render = function() {
         _vm._v("\n        Name: "),
         !_vm.editing
           ? _c("span", { staticClass: "p-2 text-left" }, [
-              _vm._v(_vm._s(_vm.name))
+              _vm._v(_vm._s(_vm.user.name))
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -30518,19 +30519,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name"
+                  value: _vm.user.name,
+                  expression: "user.name"
                 }
               ],
               staticClass: "border rounded shadow-inner p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.name },
+              domProps: { value: _vm.user.name },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.name = $event.target.value
+                  _vm.$set(_vm.user, "name", $event.target.value)
                 }
               }
             })
@@ -30539,7 +30540,9 @@ var render = function() {
       _vm._v(" "),
       _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Email: "),
-        !_vm.editing ? _c("span", {}, [_vm._v(_vm._s(_vm.email))]) : _vm._e(),
+        !_vm.editing
+          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.email))])
+          : _vm._e(),
         _vm._v(" "),
         _vm.editing
           ? _c("input", {
@@ -30547,19 +30550,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email"
+                  value: _vm.user.email,
+                  expression: "user.email"
                 }
               ],
               staticClass: "border rounded shadow p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.email },
+              domProps: { value: _vm.user.email },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.email = $event.target.value
+                  _vm.$set(_vm.user, "email", $event.target.value)
                 }
               }
             })
@@ -30568,7 +30571,9 @@ var render = function() {
       _vm._v(" "),
       _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Phone: "),
-        !_vm.editing ? _c("span", {}, [_vm._v(_vm._s(_vm.phone))]) : _vm._e(),
+        !_vm.editing
+          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.phone))])
+          : _vm._e(),
         _vm._v(" "),
         _vm.editing
           ? _c("input", {
@@ -30576,19 +30581,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.phone,
-                  expression: "phone"
+                  value: _vm.user.phone,
+                  expression: "user.phone"
                 }
               ],
               staticClass: "border rounded shadow p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.phone },
+              domProps: { value: _vm.user.phone },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.phone = $event.target.value
+                  _vm.$set(_vm.user, "phone", $event.target.value)
                 }
               }
             })
@@ -30598,7 +30603,7 @@ var render = function() {
       _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        MLS ID: "),
         !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.mlsNumber))])
+          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.mlsNumber))])
           : _vm._e(),
         _vm._v(" "),
         _vm.editing
@@ -30607,19 +30612,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.mlsNumber,
-                  expression: "mlsNumber"
+                  value: _vm.user.mlsNumber,
+                  expression: "user.mlsNumber"
                 }
               ],
               staticClass: "border rounded shadow p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.mlsNumber },
+              domProps: { value: _vm.user.mlsNumber },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.mlsNumber = $event.target.value
+                  _vm.$set(_vm.user, "mlsNumber", $event.target.value)
                 }
               }
             })
@@ -30631,7 +30636,7 @@ var render = function() {
             _c("span", { staticClass: "block w-1/3" }, [_vm._v("Address: ")]),
             _vm._v(" "),
             _c("span", { staticClass: "block w-2/3" }, [
-              _vm._v("\n            " + _vm._s(_vm.address) + "\n        ")
+              _vm._v("\n            " + _vm._s(_vm.user.address) + "\n        ")
             ])
           ])
         : _vm._e(),
@@ -30653,19 +30658,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
+                    value: _vm.user.address,
+                    expression: "user.address"
                   }
                 ],
                 staticClass: "border rounded shadow p-1 text-left w-full",
                 attrs: { rows: "8" },
-                domProps: { value: _vm.address },
+                domProps: { value: _vm.user.address },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.address = $event.target.value
+                    _vm.$set(_vm.user, "address", $event.target.value)
                   }
                 }
               })
@@ -30673,12 +30678,29 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("button", {
-        staticClass:
-          "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
-        domProps: { textContent: _vm._s(_vm.buttonText) },
-        on: { click: _vm.buttonClick }
-      })
+      !_vm.editing
+        ? _c(
+            "button",
+            {
+              staticClass:
+                "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
+              on: { click: _vm.editButtonClick }
+            },
+            [_vm._v("Edit")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.editing
+        ? _c(
+            "button",
+            {
+              staticClass:
+                "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
+              on: { click: _vm.submitButtonClick }
+            },
+            [_vm._v("Submit")]
+          )
+        : _vm._e()
     ]
   )
 }
