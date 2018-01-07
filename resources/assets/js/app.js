@@ -36,17 +36,19 @@ const app = new Vue({
             .then(response => {
                 this.user = response.data;
             });
-        }
-    },
-    mounted() {
-        axios.get('/authenticate')
-            .then(response => {
+        },
+        authenticate () {
+            axios.get('/authenticate').then(response => {
                 this.user.id        = response.data.id;
                 this.user.name      = response.data.name;
                 this.user.email     = response.data.email;
                 this.user.phone     = response.data.phone_number;
                 this.user.address   = response.data.address;
                 this.user.mlsNumber = response.data.mls_id;
-            })
+            });
+        }
+    },
+    mounted() {
+        this.authenticate();
     }
 });

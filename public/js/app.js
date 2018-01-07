@@ -1128,19 +1128,22 @@ var app = new Vue({
             }).then(function (response) {
                 _this.user = response.data;
             });
+        },
+        authenticate: function authenticate() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios__["get"]('/authenticate').then(function (response) {
+                _this2.user.id = response.data.id;
+                _this2.user.name = response.data.name;
+                _this2.user.email = response.data.email;
+                _this2.user.phone = response.data.phone_number;
+                _this2.user.address = response.data.address;
+                _this2.user.mlsNumber = response.data.mls_id;
+            });
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
-
-        __WEBPACK_IMPORTED_MODULE_0_axios__["get"]('/authenticate').then(function (response) {
-            _this2.user.id = response.data.id;
-            _this2.user.name = response.data.name;
-            _this2.user.email = response.data.email;
-            _this2.user.phone = response.data.phone_number;
-            _this2.user.address = response.data.address;
-            _this2.user.mlsNumber = response.data.mls_id;
-        });
+        this.authenticate();
     }
 });
 
