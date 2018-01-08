@@ -18,7 +18,7 @@ class DashboardTest extends TestCase
         $this->actingAs($user);
 
         $this->get('/home')
-            ->assertSee($user->name);
+            ->assertStatus(200);
     }
 
     /** @test */
@@ -27,7 +27,6 @@ class DashboardTest extends TestCase
         $user = factory('App\User')->create();
 
         $this->get('/home')
-            ->assertDontSee($user->name)
-            ->assertRedirect('/login');
+            ->assertStatus(302);
     }
 }

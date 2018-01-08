@@ -1105,9 +1105,9 @@ var app = new Vue({
             id: '',
             name: '',
             email: '',
-            phone: '',
+            phone_number: '',
             address: '',
-            mlsNumber: ''
+            mls_id: ''
         }
     },
     methods: {
@@ -1121,8 +1121,8 @@ var app = new Vue({
                 data: {
                     name: this.user.name,
                     email: this.user.email,
-                    phone_number: this.user.phone,
-                    mls_id: this.user.mlsNumber,
+                    phone_number: this.user.phone_number,
+                    mls_id: this.user.mls_id,
                     address: this.user.address
                 }
             }).then(function (response) {
@@ -1136,9 +1136,9 @@ var app = new Vue({
                 _this2.user.id = response.data.id;
                 _this2.user.name = response.data.name;
                 _this2.user.email = response.data.email;
-                _this2.user.phone = response.data.phone_number;
+                _this2.user.mls_id = response.data.mls_id;
                 _this2.user.address = response.data.address;
-                _this2.user.mlsNumber = response.data.mls_id;
+                _this2.user.phone_number = response.data.phone_number;
             });
         }
     },
@@ -30477,8 +30477,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['data-user'],
     data: function data() {
         return {
-            editing: false,
-            user: this.dataUser
+            editing: false
         };
     },
 
@@ -30489,6 +30488,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitButtonClick: function submitButtonClick() {
             this.$emit('submit-button-clicked', this.user);
             this.editing = false;
+        }
+    },
+    computed: {
+        user: function user() {
+            return this.dataUser;
         }
     }
 });
@@ -30575,7 +30579,7 @@ var render = function() {
       _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Phone: "),
         !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.phone))])
+          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.phone_number))])
           : _vm._e(),
         _vm._v(" "),
         _vm.editing
@@ -30584,19 +30588,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.user.phone,
-                  expression: "user.phone"
+                  value: _vm.user.phone_number,
+                  expression: "user.phone_number"
                 }
               ],
               staticClass: "border rounded shadow p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.user.phone },
+              domProps: { value: _vm.user.phone_number },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.user, "phone", $event.target.value)
+                  _vm.$set(_vm.user, "phone_number", $event.target.value)
                 }
               }
             })
@@ -30606,7 +30610,7 @@ var render = function() {
       _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        MLS ID: "),
         !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.mlsNumber))])
+          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.mls_id))])
           : _vm._e(),
         _vm._v(" "),
         _vm.editing
@@ -30615,19 +30619,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.user.mlsNumber,
-                  expression: "user.mlsNumber"
+                  value: _vm.user.mls_id,
+                  expression: "user.mls_id"
                 }
               ],
               staticClass: "border rounded shadow p-1 text-left",
               attrs: { type: "text" },
-              domProps: { value: _vm.user.mlsNumber },
+              domProps: { value: _vm.user.mls_id },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.user, "mlsNumber", $event.target.value)
+                  _vm.$set(_vm.user, "mls_id", $event.target.value)
                 }
               }
             })
@@ -30648,11 +30652,10 @@ var render = function() {
         ? _c(
             "div",
             {
-              staticClass:
-                "text-xl w-full text-teal-darker flex flex-wrap py-4 justify-around"
+              staticClass: "text-xl w-full text-teal-darker flex flex-wrap py-4"
             },
             [
-              _c("span", { staticClass: "block w-full" }, [
+              _c("span", { staticClass: "block w-full ml-4 mb-4" }, [
                 _vm._v("Address: ")
               ]),
               _vm._v(" "),
@@ -30665,7 +30668,7 @@ var render = function() {
                     expression: "user.address"
                   }
                 ],
-                staticClass: "border rounded shadow p-1 text-left w-full",
+                staticClass: "border rounded shadow p-4 text-left w-full",
                 attrs: { rows: "8" },
                 domProps: { value: _vm.user.address },
                 on: {
