@@ -17,14 +17,13 @@
             <input type="text" class="border rounded shadow p-1 text-left" v-model="user.mls_id" v-if="editing">
         </p>
         <p class="text-xl w-full text-teal-darker p-4" v-if="!editing">
-            <span class="block w-1/3">Address: </span>
-            <span class="block w-2/3">
-                {{ user.address }}
+            <span class="block w-1/3 mb-2">Address: </span>
+            <span class="block w-2/3 mb-2" v-html="formattedAddress">
             </span>
         </p>
         <div class="text-xl w-full text-teal-darker flex flex-wrap py-4" v-if="editing">
             <span class="block w-full ml-4 mb-4">Address: </span>
-            <textarea rows="8" v-model="user.address" class="border rounded shadow p-4 text-left w-full">
+            <textarea rows="2" v-model="user.address" class="border rounded shadow p-4 text-left w-full">
             </textarea>
         </div>
         <button class="bg-teal w-full pin-b text-white px-8 py-2 rounded float-right" @click="editButtonClick" v-if="!editing">Edit</button>
@@ -52,6 +51,9 @@
          computed: {
              user: function () {
                  return this.dataUser;
+             },
+             formattedAddress: function () {
+                 return this.user.address.replace(new RegExp('\r?\n', 'g'), '<br>');
              }
          }
     }

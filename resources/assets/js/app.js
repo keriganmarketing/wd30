@@ -6,6 +6,7 @@ import * as axios from 'axios';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('bio-card', require('./components/BioCard.vue'));
+Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 
 const app = new Vue({
     el: '#app',
