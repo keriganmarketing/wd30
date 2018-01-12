@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto">
-        <h1 class="text-xl font-semibold text-center py-8 border-b">
+        <h1 class="text-xl font-semibold text-center py-8">
         Leads
         <small
             class="float-right bg-teal-darker p-4 text-white rounded"
@@ -78,7 +78,8 @@
         data() {
             return {
                 leads: [],
-                viewingActiveLeads: true
+                viewingActiveLeads: true,
+                isActive: false
             }
         },
         methods: {

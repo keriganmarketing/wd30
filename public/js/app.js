@@ -30967,7 +30967,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             leads: [],
-            viewingActiveLeads: true
+            viewingActiveLeads: true,
+            isActive: false
         };
     },
 
@@ -31032,36 +31033,32 @@ var render = function() {
     "div",
     { staticClass: "container mx-auto" },
     [
-      _c(
-        "h1",
-        { staticClass: "text-xl font-semibold text-center py-8 border-b" },
-        [
-          _vm._v("\n    Leads\n    "),
-          _vm.viewingActiveLeads
-            ? _c(
-                "small",
-                {
-                  staticClass:
-                    "float-right bg-teal-darker p-4 text-white rounded",
-                  on: { click: _vm.getArchivedLeads }
-                },
-                [_vm._v("\n        View Lead Archive\n    ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.viewingActiveLeads
-            ? _c(
-                "small",
-                {
-                  staticClass:
-                    "float-right bg-teal-darker p-4 text-white rounded",
-                  on: { click: _vm.getLeads }
-                },
-                [_vm._v("\n        View Active Leads\n    ")]
-              )
-            : _vm._e()
-        ]
-      ),
+      _c("h1", { staticClass: "text-xl font-semibold text-center py-8" }, [
+        _vm._v("\n    Leads\n    "),
+        _vm.viewingActiveLeads
+          ? _c(
+              "small",
+              {
+                staticClass:
+                  "float-right bg-teal-darker p-4 text-white rounded",
+                on: { click: _vm.getArchivedLeads }
+              },
+              [_vm._v("\n        View Lead Archive\n    ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.viewingActiveLeads
+          ? _c(
+              "small",
+              {
+                staticClass:
+                  "float-right bg-teal-darker p-4 text-white rounded",
+                on: { click: _vm.getLeads }
+              },
+              [_vm._v("\n        View Active Leads\n    ")]
+            )
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _vm._l(_vm.leads, function(lead) {
         return lead.active
