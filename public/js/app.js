@@ -30920,11 +30920,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            leads: []
+            leads: [],
+            viewingActiveLeads: true
         };
     },
 
@@ -30942,12 +30985,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.getLeads();
             });
         },
-        getLeads: function getLeads() {
+        unarchive: function unarchive(id) {
             var _this2 = this;
 
-            axios.get('/leads').then(function (response) {
-                _this2.leads = response.data.data;
+            axios({
+                method: 'patch',
+                url: '/leads/' + id,
+                data: {
+                    active: 1
+                }
+            }).then(function (response) {
+                _this2.getArchivedLeads();
             });
+        },
+        getLeads: function getLeads() {
+            var _this3 = this;
+
+            axios.get('/leads').then(function (response) {
+                _this3.leads = response.data.data;
+            });
+            this.viewingActiveLeads = true;
+        },
+        getArchivedLeads: function getArchivedLeads() {
+            var _this4 = this;
+
+            axios.get('/archivedleads').then(function (response) {
+                _this4.leads = response.data.data;
+            });
+            this.viewingActiveLeads = false;
         }
     },
     mounted: function mounted() {
@@ -30970,7 +31035,32 @@ var render = function() {
       _c(
         "h1",
         { staticClass: "text-xl font-semibold text-center py-8 border-b" },
-        [_vm._v("\n    Leads\n    ")]
+        [
+          _vm._v("\n    Leads\n    "),
+          _vm.viewingActiveLeads
+            ? _c(
+                "small",
+                {
+                  staticClass:
+                    "float-right bg-teal-darker p-4 text-white rounded",
+                  on: { click: _vm.getArchivedLeads }
+                },
+                [_vm._v("\n        View Lead Archive\n    ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.viewingActiveLeads
+            ? _c(
+                "small",
+                {
+                  staticClass:
+                    "float-right bg-teal-darker p-4 text-white rounded",
+                  on: { click: _vm.getLeads }
+                },
+                [_vm._v("\n        View Active Leads\n    ")]
+              )
+            : _vm._e()
+        ]
       ),
       _vm._v(" "),
       _vm._l(_vm.leads, function(lead) {
@@ -31030,6 +31120,85 @@ var render = function() {
                       }
                     },
                     [_vm._v("Archive")]
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.leads, function(lead) {
+        return !lead.active
+          ? _c(
+              "div",
+              {
+                key: lead.id,
+                staticClass: "border-b flex flex-wrap px-8 bg-white shadow mb-2"
+              },
+              [
+                _c("div", { staticClass: "pl-4 py-4 w-1/3" }, [
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Name:")]),
+                    _vm._v(" " + _vm._s(lead.name) + " - "),
+                    _c("small", [_vm._v(_vm._s(lead.diff))])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Email: ")]),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "mailto:" + lead.email } }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(lead.email) +
+                          "\n                "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Phone: ")]),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "tel:" + lead.phone } }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(lead.phone) +
+                          "\n                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-8 bg-grey-lightest my-4 w-2/3" }, [
+                  _vm._v("\n           " + _vm._s(lead.message) + "\n        ")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-4 w-full" }, [
+                  _vm.viewingActiveLeads
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "cursor-pointer text-blue",
+                          on: {
+                            click: function($event) {
+                              _vm.sendToArchive(lead.id)
+                            }
+                          }
+                        },
+                        [_vm._v("Archive")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "cursor-pointer text-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.unarchive(lead.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Unarchive")]
                   )
                 ])
               ]
