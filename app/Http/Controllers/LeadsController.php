@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Lead;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
-class LeadController extends Controller
+class LeadsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,12 @@ class LeadController extends Controller
      */
     public function index()
     {
-        //
+        $leads = Lead::paginate(20);
+        foreach ($leads as $lead) {
+            $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();
+        }
+
+        return response()->json($leads);
     }
 
     /**
@@ -35,7 +41,12 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Lead::create([
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'message' => $request->message
+        ]);
     }
 
     /**
