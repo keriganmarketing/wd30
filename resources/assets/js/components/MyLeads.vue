@@ -78,8 +78,7 @@
         data() {
             return {
                 leads: [],
-                viewingActiveLeads: true,
-                isActive: false
+                viewingActiveLeads: true
             }
         },
         methods: {

@@ -30967,8 +30967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             leads: [],
-            viewingActiveLeads: true,
-            isActive: false
+            viewingActiveLeads: true
         };
     },
 
