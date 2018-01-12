@@ -30471,7 +30471,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data-user'],
@@ -30695,7 +30694,7 @@ var render = function() {
             "button",
             {
               staticClass:
-                "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
+                "bg-teal w-full pin-b text-white px-8 py-2 xl:rounded float-right",
               on: { click: _vm.editButtonClick }
             },
             [_vm._v("Edit")]

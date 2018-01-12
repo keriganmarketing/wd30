@@ -24,8 +24,7 @@
         <div class="text-xl w-full text-teal-darker flex flex-wrap py-4" v-if="editing">
             <span class="block w-full ml-4 mb-4">Address: </span>
             <textarea rows="2" v-model="user.address" class="border rounded shadow p-4 text-left w-full">
-            </textarea>
-        </div>
+            </textarea>        </div>
         <button class="bg-teal w-full pin-b text-white px-8 py-2 rounded float-right" @click="editButtonClick" v-if="!editing">Edit</button>
         <button class="bg-teal w-full pin-b text-white px-8 py-2 rounded float-right" @click="submitButtonClick" v-if="editing">Submit</button>
     </div>
