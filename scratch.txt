@@ -16,3 +16,5 @@
         </a>
     </li>
 </ul>
+
+ text-blue border-l border-t border-r rounded-t

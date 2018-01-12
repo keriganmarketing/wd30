@@ -1095,10 +1095,10 @@ window.Vue = __webpack_require__(34);
 
 
 
-Vue.component('example-component', __webpack_require__(37));
 Vue.component('bio-card', __webpack_require__(40));
 Vue.component('welcome-card', __webpack_require__(43));
-Vue.component('my-leads', __webpack_require__(46));
+Vue.component('leads', __webpack_require__(54));
+Vue.component('lead', __webpack_require__(57));
 
 var app = new Vue({
     el: '#app',
@@ -30269,125 +30269,9 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(38)
-/* template */
-var __vue_template__ = __webpack_require__(39)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
-  }
-}
-
-/***/ }),
+/* 37 */,
+/* 38 */,
+/* 39 */,
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30835,15 +30719,28 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(47)
+var __vue_script__ = __webpack_require__(55)
 /* template */
-var __vue_template__ = __webpack_require__(48)
+var __vue_template__ = __webpack_require__(56)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -30860,7 +30757,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/MyLeads.vue"
+Component.options.__file = "resources/assets/js/components/Leads.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -30869,9 +30766,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4c3c0e38", Component.options)
+    hotAPI.createRecord("data-v-e7109d20", Component.options)
   } else {
-    hotAPI.reload("data-v-4c3c0e38", Component.options)
+    hotAPI.reload("data-v-e7109d20", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -30882,61 +30779,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -30972,7 +30819,171 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        sendToArchive: function sendToArchive(id) {
+        getLeads: function getLeads() {
+            var _this = this;
+
+            this.viewingActiveLeads = true;
+            axios.get('/leads').then(function (response) {
+                _this.leads = response.data.data;
+            });
+        },
+        getInactiveLeads: function getInactiveLeads() {
+            var _this2 = this;
+
+            this.viewingActiveLeads = false;
+            axios.get('/archivedleads').then(function (response) {
+                _this2.leads = response.data.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getLeads();
+    }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container mx-auto" },
+    [
+      _c("ul", { staticClass: "list-reset flex justify-end" }, [
+        _c("li", { staticClass: "-mb-px mr-1" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue",
+              class: {
+                "active-tab": _vm.viewingActiveLeads,
+                "border-b": !_vm.viewingActiveLeads
+              },
+              on: { click: _vm.getLeads }
+            },
+            [_vm._v("\n            Active\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-1" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue",
+              class: {
+                "active-tab": !_vm.viewingActiveLeads,
+                "border-b": _vm.viewingActiveLeads
+              },
+              on: { click: _vm.getInactiveLeads }
+            },
+            [_vm._v("\n            Inactive\n            ")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.leads, function(lead) {
+        return _c("lead", {
+          key: lead.id,
+          attrs: { "data-lead": lead, "active-leads": _vm.viewingActiveLeads },
+          on: { archived: _vm.getLeads, unarchived: _vm.getInactiveLeads }
+        })
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e7109d20", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Lead.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-467a3213", Component.options)
+  } else {
+    hotAPI.reload("data-v-467a3213", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dataLead', 'activeLeads'],
+    data: function data() {
+        return {
+            lead: this.dataLead,
+            viewingActiveLeads: this.activeLeads
+        };
+    },
+
+    methods: {
+        archive: function archive(id) {
             var _this = this;
 
             axios({
@@ -30982,7 +30993,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 0
                 }
             }).then(function (response) {
-                _this.getLeads();
+                _this.$emit('archived');
             });
         },
         unarchive: function unarchive(id) {
@@ -30995,215 +31006,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 1
                 }
             }).then(function (response) {
-                _this2.getArchivedLeads();
+                _this2.$emit('unarchived');
             });
-        },
-        getLeads: function getLeads() {
-            var _this3 = this;
-
-            axios.get('/leads').then(function (response) {
-                _this3.leads = response.data.data;
-            });
-            this.viewingActiveLeads = true;
-        },
-        getArchivedLeads: function getArchivedLeads() {
-            var _this4 = this;
-
-            axios.get('/archivedleads').then(function (response) {
-                _this4.leads = response.data.data;
-            });
-            this.viewingActiveLeads = false;
         }
-    },
-    mounted: function mounted() {
-        this.getLeads();
     }
 });
 
 /***/ }),
-/* 48 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mx-auto" },
-    [
-      _c("h1", { staticClass: "text-xl font-semibold text-center py-8" }, [
-        _vm._v("\n    Leads\n    "),
-        _vm.viewingActiveLeads
-          ? _c(
-              "small",
-              {
-                staticClass:
-                  "float-right bg-teal-darker p-4 text-white rounded",
-                on: { click: _vm.getArchivedLeads }
-              },
-              [_vm._v("\n        View Lead Archive\n    ")]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.viewingActiveLeads
-          ? _c(
-              "small",
-              {
-                staticClass:
-                  "float-right bg-teal-darker p-4 text-white rounded",
-                on: { click: _vm.getLeads }
-              },
-              [_vm._v("\n        View Active Leads\n    ")]
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.leads, function(lead) {
-        return lead.active
-          ? _c(
-              "div",
-              {
-                key: lead.id,
-                staticClass: "border-b flex flex-wrap px-8 bg-white shadow mb-2"
-              },
-              [
-                _c("div", { staticClass: "pl-4 py-4 w-1/3" }, [
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Name:")]),
-                    _vm._v(" " + _vm._s(lead.name) + " - "),
-                    _c("small", [_vm._v(_vm._s(lead.diff))])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Email: ")]),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "mailto:" + lead.email } }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(lead.email) +
-                          "\n                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Phone: ")]),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "tel:" + lead.phone } }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(lead.phone) +
-                          "\n                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-8 bg-grey-lightest my-4 w-2/3" }, [
-                  _vm._v("\n           " + _vm._s(lead.message) + "\n        ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-4 w-full" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "cursor-pointer text-blue",
-                      on: {
-                        click: function($event) {
-                          _vm.sendToArchive(lead.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Archive")]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.leads, function(lead) {
-        return !lead.active
-          ? _c(
-              "div",
-              {
-                key: lead.id,
-                staticClass: "border-b flex flex-wrap px-8 bg-white shadow mb-2"
-              },
-              [
-                _c("div", { staticClass: "pl-4 py-4 w-1/3" }, [
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Name:")]),
-                    _vm._v(" " + _vm._s(lead.name) + " - "),
-                    _c("small", [_vm._v(_vm._s(lead.diff))])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Email: ")]),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "mailto:" + lead.email } }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(lead.email) +
-                          "\n                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "p-2 block" }, [
-                    _c("strong", [_vm._v("Phone: ")]),
-                    _vm._v(" "),
-                    _c("a", { attrs: { href: "tel:" + lead.phone } }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(lead.phone) +
-                          "\n                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-8 bg-grey-lightest my-4 w-2/3" }, [
-                  _vm._v("\n           " + _vm._s(lead.message) + "\n        ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-4 w-full" }, [
-                  _vm.viewingActiveLeads
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "cursor-pointer text-blue",
-                          on: {
-                            click: function($event) {
-                              _vm.sendToArchive(lead.id)
-                            }
-                          }
-                        },
-                        [_vm._v("Archive")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "cursor-pointer text-blue",
-                      on: {
-                        click: function($event) {
-                          _vm.unarchive(lead.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Unarchive")]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
-      })
-    ],
-    2
-  )
+  return _c("div", { staticClass: "container mx-auto p-8 bg-white border-b" }, [
+    _c("p", [_vm._v("Name: " + _vm._s(_vm.lead.name))]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Phone: " + _vm._s(_vm.lead.phone))]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Email: " + _vm._s(_vm.lead.email))]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Message: " + _vm._s(_vm.lead.message))]),
+    _vm._v(" "),
+    _c("p", { staticClass: "mt-8" }, [
+      _vm.viewingActiveLeads
+        ? _c(
+            "a",
+            {
+              staticClass: "cursor-pointer underline",
+              on: {
+                click: function($event) {
+                  _vm.archive(_vm.lead.id)
+                }
+              }
+            },
+            [_vm._v("Archive")]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("p", { staticClass: "mt-8" }, [
+      !_vm.viewingActiveLeads
+        ? _c(
+            "a",
+            {
+              staticClass: "cursor-pointer underline",
+              on: {
+                click: function($event) {
+                  _vm.unarchive(_vm.lead.id)
+                }
+              }
+            },
+            [_vm._v("Unarchive")]
+          )
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31211,15 +31070,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4c3c0e38", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-467a3213", module.exports)
   }
 }
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -43,3 +43,6 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+.active-tab {
+    @apply .text-blue .border-l .border-t .border-r .rounded-t;
+}

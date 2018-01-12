@@ -4684,6 +4684,14 @@ button,
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+.active-tab {
+  color: #3490dc;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
 
 @media (min-width: 576px) {
   .sm\:list-reset {
