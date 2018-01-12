@@ -19,6 +19,7 @@ class CreateLeadsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('message');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

@@ -30917,6 +30917,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -30924,12 +30927,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             leads: []
         };
     },
-    mounted: function mounted() {
-        var _this = this;
 
-        axios.get('/leads').then(function (response) {
-            _this.leads = response.data.data;
-        });
+    methods: {
+        sendToArchive: function sendToArchive(id) {
+            var _this = this;
+
+            axios({
+                method: 'patch',
+                url: '/leads/' + id,
+                data: {
+                    active: 0
+                }
+            }).then(function (response) {
+                _this.getLeads();
+            });
+        },
+        getLeads: function getLeads() {
+            var _this2 = this;
+
+            axios.get('/leads').then(function (response) {
+                _this2.leads = response.data.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getLeads();
     }
 });
 
@@ -30952,50 +30974,67 @@ var render = function() {
       ),
       _vm._v(" "),
       _vm._l(_vm.leads, function(lead) {
-        return _c(
-          "div",
-          {
-            key: lead.id,
-            staticClass: "border-b flex px-8 bg-white shadow mb-2"
-          },
-          [
-            _c("div", { staticClass: "pl-4 py-4 w-1/3" }, [
-              _c("span", { staticClass: "p-2 block" }, [
-                _c("strong", [_vm._v("Name:")]),
-                _vm._v(" " + _vm._s(lead.name) + " - "),
-                _c("small", [_vm._v(_vm._s(lead.diff))])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "p-2 block" }, [
-                _c("strong", [_vm._v("Email: ")]),
+        return lead.active
+          ? _c(
+              "div",
+              {
+                key: lead.id,
+                staticClass: "border-b flex flex-wrap px-8 bg-white shadow mb-2"
+              },
+              [
+                _c("div", { staticClass: "pl-4 py-4 w-1/3" }, [
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Name:")]),
+                    _vm._v(" " + _vm._s(lead.name) + " - "),
+                    _c("small", [_vm._v(_vm._s(lead.diff))])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Email: ")]),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "mailto:" + lead.email } }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(lead.email) +
+                          "\n                "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "p-2 block" }, [
+                    _c("strong", [_vm._v("Phone: ")]),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "tel:" + lead.phone } }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(lead.phone) +
+                          "\n                "
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("a", { attrs: { href: "mailto:" + lead.email } }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(lead.email) +
-                      "\n                "
+                _c("div", { staticClass: "p-8 bg-grey-lightest my-4 w-2/3" }, [
+                  _vm._v("\n           " + _vm._s(lead.message) + "\n        ")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-4 w-full" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "cursor-pointer text-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.sendToArchive(lead.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Archive")]
                   )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "p-2 block" }, [
-                _c("strong", [_vm._v("Phone: ")]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "tel:" + lead.phone } }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(lead.phone) +
-                      "\n                "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "p-8 bg-grey-lightest my-4 w-2/3" }, [
-              _vm._v("\n           " + _vm._s(lead.message) + "\n        ")
-            ])
-          ]
-        )
+              ]
+            )
+          : _vm._e()
       })
     ],
     2
