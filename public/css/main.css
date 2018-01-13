@@ -3650,6 +3650,18 @@ button,
   fill: currentColor;
 }
 
+.fill-red {
+  fill: #e3342f;
+}
+
+.hover\:fill-current:hover {
+  fill: currentColor;
+}
+
+.hover\:fill-red:hover {
+  fill: #e3342f;
+}
+
 .stroke-current {
   stroke: currentColor;
 }

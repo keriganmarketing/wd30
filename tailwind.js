@@ -781,6 +781,7 @@ module.exports = {
 
   svgFill: {
     'current': 'currentColor',
+    'red': colors['red'],
   },
 
 
@@ -850,7 +851,7 @@ module.exports = {
     position: ['responsive'],
     resize: ['responsive'],
     shadows: ['responsive'],
-    svgFill: [],
+    svgFill: ['hover'],
     svgStroke: [],
     textAlign: ['responsive'],
     textColors: ['responsive', 'hover'],

@@ -15,7 +15,7 @@ class LeadsController extends Controller
      */
     public function index()
     {
-        $leads = Lead::where('active', 1)->paginate(20);
+        $leads = Lead::where('active', 1)->latest()->paginate(5);
         foreach ($leads as $lead) {
             $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();
         }
