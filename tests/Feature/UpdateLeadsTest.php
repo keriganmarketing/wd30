@@ -13,13 +13,11 @@ class UpdateLeadsTest extends TestCase
     /** @test */
     public function a_lead_can_be_sent_to_the_archive()
     {
-        //Given we have a lead
         $lead = create('App\Lead');
 
         $this->assertDatabaseHas('leads', [
             'active' => 1
         ]);
-        //The lead can be sent to the archive
         $response = $this->patch('/leads/'. $lead->id, [
             'active' => 0
         ]);
@@ -28,5 +26,23 @@ class UpdateLeadsTest extends TestCase
         $this->assertDatabaseHas('leads', [
             'active' => 0
         ]);
+    }
+
+    /** @test */
+    public function a_lead_can_be_unarchived()
+    {
+        $lead = create('App\Lead', [
+            'active' => 0
+        ]);
+
+        $this->patch('/leads/'. $lead->id, [
+            'active' => 1
+        ])->assertSuccessful();
+
+        $this->assertDatabaseHas('leads', [
+            'id'     => $lead->id,
+            'active' => 1
+        ]);
+
     }
 }

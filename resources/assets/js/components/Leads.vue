@@ -28,7 +28,9 @@
         data() {
             return {
                 leads:  [],
-                viewingActiveLeads: true
+                viewingActiveLeads: true,
+                nextPageUrl: '',
+                prevPageUrl: ''
             }
         },
         methods: {
@@ -37,6 +39,8 @@
                 axios.get('/leads')
                     .then(response => {
                         this.leads = response.data.data;
+                        this.prevPageUrl = response.data.prev_page_url;
+                        this.nextPageUrl = response.data.next_page_url
                 });
             },
             getInactiveLeads() {
@@ -44,6 +48,8 @@
                 axios.get('/archivedleads')
                     .then(response => {
                         this.leads = response.data.data;
+                        this.prevPageUrl = response.data.prev_page_url;
+                        this.nextPageUrl = response.data.next_page_url
                 });
             }
         },
