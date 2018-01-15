@@ -19,15 +19,6 @@ class NotesController extends Controller
         return response()->json($notes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,17 +41,6 @@ class NotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Note $note)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Note $note)
     {
         //
     }

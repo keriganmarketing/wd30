@@ -20,17 +20,7 @@ class LeadsController extends Controller
             $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();
         }
 
-        return response()->json($leads);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $leads;
     }
 
     /**
@@ -61,17 +51,6 @@ class LeadsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lead  $lead
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Lead $lead)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -81,11 +60,12 @@ class LeadsController extends Controller
     public function update(Request $request, Lead $lead)
     {
         $lead->update([
-            'name'    => $request->name ?? $lead->name,
-            'email'   => $request->email ?? $lead->email,
-            'phone'   => $request->phone ?? $lead->phone,
-            'message' => $request->message ?? $lead->message,
-            'active'  => $request->active ?? $lead->active
+            'name'      => $request->name ?? $lead->name,
+            'email'     => $request->email ?? $lead->email,
+            'phone'     => $request->phone ?? $lead->phone,
+            'message'   => $request->message ?? $lead->message,
+            'active'    => $request->active ?? $lead->active,
+            'important' => $request->important ?? $lead->important
         ]);
     }
 

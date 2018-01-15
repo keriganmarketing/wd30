@@ -9,3 +9,5 @@ Route::get('/archivedleads', 'ArchivedLeadsController@index');
 
 Route::resource('/leads', 'LeadsController');
 Route::resource('/notes', 'NotesController');
+
+Route::get('/leads/{lead}/notes', 'LeadNotesController@index');

@@ -2,7 +2,7 @@
 <div class="container mx-auto">
     <ul class="list-reset flex justify-end">
         <li class="-mb-px mr-1">
-            <a class="bg-white inline-block py-2 px-4 font-semibold hover:text-blue"
+            <a class="bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer"
                @click="getLeads"
                :class="{'active-tab': viewingActiveLeads, 'border-b': !viewingActiveLeads}"
             >
@@ -10,15 +10,23 @@
             </a>
         </li>
         <li class="mr-1">
-            <a class="bg-white inline-block py-2 px-4 font-semibold hover:text-blue"
+            <a class="bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer"
                @click="getInactiveLeads"
                :class="{'active-tab': !viewingActiveLeads, 'border-b': viewingActiveLeads}"
             >
-            Inactive
+            Archived
             </a>
         </li>
     </ul>
-    <lead v-for="lead in leads" :key="lead.id" :data-lead="lead" :active-leads="viewingActiveLeads" @archived="getLeads" @unarchived="getInactiveLeads"></lead>
+    <lead
+        v-for="lead in leads"
+        :key="lead.id"
+        :lead="lead"
+        :active-leads="viewingActiveLeads"
+        @archived="getLeads"
+        @unarchived="getInactiveLeads"
+    >
+    </lead>
 </div>
 
 </template>

@@ -21,4 +21,16 @@ class ViewNotesTest extends TestCase
             'message' => $note->message
         ]);
     }
+
+    /** @test */
+    public function a_user_can_view_notes_for_a_specific_lead()
+    {
+        $note = create('App\Note');
+
+        $response = $this->get($note->lead->notesPath());
+        $response->assertSuccessful();
+        $response->assertJsonFragment([
+            'message' => $note->message
+        ]);
+    }
 }

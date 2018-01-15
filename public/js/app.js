@@ -30793,6 +30793,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -30849,7 +30857,7 @@ var render = function() {
             "a",
             {
               staticClass:
-                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue",
+                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
               class: {
                 "active-tab": _vm.viewingActiveLeads,
                 "border-b": !_vm.viewingActiveLeads
@@ -30865,14 +30873,14 @@ var render = function() {
             "a",
             {
               staticClass:
-                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue",
+                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
               class: {
                 "active-tab": !_vm.viewingActiveLeads,
                 "border-b": _vm.viewingActiveLeads
               },
               on: { click: _vm.getInactiveLeads }
             },
-            [_vm._v("\n            Inactive\n            ")]
+            [_vm._v("\n            Archived\n            ")]
           )
         ])
       ]),
@@ -30880,7 +30888,7 @@ var render = function() {
       _vm._l(_vm.leads, function(lead) {
         return _c("lead", {
           key: lead.id,
-          attrs: { "data-lead": lead, "active-leads": _vm.viewingActiveLeads },
+          attrs: { lead: lead, "active-leads": _vm.viewingActiveLeads },
           on: { archived: _vm.getLeads, unarchived: _vm.getInactiveLeads }
         })
       })
@@ -30992,10 +31000,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataLead', 'activeLeads'],
+    props: ['lead', 'activeLeads'],
     data: function data() {
         return {
-            lead: this.dataLead,
             viewingActiveLeads: this.activeLeads
         };
     },
@@ -31131,12 +31138,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "cursor-pointer hover:text-green text-center mr-4",
-                  on: {
-                    click: function($event) {
-                      _vm.archive(_vm.lead.id)
-                    }
-                  }
+                    "cursor-pointer hover:text-green text-center mr-4"
                 },
                 [
                   _c(

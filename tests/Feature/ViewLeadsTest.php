@@ -22,15 +22,4 @@ class ViewLeadsTest extends TestCase
             ]);
     }
 
-    /** @test */
-    public function a_lead_can_be_created()
-    {
-        $lead = make('App\Lead');
-        $attributes = $lead->toArray();
-
-        $this->post('/leads', $attributes)
-            ->assertSuccessful();
-
-        $this->assertDatabaseHas('leads', $attributes);
-    }
 }

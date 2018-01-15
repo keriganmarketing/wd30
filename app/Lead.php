@@ -13,4 +13,14 @@ class Lead extends Model
     {
         return $this->hasMany(Note::class);
     }
+
+    public function path()
+    {
+        return '/leads/'. $this->id;
+    }
+
+    public function notesPath()
+    {
+        return $this->path() . '/notes';
+    }
 }
