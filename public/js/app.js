@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(52);
+module.exports = __webpack_require__(55);
 
 
 /***/ }),
@@ -1100,7 +1100,7 @@ Vue.component('welcome-card', __webpack_require__(40));
 Vue.component('leads', __webpack_require__(43));
 Vue.component('lead', __webpack_require__(46));
 Vue.component('lead-pagination', __webpack_require__(49));
-Vue.component('leads-tabs', __webpack_require__(57));
+Vue.component('leads-tabs', __webpack_require__(52));
 
 var app = new Vue({
     el: '#app',
@@ -30398,7 +30398,7 @@ var render = function() {
         "w-1/3 border flex flex-wrap bg-white p-4 text-teal-darker shadow"
     },
     [
-      _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
+      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Name: "),
         !_vm.editing
           ? _c("span", { staticClass: "p-2 text-left" }, [
@@ -30431,7 +30431,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
+      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Email: "),
         !_vm.editing
           ? _c("span", {}, [_vm._v(_vm._s(_vm.user.email))])
@@ -30462,7 +30462,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
+      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        Phone: "),
         !_vm.editing
           ? _c("span", {}, [_vm._v(_vm._s(_vm.user.phone_number))])
@@ -30493,7 +30493,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "text-xl w-full text-teal-darker p-4 border-b" }, [
+      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
         _vm._v("\n        MLS ID: "),
         !_vm.editing
           ? _c("span", {}, [_vm._v(_vm._s(_vm.user.mls_id))])
@@ -30525,7 +30525,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       !_vm.editing
-        ? _c("p", { staticClass: "text-xl w-full text-teal-darker p-4" }, [
+        ? _c("p", { staticClass: "text-lg w-full text-teal-darker p-4" }, [
             _c("span", { staticClass: "block w-1/3 mb-2" }, [
               _vm._v("Address: ")
             ]),
@@ -30541,7 +30541,7 @@ var render = function() {
         ? _c(
             "div",
             {
-              staticClass: "text-xl w-full text-teal-darker flex flex-wrap py-4"
+              staticClass: "text-lg w-full text-teal-darker flex flex-wrap py-4"
             },
             [
               _c("span", { staticClass: "block w-full ml-4 mb-4" }, [
@@ -31428,24 +31428,14 @@ if (false) {
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(59)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31484,7 +31474,44 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['viewing-active-leads'],
+    methods: {
+        fetchLeads: function fetchLeads(type) {
+            this.$emit('fetchleads', type);
+        }
+    }
+});
+
+/***/ }),
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -31544,41 +31571,10 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 55 */
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['viewing-active-leads'],
-    methods: {
-        fetchLeads: function fetchLeads(type) {
-            this.$emit('fetchleads', type);
-        }
-    }
-});
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
