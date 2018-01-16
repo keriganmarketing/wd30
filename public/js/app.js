@@ -30768,6 +30768,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 //
 //
 //
@@ -30801,41 +30803,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var Pagination = function Pagination(data) {
+    _classCallCheck(this, Pagination);
+
+    for (var field in data) {
+        this[field] = data[field];
+    }
+};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             leads: [],
             viewingActiveLeads: true,
-            nextPageUrl: '',
-            prevPageUrl: ''
+            pagination: new Pagination({
+                next_page_url: '',
+                prev_page_url: '',
+                from: '',
+                to: '',
+                last_page: '',
+                current_page: '',
+                total: ''
+            })
         };
     },
 
     methods: {
-        getLeads: function getLeads() {
+        fetchLeads: function fetchLeads(type) {
             var _this = this;
 
-            this.viewingActiveLeads = true;
-            axios.get('/leads').then(function (response) {
+            var url = '';
+            switch (type) {
+                case 'active':
+                    this.viewingActiveLeads = true;
+                    url = '/leads';
+                    break;
+                case 'archived':
+                    this.viewingActiveLeads = false;
+                    url = '/archivedleads';
+                    break;
+                default:
+                    url = type;
+                    break;
+            }
+            axios.get(url).then(function (response) {
+                _this.pagination = response.data;
                 _this.leads = response.data.data;
-                _this.prevPageUrl = response.data.prev_page_url;
-                _this.nextPageUrl = response.data.next_page_url;
-            });
-        },
-        getInactiveLeads: function getInactiveLeads() {
-            var _this2 = this;
-
-            this.viewingActiveLeads = false;
-            axios.get('/archivedleads').then(function (response) {
-                _this2.leads = response.data.data;
-                _this2.prevPageUrl = response.data.prev_page_url;
-                _this2.nextPageUrl = response.data.next_page_url;
             });
         }
     },
     mounted: function mounted() {
-        this.getLeads();
+        this.fetchLeads('active');
     }
 });
 
@@ -30851,6 +30905,78 @@ var render = function() {
     "div",
     { staticClass: "container mx-auto" },
     [
+      _c("p", { staticClass: "mb-4 font-semibold text-grey-darker" }, [
+        _vm._v(
+          "Showing " +
+            _vm._s(_vm.pagination.from) +
+            " - " +
+            _vm._s(_vm.pagination.to) +
+            " out of " +
+            _vm._s(_vm.pagination.total)
+        )
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-reset flex justify start" }, [
+        _c("li", { staticClass: "mr-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+              class: {
+                "cursor-not-allowed": _vm.pagination.prev_page_url == null,
+                "opacity-50": _vm.pagination.prev_page_url == null
+              },
+              attrs: { disabled: _vm.pagination.prev_page_url == null },
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads(_vm.pagination.prev_page_url)
+                }
+              }
+            },
+            [_vm._v("\n                   Prev\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-2" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "text-blue bg-white px-4 py-2 text-center flex shadow items-center"
+            },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.pagination.current_page) +
+                  "\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+              class: {
+                "cursor-not-allowed": _vm.pagination.next_page_url == null,
+                "opacity-50": _vm.pagination.next_page_url == null
+              },
+              attrs: { disabled: _vm.pagination.next_page_url == null },
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads(_vm.pagination.next_page_url)
+                }
+              }
+            },
+            [_vm._v("\n                   Next\n            ")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
       _c("ul", { staticClass: "list-reset flex justify-end" }, [
         _c("li", { staticClass: "-mb-px mr-1" }, [
           _c(
@@ -30862,7 +30988,11 @@ var render = function() {
                 "active-tab": _vm.viewingActiveLeads,
                 "border-b": !_vm.viewingActiveLeads
               },
-              on: { click: _vm.getLeads }
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads("active")
+                }
+              }
             },
             [_vm._v("\n            Active\n            ")]
           )
@@ -30878,7 +31008,11 @@ var render = function() {
                 "active-tab": !_vm.viewingActiveLeads,
                 "border-b": _vm.viewingActiveLeads
               },
-              on: { click: _vm.getInactiveLeads }
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads("archived")
+                }
+              }
             },
             [_vm._v("\n            Archived\n            ")]
           )
@@ -30889,7 +31023,14 @@ var render = function() {
         return _c("lead", {
           key: lead.id,
           attrs: { lead: lead, "active-leads": _vm.viewingActiveLeads },
-          on: { archived: _vm.getLeads, unarchived: _vm.getInactiveLeads }
+          on: {
+            archived: function($event) {
+              _vm.fetchLeads("active")
+            },
+            unarchived: function($event) {
+              _vm.fetchLeads("archived")
+            }
+          }
         })
       })
     ],
