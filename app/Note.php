@@ -5,6 +5,7 @@ namespace App;
 use App\Lead;
 use App\Note;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Note extends Model
 {
@@ -17,6 +18,13 @@ class Note extends Model
 
     public static function forLead($id)
     {
-        return Note::where('lead_id', $id)->get();
+        $notes = Note::where('lead_id', $id)->orderBy('updated_at', 'DESC')->get()->map(function ($note) {
+            $note->diff = Carbon::parse($note->updated_at)->diffForHumans();
+            return $note;
+        });
+
+        return $notes;
     }
+
+
 }
