@@ -1,7 +1,7 @@
 <template>
 <div>
     <p class="mb-4 font-semibold text-grey-darker">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
-    <ul class="list-reset flex justify start">
+    <ul class="list-reset flex justify-start">
         <li class="mr-2">
             <button class="text-blue bg-white px-4 py-2 text-center cursor-pointer shadow"
                :disabled="pagination.prev_page_url == null"

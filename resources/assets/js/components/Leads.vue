@@ -7,8 +7,10 @@
         :key="lead.id"
         :lead="lead"
         :active-leads="viewingActiveLeads"
-        @archived="fetchLeads('active')"
-        @unarchived="fetchLeads('archived')"
+        :current-page="pagination.current_page"
+        @archived="fetchLeads('active', pagination.current_page)"
+        @unarchived="fetchLeads('archived', pagination.current_page)"
+        @important="fetchLeads"
     >
     </lead>
     <lead-pagination @fetchleads="fetchLeads" :pagination="pagination"></lead-pagination>
@@ -41,16 +43,16 @@
             }
         },
         methods: {
-            fetchLeads(type) {
+            fetchLeads(type, page = 1) {
                 let url = '';
                 switch (type) {
                     case 'active':
                         this.viewingActiveLeads = true;
-                        url = '/leads';
+                        url = '/leads?page=' + page;
                         break;
                     case 'archived':
                         this.viewingActiveLeads = false;
-                        url = '/archivedleads';
+                        url = '/archivedleads?page=' + page;
                         break;
                     default:
                         url = type;

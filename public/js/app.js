@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(52);
+module.exports = __webpack_require__(55);
 
 
 /***/ }),
@@ -1100,7 +1100,7 @@ Vue.component('welcome-card', __webpack_require__(40));
 Vue.component('leads', __webpack_require__(43));
 Vue.component('lead', __webpack_require__(46));
 Vue.component('lead-pagination', __webpack_require__(49));
-Vue.component('lead-tabs', __webpack_require__(57));
+Vue.component('lead-tabs', __webpack_require__(52));
 
 var app = new Vue({
     el: '#app',
@@ -30790,6 +30790,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
+//
 
 var Pagination = function Pagination(data) {
     _classCallCheck(this, Pagination);
@@ -30820,15 +30822,17 @@ var Pagination = function Pagination(data) {
         fetchLeads: function fetchLeads(type) {
             var _this = this;
 
+            var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
             var url = '';
             switch (type) {
                 case 'active':
                     this.viewingActiveLeads = true;
-                    url = '/leads';
+                    url = '/leads?page=' + page;
                     break;
                 case 'archived':
                     this.viewingActiveLeads = false;
-                    url = '/archivedleads';
+                    url = '/archivedleads?page=' + page;
                     break;
                 default:
                     url = type;
@@ -30870,14 +30874,19 @@ var render = function() {
       _vm._l(_vm.leads, function(lead) {
         return _c("lead", {
           key: lead.id,
-          attrs: { lead: lead, "active-leads": _vm.viewingActiveLeads },
+          attrs: {
+            lead: lead,
+            "active-leads": _vm.viewingActiveLeads,
+            "current-page": _vm.pagination.current_page
+          },
           on: {
             archived: function($event) {
-              _vm.fetchLeads("active")
+              _vm.fetchLeads("active", _vm.pagination.current_page)
             },
             unarchived: function($event) {
-              _vm.fetchLeads("archived")
-            }
+              _vm.fetchLeads("archived", _vm.pagination.current_page)
+            },
+            important: _vm.fetchLeads
           }
         })
       }),
@@ -30992,9 +31001,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['lead', 'activeLeads'],
+    props: ['lead', 'activeLeads', 'currentPage'],
     data: function data() {
         return {
             viewingActiveLeads: this.activeLeads
@@ -31012,7 +31027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 0
                 }
             }).then(function (response) {
-                _this.$emit('archived');
+                _this.$emit('archived', _this.currentPage);
             });
         },
         unarchive: function unarchive(id) {
@@ -31025,7 +31040,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 1
                 }
             }).then(function (response) {
-                _this2.$emit('unarchived');
+                _this2.$emit('unarchived', _this2.currentPage);
+            });
+        },
+        toggleImportant: function toggleImportant(id) {
+            var _this3 = this;
+
+            var url = '';
+            var page = '';
+            var important = !this.lead.important;
+            axios({
+                method: 'patch',
+                url: '/leads/' + id,
+                data: {
+                    important: important
+                }
+            }).then(function (response) {
+                url = _this3.viewingActiveLeads ? 'active' : 'archived';
+                page = _this3.currentPage;
+                _this3.$emit('important', url, page);
             });
         }
     }
@@ -31043,9 +31076,15 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container mx-auto flex flex-wrap p-8 bg-white border-b mb-2 shadow rounded"
+        "container mx-auto flex flex-wrap py-4 px-8 bg-white border-b mb-2 shadow rounded"
     },
     [
+      _c("div", { staticClass: "w-full mb-4 flex justify-start" }, [
+        _c("small", { staticClass: "text-teal opacity-80" }, [
+          _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
+        ])
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "sm:w-full lg:w-1/3 pr-8" }, [
         _c("p", { staticClass: "w-full py-2 border-b" }, [
           _c("strong", [_vm._v("Name:")]),
@@ -31164,11 +31203,11 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass:
-                    "cursor-pointer hover:text-blue text-center mr-4",
+                  staticClass: "cursor-pointer hover:text-red text-center mr-4",
+                  class: { "text-red": _vm.lead.important },
                   on: {
                     click: function($event) {
-                      _vm.archive(_vm.lead.id)
+                      _vm.toggleImportant(_vm.lead.id)
                     }
                   }
                 },
@@ -31354,7 +31393,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("ul", { staticClass: "list-reset flex justify start" }, [
+    _c("ul", { staticClass: "list-reset flex justify-start" }, [
       _c("li", { staticClass: "mr-2" }, [
         _c(
           "button",
@@ -31428,24 +31467,14 @@ if (false) {
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(58)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31484,7 +31513,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31521,14 +31550,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 59 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ul", { staticClass: "list-reset flex justify-end" }, [
+  return _c("ul", { staticClass: "list-reset flex justify-end -mt-6" }, [
     _c("li", { staticClass: "-mb-px mr-1" }, [
       _c(
         "a",
@@ -31579,6 +31608,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-3016a531", module.exports)
   }
 }
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
