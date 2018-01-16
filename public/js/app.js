@@ -31127,8 +31127,8 @@ var render = function() {
       _vm._v(" "),
       _vm.viewingActiveLeads
         ? _c(
-            "p",
-            { staticClass: "mt-8 w-full flex justify-end items-center" },
+            "div",
+            { staticClass: "mt-8 w-full flex justify-around items-center" },
             [
               _c(
                 "a",
