@@ -9,7 +9,7 @@ Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 Vue.component('leads', require('./components/Leads.vue'));
 Vue.component('lead', require('./components/Lead.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
-Vue.component('leads-tabs', require('./components/LeadsTabs.vue'));
+Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
 
 const app = new Vue({
     el: '#app',

@@ -1,7 +1,7 @@
 <template>
 <div class="container mx-auto">
     <lead-pagination @fetchleads="fetchLeads" :pagination="pagination"></lead-pagination>
-    <leads-tabs @fetchleads="fetchLeads" :viewing-active-leads="viewingActiveLeads"></leads-tabs>
+    <lead-tabs @fetchleads="fetchLeads" :viewing-active-leads="viewingActiveLeads"></lead-tabs>
     <lead
         v-for="lead in leads"
         :key="lead.id"

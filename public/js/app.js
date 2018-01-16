@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -1100,7 +1100,7 @@ Vue.component('welcome-card', __webpack_require__(40));
 Vue.component('leads', __webpack_require__(43));
 Vue.component('lead', __webpack_require__(46));
 Vue.component('lead-pagination', __webpack_require__(49));
-Vue.component('leads-tabs', __webpack_require__(52));
+Vue.component('lead-tabs', __webpack_require__(57));
 
 var app = new Vue({
     el: '#app',
@@ -30862,7 +30862,7 @@ var render = function() {
         on: { fetchleads: _vm.fetchLeads }
       }),
       _vm._v(" "),
-      _c("leads-tabs", {
+      _c("lead-tabs", {
         attrs: { "viewing-active-leads": _vm.viewingActiveLeads },
         on: { fetchleads: _vm.fetchLeads }
       }),
@@ -31428,14 +31428,24 @@ if (false) {
 
 /***/ }),
 /* 52 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31452,7 +31462,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/LeadsTabs.vue"
+Component.options.__file = "resources/assets/js/components/LeadTabs.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -31461,9 +31471,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-325b2e0e", Component.options)
+    hotAPI.createRecord("data-v-3016a531", Component.options)
   } else {
-    hotAPI.reload("data-v-325b2e0e", Component.options)
+    hotAPI.reload("data-v-3016a531", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -31474,7 +31484,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31511,7 +31521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -31566,15 +31576,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-325b2e0e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3016a531", module.exports)
   }
 }
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
