@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -1099,6 +1099,8 @@ Vue.component('bio-card', __webpack_require__(37));
 Vue.component('welcome-card', __webpack_require__(40));
 Vue.component('leads', __webpack_require__(43));
 Vue.component('lead', __webpack_require__(46));
+Vue.component('lead-pagination', __webpack_require__(49));
+Vue.component('leads-tabs', __webpack_require__(57));
 
 var app = new Vue({
     el: '#app',
@@ -30788,56 +30790,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var Pagination = function Pagination(data) {
     _classCallCheck(this, Pagination);
@@ -30905,119 +30857,15 @@ var render = function() {
     "div",
     { staticClass: "container mx-auto" },
     [
-      _c("p", { staticClass: "mb-4 font-semibold text-grey-darker" }, [
-        _vm._v(
-          "Showing " +
-            _vm._s(_vm.pagination.from) +
-            " - " +
-            _vm._s(_vm.pagination.to) +
-            " out of " +
-            _vm._s(_vm.pagination.total)
-        )
-      ]),
+      _c("lead-pagination", {
+        attrs: { pagination: _vm.pagination },
+        on: { fetchleads: _vm.fetchLeads }
+      }),
       _vm._v(" "),
-      _c("ul", { staticClass: "list-reset flex justify start" }, [
-        _c("li", { staticClass: "mr-2" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
-              class: {
-                "cursor-not-allowed": _vm.pagination.prev_page_url == null,
-                "opacity-50": _vm.pagination.prev_page_url == null
-              },
-              attrs: { disabled: _vm.pagination.prev_page_url == null },
-              on: {
-                click: function($event) {
-                  _vm.fetchLeads(_vm.pagination.prev_page_url)
-                }
-              }
-            },
-            [_vm._v("\n                   Prev\n            ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "mr-2" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "text-blue bg-white px-4 py-2 text-center flex shadow items-center"
-            },
-            [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.pagination.current_page) +
-                  "\n            "
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "mr-2" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
-              class: {
-                "cursor-not-allowed": _vm.pagination.next_page_url == null,
-                "opacity-50": _vm.pagination.next_page_url == null
-              },
-              attrs: { disabled: _vm.pagination.next_page_url == null },
-              on: {
-                click: function($event) {
-                  _vm.fetchLeads(_vm.pagination.next_page_url)
-                }
-              }
-            },
-            [_vm._v("\n                   Next\n            ")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "list-reset flex justify-end" }, [
-        _c("li", { staticClass: "-mb-px mr-1" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
-              class: {
-                "active-tab": _vm.viewingActiveLeads,
-                "border-b": !_vm.viewingActiveLeads
-              },
-              on: {
-                click: function($event) {
-                  _vm.fetchLeads("active")
-                }
-              }
-            },
-            [_vm._v("\n            Active\n            ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "mr-1" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
-              class: {
-                "active-tab": !_vm.viewingActiveLeads,
-                "border-b": _vm.viewingActiveLeads
-              },
-              on: {
-                click: function($event) {
-                  _vm.fetchLeads("archived")
-                }
-              }
-            },
-            [_vm._v("\n            Archived\n            ")]
-          )
-        ])
-      ]),
+      _c("leads-tabs", {
+        attrs: { "viewing-active-leads": _vm.viewingActiveLeads },
+        on: { fetchleads: _vm.fetchLeads }
+      }),
       _vm._v(" "),
       _vm._l(_vm.leads, function(lead) {
         return _c("lead", {
@@ -31032,6 +30880,11 @@ var render = function() {
             }
           }
         })
+      }),
+      _vm._v(" "),
+      _c("lead-pagination", {
+        attrs: { pagination: _vm.pagination },
+        on: { fetchleads: _vm.fetchLeads }
       })
     ],
     2
@@ -31380,9 +31233,352 @@ if (false) {
 
 /***/ }),
 /* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(50)
+/* template */
+var __vue_template__ = __webpack_require__(51)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LeadPagination.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9c2009e6", Component.options)
+  } else {
+    hotAPI.reload("data-v-9c2009e6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['pagination'],
+    methods: {
+        fetchLeads: function fetchLeads(type) {
+            this.$emit('fetchleads', type);
+        }
+    }
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("p", { staticClass: "mb-4 font-semibold text-grey-darker" }, [
+      _vm._v(
+        "Showing " +
+          _vm._s(_vm.pagination.from) +
+          " - " +
+          _vm._s(_vm.pagination.to) +
+          " out of " +
+          _vm._s(_vm.pagination.total)
+      )
+    ]),
+    _vm._v(" "),
+    _c("ul", { staticClass: "list-reset flex justify start" }, [
+      _c("li", { staticClass: "mr-2" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+            class: {
+              "cursor-not-allowed": _vm.pagination.prev_page_url == null,
+              "opacity-50": _vm.pagination.prev_page_url == null
+            },
+            attrs: { disabled: _vm.pagination.prev_page_url == null },
+            on: {
+              click: function($event) {
+                _vm.fetchLeads(_vm.pagination.prev_page_url)
+              }
+            }
+          },
+          [_vm._v("\n                   Prev\n            ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "mr-2" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "text-blue bg-white px-4 py-2 text-center flex shadow items-center"
+          },
+          [
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.pagination.current_page) +
+                "\n            "
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "mr-2" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+            class: {
+              "cursor-not-allowed": _vm.pagination.next_page_url == null,
+              "opacity-50": _vm.pagination.next_page_url == null
+            },
+            attrs: { disabled: _vm.pagination.next_page_url == null },
+            on: {
+              click: function($event) {
+                _vm.fetchLeads(_vm.pagination.next_page_url)
+              }
+            }
+          },
+          [_vm._v("\n                   Next\n            ")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9c2009e6", module.exports)
+  }
+}
+
+/***/ }),
+/* 52 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LeadsTabs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-325b2e0e", Component.options)
+  } else {
+    hotAPI.reload("data-v-325b2e0e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("ul", { staticClass: "list-reset flex justify-end" }, [
+    _c("li", { staticClass: "-mb-px mr-1" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
+          class: {
+            "active-tab": _vm.viewingActiveLeads,
+            "border-b": !_vm.viewingActiveLeads
+          },
+          on: {
+            click: function($event) {
+              _vm.fetchLeads("active")
+            }
+          }
+        },
+        [_vm._v("\n        Active\n        ")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("li", { staticClass: "mr-1" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
+          class: {
+            "active-tab": !_vm.viewingActiveLeads,
+            "border-b": _vm.viewingActiveLeads
+          },
+          on: {
+            click: function($event) {
+              _vm.fetchLeads("archived")
+            }
+          }
+        },
+        [_vm._v("\n        Archived\n        ")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-325b2e0e", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['viewing-active-leads'],
+    methods: {
+        fetchLeads: function fetchLeads(type) {
+            this.$emit('fetchleads', type);
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
