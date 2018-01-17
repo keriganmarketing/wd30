@@ -27,15 +27,17 @@
                                 <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">bryan@kerigan.com</a>
                                 <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:8506484560">(850) 648-4560</a>
                             @else
-                                <span class="text-grey-darker text-sm pr-4">{{ Auth::user()->name }}</span>
+
 
                                 <a href="{{ route('logout') }}"
-                                   class="no-underline hover:underline text-grey-darker text-sm"
+                                   class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
                                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
+                                <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker" href="{{ route('home') }}" >Dashboard</a>
+                                    <span class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1">Hello, {{ Auth::user()->name }}</span>
 
                             @endguest
                         </div>
@@ -46,16 +48,16 @@
                 <div class="container mx-auto h-full">
                     <div class="md:flex items-center justify-between">
                         <div class="text-center md:mr-6 md:text-left py-8 md:py-0">
-                            <a href="{{ url('/') }}" class="no-underline">
+                            <a href="{{ url('/') }}" class="no-underline text-xl text-brand font-semibold">
                                 {{ config('app.name', 'Realtor') }}
                             </a>
                         </div>
                         <div class="flex text-right">
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-brand-lightest" href="/">Home</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-brand-lightest" href="/property-search/">Property Search</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-brand-lightest" href="/#featured-listings">Featured Listings</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-brand-lightest" href="/#about">About Me</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-brand-lightest" href="#contact">Contact</a>
+                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/">Home</a>
+                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/property-search/">Property Search</a>
+                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#featured-listings">Featured Listings</a>
+                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#about">About Me</a>
+                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="#contact">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -67,13 +69,11 @@
         <div class="bot">
             <nav class="bg-brand-darker">
                 <div class="mx-auto h-full justify-center md:flex align-middle text-center">
-                    @guest
-                        <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/">Home</a>
-                        <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/property-search/">Property Search</a>
-                        <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#featured-listings">Featured Listings</a>
-                        <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#about">About Me</a>
-                        <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="#contact">Contact</a>
-                    @endguest
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/">Home</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/property-search/">Property Search</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#featured-listings">Featured Listings</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#about">About Me</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="#contact">Contact</a>
                 </div>
             </nav>
             <section class="bg-brand-darkest text-center py-8" >
