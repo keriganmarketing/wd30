@@ -136,13 +136,13 @@ let colors = {
   'smoke-lighter': 'rgba(0, 0, 0, 0.25)',
   'smoke-lightest': 'rgba(0, 0, 0, 0.1)',
 
-  get ['brand-darkest']() { return this['orange-darkest']; },
-  get ['brand-darker']() { return this['orange-darker']; },
-  get ['brand-dark']() { return this['orange-dark']; },
-  get ['brand']() { return this['orange']; },
-  get ['brand-light']() { return this['orange-light']; },
-  get ['brand-lighter']() { return this['orange-lighter']; },
-  get ['brand-lightest']() { return this['orange-lightest']; },
+  get ['brand-darkest']() { return this['teal-darkest']; },
+  get ['brand-darker']() { return this['teal-darker']; },
+  get ['brand-dark']() { return this['teal-dark']; },
+  get ['brand']() { return this['teal']; },
+  get ['brand-light']() { return this['teal-light']; },
+  get ['brand-lighter']() { return this['teal-lighter']; },
+  get ['brand-lightest']() { return this['teal-lightest']; },
 }
 
 module.exports = {
@@ -524,7 +524,7 @@ module.exports = {
     '24': '6rem',
     '32': '8rem',
     '48': '12rem',
-    '64': '16rem',
+    '64': '32rem',
     'full': '100%',
     'screen': '100vh'
   },
@@ -644,6 +644,9 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '16': '4rem',
+    '24': '6rem',
+    '32': '8rem'
   },
 
 
@@ -672,6 +675,9 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '16': '4rem',
+    '24': '6rem',
+    '32': '8rem'
   },
 
 

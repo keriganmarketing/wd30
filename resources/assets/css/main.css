@@ -46,3 +46,11 @@
 .active-tab {
     @apply .text-blue .border-l .border-t .border-r .rounded-t;
 }
+.button-brand {
+    @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.bg-image-full {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}

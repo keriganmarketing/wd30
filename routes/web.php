@@ -1,7 +1,7 @@
 <?php
 
 Auth::routes();
-
+Route::get('/', 'FrontPageController@index')->name('frontpage');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/authenticate', 'AuthenticationController@show');
 Route::patch('/users/{id}', 'UsersController@update');
