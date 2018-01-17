@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex items-center">
-    <div class="md:w-1/2 md:mx-auto">
+<div class="flex items-center h-full">
+    <div class="w-full md:max-w-md mx-auto my-auto">
         <div class="rounded shadow">
-            <div class="font-medium text-lg text-brand-darker bg-brand-lighter p-3 rounded-t">
+            <div class="font-medium text-lg text-brand-darker p-3 ">
                 Login
             </div>
-            <div class="bg-white p-3 rounded-b">
+            <div class="bg-white p-3">
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
 
