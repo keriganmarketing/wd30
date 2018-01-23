@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/3 border flex flex-wrap bg-white p-4 text-teal-darker shadow">
+    <div class="w-full md:w-1/3 border flex flex-wrap bg-white p-4 text-teal-darker shadow">
         <p class="text-lg w-full text-teal-darker p-4 border-b">
             Name: <span class="p-2 text-left" v-if="!editing">{{ user.name }}</span>
             <input type="text" class="border rounded shadow-inner p-1 text-left" v-model="user.name" v-if="editing">

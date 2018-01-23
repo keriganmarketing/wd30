@@ -17,12 +17,12 @@
                 <span class="block text-xs">Important</span>
             </a>
         </div>
-        <div class="sm:w-full lg:w-1/3 pr-8">
+        <div class="sm:w-full lg:w-1/3 pr-8 text-grey-darkest">
             <p class="w-full py-2 border-b"><strong>Name:</strong> {{ lead.name }}</p>
             <p class="w-full py-2 border-b"><strong>Email:</strong> <a :href="`mailto:${lead.email}`">{{ lead.email }}</a></p>
             <p class="w-full py-2 border-b"><strong>Phone:</strong> <a :href="`tel:${lead.email}`">{{ lead.phone }}</a></p>
         </div>
-        <div class="sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center">
+        <div class="sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center text-grey-darkest">
             <p class="w-full font-bold">Message:</p>
             <p class="w-full bg-grey-lightest p-4 rounded border border-grey">{{ lead.message }}</p>
         </div>
@@ -34,16 +34,16 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
                     <path class="heroicon-ui" d="M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-5 4h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2v-2a1 1 0 0 1 2 0v2z"/>
                 </svg>
-                <span class="block text-xs">Expand Notes</span>
+                <span class="block text-xs">Show Notes</span>
             </a>
-            <a class="cursor-pointer hover:text-green text-center mr-4"
+            <a class="cursor-pointer text-green hover:text-grey-darker text-center mr-4"
                @click="notesExpanded = false"
                v-if="notesExpanded"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
                     <path class="heroicon-ui" d="M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-2 4a1 1 0 0 1-1 1H9a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1z"/>
                 </svg>
-                <span class="block text-xs">Minimize Notes</span>
+                <span class="block text-xs">Hide Notes</span>
             </a>
             <a @click="archive(lead.id)" class="cursor-pointer hover:text-red text-center mr-4"
                v-if="viewingActiveLeads"
