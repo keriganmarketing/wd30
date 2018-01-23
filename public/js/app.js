@@ -30397,7 +30397,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "w-1/3 border flex flex-wrap bg-white p-4 text-teal-darker shadow"
+        "w-full md:w-1/3 border flex flex-wrap bg-white p-4 text-teal-darker shadow"
     },
     [
       _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
@@ -30696,7 +30696,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "w-2/3 bg-white text-2xl text-center border ml-2 shadow flex flex-wrap items-center justify-center"
+        "w-full md:w-2/3 bg-white text-xl text-center border shadow flex flex-wrap items-center justify-center min-h-full"
     },
     [
       _c("p", { staticClass: "block w-full" }, [
@@ -31169,7 +31169,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "sm:w-full lg:w-1/3 pr-8" }, [
+      _c("div", { staticClass: "sm:w-full lg:w-1/3 pr-8 text-grey-darkest" }, [
         _c("p", { staticClass: "w-full py-2 border-b" }, [
           _c("strong", [_vm._v("Name:")]),
           _vm._v(" " + _vm._s(_vm.lead.name))
@@ -31196,7 +31196,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center"
+            "sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center text-grey-darkest"
         },
         [
           _c("p", { staticClass: "w-full font-bold" }, [_vm._v("Message:")]),
@@ -31253,7 +31253,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("span", { staticClass: "block text-xs" }, [
-                    _vm._v("Expand Notes")
+                    _vm._v("Show Notes")
                   ])
                 ]
               )
@@ -31264,7 +31264,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "cursor-pointer hover:text-green text-center mr-4",
+                    "cursor-pointer text-green hover:text-grey-darker text-center mr-4",
                   on: {
                     click: function($event) {
                       _vm.notesExpanded = false
@@ -31293,7 +31293,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("span", { staticClass: "block text-xs" }, [
-                    _vm._v("Minimize Notes")
+                    _vm._v("Hide Notes")
                   ])
                 ]
               )
