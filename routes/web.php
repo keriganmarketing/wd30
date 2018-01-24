@@ -1,8 +1,12 @@
 <?php
 
 Auth::routes();
+
 Route::get('/', 'FrontPageController@index')->name('frontpage');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/property-search', 'PropertiesController@index')->name('property.index');
+Route::get('/listing/{id}', 'PropertiesController@show')->name('property.show');
+
 Route::get('/authenticate', 'AuthenticationController@show');
 Route::patch('/users/{id}', 'UsersController@update');
 Route::get('/archivedleads', 'ArchivedLeadsController@index');

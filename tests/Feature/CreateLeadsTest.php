@@ -14,7 +14,12 @@ class CreateLeadsTest extends TestCase
     public function a_lead_can_be_created()
     {
         $lead = make('App\Lead');
-        $attributes = $lead->toArray();
+        $attributes = [
+            'name' => $lead->name,
+            'email' => $lead->email,
+            'phone' => $lead->phone,
+            'message' => $lead->message
+        ];
 
         $this->post('/leads', $attributes)
             ->assertSuccessful();

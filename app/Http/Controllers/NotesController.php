@@ -14,9 +14,7 @@ class NotesController extends Controller
      */
     public function index()
     {
-        $notes = Note::all();
-
-        return response()->json($notes);
+        return Note::all();
     }
 
 
@@ -28,10 +26,7 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        Note::create([
-            'lead_id' => $request->lead_id,
-            'message' => $request->message
-        ]);
+        Note::create($request->all());
     }
 
     /**

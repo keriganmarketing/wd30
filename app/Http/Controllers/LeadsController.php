@@ -15,12 +15,7 @@ class LeadsController extends Controller
      */
     public function index()
     {
-        $leads = Lead::where('active', 1)->latest()->paginate(5);
-        foreach ($leads as $lead) {
-            $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();
-        }
-
-        return $leads;
+        return Lead::active()->latest()->paginate(5);
     }
 
     /**
@@ -31,23 +26,7 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        Lead::create([
-            'name'    => $request->name,
-            'email'   => $request->email,
-            'phone'   => $request->phone,
-            'message' => $request->message
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Lead  $lead
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Lead $lead)
-    {
-        //
+        Lead::create($request->all());
     }
 
     /**
@@ -59,14 +38,7 @@ class LeadsController extends Controller
      */
     public function update(Request $request, Lead $lead)
     {
-        $lead->update([
-            'name'      => $request->name ?? $lead->name,
-            'email'     => $request->email ?? $lead->email,
-            'phone'     => $request->phone ?? $lead->phone,
-            'message'   => $request->message ?? $lead->message,
-            'active'    => $request->active ?? $lead->active,
-            'important' => $request->important ?? $lead->important
-        ]);
+        $lead->update($request->all());
     }
 
     /**

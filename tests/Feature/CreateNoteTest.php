@@ -15,16 +15,21 @@ class CreateNoteTest extends TestCase
     public function a_user_can_create_a_note()
     {
         $note = make('App\Note');
+        $attributes = [
+            'lead_id' => $note->lead_id,
+            'message' => $note->message
+        ];
 
-        $response = $this->post('/notes', $note->toArray());
+        $response = $this->post('/notes', $attributes);
         $response->assertSuccessful();
 
         $this->get('/notes')
             ->assertSuccessful()
-            ->assertJsonFragment([
-                'message' => $note->message
+            ->assertJson([
+                [
+                    'lead_id' => $note->lead_id,
+                    'message' => $note->message
+                ]
             ]);
-
     }
-
 }
