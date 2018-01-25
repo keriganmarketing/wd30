@@ -5,6 +5,15 @@ use \GuzzleHttp\Client;
 
 class Mothership
 {
+    protected $client;
+
+    public function __construct()
+    {
+        $this->client = new Client([
+            'base_uri' => 'https://mothership.kerigan.com/api/v1/'
+        ]);
+    }
+
     public function search($params)
     {
         $omni         = $params['omniField'] ?? '';
@@ -34,10 +43,8 @@ class Mothership
             }
         }
 
-        $client = new Client(['base_uri' => 'https://mothership.kerigan.com/api/v1/']);
-
         // make the API call
-        $apiCall = $client->request(
+        $apiCall = $this->client->request(
             'GET',
             'search?'
                 . 'city=' . $omni
@@ -59,6 +66,16 @@ class Mothership
         $results = json_decode($apiCall->getBody());
 
         return $results;
+    }
+
+    public function agentListings($mlsId)
+    {
+        $response = $this->client->request(
+            'GET',
+            'agentlistings?agentId='. $mlsId
+        );
+
+        return json_decode($response->getBody());
     }
 
     private function getPropertyTypes($class = null)
