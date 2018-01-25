@@ -9,7 +9,7 @@
                 <p class="py-2 text-grey-darkest text-center">{{ $listings[$i]->full_address }}</p>
             </div>
             <div class="price">
-                <p class="py-2 font-bold text-center text-brand text-2xl">${{ $listings[$i]->price }}</p>
+                <p class="py-2 font-bold text-center text-brand text-2xl">${{ number_format($listings[$i]->price, 0, '.', ',') }}</p>
             </div>
             <div class="attributes flex text-center py-2">
                 <div class="beds w-1/3">
@@ -30,7 +30,7 @@
                     <div class="icon">
 
                     </div>
-                    <p class="text-grey-darkest text-lg">{{ $listings[$i]->sq_ft }}</p>
+                    <p class="text-grey-darkest text-lg">{{ number_format($listings[$i]->sq_ft, 0, '.', ',') }}</p>
                     <p class="text-grey-dark text-xs text-uppercase">sqft</p>
                 </div>
             </div>
