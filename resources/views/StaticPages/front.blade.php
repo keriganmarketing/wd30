@@ -73,9 +73,9 @@
             @if($listings->count() > 0)
             <h2 class="text-white text-center pb-4">Featured Listings</h2>
             <div class="flex flex-wrap items-center justify-center">
-                @for ($i = 0; $i < 4; $i++)
+                {{-- @for ($i = 0; $i < 4; $i++)
                     @include('partials.mini-listing')
-                @endfor
+                @endfor --}}
             </div>
             @else
                 <h2 class="text-white text-center pb-4">Check back later for my featured listings!</h2>
