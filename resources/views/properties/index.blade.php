@@ -1,4 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <h1>Properties go here</h1>
+        <ul>
+        @foreach ($properties->data as $property)
+            <li>{{ $property->price }}</li>
+        @endforeach
+        </ul>
 @endsection
