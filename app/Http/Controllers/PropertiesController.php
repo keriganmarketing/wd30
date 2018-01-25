@@ -15,6 +15,7 @@ class PropertiesController extends Controller
     public function index(Request $request)
     {
         $properties = Mothership::search($request->all());
+
         return view('properties.index', compact('properties'));
     }
 
