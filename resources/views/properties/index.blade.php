@@ -13,6 +13,9 @@
                     @include('partials.mini-listing')
                 @endfor
             </div>
+
+            @include('partials.disclaimer')
         </div>
     </div>
+    @include('partials.contact')
 @endsection
