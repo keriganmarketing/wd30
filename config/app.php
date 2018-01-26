@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        KeriganSolutions\Drone\DroneServiceProvider::class,
 
         /*
          * Application Service Providers...

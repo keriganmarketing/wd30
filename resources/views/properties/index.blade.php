@@ -9,9 +9,9 @@
     <div class="properties grid pb-4">
         <div class="container mx-auto">
             <div class="flex flex-wrap items-center justify-center">
-                @for ($i = 0; $i < 16; $i++)
+                @foreach ($properties->data as $property)
                     @include('partials.mini-listing')
-                @endfor
+                @endforeach
             </div>
 
             @include('partials.disclaimer')

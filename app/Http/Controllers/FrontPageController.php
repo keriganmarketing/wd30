@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use KeriganSolutions\Drone\Mothership;
 
 class FrontPageController extends Controller
 {
@@ -13,6 +15,9 @@ class FrontPageController extends Controller
      */
     public function index()
     {
-        return view('StaticPages.front');
+        $mlsId = User::where('is_realtor', true)->first()->mls_id;
+        $listings = (new Mothership())->agentListings($mlsId);
+
+        return view('StaticPages.front', compact('listings'));
     }
 }
