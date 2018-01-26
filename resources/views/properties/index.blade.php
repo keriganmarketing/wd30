@@ -9,7 +9,7 @@
     <div class="properties grid pb-4">
         <div class="container mx-auto">
             <div class="flex flex-wrap items-center justify-center">
-                @foreach ($properties->data as $property)
+                @foreach ($properties->data as $listing)
                     @include('partials.mini-listing')
                 @endforeach
             </div>

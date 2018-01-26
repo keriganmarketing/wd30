@@ -20,6 +20,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'phone_number' => $faker->phoneNumber,
         'mls_id' => $faker->randomNumber(4),
+        'is_realtor' => 1,
         'address' => $faker->address,
         'remember_token' => str_random(10),
     ];
