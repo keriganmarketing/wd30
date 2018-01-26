@@ -65,11 +65,12 @@ class FeaturedPropertiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\FeaturedProperty  $featuredProperty
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FeaturedProperty $featuredProperty)
+    public function destroy($id)
     {
-        $featuredProperty->delete();
+        $fp = FeaturedProperty::find($id);
+        $fp->delete();
     }
 }

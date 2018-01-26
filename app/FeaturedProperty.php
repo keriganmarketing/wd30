@@ -9,4 +9,9 @@ class FeaturedProperty extends Model
     protected $fillable = [
         'mls_id'
     ];
+
+    public function path()
+    {
+        return '/featuredproperties/'. $this->id;
+    }
 }
