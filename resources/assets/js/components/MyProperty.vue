@@ -16,7 +16,7 @@
                 <p class="py-2 text-grey-darkest text-center">{{ listing.full_address }}</p>
             </div>
             <div class="price">
-                <p class="py-2 font-bold text-center text-brand text-2xl">${{ listing.price }}</p>
+                <p class="py-2 font-bold text-center text-brand text-2xl">${{ listing.price.toLocaleString() }}</p>
             </div>
             <div class="attributes flex text-center py-2">
                 <div class="beds w-1/3">
@@ -36,7 +36,7 @@
                     <div class="icon">
 
                     </div>
-                    <p class="text-grey-darkest text-lg">{{ listing.sq_ft }}</p>
+                    <p class="text-grey-darkest text-lg">{{ listing.sq_ft.toLocaleString() }}</p>
                     <p class="text-grey-dark text-xs text-uppercase">sqft</p>
                 </div>
             </div>

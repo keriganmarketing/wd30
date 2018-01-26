@@ -32372,7 +32372,7 @@ var render = function() {
                 {
                   staticClass: "py-2 font-bold text-center text-brand text-2xl"
                 },
-                [_vm._v("$" + _vm._s(_vm.listing.price))]
+                [_vm._v("$" + _vm._s(_vm.listing.price.toLocaleString()))]
               )
             ]),
             _vm._v(" "),
@@ -32409,7 +32409,7 @@ var render = function() {
                 _c("div", { staticClass: "icon" }),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-grey-darkest text-lg" }, [
-                  _vm._v(_vm._s(_vm.listing.sq_ft))
+                  _vm._v(_vm._s(_vm.listing.sq_ft.toLocaleString()))
                 ]),
                 _vm._v(" "),
                 _c(
