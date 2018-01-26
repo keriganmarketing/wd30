@@ -6,7 +6,7 @@
         </div>
         <div class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5">
             <select name="propertyType" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-                <option>Property Type</option>
+                <option value="">Property Type</option>
                 <option>Single Family Home</option>
                 <option>Condo / Townhome</option>
                 <option>Commercial</option>
