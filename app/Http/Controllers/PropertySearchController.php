@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
 
-class PropertiesController extends Controller
+class PropertySearchController extends Controller
 {
     /**
      * Display a listing of the resource.

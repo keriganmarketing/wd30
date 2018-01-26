@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Lead;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,8 +22,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
         return view('home');
+    }
+
+    public function myProperties()
+    {
+        return view('my-properties');
     }
 }

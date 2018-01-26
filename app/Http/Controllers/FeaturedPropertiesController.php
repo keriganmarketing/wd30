@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\FeaturedProperty;
 use Illuminate\Http\Request;
-use KeriganSolutions\Drone\Mothership;
 
-class RealtorPropertiesController extends Controller
+class FeaturedPropertiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,7 @@ class RealtorPropertiesController extends Controller
      */
     public function index()
     {
-        $mlsId = User::where('is_realtor', true)->first()->mls_id;
-        $listings = (new Mothership())->agentListings($mlsId);
-
-        return $listings;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return FeaturedProperty::all();
     }
 
     /**
@@ -39,16 +25,16 @@ class RealtorPropertiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        FeaturedProperty::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FeaturedProperty  $featuredProperty
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FeaturedProperty $featuredProperty)
     {
         //
     }
@@ -56,10 +42,10 @@ class RealtorPropertiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\FeaturedProperty  $featuredProperty
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FeaturedProperty $featuredProperty)
     {
         //
     }
@@ -68,10 +54,10 @@ class RealtorPropertiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\FeaturedProperty  $featuredProperty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FeaturedProperty $featuredProperty)
     {
         //
     }
@@ -79,11 +65,11 @@ class RealtorPropertiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\FeaturedProperty  $featuredProperty
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FeaturedProperty $featuredProperty)
     {
-        //
+        $featuredProperty->delete();
     }
 }
