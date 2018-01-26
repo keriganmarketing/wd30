@@ -63,7 +63,7 @@
                 </div>
             </nav>
         </div>
-        <div class="mid">
+        <div class="mid flex-grow">
         @yield('content')
         </div>
         <div class="bot">
