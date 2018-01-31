@@ -1,9 +1,9 @@
 <template>
 <div>
-    <p class="mb-4 font-semibold text-grey-darker">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
+    <p class="mb-4 font-semibold text-white">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
     <ul class="list-reset flex justify-start">
         <li class="mr-2">
-            <button class="text-blue bg-white px-4 py-2 text-center cursor-pointer shadow"
+            <button class="text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm"
                :disabled="pagination.prev_page_url == null"
                :class="{
                    'cursor-not-allowed': pagination.prev_page_url == null,
@@ -16,13 +16,13 @@
             </button>
         </li>
         <li class="mr-2">
-            <a class="text-blue bg-white px-4 py-2 text-center flex shadow items-center"
+            <a class="text-grey-darker bg-white px-4 py-2 text-center flex shadow items-center rounded-sm"
             >
             {{ pagination.current_page }}
             </a>
         </li>
         <li class="mr-2">
-            <button class="text-blue bg-white px-4 py-2 text-center cursor-pointer shadow"
+            <button class="text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm"
                :disabled="pagination.next_page_url == null"
                :class="{
                    'cursor-not-allowed': pagination.next_page_url == null,

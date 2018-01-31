@@ -1,14 +1,14 @@
 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2" >
     <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-grey hover:border-brand">
-        <a href="/listing/{{ $listing->mls_account }}/" class="absolute pin hover:shadow-inner" ></a>
+        <a href="/listing/{{ $listing->mls_account }}/" class="absolute pin hover:shadow-inner z-50" ></a>
         <div class="property-image md:h-48 md:overflow-hidden">
             @if($listing->has_open_houses)
-                <div class="inline-block flag pin-b pin-l w-auto bg-brand text-white p-1 px-4 mt-2">
+                <div class="inline-block absolute flag pin-t pin-l w-auto bg-brand text-white p-1 px-4 mt-2 z-10">
                     OPEN HOUSE
                 </div>
             @endif
             @if($listing->status != 'Active')
-                <div class="inline-block flag pin-b pin-l w-auto bg-brand text-white p-1 px-4 mt-2">
+                <div class="inline-block absolute flag pin-t pin-l w-auto bg-brand text-white p-1 px-4 mt-2 z-10">
                     {{ $listing->status }}
                 </div>
             @endif
