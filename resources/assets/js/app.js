@@ -54,7 +54,7 @@ const app = new Vue({
             });
         }
     },
-    mounted() {
+    mounted () {
         this.authenticate();
     }
 });
