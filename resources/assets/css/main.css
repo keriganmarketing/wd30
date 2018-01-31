@@ -44,7 +44,7 @@
  * @import "utilities/skew-transforms";
  */
 .active-tab {
-    @apply .text-blue .border-l .border-t .border-r .rounded-t;
+    @apply .text-brand .border-l .border-t .border-r .border-white;
 }
 .button-brand {
     @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
