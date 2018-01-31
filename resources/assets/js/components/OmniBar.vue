@@ -21,15 +21,18 @@
             search: _.debounce(
                 function () {
                     let vm = this;
-                    let config = {};
+                    let config = {
+                        method: 'get',
+                        url: 'https://mothership.kerigan.com/api/v1/omnibar?search=' + this.omni,
+                    };
 
-                    axios.get('https://mothership.kerigan.com/api/v1/omnibar?search=' + vm.omni, config)
+                    axios(config)
                     .then(response => {
                         vm.results = response.data;
                     })
                 },
-                500
-            );
+                250
+            )
         }
     }
 </script>
