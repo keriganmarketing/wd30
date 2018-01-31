@@ -30394,7 +30394,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['lead', 'activeLeads', 'currentPage'],
@@ -30476,10 +30475,9 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container mx-auto flex flex-wrap py-4 px-8 bg-white border-b border-l border-r mb-2 shadow rounded",
+        "container mx-auto flex flex-wrap py-4 px-8 bg-white mb-2 shadow border-l-4 border-grey-light",
       class: {
-        "border-red": _vm.lead.important,
-        "border-2": _vm.lead.important
+        "border-red": _vm.lead.important
       }
     },
     [
@@ -30487,7 +30485,7 @@ var render = function() {
         "div",
         { staticClass: "w-full mb-4 flex justify-between text-grey-darker" },
         [
-          _c("small", { staticClass: "text-teal opacity-80" }, [
+          _c("small", { staticClass: "text-grey-darker" }, [
             _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
           ]),
           _vm._v(" "),
@@ -30540,17 +30538,27 @@ var render = function() {
         _c("p", { staticClass: "w-full py-2 border-b" }, [
           _c("strong", [_vm._v("Email:")]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "mailto:" + _vm.lead.email } }, [
-            _vm._v(_vm._s(_vm.lead.email))
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "text-brand",
+              attrs: { href: "mailto:" + _vm.lead.email }
+            },
+            [_vm._v(_vm._s(_vm.lead.email))]
+          )
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "w-full py-2 border-b" }, [
           _c("strong", [_vm._v("Phone:")]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "tel:" + _vm.lead.email } }, [
-            _vm._v(_vm._s(_vm.lead.phone))
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "text-brand",
+              attrs: { href: "tel:" + _vm.lead.email }
+            },
+            [_vm._v(_vm._s(_vm.lead.phone))]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -31792,10 +31800,10 @@ var render = function() {
         "a",
         {
           staticClass:
-            "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
+            "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
           class: {
             "active-tab": _vm.viewingActiveLeads,
-            "border-b": !_vm.viewingActiveLeads
+            "border-b-grey": !_vm.viewingActiveLeads
           },
           on: {
             click: function($event) {
@@ -31812,10 +31820,10 @@ var render = function() {
         "a",
         {
           staticClass:
-            "bg-white inline-block py-2 px-4 font-semibold hover:text-blue cursor-pointer",
+            "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
           class: {
             "active-tab": !_vm.viewingActiveLeads,
-            "border-b": _vm.viewingActiveLeads
+            "border-b-grey": _vm.viewingActiveLeads
           },
           on: {
             click: function($event) {
@@ -32058,7 +32066,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", { staticClass: "mb-4 font-semibold text-grey-darker" }, [
+    _c("p", { staticClass: "mb-4 font-semibold text-white" }, [
       _vm._v(
         "Showing " +
           _vm._s(_vm.pagination.from) +
@@ -32075,7 +32083,7 @@ var render = function() {
           "button",
           {
             staticClass:
-              "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+              "text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm",
             class: {
               "cursor-not-allowed": _vm.pagination.prev_page_url == null,
               "opacity-50": _vm.pagination.prev_page_url == null
@@ -32096,7 +32104,7 @@ var render = function() {
           "a",
           {
             staticClass:
-              "text-blue bg-white px-4 py-2 text-center flex shadow items-center"
+              "text-grey-darker bg-white px-4 py-2 text-center flex shadow items-center rounded-sm"
           },
           [
             _vm._v(
@@ -32113,7 +32121,7 @@ var render = function() {
           "button",
           {
             staticClass:
-              "text-blue bg-white px-4 py-2 text-center cursor-pointer shadow",
+              "text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm",
             class: {
               "cursor-not-allowed": _vm.pagination.next_page_url == null,
               "opacity-50": _vm.pagination.next_page_url == null

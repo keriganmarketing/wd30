@@ -5045,12 +5045,11 @@ button,
  * @import "utilities/skew-transforms";
  */
 .active-tab {
-  color: #3490dc;
+  color: #4dc0b5;
   border-left-width: 1px;
   border-top-width: 1px;
   border-right-width: 1px;
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
+  border-color: #ffffff;
 }
 
 .button-brand {
