@@ -32142,7 +32142,7 @@ var render = function() {
                 _vm._l(_vm.listings, function(listing) {
                   return _c("my-property", {
                     key: listing.id,
-                    attrs: { listing: listing },
+                    attrs: { listing: listing, featured: _vm.featured },
                     on: {
                       "featured-property-added": _vm.add,
                       "featured-property-removed": _vm.remove
@@ -32271,40 +32271,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['listing', 'is-featured'],
+    props: ['listing', 'featured'],
     methods: {
         handleFeatured: function handleFeatured(mlsNumber) {
             if (this.isFeatured) {
-                this.addFeatured(mlsNumber);
-            } else {
                 this.removeFeatured(mlsNumber);
+            } else {
+                this.addFeatured(mlsNumber);
             }
         },
         addFeatured: function addFeatured(mlsNumber) {
-            var _this = this;
-
             axios({
                 method: 'post',
                 url: 'featuredproperties',
                 data: {
                     mls_id: mlsNumber
                 }
-            }).then(function (response) {
-                _this.isFeatured = true;
             });
             this.$emit('featured-property-added', mlsNumber);
         },
         removeFeatured: function removeFeatured(mlsNumber) {
-            var _this2 = this;
-
-            axios.delete('/featuredproperties', {
-                params: {
-                    id: mlsNumber
-                }
-            }).then(function (response) {
-                _this2.isFeatured = false;
-            });
+            axios.delete('/featuredproperties/' + this.listing.mls_account);
             this.$emit('featured-property-removed', mlsNumber);
+        }
+    },
+    computed: {
+        isFeatured: function isFeatured() {
+            for (var i = 0; i < this.featured.length; i++) {
+                if (this.featured[i].mls_id == this.listing.mls_account) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
     }
 });

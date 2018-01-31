@@ -12,8 +12,6 @@ Vue.component('notes', require('./components/Notes.vue'));
 Vue.component('note', require('./components/Note.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
 Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
-Vue.component('my-properties', require('./components/MyProperties.vue'));
-Vue.component('my-property', require('./components/MyProperty.vue'));
 
 const app = new Vue({
     el: '#app',
