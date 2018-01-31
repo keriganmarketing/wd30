@@ -15,9 +15,6 @@ class FrontPageController extends Controller
      */
     public function index()
     {
-        $mlsId = User::where('is_realtor', true)->first()->mls_id;
-        $listings = collect((new Mothership())->agentListings($mlsId));
-
-        return view('StaticPages.front', compact('listings'));
+        return view('StaticPages.front');
     }
 }
