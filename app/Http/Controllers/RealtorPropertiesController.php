@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use KeriganSolutions\Drone\Mothership;
+use Facades\KeriganSolutions\Drone\Mothership;
 
 class RealtorPropertiesController extends Controller
 {
@@ -15,10 +15,10 @@ class RealtorPropertiesController extends Controller
      */
     public function index()
     {
-        $mlsId = User::where('is_realtor', true)->first()->mls_id;
-        $listings = (new Mothership())->agentListings($mlsId);
+        $mlsId = User::realtor()->mls_id;
+        $properties = Mothership::agentListings($mlsId);
 
-        return $listings;
+        return $properties;
     }
 
     /**

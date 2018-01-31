@@ -18,7 +18,6 @@ Route::get('/mylistings', 'RealtorPropertiesController@index');
 // Resourceful routes
 Route::resource('/leads', 'LeadsController');
 Route::resource('/notes', 'NotesController');
-Route::resource('/featuredproperties', 'FeaturedPropertiesController');
 
 // Misc
 Route::get('/leads/{lead}/notes', 'LeadNotesController@index');

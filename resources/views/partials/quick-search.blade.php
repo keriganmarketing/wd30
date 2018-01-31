@@ -6,7 +6,7 @@
         </div>
         <div class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5">
             <select name="propertyType" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-                <option>Property Type</option>
+                <option value="">Property Type</option>
                 <option>Single Family Home</option>
                 <option>Condo / Townhome</option>
                 <option>Commercial</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5">
             <select name="minPrice" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-                <option>Min-price</option>
+                <option value="">Min-price</option>
                 <option value=100000>$100,000</option>
                 <option value=200000>$200,000</option>
                 <option value=300000>$300,000</option>
@@ -35,7 +35,7 @@
         </div>
         <div class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5">
             <select name="maxPrice" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-                <option>Max-price</option>
+                <option value="">Max-price</option>
                 <option value=200000>$200,000</option>
                 <option value=300000>$300,000</option>
                 <option value=400000>$400,000</option>
