@@ -57,24 +57,13 @@
                         <tr class="flex"><td class="w-1/2 p-2">Taxes in {{ $property->last_tax_year }} </td><td class="w-1/2 p-2">${{ $property->last_taxes }}</td></tr>
                     </table>
 
-                    <div class="flex flex-wrap my-2">
-                    @if(count($interior > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Interior</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($interior as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
+                    @if(count($features) > 0)
+                        <div class="flex flex-wrap justify-start">
+                            @foreach ($features as $key => $value)
+                                @include('partials.feature')
+                            @endforeach
                         </div>
                     @endif
-                    </div>
                 </div>
                 <div class="location-left w-full md:w-2/5">
                     <table class="border-b-2 border-brand mx-1 shadow flex flex-col text-left">
