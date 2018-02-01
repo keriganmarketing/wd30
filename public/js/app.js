@@ -31616,24 +31616,52 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var Results = function Results() {
+    _classCallCheck(this, Results);
+
+    this.results = {
+        text: 'Start typing to begin searching...'
+    };
+};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             omni: '',
-            results: []
+            results: new Results(),
+            showResults: false
         };
     },
 
     watch: {
         omni: function omni(newOmni, oldOmni) {
-            this.search();
+            if (newOmni.length > 0) {
+                this.search();
+            } else {
+                this.results = new Results();
+            }
         }
     },
     methods: {
@@ -31644,10 +31672,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 url: 'https://mothership.kerigan.com/api/v1/omnibar?search=' + this.omni
             };
 
+            this.results = [{ text: 'Searching...' }];
             axios(config).then(function (response) {
-                vm.results = response.data;
+                vm.results = response.data.results;
             });
-        }, 250)
+        }, 250),
+        onFocus: function onFocus() {
+            this.showResults = true;
+        },
+        onResultsClick: function onResultsClick(value) {
+            this.omni = value;
+            this.showResults = false;
+        }
     }
 });
 
@@ -31681,6 +31717,7 @@ var render = function() {
         },
         domProps: { value: _vm.omni },
         on: {
+          focus: _vm.onFocus,
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -31688,7 +31725,57 @@ var render = function() {
             _vm.omni = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm.showResults
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "block shadow w-full border rounded z-50 absolute text-grey-darker hover:border-grey bg-white h-32 overflow-scroll py-2 px-3"
+            },
+            [
+              _c(
+                "ul",
+                { staticClass: "list-reset mb-px" },
+                _vm._l(_vm.results, function(result) {
+                  return _c("li", { key: result.text }, [
+                    _c("strong", [
+                      _c("span", { staticClass: "block mb-px" }, [
+                        _vm._v(_vm._s(result.text))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "list-reset mb-2" },
+                      _vm._l(result.children, function(child) {
+                        return _c(
+                          "li",
+                          {
+                            key: child.id,
+                            staticClass:
+                              "hover:bg-teal hover:text-white cursor-pointer py-1",
+                            on: {
+                              click: function($event) {
+                                _vm.onResultsClick(child.text)
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "block ml-2 mb-px" }, [
+                              _vm._v(_vm._s(child.text))
+                            ])
+                          ]
+                        )
+                      })
+                    )
+                  ])
+                })
+              )
+            ]
+          )
+        : _vm._e()
     ]
   )
 }
