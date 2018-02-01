@@ -35,10 +35,10 @@ class Results {
         },
         watch: {
             omni: function (newOmni, oldOmni) {
-                if (newOmni.length > 0) {
-                    this.search();
-                } else {
+                if (newOmni.length == 0) {
                     this.results = new Results;
+                } else {
+                    this.search();
                 }
             }
         },

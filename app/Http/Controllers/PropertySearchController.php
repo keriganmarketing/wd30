@@ -24,9 +24,12 @@ class PropertySearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($mlsNumber)
     {
-        return view('properties.show');
+        $property = Mothership::listing($mlsNumber);
+        $interior = isset($property->interior) ? explode(',', $property->interior) : null;
+
+        return view('properties.show', compact('property', 'interior'));
     }
 
 }
