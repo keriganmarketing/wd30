@@ -64,138 +64,17 @@
                             @endforeach
                         </div>
                     @endif
-<<<<<<< HEAD
-                    </div>
-
-                    <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($exterior > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Exterior</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($exterior as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-                    <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($appliances > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Appliances</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($appliances as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-
-                    <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($construction > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Construction</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($construction as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-                    <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($utilities > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Utilities</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($utilities as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-                     <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($energy_features > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Energy Features</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($energy_features as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-
-                     <!--<div class="flex flex-wrap my-2">-->
-                    @if(count($amenities > 0))
-                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
-                            <div class="card border-grey shadow h-full text-left">
-                                <div class="card-title p-2 bg-grey">
-                                    <p class="text-white">Amenities</p>
-                                </div>
-                                <div class="card-block p-2">
-                                    <ul>
-                                    @foreach ($amenities as $i)
-                                        <li>{{ $i }}</li>
-                                    @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!--</div>-->
-
-=======
->>>>>>> upstream/master
                 </div>
                 <div class="location-left w-full md:w-2/5">
                     <table class="border-b-2 border-brand mx-1 shadow flex flex-col text-left">
-                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Waterfront</td><td class="w-1/2 p-2"></td></tr>
-                        <tr><td class="w-1/2 p-2">Waterfront Type</td><td class="w-1/2 p-2"></td></tr>
-                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Elementary School</td><td class="w-1/2 p-2"></td></tr>
-                        <tr><td class="w-1/2 p-2">Middle School</td><td class="w-1/2 p-2"></td></tr>
-                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">High School</td><td class="w-1/2 p-2"></td></tr>
-                        <tr><td class="w-1/2 p-2">Zip Code</td><td class="w-1/2 p-2"></td></tr>
-                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Sub-area</td><td class="w-1/2 p-2"></td></tr>
-                        <tr><td class="w-1/2 p-2">Subdivision</td><td class="w-1/2 p-2"></td></tr>
+                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Waterfront</td><td class="w-1/2 p-2">{{ $property->waterfront }}</td></tr>
+                        <tr class="flex"><td class="w-1/2 p-2">Waterfront Type</td><td class="w-1/2 p-2">{{ $property->waterview_description }}</td></tr>
+                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Elementary School</td><td class="w-1/2 p-2">{{ $property->elementary_school }}</td></tr>
+                        <tr class="flex"><td class="w-1/2 p-2">Middle School</td><td class="w-1/2 p-2">{{ $property->middle_school }}</td></tr>
+                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">High School</td><td class="w-1/2 p-2">{{ $property->high_school }}</td></tr>
+                        <tr class="flex"><td class="w-1/2 p-2">Zip Code</td><td class="w-1/2 p-2">{{ $property->zip }}</td></tr>
+                        <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Sub-area</td><td class="w-1/2 p-2">{{ $property->sub_area }}</td></tr>
+                        <tr class="flex"><td class="w-1/2 p-2">Subdivision</td><td class="w-1/2 p-2">{{ $property->subdivision }}</td></tr>
                     </table>
                 </div>
                 <div class="location-right w-full md:w-3/5 px-4">
@@ -205,10 +84,13 @@
                           marker,
                           mapElement;
 
+                          var lat = {{ $property->latitude }}
+                          var lng = {{ $property->longitude }}
+
                         //init map using script include callback
                         function initMap() {
 
-                            var myLatLng = { lat: 30.1758995, lng: -85.8052159 };
+                            var myLatLng = { lat: lat, lng: lng };
                             var mapOptions = {
                                 zoom: 11,
                                 center: myLatLng,
