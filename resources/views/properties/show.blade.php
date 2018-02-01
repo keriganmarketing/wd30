@@ -75,6 +75,123 @@
                         </div>
                     @endif
                     </div>
+
+                    <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($exterior > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Exterior</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($exterior as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
+                    <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($appliances > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Appliances</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($appliances as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
+
+                    <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($construction > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Construction</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($construction as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
+                    <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($utilities > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Utilities</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($utilities as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
+                     <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($energy_features > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Energy Features</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($energy_features as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
+
+                     <!--<div class="flex flex-wrap my-2">-->
+                    @if(count($amenities > 0))
+                        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1" >
+                            <div class="card border-grey shadow h-full text-left">
+                                <div class="card-title p-2 bg-grey">
+                                    <p class="text-white">Amenities</p>
+                                </div>
+                                <div class="card-block p-2">
+                                    <ul>
+                                    @foreach ($amenities as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <!--</div>-->
+
                 </div>
                 <div class="location-left w-full md:w-2/5">
                     <table class="border-b-2 border-brand mx-1 shadow flex flex-col text-left">
