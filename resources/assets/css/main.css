@@ -49,6 +49,9 @@
 .button-brand {
     @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
+.button-grey {
+    @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
 .bg-image-full {
     -webkit-background-size: cover;
     background-size: cover;
