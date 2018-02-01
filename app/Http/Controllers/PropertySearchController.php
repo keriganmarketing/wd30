@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Facades\App\Feature;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
 
@@ -27,22 +28,9 @@ class PropertySearchController extends Controller
     public function show($mlsNumber)
     {
         $property = Mothership::listing($mlsNumber);
-        //dd($property);
-        $interior = isset($property->interior) ? explode(',', $property->interior) : null;
+        $features = Feature::list($property);
 
-        $exterior = isset($property->exterior) ? explode(',', $property->exterior) : null;
-
-        $appliances = isset($property->appliances) ? explode(',', $property->appliances) : null;
-       
-        $construction = isset($property->construction) ? explode(',', $property->construction) : null;
-
-        $utilities = isset($property->utilities) ? explode(',', $property->utilities) : null;
-
-        $energy_features = isset($property->energy_features) ? explode(',', $property->energy_features) : null;
-
-        $amenities = isset($property->amenities) ? explode(',', $property->amenities) : null;
-
-        return view('properties.show', compact('property', 'interior', 'exterior', 'appliances', 'construction', 'utilities', 'energy_features', 'amenities'));
+        return view('properties.show', compact('property', 'featrty', 'features'));
     }
 
 }
