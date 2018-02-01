@@ -2,32 +2,43 @@
     <div class="search-bar">
         <div class="container mx-auto">
             <form class="flex flex-wrap py-4 my-4" action="/property-search" method="GET">
-                <omni-bar class="flex-auto relative px-2 py-2 w-full sm:w-3/5 md:w-1/2"></omni-bar>
-                <div class="flex-auto relative px-2 py-2 flex-grow">
-                    <select name="propertyType" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-                        <option value="">Property Type</option>
-                        <option>Single Family Home</option>
-                        <option>Condo / Townhome</option>
-                        <option>Commercial</option>
-                        <option>Lots / Land</option>
-                        <option>Multi-Family Home</option>
-                        <option>Rental</option>
-                        <option>Manufactured</option>
-                        <option>Farms / Agricultural</option>
-                        <option>Other</option>
-                    </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                <omni-bar class="relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/2"></omni-bar>
+                <property-type class="relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4"></property-type>
+                <div class="flex flex-auto relative justify-end w-full sm:w-1/2 lg:w-1/8">
+                    <div class="relative px-2 py-2 w-full">
+                        <button class="button-grey h-10 block w-full" type="button" @click="toggleAdvanced($event)" >Advanced</button>
                     </div>
                 </div>
-                <div class="flex-auto relative px-2 py-2 w-full text-right w-full sm:w-auto">
-                    <button class="button-brand h-10 block w-full" >Advanced</button>
+                <div class="flex-auto advanced-menu w-full" :class="{ 'hidden': !this.advancedOpen  }" >
+                    <div class="my-4">
+                        <div class="flex border-grey-lighter border-t border-b py-3 flex-wrap">
+                            <div class="flex-auto w-full md:w-1/3 lg:w-1/2">
+                                <div class="flex py-1 flex-wrap">
+                                    <min-price class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></min-price>
+                                    <max-price class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></max-price>
+                                    <total-sqft class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></total-sqft>
+                                    <acreage class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></acreage>
+                                    <status class="flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></status>
+                                </div>
+                            </div>
+                            <div class="flex-auto relative p-2 w-full md:w-3/4 lg:w-1/2">
+                                <bedrooms class="flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></bedrooms>
+                                <bathrooms class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></bathrooms>
+                                <features class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></features>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div :class="['advanced-menu','hidden', { 'block': advancedOpen }]" >
-
-                </div>
-                <div class="flex-auto relative px-2 py-2 w-full text-right w-full sm:w-auto">
-                    <button class="button-brand h-10 block w-full" type="submit" >Submit</button>
+                <div class="flex relative justify-end w-full" :class="{
+                    'sm:w-1/2': !this.advancedOpen,
+                    'lg:w-1/8': !this.advancedOpen
+                }">
+                    <div class="relative px-2 py-2 w-full" :class="{
+                    'sm:w-1/2': this.advancedOpen,
+                    'lg:w-1/8': this.advancedOpen
+                }" >
+                        <button class="button-brand h-10 w-full" type="submit" >Submit</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -35,8 +46,19 @@
 </template>
 <script>
     export default {
-        props: {
-            'advancedOpen': false
+        data(){
+            return {
+                advancedOpen: false
+            };
+        },
+        created(){
+            this.advancedOpen = false;
+        },
+        methods: {
+            toggleAdvanced(event){
+                if (event) event.preventDefault()
+                this.advancedOpen = !this.advancedOpen;
+            }
         }
     }
 </script>

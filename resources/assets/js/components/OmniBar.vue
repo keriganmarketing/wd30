@@ -1,5 +1,5 @@
 <template>
-    <div :class="this.class">
+    <div>
         <input v-model="omni" @focus="onFocus" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3" name="omniField" type="text" placeholder="City, address, subdivision or zip" >
         <div v-if="showResults" class="block shadow w-full border rounded z-50 absolute text-grey-darker hover:border-grey bg-white h-32 overflow-scroll py-2 px-3">
             <ul class="list-reset mb-px">
@@ -27,7 +27,7 @@ class Results {
 }
     export default {
         props: {
-            'class': this.class
+            'classNames': this.classNames
         },
         data () {
             return {
