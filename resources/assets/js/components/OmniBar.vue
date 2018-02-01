@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-auto relative px-2 py-2 w-full sm:w-full md:w-3/5">
+    <div :class="this.class">
         <input v-model="omni" @focus="onFocus" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3" name="omniField" type="text" placeholder="City, address, subdivision or zip" >
         <div v-if="showResults" class="block shadow w-full border rounded z-50 absolute text-grey-darker hover:border-grey bg-white h-32 overflow-scroll py-2 px-3">
             <ul class="list-reset mb-px">
@@ -26,6 +26,9 @@ class Results {
     }
 }
     export default {
+        props: {
+            'class': this.class
+        },
         data () {
             return {
                 omni: '',

@@ -5,5 +5,6 @@ Vue.component('notes', require('./components/Notes.vue'));
 Vue.component('bio-card', require('./components/BioCard.vue'));
 Vue.component('omni-bar', require('./components/OmniBar.vue'));
 Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
+Vue.component('search-bar', require('./components/SearchBar.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
