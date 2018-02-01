@@ -122,7 +122,6 @@
                 let url = '/leads/' + id + '/notes';
                 axios.get(url)
                     .then(response => {
-                        console.log(response);
                         this.notes = response.data;
                 });
                 this.notesExpanded = true;
