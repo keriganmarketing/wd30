@@ -6,7 +6,7 @@ Auth::routes();
 Route::get('/', 'FrontPageController@index')->name('frontpage');
 Route::get('/home', 'AdminController@home')->name('home');
 Route::get('/property-search', 'PropertySearchController@index')->name('property.index');
-Route::get('/listing/{id}', 'PropertySearchController@show')->name('property.show');
+Route::get('/listing/{mlsNumber}', 'PropertySearchController@show')->name('property.show');
 Route::get('/my-properties', 'AdminController@myProperties')->name('realtorproperties');
 
 // API Routes
