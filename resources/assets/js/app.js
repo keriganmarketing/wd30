@@ -2,18 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import * as axios from 'axios';
-
-Vue.component('bio-card', require('./components/BioCard.vue'));
-Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
-Vue.component('leads', require('./components/Leads.vue'));
-Vue.component('lead', require('./components/Lead.vue'));
-Vue.component('notes', require('./components/Notes.vue'));
-Vue.component('note', require('./components/Note.vue'));
-Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
-Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
-Vue.component('my-properties', require('./components/MyProperties.vue'));
-Vue.component('my-property', require('./components/MyProperty.vue'));
+require('./load-components');
 
 const app = new Vue({
     el: '#app',
@@ -56,7 +45,7 @@ const app = new Vue({
             });
         }
     },
-    mounted() {
+    mounted () {
         this.authenticate();
     }
 });

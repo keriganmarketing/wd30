@@ -6,6 +6,7 @@ use App\Note;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Lead;
 
 class CreateNoteTest extends TestCase
 {
@@ -15,8 +16,10 @@ class CreateNoteTest extends TestCase
     public function a_user_can_create_a_note()
     {
         $note = make('App\Note');
+        $lead = create('App\Lead');
+
         $attributes = [
-            'lead_id' => $note->lead_id,
+            'lead_id' => $lead->id,
             'message' => $note->message
         ];
 
@@ -27,7 +30,7 @@ class CreateNoteTest extends TestCase
             ->assertSuccessful()
             ->assertJson([
                 [
-                    'lead_id' => $note->lead_id,
+                    'lead_id' => $lead->id,
                     'message' => $note->message
                 ]
             ]);

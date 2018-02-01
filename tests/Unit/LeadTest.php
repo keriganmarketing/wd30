@@ -15,7 +15,10 @@ class LeadTest extends TestCase
     /** @test */
     public function a_lead_has_many_notes()
     {
-        create(Note::class);
+        $lead = create(Lead::class);
+        create(Note::class, [
+            'lead_id' => $lead->id
+        ]);
 
         $lead = Lead::with('notes')->first();
 

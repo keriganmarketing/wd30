@@ -68,6 +68,16 @@ class Mothership
         return $results;
     }
 
+    public function listing($mlsNumber)
+    {
+        $response = $this->client->request(
+            'GET',
+            'listing/'. $mlsNumber
+        );
+
+        return json_decode($response->getBody());
+    }
+
     public function agentListings($mlsId)
     {
         $response = $this->client->request(

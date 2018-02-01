@@ -13,7 +13,6 @@
                     @include('partials.mini-listing')
                 @endforeach
             </div>
-
             @include('partials.disclaimer')
         </div>
     </div>

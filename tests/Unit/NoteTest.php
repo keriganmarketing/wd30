@@ -15,7 +15,10 @@ class NoteTest extends TestCase
     /** @test */
     public function a_note_belongs_to_a_lead()
     {
-        $note = create('App\Note');
+        $lead = create(Lead::class);
+        $note = create('App\Note', [
+            'lead_id' => $lead->id
+        ]);
 
         self::assertInstanceOf(Lead::class, $note->lead);
     }
