@@ -5095,6 +5095,30 @@ button,
   background-position: center;
 }
 
+.omni-input-open {
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-color: #4dc0b5;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+
+.omni-input-closed {
+  border-radius: .25rem;
+  border-width: 1px;
+}
+
+.omni-results-open {
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  border-color: #4dc0b5;
+}
+
+.omni-results-closed {
+  border-radius: .25rem;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
