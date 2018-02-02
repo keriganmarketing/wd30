@@ -2,6 +2,7 @@
     <div>
         <input
             v-model="omni"
+            @click="showResults=true"
             @focus="onFocus"
             @keydown.tab="tabPressed"
             @blur="onBlur()"

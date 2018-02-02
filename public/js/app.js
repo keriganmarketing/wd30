@@ -31912,6 +31912,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
 
 var Results = function Results() {
     _classCallCheck(this, Results);
@@ -32002,6 +32003,9 @@ var render = function() {
       },
       domProps: { value: _vm.omni },
       on: {
+        click: function($event) {
+          _vm.showResults = true
+        },
         focus: _vm.onFocus,
         keydown: function($event) {
           if (
