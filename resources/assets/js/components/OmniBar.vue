@@ -1,17 +1,31 @@
 <template>
     <div>
-        <input v-model="omni" @focus="onFocus" @blur="onBlur" @keydown.tab="tabPressed" name="omniField" type="text" placeholder="City, address, subdivision or zip" >
-        <div v-if="showResults" class="block shadow w-full border rounded z-50 absolute text-grey-darker hover:border-grey bg-white h-32 overflow-scroll py-2 px-3">
+        <input v-model="omni" @focus="onFocus" @keydown.tab="tabPressed" @blur="onBlur()"
+               name="omniField" type="text" autocomplete="off" placeholder="City, address, subdivision or zip"
+               :class="{
+                    'omni-input-open':   showResults == true,
+                    'omni-input-closed': showResults == false
+                }"
+               class="text-grey-darkest px-3 py-2 h-10 w-full shadow block" >
+        <div v-if="showResults"
+             :class="{
+                'omni-results-open':   showResults == true,
+                'omni-results-closed': showResults == false,
+                'h-10':                results.length < 2,
+                'h-48':                results.length > 1
+             }"
+             class="block shadow w-full border z-50 absolute text-grey-darker hover:border-grey bg-white overflow-hidden overflow-y-scroll">
             <ul class="list-reset mb-px">
                 <li v-for="result in results" :key="result.text">
-                    <strong><span class="block mb-px">{{ result.text }}</span></strong>
+                    <strong><span class="block px-2 py-2">{{ result.text }}</span></strong>
                     <ul class="list-reset mb-2">
-                        <li class="hover:bg-teal hover:text-white cursor-pointer py-1"
+                        <li class="hover:bg-teal hover:text-white cursor-pointer px-4 py-2"
                             v-for="child in result.children"
                             :key="child.id"
                             @click="onResultsClick(child.text)"
+                            @mousedown.prevent="onBlur"
                         >
-                            <span class="block ml-2 mb-px">{{ child.text }}</span>
+                            <span class="block">{{ child.text }}</span>
                         </li>
                     </ul>
                 </li>
@@ -30,9 +44,6 @@ class Results {
     }
 }
     export default {
-        props: {
-            'classNames': this.classNames
-        },
         data () {
             return {
                 omni: '',
@@ -76,7 +87,10 @@ class Results {
                 this.showResults = false;
             },
             onBlur() {
-                this.showResults = false;
+                let vm = this;
+                setTimeout(function(){
+                    vm.showResults = false;
+                }, 200);
             },
             tabPressed () {
                 this.omni = this.results[0].children[0].text;

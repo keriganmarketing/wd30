@@ -31887,6 +31887,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var Results = function Results() {
     _classCallCheck(this, Results);
@@ -31897,9 +31911,6 @@ var Results = function Results() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        'classNames': this.classNames
-    },
     data: function data() {
         return {
             omni: '',
@@ -31938,7 +31949,10 @@ var Results = function Results() {
             this.showResults = false;
         },
         onBlur: function onBlur() {
-            this.showResults = false;
+            var vm = this;
+            setTimeout(function () {
+                vm.showResults = false;
+            }, 200);
         },
         tabPressed: function tabPressed() {
             this.omni = this.results[0].children[0].text;
@@ -31964,15 +31978,20 @@ var render = function() {
           expression: "omni"
         }
       ],
+      staticClass: "text-grey-darkest px-3 py-2 h-10 w-full shadow block",
+      class: {
+        "omni-input-open": _vm.showResults == true,
+        "omni-input-closed": _vm.showResults == false
+      },
       attrs: {
         name: "omniField",
         type: "text",
+        autocomplete: "off",
         placeholder: "City, address, subdivision or zip"
       },
       domProps: { value: _vm.omni },
       on: {
         focus: _vm.onFocus,
-        blur: _vm.onBlur,
         keydown: function($event) {
           if (
             !("button" in $event) &&
@@ -31981,6 +32000,9 @@ var render = function() {
             return null
           }
           _vm.tabPressed($event)
+        },
+        blur: function($event) {
+          _vm.onBlur()
         },
         input: function($event) {
           if ($event.target.composing) {
@@ -31996,7 +32018,13 @@ var render = function() {
           "div",
           {
             staticClass:
-              "block shadow w-full border rounded z-50 absolute text-grey-darker hover:border-grey bg-white h-32 overflow-scroll py-2 px-3"
+              "block shadow w-full border z-50 absolute text-grey-darker hover:border-grey bg-white overflow-hidden overflow-y-scroll",
+            class: {
+              "omni-results-open": _vm.showResults == true,
+              "omni-results-closed": _vm.showResults == false,
+              "h-10": _vm.results.length < 2,
+              "h-48": _vm.results.length > 1
+            }
           },
           [
             _c(
@@ -32005,7 +32033,7 @@ var render = function() {
               _vm._l(_vm.results, function(result) {
                 return _c("li", { key: result.text }, [
                   _c("strong", [
-                    _c("span", { staticClass: "block mb-px" }, [
+                    _c("span", { staticClass: "block px-2 py-2" }, [
                       _vm._v(_vm._s(result.text))
                     ])
                   ]),
@@ -32019,15 +32047,19 @@ var render = function() {
                         {
                           key: child.id,
                           staticClass:
-                            "hover:bg-teal hover:text-white cursor-pointer py-1",
+                            "hover:bg-teal hover:text-white cursor-pointer px-4 py-2",
                           on: {
                             click: function($event) {
                               _vm.onResultsClick(child.text)
+                            },
+                            mousedown: function($event) {
+                              $event.preventDefault()
+                              _vm.onBlur($event)
                             }
                           }
                         },
                         [
-                          _c("span", { staticClass: "block ml-2 mb-px" }, [
+                          _c("span", { staticClass: "block" }, [
                             _vm._v(_vm._s(child.text))
                           ])
                         ]
