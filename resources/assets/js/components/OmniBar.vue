@@ -76,7 +76,10 @@ class Results {
                 this.showResults = false;
             },
             onBlur() {
-                this.showResults = false;
+                let vm = this;
+                setTimeout(function(){
+                    vm.showResults = false;
+                }, 200);
             },
             tabPressed () {
                 this.omni = this.results[0].children[0].text;

@@ -31938,7 +31938,10 @@ var Results = function Results() {
             this.showResults = false;
         },
         onBlur: function onBlur() {
-            this.showResults = false;
+            var vm = this;
+            setTimeout(function () {
+                vm.showResults = false;
+            }, 200);
         },
         tabPressed: function tabPressed() {
             this.omni = this.results[0].children[0].text;
