@@ -4990,6 +4990,10 @@ button,
   width: 16.66667%;
 }
 
+.w-1\/8 {
+  width: 12.5%;
+}
+
 .w-5\/6 {
   width: 83.33333%;
 }
@@ -5054,6 +5058,23 @@ button,
 
 .button-brand {
   background-color: #38a89d;
+  color: #ffffff;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: inline-block;
+  border-color: #0d3331;
+  border-radius: .25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.button-grey {
+  background-color: #8795a1;
   color: #ffffff;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
@@ -9493,6 +9514,10 @@ button,
 
   .sm\:w-1\/6 {
     width: 16.66667%;
+  }
+
+  .sm\:w-1\/8 {
+    width: 12.5%;
   }
 
   .sm\:w-5\/6 {
@@ -13957,6 +13982,10 @@ button,
     width: 16.66667%;
   }
 
+  .md\:w-1\/8 {
+    width: 12.5%;
+  }
+
   .md\:w-5\/6 {
     width: 83.33333%;
   }
@@ -18419,6 +18448,10 @@ button,
     width: 16.66667%;
   }
 
+  .lg\:w-1\/8 {
+    width: 12.5%;
+  }
+
   .lg\:w-5\/6 {
     width: 83.33333%;
   }
@@ -22879,6 +22912,10 @@ button,
 
   .xl\:w-1\/6 {
     width: 16.66667%;
+  }
+
+  .xl\:w-1\/8 {
+    width: 12.5%;
   }
 
   .xl\:w-5\/6 {
