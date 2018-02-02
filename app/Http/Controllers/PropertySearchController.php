@@ -29,7 +29,7 @@ class PropertySearchController extends Controller
     {
         $property = Mothership::listing($mlsNumber);
         $features = Feature::list($property);
-
+        
         return view('properties.show', compact('property', 'features'));
     }
 
