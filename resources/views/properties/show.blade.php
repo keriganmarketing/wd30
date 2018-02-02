@@ -32,12 +32,12 @@
                     @if($property->has_open_houses)
                     <h2 class="mt-6">Upcoming Open Houses</h2>
                     <div class="flex flex-wrap my-2">
-                    @foreach($property->open_houses as $openHouse)
+                    @foreach($openHouses as $openHouse)
                         <div class="w-full md:w-1/3 " >
                             <div class="card border-grey shadow">
                                 <div class="card-block p-2">
-                                    <p class="card-text py-2"><strong>Date: </strong> <?php echo date('M j, Y', strtotime($openHouse->event_start)); ?><br>
-                                        <strong>Time: </strong> <?php echo date('h:s a', strtotime($openHouse->event_start)); ?> - <?php echo date('h:s a', strtotime($openHouse->event_end)); ?></p>
+                                    <p class="card-text py-2"><strong>Date: </strong> {{ $openHouse['start_date'] }}<br>
+                                        <strong>Time: </strong> {{ $openHouse['start_time'] }} - {{ $openHouse['end_time'] }}</p>
                                     <a target="_blank" href="https://www.google.com/maps/place/<?php //echo $addressString; ?>" class="button button-brand text-xs">Get Directions</a>
                                 </div>
                             </div>
