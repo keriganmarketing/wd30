@@ -13,6 +13,11 @@ class AvatarTest extends TestCase
     /** @test */
     public function an_avatar_belongs_to_a_user()
     {
-        self::assertTrue(true);
+        $user = create('App\User');
+        $avatar = create('App\Avatar', [
+            'user_id' => $user->id
+        ]);
+
+        self::assertInstanceOf('App\User', $avatar->realtor);
     }
 }

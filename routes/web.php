@@ -11,9 +11,12 @@ Route::get('/my-properties', 'AdminController@myProperties')->name('realtorprope
 
 // API Routes
 Route::get('/authenticate', 'AuthenticationController@show');
-Route::patch('/users/{id}', 'UsersController@update');
 Route::get('/archivedleads', 'ArchivedLeadsController@index');
 Route::get('/mylistings', 'RealtorPropertiesController@index');
+
+Route::patch('/users/{id}', 'UsersController@update');
+
+Route::post('/avatar', 'AvatarsController@store');
 
 // Resourceful routes
 Route::resource('/leads', 'LeadsController');
