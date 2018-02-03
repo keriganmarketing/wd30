@@ -55,6 +55,7 @@ class Results {
         }
     }
 }
+
 export default {
     data () {
         return {
