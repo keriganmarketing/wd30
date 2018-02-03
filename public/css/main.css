@@ -5119,6 +5119,11 @@ button,
   border-radius: .25rem;
 }
 
+.is-4by3 {
+  height: 0;
+  padding-bottom: 60%;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
