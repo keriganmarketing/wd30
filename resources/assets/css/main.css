@@ -69,3 +69,7 @@
 .omni-results-closed {
     @apply .rounded
 }
+.is-4by3 {
+    height:0;
+    padding-bottom: 60%;
+}
