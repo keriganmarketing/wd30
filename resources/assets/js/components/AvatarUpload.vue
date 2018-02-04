@@ -2,7 +2,7 @@
     <div class="max-h-avatar relative bg-white overflow-hidden">
 
         <img :src="src"
-             class="max-w-full h-auto"
+             class="max-w-full h-auto mx-auto"
              @mouseover="imageHover = true"
         >
         <form action="/avatar" method="POST" enctype="multipart/form-data" v-if="imageHover">
