@@ -19,19 +19,16 @@
     </section>
     <section id="featured-listings" class="featured-listings bg-brand-dark py-8 lg:py-16 xl:py-24">
         <div class="container mx-auto py-2">
-            {{-- @if($listings->count() > 0) --}}
-            <h2 class="text-white text-center pb-4">Featured Listings</h2>
+            @if(count($realtor->listings) > 0)
+            <h2 class="text-white text-center pb-4">{{ $realtor->name }}'s Listings</h2>
             <div class="flex flex-wrap items-center justify-center">
                 @foreach ($realtor->listings as $listing)
                     @include('partials.mini-listing')
                 @endforeach
-                {{-- @for ($i = 0; $i < 4; $i++)
-                    @include('partials.mini-listing')
-                @endfor --}}
             </div>
-            {{-- @else
+            @else
                 <h2 class="text-white text-center pb-4">Check back later for my featured listings!</h2>
-            @endif --}}
+            @endif
         </div>
     </section>
     @include('partials.contact')

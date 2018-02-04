@@ -15,8 +15,11 @@ class FrontPageController extends Controller
      */
     public function index()
     {
-        $realtor = User::realtor();
-        $realtor->listings = Mothership::agentListings($realtor->mls_id);
+        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        if ($realtor){
+            $realtor->listings = Mothership::agentListings($realtor->mls_id);
+        }
+
         return view('StaticPages.front', compact('realtor'));
     }
 }
