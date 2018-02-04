@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Avatar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AvatarsController extends Controller
 {
@@ -37,13 +36,9 @@ class AvatarsController extends Controller
      */
     public function store(Request $request)
     {
-        $path = Storage::disk('local')->put('avatar', $request->file('avatar'));
-        $user = User::realtor();
+        Avatar::deleteIfExists();
 
-        $avatar = Avatar::create([
-            'user_id' => $user->id,
-            'path'    => $path
-        ]);
+        $path = Avatar::upload($request->file('avatar'));
 
         return $path;
     }

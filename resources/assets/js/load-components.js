@@ -17,3 +17,4 @@ Vue.component('search-bar', require('./components/SearchBar.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 Vue.component('property-type', require('./components/PropertyType.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
+Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
