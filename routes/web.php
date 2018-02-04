@@ -13,6 +13,7 @@ Route::get('/my-properties', 'AdminController@myProperties')->name('realtorprope
 Route::get('/authenticate', 'AuthenticationController@show');
 Route::get('/archivedleads', 'ArchivedLeadsController@index');
 Route::get('/mylistings', 'RealtorPropertiesController@index');
+Route::get('/avatar', 'AvatarsController@index');
 
 Route::patch('/users/{id}', 'UsersController@update');
 

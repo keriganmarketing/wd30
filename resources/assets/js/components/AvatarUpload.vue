@@ -1,33 +1,46 @@
 <template>
-<div>
-    <form action="/avatar" method="POST" enctype="multipart/form-data">
-        <h3 class="text-xl text-brand-lightest flex justify-center w-full">Profile</h3>
-        <label for="avatar" class="bg-teal-lightest border h-32 w-full p-8 flex items-center justify-center rounded shadow">
-            Click or drag a photo here to upload it
-            <input type="file"
-                   name="avatar"
-                   class="hidden"
-                   id="avatar"
-                   @change="fileChanged(
-                       $event.target.name,
-                       $event.target.files
-                    )"
+    <div class="max-h-avatar relative bg-white overflow-hidden">
+
+        <img :src="src"
+             class="max-w-full h-auto"
+             @mouseover="imageHover = true"
+        >
+        <form action="/avatar" method="POST" enctype="multipart/form-data" v-if="imageHover">
+            <label for="avatar"
+                   class="bg-brand-darkest absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
+                   :class="{'pin': imageHover, 'opacity-75': imageHover}"
+                   @mouseout="imageHover = false"
             >
-        </label>
-    </form>
-</div>
+                Click here to upload a new photo
+                <input type="file"
+                    name="avatar"
+                    class="hidden"
+                    id="avatar"
+                    @change="fileChanged(
+                        $event.target.name,
+                        $event.target.files
+                        )"
+                >
+            </label>
+        </form>
+    </div>
 </template>
 
 <script>
 import { upload } from '../file-upload.service.js';
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 export default {
+    props: [
+        'avatar-path'
+    ],
     data () {
         return {
             uploadedFiles: [],
             uploadError: null,
             currentStatus: null,
-            uploadFieldName: 'avatar'
+            uploadFieldName: 'avatar',
+            src: '',
+            imageHover: false
         }
     },
     computed: {
@@ -43,7 +56,6 @@ export default {
         isFailed() {
             return this.currentStatus === STATUS_FAILED;
         }
-
     },
     methods: {
         reset() {
@@ -55,11 +67,12 @@ export default {
             this.currentStatus = STATUS_SAVING;
             upload(formData)
                 .then(response => {
-                    this.uploadedFiles = [].concat(x);
+                    this.uploadedFiles = [].concat(response);
                     this.currentStatus = STATUS_SUCCESS;
+                    this.src = response;
                 })
                 .catch(err => {
-                    this.uploadError = err.response;
+                    this.uploadError = err;
                     this.currentStatus = STATUS_FAILED;
                 });
         },
@@ -78,6 +91,10 @@ export default {
     },
     mounted() {
         this.reset();
+        this.src = this.avatarPath;
     }
 }
 </script>
+
+<style>
+</style>

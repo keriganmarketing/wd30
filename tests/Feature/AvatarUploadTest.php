@@ -18,7 +18,7 @@ class AvatarUploadTest extends TestCase
     {
         create('App\User');
 
-        Storage::fake('local');
+        Storage::fake('public');
 
         $response = $this->json('POST', '/avatar', [
             'avatar' => UploadedFile::fake()->image('avatar.jpg')
@@ -30,7 +30,7 @@ class AvatarUploadTest extends TestCase
 
         self::assertEquals($avatar->path, $response->getContent());
         // Assert the file was stored...
-        Storage::disk('local')->assertExists($response->getContent());
+        Storage::disk('public')->assertExists($response->getContent());
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class AvatarUploadTest extends TestCase
     {
         create('App\User');
 
-        Storage::fake('local');
+        Storage::fake('public');
 
         $response = $this->json('POST', '/avatar', [
             'avatar' => UploadedFile::fake()->image('avatar.jpg')

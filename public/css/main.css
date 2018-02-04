@@ -2765,6 +2765,10 @@ button,
   height: 100vh;
 }
 
+.h-avatar {
+  height: 26rem;
+}
+
 .leading-none {
   line-height: 1;
 }
@@ -3147,6 +3151,10 @@ button,
 
 .max-h-screen {
   max-height: 100vh;
+}
+
+.max-h-avatar {
+  max-height: 26rem;
 }
 
 .max-w-xs {
@@ -7335,6 +7343,10 @@ button,
     height: 100vh;
   }
 
+  .sm\:h-avatar {
+    height: 26rem;
+  }
+
   .sm\:leading-none {
     line-height: 1;
   }
@@ -7717,6 +7729,10 @@ button,
 
   .sm\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .sm\:max-h-avatar {
+    max-height: 26rem;
   }
 
   .sm\:max-w-xs {
@@ -11801,6 +11817,10 @@ button,
     height: 100vh;
   }
 
+  .md\:h-avatar {
+    height: 26rem;
+  }
+
   .md\:leading-none {
     line-height: 1;
   }
@@ -12183,6 +12203,10 @@ button,
 
   .md\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .md\:max-h-avatar {
+    max-height: 26rem;
   }
 
   .md\:max-w-xs {
@@ -16267,6 +16291,10 @@ button,
     height: 100vh;
   }
 
+  .lg\:h-avatar {
+    height: 26rem;
+  }
+
   .lg\:leading-none {
     line-height: 1;
   }
@@ -16649,6 +16677,10 @@ button,
 
   .lg\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .lg\:max-h-avatar {
+    max-height: 26rem;
   }
 
   .lg\:max-w-xs {
@@ -20733,6 +20765,10 @@ button,
     height: 100vh;
   }
 
+  .xl\:h-avatar {
+    height: 26rem;
+  }
+
   .xl\:leading-none {
     line-height: 1;
   }
@@ -21115,6 +21151,10 @@ button,
 
   .xl\:max-h-screen {
     max-height: 100vh;
+  }
+
+  .xl\:max-h-avatar {
+    max-height: 26rem;
   }
 
   .xl\:max-w-xs {

@@ -1,9 +1,8 @@
 function upload(formData) {
     const url = `/avatar`;
     return axios.post(url, formData)
-        .then(response => {
-            console.log(response);
-        });
+        .then(response => response.data)
+        .catch(err => err.data);
         // // get data
         // .then(x => x.data)
         // // add url field

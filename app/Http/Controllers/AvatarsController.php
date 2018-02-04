@@ -15,7 +15,11 @@ class AvatarsController extends Controller
      */
     public function index()
     {
-        //
+        if (Avatar::where('user_id', 1)->exists()) {
+            return Avatar::first()->path;
+        }
+
+        return 'http://via.placeholder.com/300x300';
     }
 
     /**
@@ -38,9 +42,7 @@ class AvatarsController extends Controller
     {
         Avatar::deleteIfExists();
 
-        $path = Avatar::upload($request->file('avatar'));
-
-        return $path;
+        return Avatar::upload($request->file('avatar'));
     }
 
     /**

@@ -18,16 +18,16 @@ class Avatar extends Model
 
     public static function deleteIfExists()
     {
-        $avatar = Avatar::where('user_id', 1)->exists() ? Avatar::find(1) : null;
+        $avatar = Avatar::where('user_id', 1)->exists() ? Avatar::first() : null;
         if ($avatar) {
-            Storage::disk('local')->delete($avatar->path);
+            Storage::disk('public')->delete($avatar->path);
             $avatar->delete();
         }
     }
 
     public static function upload($file)
     {
-        $path = Storage::disk('local')->put('avatar', $file);
+        $path = Storage::disk('public')->put('avatar', $file);
         $user = User::realtor();
 
         $avatar = Avatar::create([

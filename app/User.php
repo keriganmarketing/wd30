@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function scopeRealtor($query)
     {
-        return $query->where('is_realtor', true)->first();
+        return $query->where('is_realtor', true)->with('avatar')->first();
     }
 
     public function avatar()

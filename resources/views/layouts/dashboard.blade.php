@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body class="bg-brand-darkest h-screen text-grey-darkest">
+<body class="bg-brand-darker h-screen text-grey-darkest">
     <div id="app">
         <nav class="bg-white h-12 shadow mb-8">
             <div class="container mx-auto h-full">

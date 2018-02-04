@@ -527,7 +527,8 @@ module.exports = {
     '48': '12rem',
     '64': '32rem',
     'full': '100%',
-    'screen': '100vh'
+    'screen': '100vh',
+    'avatar': '26rem'
   },
 
 
@@ -618,6 +619,7 @@ module.exports = {
   maxHeight: {
     'full': '100%',
     'screen': '100vh',
+    'avatar': '26rem'
   },
 
 

@@ -12,7 +12,7 @@
                     <a href="#" class="button-brand w-auto mt-4 no-underline" >Property Search</a>
                 </div>
                 <div class="flex-auto w-full md:w-1/4 px-3 justify-center text-center py-2">
-                    <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" class="border border-grey-darker rounded inline-block" >
+                    <img src="{{ $realtor->avatar->path }}" class="border border-grey-darker rounded inline-block" >
                 </div>
             </div>
         </div>
@@ -22,6 +22,9 @@
             {{-- @if($listings->count() > 0) --}}
             <h2 class="text-white text-center pb-4">Featured Listings</h2>
             <div class="flex flex-wrap items-center justify-center">
+                @foreach ($realtor->listings as $listing)
+                    @include('partials.mini-listing')
+                @endforeach
                 {{-- @for ($i = 0; $i < 4; $i++)
                     @include('partials.mini-listing')
                 @endfor --}}
