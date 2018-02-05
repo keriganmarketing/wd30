@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Lead;
 use App\Note;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Lead;
 
 class CreateNoteTest extends TestCase
 {

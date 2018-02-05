@@ -27,7 +27,9 @@ class AvatarUploadTest extends TestCase
         $avatar   = $this->getAvatar();
 
         $response->assertSuccessful();
+
         self::assertEquals($avatar->path, $response->getContent());
+
         Storage::disk('public')->assertExists($response->getContent());
     }
 
