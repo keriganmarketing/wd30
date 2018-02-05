@@ -2,50 +2,79 @@
 
 namespace Tests\Feature;
 
+use App\Avatar;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Storage;
-use App\Avatar;
 
 class AvatarUploadTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->user = create('App\User');
+    }
+
     /** @test */
     public function a_realtor_can_upload_an_avatar()
     {
-        create('App\User');
-
-        Storage::fake('public');
-
-        $response = $this->json('POST', '/avatar', [
-            'avatar' => UploadedFile::fake()->image('avatar.jpg')
-        ]);
+        $response = $this->uploadPhoto();
+        $avatar   = $this->getAvatar();
 
         $response->assertSuccessful();
-
-        $avatar = Avatar::first();
-
         self::assertEquals($avatar->path, $response->getContent());
-        // Assert the file was stored...
         Storage::disk('public')->assertExists($response->getContent());
     }
 
     /** @test */
     public function an_uploaded_avatar_is_persisted_to_the_database()
     {
-        create('App\User');
+        $response = $this->uploadPhoto();
+        $avatar   = $this->getAvatar();
 
+        self::assertEquals($response->getContent(), $avatar->path);
+    }
+
+    /** @test */
+    public function it_deletes_the_old_avatar_when_a_new_one_is_uploaded()
+    {
+        //upload original photo
+        $originalPhoto = $this->uploadPhoto();
+        self::assertEquals(1, count(Storage::disk('public')->files('avatar')));
+        $this->assertDatabaseHas(
+            'avatars',
+            ['path' => $originalPhoto->getContent()]
+        );
+
+        //upload a new photo
+        $newPhoto = $this->uploadPhoto();
+        self::assertEquals(1, count(Storage::disk('public')->files('avatar')));
+        $this->assertDatabaseHas(
+            'avatars',
+            ['path' => $newPhoto->getContent()]);
+        $this->assertDatabaseMissing(
+            'avatars',
+            ['path' => $originalPhoto->getContent()]
+        );
+
+    }
+
+    protected function uploadPhoto()
+    {
         Storage::fake('public');
 
-        $response = $this->json('POST', '/avatar', [
+        return $this->json('POST', '/avatar', [
             'avatar' => UploadedFile::fake()->image('avatar.jpg')
         ]);
 
-        $avatar = Avatar::first();
-
-        self::assertEquals($response->getContent(), $avatar->path);
+    }
+    protected function getAvatar()
+    {
+        return Avatar::first();
     }
 }

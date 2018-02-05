@@ -26,7 +26,7 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        Lead::create($request->all());
+        $lead = Lead::create($request->all());
     }
 
     /**

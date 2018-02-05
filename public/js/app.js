@@ -30847,7 +30847,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['note']
+    props: {
+        note: {
+            type: Object,
+            default: function _default() {}
+        }
+    }
 });
 
 /***/ }),
@@ -30950,6 +30955,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
+//
 
 var Pagination = function Pagination(data) {
     _classCallCheck(this, Pagination);
@@ -30974,6 +30981,9 @@ var Pagination = function Pagination(data) {
                 total: ''
             })
         };
+    },
+    mounted: function mounted() {
+        this.fetchLeads('active');
     },
 
     methods: {
@@ -31001,9 +31011,6 @@ var Pagination = function Pagination(data) {
                 _this.leads = response.data.data;
             });
         }
-    },
-    mounted: function mounted() {
-        this.fetchLeads('active');
     }
 });
 
@@ -31671,15 +31678,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['data-user'],
+    // props: ['data-user'],
+    props: {
+        dataUser: {
+            type: Object,
+            default: function _default() {}
+        }
+    },
     data: function data() {
         return {
             editing: false
         };
     },
 
+    computed: {
+        user: function user() {
+            return this.dataUser;
+        },
+        formattedAddress: function formattedAddress() {
+            return this.user.address.replace(new RegExp(/\r?\n/, 'g'), '<br>');
+        }
+    },
     methods: {
         editButtonClick: function editButtonClick() {
             this.editing = true;
@@ -31687,14 +31727,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitButtonClick: function submitButtonClick() {
             this.$emit('submit-button-clicked', this.user);
             this.editing = false;
-        }
-    },
-    computed: {
-        user: function user() {
-            return this.dataUser;
-        },
-        formattedAddress: function formattedAddress() {
-            return this.user.address.replace(new RegExp('\r?\n', 'g'), '<br>');
         }
     }
 });
@@ -32548,9 +32580,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['viewing-active-leads'],
+    props: {
+        viewingActiveLeads: {
+            type: Boolean,
+            default: false
+        }
+    },
     methods: {
         fetchLeads: function fetchLeads(type) {
             this.$emit('fetchleads', type);
@@ -32583,7 +32622,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        Active\n        ")]
+        [_vm._v("\n            Active\n        ")]
       )
     ]),
     _vm._v(" "),
@@ -32603,7 +32642,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        Archived\n        ")]
+        [_vm._v("\n            Archived\n        ")]
       )
     ])
   ])
@@ -33548,8 +33587,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['name', 'latitude', 'longitude', 'zoom'],
-
+    props: {
+        name: {
+            type: String,
+            default: ''
+        },
+        latitude: {
+            type: Number,
+            default: 0
+        },
+        longitude: {
+            type: Number,
+            default: 0
+        },
+        zoom: {
+            type: Number,
+            default: 100
+        }
+    },
     data: function data() {
         return {
             mapName: this.name + "-map",
@@ -33596,9 +33651,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             marker.addListener('click', function () {
                 infowindow.open(map, marker);
             });
-
-            //bounds.extend(position);
-            //map.fitBounds(bounds);
         };
 
         for (var i = 0; i < this.markers.length; i++) {
@@ -33607,7 +33659,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _loop();
         }
     }
-
 });
 
 /***/ }),
@@ -33829,7 +33880,7 @@ exports = module.exports = __webpack_require__(93)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34205,6 +34256,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 var STATUS_INITIAL = 0,
@@ -34212,7 +34270,12 @@ var STATUS_INITIAL = 0,
     STATUS_SUCCESS = 2,
     STATUS_FAILED = 3;
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['avatar-path'],
+    props: {
+        avatarPath: {
+            type: String,
+            default: ''
+        }
+    },
     data: function data() {
         return {
             uploadedFiles: [],
@@ -34238,6 +34301,11 @@ var STATUS_INITIAL = 0,
             return this.currentStatus === STATUS_FAILED;
         }
     },
+    mounted: function mounted() {
+        this.reset();
+        this.src = this.avatarPath;
+    },
+
     methods: {
         reset: function reset() {
             this.currentStatus = STATUS_INITIAL;
@@ -34268,10 +34336,6 @@ var STATUS_INITIAL = 0,
 
             this.save(formData);
         }
-    },
-    mounted: function mounted() {
-        this.reset();
-        this.src = this.avatarPath;
     }
 });
 

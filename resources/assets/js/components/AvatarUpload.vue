@@ -1,25 +1,32 @@
 <template>
     <div class="max-h-avatar relative bg-white overflow-hidden">
-
-        <img :src="src"
-             class="max-w-full h-auto mx-auto"
-             @mouseover="imageHover = true"
+        <img
+            :src="src"
+            class="max-w-full h-auto mx-auto"
+            @mouseover="imageHover = true"
         >
-        <form action="/avatar" method="POST" enctype="multipart/form-data" v-if="imageHover">
-            <label for="avatar"
-                   class="bg-brand-darkest absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
-                   :class="{'pin': imageHover, 'opacity-75': imageHover}"
-                   @mouseout="imageHover = false"
+        <form
+            action="/avatar"
+            method="POST"
+            enctype="multipart/form-data"
+            v-if="imageHover"
+        >
+            <label
+                for="avatar"
+                class="bg-brand-darkest absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
+                :class="{'pin': imageHover, 'opacity-75': imageHover}"
+                @mouseout="imageHover = false"
             >
                 Click here to upload a new photo
-                <input type="file"
+                <input
+                    type="file"
                     name="avatar"
                     class="hidden"
                     id="avatar"
                     @change="fileChanged(
                         $event.target.name,
                         $event.target.files
-                        )"
+                    )"
                 >
             </label>
         </form>
@@ -30,9 +37,12 @@
 import { upload } from '../file-upload.service.js';
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 export default {
-    props: [
-        'avatar-path'
-    ],
+    props: {
+        avatarPath: {
+            type: String,
+            default: ''
+        }
+    },
     data () {
         return {
             uploadedFiles: [],
@@ -57,6 +67,10 @@ export default {
             return this.currentStatus === STATUS_FAILED;
         }
     },
+    mounted() {
+        this.reset();
+        this.src = this.avatarPath;
+    },
     methods: {
         reset() {
             this.currentStatus = STATUS_INITIAL;
@@ -79,19 +93,15 @@ export default {
         fileChanged(fieldName, fileList) {
             const formData = new FormData();
             if (! fileList.length) {
-                return
+                return;
             }
             Array.from(Array(fileList.length).keys())
-                 .map(x => {
-                     formData.append(fieldName, fileList[x], fileList[x].name);
-                 });
+                .map(x => {
+                    formData.append(fieldName, fileList[x], fileList[x].name);
+                });
 
             this.save(formData);
         }
-    },
-    mounted() {
-        this.reset();
-        this.src = this.avatarPath;
     }
 }
 </script>

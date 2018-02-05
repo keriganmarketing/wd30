@@ -15,7 +15,7 @@ class NotesTableSeeder extends Seeder
         $leads = Lead::all();
 
         foreach ($leads as $lead) {
-            factory(App\Note::class, 10)->create([
+            factory(App\Note::class, 5)->create([
                 'lead_id' => $lead->id
             ]);
         }
