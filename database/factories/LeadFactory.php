@@ -8,6 +8,5 @@ $factory->define(App\Lead::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'email' => $faker->email,
         'message' => $faker->paragraph,
-        'active' => $faker->boolean()
     ];
 });
