@@ -19,12 +19,11 @@
             </a>
         </div>
         <div class="sm:w-full lg:w-1/3 pr-8 text-grey-darkest">
-            <p class="w-full py-2 border-b"><strong>Name:</strong> {{ lead.name }}</p>
-            <p class="w-full py-2 border-b"><strong>Email:</strong> <a class="text-brand" :href="`mailto:${lead.email}`">{{ lead.email }}</a></p>
-            <p class="w-full py-2 border-b"><strong>Phone:</strong> <a class="text-brand" :href="`tel:${lead.email}`">{{ lead.phone }}</a></p>
+            <p class="w-full py-2 border-b">{{ lead.name }}</p>
+            <p class="w-full py-2 border-b"><a class="text-brand" :href="`mailto:${lead.email}`">{{ lead.email }}</a></p>
+            <p class="w-full py-2 border-b"><a class="text-brand" :href="`tel:${lead.email}`">{{ lead.phone }}</a></p>
         </div>
         <div class="sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center text-grey-darkest">
-            <p class="w-full font-bold">Message:</p>
             <p class="w-full bg-grey-lightest p-4 rounded border border-grey">{{ lead.message }}</p>
         </div>
         <div class="mt-4 mb-2 w-full flex justify-between items-center text-grey-darker">
