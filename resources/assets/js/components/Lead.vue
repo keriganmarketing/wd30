@@ -13,10 +13,10 @@
                 <a class="text-brand no-underline w-1/2 pr-2" :href="`tel:${lead.email}`">{{ lead.phone }}</a>
             </p>
         </div>
-        <div class="xl:w-5/6 lg:w-5/6 md:w-5/6 sm:w-full flex flex-wrap items-around justify-center text-grey-darkest">
+        <div class="w-full md:w-5/6 lg:w-5/6 xl:w-5/6 flex flex-wrap items-around justify-center text-grey-darkest">
             <p class="w-full pt-4 pb-2">{{ lead.message }}</p>
         </div>
-        <div class="w-full xl:w-1/5 lg:w-1/4 xl:mt-2 lg:mt-1 xl:p-4 lg:p-4 md:py-4 sm:py-4 xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between xl:absolute lg:absolute md:relative sm:relative items-center text-grey-darker">
+        <div class="w-full xl:w-1/5 lg:w-1/4 xl:mt-2 lg:mt-1 py-4 lg:p-4 xl:p-4  xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between relative lg:absolute xl:absolute items-center text-grey-darker">
             <a
                 @click="toggleImportant(lead.id)"
                 class="cursor-pointer text-center mr-4"
