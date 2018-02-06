@@ -84,10 +84,7 @@
                     </table>
                 </div>
                 <div class="location-right w-full md:w-3/5 px-4 py-4">
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4"></script>
-                    <google-map :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" :zoom="15" name="listing-location" >
-                        <google-map-pin :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" title="{{ $property->street_number }} {{ $property->street_name }}" />
-                    </google-map>
+                    <google-map :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" :zoom="15" />
                 </div>
 
                 @include('partials.disclaimer')

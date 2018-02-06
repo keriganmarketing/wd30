@@ -1,10 +1,10 @@
 <template>
-    <div class="google-map w-full h-full" :id="mapName">
-        <slot />
-    </div>
+    <div class="google-map w-full h-full" ref="map" />
 </template>
 
 <script>
+import GoogleMapsLoader from 'google-maps';
+import { loadMap } from '../google-maps.service.js';
 export default {
     props: {
         name: {
@@ -24,49 +24,14 @@ export default {
             default: 100
         }
     },
-    data () {
-        return {
-            mapName: this.name + "-map",
-            markers: [],
-            pins: []
-        }
-    },
     mounted () {
-        const element = document.getElementById(this.mapName);
-        const options = {
+        let config = {
+            element: this.$refs.map,
             zoom: this.zoom,
-            center: new google.maps.LatLng(this.latitude,this.longitude),
-            disableDefaultUI: true,
-            zoomControl: true,
-            scaleControl: true
+            lat: this.latitude,
+            long: this.longitude
         };
-        const map = new google.maps.Map(element, options);
-        //const bounds = new google.maps.LatLngBounds();
-        this.markers = this.$children;
-
-        for(var i = 0; i < this.markers.length; i++){
-            var pin = this.markers[i];
-            this.pins.push({
-                latitude: pin._data.markerCoordinates.latitude,
-                longitude: pin._data.markerCoordinates.longitude,
-            });
-
-            const position = new google.maps.LatLng(pin.latitude, pin.longitude);
-            const marker = new google.maps.Marker({
-                position,
-                map
-            });
-
-            const infowindow = new google.maps.InfoWindow({
-                maxWidth: 279,
-                content: pin.$refs.infowindow,
-                title: pin._data.name
-            });
-
-            marker.addListener('click', () => {
-                infowindow.open(map, marker);
-            });
-        }
-    },
+        loadMap(config);
+    }
 }
 </script>
