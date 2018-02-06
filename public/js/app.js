@@ -1097,6 +1097,10 @@ var app = new Vue({
             mls_id: ''
         }
     },
+    mounted: function mounted() {
+        this.authenticate();
+    },
+
     methods: {
         sbc: function sbc(updated) {
             var _this = this;
@@ -1128,9 +1132,6 @@ var app = new Vue({
                 _this2.user.phone_number = response.data.phone_number;
             });
         }
-    },
-    mounted: function mounted() {
-        this.authenticate();
     }
 });
 
@@ -30342,6 +30343,20 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _this = this;
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30412,7 +30427,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['lead', 'activeLeads', 'currentPage'],
+    props: {
+        lead: {
+            type: Object,
+            default: function _default() {
+                return _this.lead;
+            }
+        },
+        activeLeads: {
+            type: Boolean,
+            default: this.activeLeads
+        },
+        currentPage: {
+            type: Number,
+            default: this.currentPage
+        }
+    },
     data: function data() {
         return {
             viewingActiveLeads: this.activeLeads,
@@ -30423,7 +30453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         archive: function archive(id) {
-            var _this = this;
+            var _this2 = this;
 
             axios({
                 method: 'patch',
@@ -30432,11 +30462,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 0
                 }
             }).then(function (response) {
-                _this.$emit('archived', _this.currentPage);
+                _this2.$emit('archived', _this2.currentPage);
             });
         },
         unarchive: function unarchive(id) {
-            var _this2 = this;
+            var _this3 = this;
 
             axios({
                 method: 'patch',
@@ -30445,11 +30475,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     active: 1
                 }
             }).then(function (response) {
-                _this2.$emit('unarchived', _this2.currentPage);
+                _this3.$emit('unarchived', _this3.currentPage);
             });
         },
         toggleImportant: function toggleImportant(id) {
-            var _this3 = this;
+            var _this4 = this;
 
             var url = '';
             var page = '';
@@ -30460,18 +30490,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 data: {
                     important: important
                 }
-            }).then(function (response) {
-                url = _this3.viewingActiveLeads ? 'active' : 'archived';
-                page = _this3.currentPage;
-                _this3.$emit('important', url, page);
+            }).then(function () {
+                url = _this4.viewingActiveLeads ? 'active' : 'archived';
+                page = _this4.currentPage;
+                _this4.$emit('important', url, page);
             });
         },
         getNotes: function getNotes(id) {
-            var _this4 = this;
+            var _this5 = this;
 
             var url = '/leads/' + id + '/notes';
             axios.get(url).then(function (response) {
-                _this4.notes = response.data;
+                _this5.notes = response.data;
             });
             this.notesExpanded = true;
         }
@@ -30507,7 +30537,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "cursor-pointer hover:text-red text-center mr-4",
+              staticClass: "cursor-pointer text-center mr-4",
               class: { "text-red": _vm.lead.important },
               on: {
                 click: function($event) {
@@ -33590,7 +33620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         name: {
             type: String,
-            default: ''
+            default: this.name
         },
         latitude: {
             type: Number,
@@ -33612,7 +33642,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             pins: []
         };
     },
-
     mounted: function mounted() {
         var _this = this;
 

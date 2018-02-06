@@ -1,8 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <section class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full" style="background-image: url('https://www.xtns.org/wp-content/uploads/2014/06/beach-resort-glamorous-panama-city-beach-chateau-resort-panama-city-beach-resorts-beachfront-panama-city-beach-resorts-and-condos-panama-city-beach-resorts-with-tiki-bar-panama-city-beach-southern.jpg')">
+    <section
+        class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full"
+        style="background-image: url('https://www.xtns.org/wp-content/uploads/2014/06/beach-resort-glamorous-panama-city-beach-chateau-resort-panama-city-beach-resorts-beachfront-panama-city-beach-resorts-and-condos-panama-city-beach-resorts-with-tiki-bar-panama-city-beach-southern.jpg')"
+    >
         <div class="container mx-auto text-center md:text-left">
-            <h1 class="text-white text-center md:text-left">{{ $property->street_number }} {{ $property->street_name }} <span class="block md:inline-block text-sm ">MLS# {{ $property->mls_account }}</span> </h1>
+            <h1 class="text-white text-center md:text-left">
+                {{ $property->street_number }} {{ $property->street_name }}
+                <span class="block md:inline-block text-sm"> MLS# {{ $property->mls_account }}</span>
+            </h1>
         </div>
     </section>
     <div class="full-listing py-8">
@@ -23,7 +29,7 @@
                         <a class="button button-brand no-underline" href="#contact" >Request Info</a>
                         <a class="button button-brand cursor-pointer" @click="$emit('openPhotoViewer')" >View Photos</a>
                     </div>
-                    <h2 class="listing-page-location mt-2 mt-md-0">{{ $property->street_number }} {{ $property->street_name }} </h2>
+                    <h2 class="listing-page-location mt-2 md:m-t-0">{{ $property->street_number }} {{ $property->street_name }} </h2>
                     <h2 class="listing-page-area">{{ $property->city }}, {{ $property->state }}</h2>
                     <h3 class="listing-page-price text-xl text-brand">${{ number_format($property->price) }}</h3>
                     <p class="text-grey-darkest pt-4 leading-normal">{{ $property->description }}</p>
@@ -78,10 +84,9 @@
                     </table>
                 </div>
                 <div class="location-right w-full md:w-3/5 px-4 py-4">
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4" ></script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4"></script>
                     <google-map :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" :zoom="15" name="listing-location" >
-                        <google-map-pin :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" title="{{ $property->street_number }} {{ $property->street_name }}">
-                        </google-map-pin>
+                        <google-map-pin :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" title="{{ $property->street_number }} {{ $property->street_name }}" />
                     </google-map>
                 </div>
 

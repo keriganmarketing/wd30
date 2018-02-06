@@ -1,6 +1,6 @@
 <template>
     <div class="google-map w-full h-full" :id="mapName">
-        <slot/>
+        <slot />
     </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
     props: {
         name: {
             type: String,
-            default: ''
+            default: this.name
         },
         latitude: {
             type: Number,
@@ -24,23 +24,22 @@ export default {
             default: 100
         }
     },
-    data: function () {
+    data () {
         return {
             mapName: this.name + "-map",
             markers: [],
             pins: []
         }
     },
-
-    mounted: function () {
-        const element = document.getElementById(this.mapName)
+    mounted () {
+        const element = document.getElementById(this.mapName);
         const options = {
             zoom: this.zoom,
             center: new google.maps.LatLng(this.latitude,this.longitude),
             disableDefaultUI: true,
             zoomControl: true,
             scaleControl: true
-        }
+        };
         const map = new google.maps.Map(element, options);
         //const bounds = new google.maps.LatLngBounds();
         this.markers = this.$children;
@@ -64,7 +63,7 @@ export default {
                 title: pin._data.name
             });
 
-            marker.addListener('click', function(){
+            marker.addListener('click', () => {
                 infowindow.open(map, marker);
             });
         }
