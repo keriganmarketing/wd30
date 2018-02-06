@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -180,7 +180,7 @@ module.exports = function normalizeComponent (
 
 
 var bind = __webpack_require__(4);
-var isBuffer = __webpack_require__(17);
+var isBuffer = __webpack_require__(18);
 
 /*global toString:true*/
 
@@ -517,7 +517,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(19);
+var normalizeHeaderName = __webpack_require__(20);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -825,12 +825,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(20);
-var buildURL = __webpack_require__(22);
-var parseHeaders = __webpack_require__(23);
-var isURLSameOrigin = __webpack_require__(24);
+var settle = __webpack_require__(21);
+var buildURL = __webpack_require__(23);
+var parseHeaders = __webpack_require__(24);
+var isURLSameOrigin = __webpack_require__(25);
 var createError = __webpack_require__(7);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(25);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(26);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -927,7 +927,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(26);
+      var cookies = __webpack_require__(27);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1011,7 +1011,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(21);
+var enhanceError = __webpack_require__(22);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1071,8 +1071,229 @@ module.exports = Cancel;
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(11);
-module.exports = __webpack_require__(114);
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
+
+	if (root === null) {
+		throw new Error('Google-maps package can be used only in browser');
+	}
+
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
+	} else {
+		root.GoogleMapsLoader = factory();
+	}
+
+})(typeof window !== 'undefined' ? window : null, function() {
+
+
+	'use strict';
+
+
+	var googleVersion = '3.18';
+
+	var script = null;
+
+	var google = null;
+
+	var loading = false;
+
+	var callbacks = [];
+
+	var onLoadEvents = [];
+
+	var originalCreateLoaderMethod = null;
+
+
+	var GoogleMapsLoader = {};
+
+
+	GoogleMapsLoader.URL = 'https://maps.googleapis.com/maps/api/js';
+
+	GoogleMapsLoader.KEY = null;
+
+	GoogleMapsLoader.LIBRARIES = [];
+
+	GoogleMapsLoader.CLIENT = null;
+
+	GoogleMapsLoader.CHANNEL = null;
+
+	GoogleMapsLoader.LANGUAGE = null;
+
+	GoogleMapsLoader.REGION = null;
+
+	GoogleMapsLoader.VERSION = googleVersion;
+
+	GoogleMapsLoader.WINDOW_CALLBACK_NAME = '__google_maps_api_provider_initializator__';
+
+
+	GoogleMapsLoader._googleMockApiObject = {};
+
+
+	GoogleMapsLoader.load = function(fn) {
+		if (google === null) {
+			if (loading === true) {
+				if (fn) {
+					callbacks.push(fn);
+				}
+			} else {
+				loading = true;
+
+				window[GoogleMapsLoader.WINDOW_CALLBACK_NAME] = function() {
+					ready(fn);
+				};
+
+				GoogleMapsLoader.createLoader();
+			}
+		} else if (fn) {
+			fn(google);
+		}
+	};
+
+
+	GoogleMapsLoader.createLoader = function() {
+		script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = GoogleMapsLoader.createUrl();
+
+		document.body.appendChild(script);
+	};
+
+
+	GoogleMapsLoader.isLoaded = function() {
+		return google !== null;
+	};
+
+
+	GoogleMapsLoader.createUrl = function() {
+		var url = GoogleMapsLoader.URL;
+
+		url += '?callback=' + GoogleMapsLoader.WINDOW_CALLBACK_NAME;
+
+		if (GoogleMapsLoader.KEY) {
+			url += '&key=' + GoogleMapsLoader.KEY;
+		}
+
+		if (GoogleMapsLoader.LIBRARIES.length > 0) {
+			url += '&libraries=' + GoogleMapsLoader.LIBRARIES.join(',');
+		}
+
+		if (GoogleMapsLoader.CLIENT) {
+			url += '&client=' + GoogleMapsLoader.CLIENT + '&v=' + GoogleMapsLoader.VERSION;
+		}
+
+		if (GoogleMapsLoader.CHANNEL) {
+			url += '&channel=' + GoogleMapsLoader.CHANNEL;
+		}
+
+		if (GoogleMapsLoader.LANGUAGE) {
+			url += '&language=' + GoogleMapsLoader.LANGUAGE;
+		}
+
+		if (GoogleMapsLoader.REGION) {
+			url += '&region=' + GoogleMapsLoader.REGION;
+		}
+
+		return url;
+	};
+
+
+	GoogleMapsLoader.release = function(fn) {
+		var release = function() {
+			GoogleMapsLoader.KEY = null;
+			GoogleMapsLoader.LIBRARIES = [];
+			GoogleMapsLoader.CLIENT = null;
+			GoogleMapsLoader.CHANNEL = null;
+			GoogleMapsLoader.LANGUAGE = null;
+			GoogleMapsLoader.REGION = null;
+			GoogleMapsLoader.VERSION = googleVersion;
+
+			google = null;
+			loading = false;
+			callbacks = [];
+			onLoadEvents = [];
+
+			if (typeof window.google !== 'undefined') {
+				delete window.google;
+			}
+
+			if (typeof window[GoogleMapsLoader.WINDOW_CALLBACK_NAME] !== 'undefined') {
+				delete window[GoogleMapsLoader.WINDOW_CALLBACK_NAME];
+			}
+
+			if (originalCreateLoaderMethod !== null) {
+				GoogleMapsLoader.createLoader = originalCreateLoaderMethod;
+				originalCreateLoaderMethod = null;
+			}
+
+			if (script !== null) {
+				script.parentElement.removeChild(script);
+				script = null;
+			}
+
+			if (fn) {
+				fn();
+			}
+		};
+
+		if (loading) {
+			GoogleMapsLoader.load(function() {
+				release();
+			});
+		} else {
+			release();
+		}
+	};
+
+
+	GoogleMapsLoader.onLoad = function(fn) {
+		onLoadEvents.push(fn);
+	};
+
+
+	GoogleMapsLoader.makeMock = function() {
+		originalCreateLoaderMethod = GoogleMapsLoader.createLoader;
+
+		GoogleMapsLoader.createLoader = function() {
+			window.google = GoogleMapsLoader._googleMockApiObject;
+			window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]();
+		};
+	};
+
+
+	var ready = function(fn) {
+		var i;
+
+		loading = false;
+
+		if (google === null) {
+			google = window.google;
+		}
+
+		for (i = 0; i < onLoadEvents.length; i++) {
+			onLoadEvents[i](google);
+		}
+
+		if (fn) {
+			fn(google);
+		}
+
+		for (i = 0; i < callbacks.length; i++) {
+			callbacks[i](google);
+		}
+
+		callbacks = [];
+	};
+
+
+	return GoogleMapsLoader;
+
+});
 
 
 /***/ }),
@@ -1080,8 +1301,16 @@ module.exports = __webpack_require__(114);
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
+module.exports = __webpack_require__(112);
 
-window.Vue = __webpack_require__(34);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(13);
+
+window.Vue = __webpack_require__(35);
 
 __webpack_require__(38);
 
@@ -1136,11 +1365,11 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(13);
+window._ = __webpack_require__(14);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -1148,7 +1377,7 @@ window._ = __webpack_require__(13);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(15);
+window.axios = __webpack_require__(16);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -1182,7 +1411,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18271,10 +18500,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(14)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(15)(module)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -18302,13 +18531,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(16);
+module.exports = __webpack_require__(17);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18316,7 +18545,7 @@ module.exports = __webpack_require__(16);
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(4);
-var Axios = __webpack_require__(18);
+var Axios = __webpack_require__(19);
 var defaults = __webpack_require__(3);
 
 /**
@@ -18351,14 +18580,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(9);
-axios.CancelToken = __webpack_require__(32);
+axios.CancelToken = __webpack_require__(33);
 axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(33);
+axios.spread = __webpack_require__(34);
 
 module.exports = axios;
 
@@ -18367,7 +18596,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 /*!
@@ -18394,7 +18623,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18402,8 +18631,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(3);
 var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(27);
-var dispatchRequest = __webpack_require__(28);
+var InterceptorManager = __webpack_require__(28);
+var dispatchRequest = __webpack_require__(29);
 
 /**
  * Create a new instance of Axios
@@ -18480,7 +18709,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18499,7 +18728,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18532,7 +18761,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18560,7 +18789,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18635,7 +18864,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18695,7 +18924,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18770,7 +18999,7 @@ module.exports = (
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18813,7 +19042,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18873,7 +19102,7 @@ module.exports = (
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18932,18 +19161,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(29);
+var transformData = __webpack_require__(30);
 var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(3);
-var isAbsoluteURL = __webpack_require__(30);
-var combineURLs = __webpack_require__(31);
+var isAbsoluteURL = __webpack_require__(31);
+var combineURLs = __webpack_require__(32);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -19025,7 +19254,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19052,7 +19281,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19073,7 +19302,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19094,7 +19323,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19158,7 +19387,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19192,7 +19421,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30006,10 +30235,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(35).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(36).setImmediate))
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -30062,13 +30291,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(36);
+__webpack_require__(37);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -30261,235 +30490,6 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(5)))
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
-
-	if (root === null) {
-		throw new Error('Google-maps package can be used only in browser');
-	}
-
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else if (typeof exports === 'object') {
-		module.exports = factory();
-	} else {
-		root.GoogleMapsLoader = factory();
-	}
-
-})(typeof window !== 'undefined' ? window : null, function() {
-
-
-	'use strict';
-
-
-	var googleVersion = '3.18';
-
-	var script = null;
-
-	var google = null;
-
-	var loading = false;
-
-	var callbacks = [];
-
-	var onLoadEvents = [];
-
-	var originalCreateLoaderMethod = null;
-
-
-	var GoogleMapsLoader = {};
-
-
-	GoogleMapsLoader.URL = 'https://maps.googleapis.com/maps/api/js';
-
-	GoogleMapsLoader.KEY = null;
-
-	GoogleMapsLoader.LIBRARIES = [];
-
-	GoogleMapsLoader.CLIENT = null;
-
-	GoogleMapsLoader.CHANNEL = null;
-
-	GoogleMapsLoader.LANGUAGE = null;
-
-	GoogleMapsLoader.REGION = null;
-
-	GoogleMapsLoader.VERSION = googleVersion;
-
-	GoogleMapsLoader.WINDOW_CALLBACK_NAME = '__google_maps_api_provider_initializator__';
-
-
-	GoogleMapsLoader._googleMockApiObject = {};
-
-
-	GoogleMapsLoader.load = function(fn) {
-		if (google === null) {
-			if (loading === true) {
-				if (fn) {
-					callbacks.push(fn);
-				}
-			} else {
-				loading = true;
-
-				window[GoogleMapsLoader.WINDOW_CALLBACK_NAME] = function() {
-					ready(fn);
-				};
-
-				GoogleMapsLoader.createLoader();
-			}
-		} else if (fn) {
-			fn(google);
-		}
-	};
-
-
-	GoogleMapsLoader.createLoader = function() {
-		script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.src = GoogleMapsLoader.createUrl();
-
-		document.body.appendChild(script);
-	};
-
-
-	GoogleMapsLoader.isLoaded = function() {
-		return google !== null;
-	};
-
-
-	GoogleMapsLoader.createUrl = function() {
-		var url = GoogleMapsLoader.URL;
-
-		url += '?callback=' + GoogleMapsLoader.WINDOW_CALLBACK_NAME;
-
-		if (GoogleMapsLoader.KEY) {
-			url += '&key=' + GoogleMapsLoader.KEY;
-		}
-
-		if (GoogleMapsLoader.LIBRARIES.length > 0) {
-			url += '&libraries=' + GoogleMapsLoader.LIBRARIES.join(',');
-		}
-
-		if (GoogleMapsLoader.CLIENT) {
-			url += '&client=' + GoogleMapsLoader.CLIENT + '&v=' + GoogleMapsLoader.VERSION;
-		}
-
-		if (GoogleMapsLoader.CHANNEL) {
-			url += '&channel=' + GoogleMapsLoader.CHANNEL;
-		}
-
-		if (GoogleMapsLoader.LANGUAGE) {
-			url += '&language=' + GoogleMapsLoader.LANGUAGE;
-		}
-
-		if (GoogleMapsLoader.REGION) {
-			url += '&region=' + GoogleMapsLoader.REGION;
-		}
-
-		return url;
-	};
-
-
-	GoogleMapsLoader.release = function(fn) {
-		var release = function() {
-			GoogleMapsLoader.KEY = null;
-			GoogleMapsLoader.LIBRARIES = [];
-			GoogleMapsLoader.CLIENT = null;
-			GoogleMapsLoader.CHANNEL = null;
-			GoogleMapsLoader.LANGUAGE = null;
-			GoogleMapsLoader.REGION = null;
-			GoogleMapsLoader.VERSION = googleVersion;
-
-			google = null;
-			loading = false;
-			callbacks = [];
-			onLoadEvents = [];
-
-			if (typeof window.google !== 'undefined') {
-				delete window.google;
-			}
-
-			if (typeof window[GoogleMapsLoader.WINDOW_CALLBACK_NAME] !== 'undefined') {
-				delete window[GoogleMapsLoader.WINDOW_CALLBACK_NAME];
-			}
-
-			if (originalCreateLoaderMethod !== null) {
-				GoogleMapsLoader.createLoader = originalCreateLoaderMethod;
-				originalCreateLoaderMethod = null;
-			}
-
-			if (script !== null) {
-				script.parentElement.removeChild(script);
-				script = null;
-			}
-
-			if (fn) {
-				fn();
-			}
-		};
-
-		if (loading) {
-			GoogleMapsLoader.load(function() {
-				release();
-			});
-		} else {
-			release();
-		}
-	};
-
-
-	GoogleMapsLoader.onLoad = function(fn) {
-		onLoadEvents.push(fn);
-	};
-
-
-	GoogleMapsLoader.makeMock = function() {
-		originalCreateLoaderMethod = GoogleMapsLoader.createLoader;
-
-		GoogleMapsLoader.createLoader = function() {
-			window.google = GoogleMapsLoader._googleMockApiObject;
-			window[GoogleMapsLoader.WINDOW_CALLBACK_NAME]();
-		};
-	};
-
-
-	var ready = function(fn) {
-		var i;
-
-		loading = false;
-
-		if (google === null) {
-			google = window.google;
-		}
-
-		for (i = 0; i < onLoadEvents.length; i++) {
-			onLoadEvents[i](google);
-		}
-
-		if (fn) {
-			fn(google);
-		}
-
-		for (i = 0; i < callbacks.length; i++) {
-			callbacks[i](google);
-		}
-
-		callbacks = [];
-	};
-
-
-	return GoogleMapsLoader;
-
-});
-
-
-/***/ }),
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30511,12 +30511,12 @@ Vue.component('bathrooms', __webpack_require__(77));
 Vue.component('total-sqft', __webpack_require__(79));
 Vue.component('search-bar', __webpack_require__(82));
 Vue.component('google-map', __webpack_require__(85));
-Vue.component('welcome-card', __webpack_require__(88));
-Vue.component('avatar-upload', __webpack_require__(91));
-Vue.component('property-type', __webpack_require__(100));
-Vue.component('property-photo', __webpack_require__(105));
-Vue.component('lead-pagination', __webpack_require__(108));
-Vue.component('property-gallery', __webpack_require__(111));
+Vue.component('welcome-card', __webpack_require__(89));
+Vue.component('avatar-upload', __webpack_require__(92));
+Vue.component('property-type', __webpack_require__(101));
+Vue.component('property-photo', __webpack_require__(103));
+Vue.component('lead-pagination', __webpack_require__(106));
+Vue.component('property-gallery', __webpack_require__(109));
 
 /***/ }),
 /* 39 */
@@ -30748,7 +30748,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container mx-auto flex flex-wrap py-4 px-8 bg-white mb-2 shadow border-l-4 border-grey-light",
+        "container mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light",
       class: {
         "border-red": _vm.lead.important
       }
@@ -33793,7 +33793,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(88)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33837,9 +33837,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_google_maps__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_maps_service_js__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_maps_service_js__ = __webpack_require__(87);
 //
 //
 //
@@ -33879,6 +33879,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return loadMap; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_google_maps__);
+
+
+function loadMap(config) {
+    __WEBPACK_IMPORTED_MODULE_0_google_maps___default.a.KEY = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
+    __WEBPACK_IMPORTED_MODULE_0_google_maps___default.a.load(function (google) {
+        var map = new google.maps.Map(config.element, {
+            zoom: config.zoom,
+            center: new google.maps.LatLng(config.lat, config.long),
+            disableDefaultUI: true,
+            zoomControl: true,
+            scaleControl: true
+        });
+        var position = map.center;
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+    });
+}
+
+
+
+/***/ }),
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -33898,15 +33928,15 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(89)
+var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(90)
+var __vue_template__ = __webpack_require__(91)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33945,7 +33975,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33971,7 +34001,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34006,19 +34036,19 @@ if (false) {
 }
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(92)
+  __webpack_require__(93)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(97)
+var __vue_script__ = __webpack_require__(98)
 /* template */
-var __vue_template__ = __webpack_require__(99)
+var __vue_template__ = __webpack_require__(100)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34057,17 +34087,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(93);
+var content = __webpack_require__(94);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(95)("d9c91538", content, false);
+var update = __webpack_require__(96)("d9c91538", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34083,10 +34113,10 @@ if(false) {
 }
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(94)(false);
+exports = module.exports = __webpack_require__(95)(false);
 // imports
 
 
@@ -34097,7 +34127,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 /*
@@ -34179,7 +34209,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -34198,7 +34228,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(96)
+var listToStyles = __webpack_require__(97)
 
 /*
 type StyleObject = {
@@ -34400,7 +34430,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 /**
@@ -34433,12 +34463,12 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__file_upload_service_js__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__file_upload_service_js__ = __webpack_require__(99);
 //
 //
 //
@@ -34551,7 +34581,7 @@ var STATUS_INITIAL = 0,
 });
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34568,7 +34598,7 @@ function upload(formData) {
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34645,7 +34675,7 @@ if (false) {
 }
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -34653,7 +34683,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(101)
+var __vue_template__ = __webpack_require__(102)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34692,7 +34722,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34774,18 +34804,15 @@ if (false) {
 }
 
 /***/ }),
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = __webpack_require__(104)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(105)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34824,7 +34851,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 106 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34846,7 +34873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 107 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34880,15 +34907,15 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(107)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(108)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34927,7 +34954,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34983,7 +35010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 110 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35075,15 +35102,15 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(110)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(111)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35122,7 +35149,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 110 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35198,7 +35225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 113 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35289,43 +35316,10 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 112 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return loadMap; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_google_maps__);
-
-
-function loadMap(config) {
-    __WEBPACK_IMPORTED_MODULE_0_google_maps___default.a.KEY = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
-    __WEBPACK_IMPORTED_MODULE_0_google_maps___default.a.load(function (google) {
-        var map = new google.maps.Map(config.element, {
-            zoom: config.zoom,
-            center: new google.maps.LatLng(config.lat, config.long),
-            disableDefaultUI: true,
-            zoomControl: true,
-            scaleControl: true
-        });
-        var position = map.center;
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map
-        });
-    });
-}
-
-
 
 /***/ })
 /******/ ]);
