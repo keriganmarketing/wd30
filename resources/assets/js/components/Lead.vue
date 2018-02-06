@@ -1,12 +1,22 @@
 <template>
     <div
-        class="container mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light"
+        class="container relative mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light"
         :class="{
             'border-red': lead.important
         }"
     >
-        <div class="w-full mb-4 flex justify-between text-grey-darker">
-            <small class="text-grey-darker"><em>{{ lead.diff }}</em></small>
+        <div class="w-full pr-8 text-grey-darkest">
+            <small class="text-smoke-lighter"><em>{{ lead.diff }}</em></small>
+            <p class="w-full py-3 text-3xl">{{ lead.name }}</p>
+            <p class="w-full text-sm">
+                <a class="text-brand no-underline w-1/2 pr-2" :href="`mailto:${lead.email}`">{{ lead.email }}</a>
+                <a class="text-brand no-underline w-1/2 pr-2" :href="`tel:${lead.email}`">{{ lead.phone }}</a>
+            </p>
+        </div>
+        <div class="xl:w-5/6 lg:w-5/6 md:w-5/6 sm:w-full flex flex-wrap items-around justify-center text-grey-darkest">
+            <p class="w-full pt-4 pb-2">{{ lead.message }}</p>
+        </div>
+        <div class="w-full xl:w-1/5 lg:w-1/4 xl:mt-2 lg:mt-1 xl:p-4 lg:p-4 md:py-4 sm:py-4 xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between xl:absolute lg:absolute md:relative sm:relative items-center text-grey-darker">
             <a
                 @click="toggleImportant(lead.id)"
                 class="cursor-pointer text-center mr-4"
@@ -17,16 +27,6 @@
                 </svg>
                 <span class="block text-xs">Important</span>
             </a>
-        </div>
-        <div class="sm:w-full lg:w-1/3 pr-8 text-grey-darkest">
-            <p class="w-full py-2 border-b">{{ lead.name }}</p>
-            <p class="w-full py-2 border-b"><a class="text-brand" :href="`mailto:${lead.email}`">{{ lead.email }}</a></p>
-            <p class="w-full py-2 border-b"><a class="text-brand" :href="`tel:${lead.email}`">{{ lead.phone }}</a></p>
-        </div>
-        <div class="sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center text-grey-darkest">
-            <p class="w-full bg-grey-lightest p-4 rounded border border-grey">{{ lead.message }}</p>
-        </div>
-        <div class="mt-4 mb-2 w-full flex justify-between items-center text-grey-darker">
             <a
                 class="cursor-pointer hover:text-green text-center mr-4"
                 @click="getNotes(lead.id)"
