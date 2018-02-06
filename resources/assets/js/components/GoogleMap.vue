@@ -1,15 +1,15 @@
 <template>
-    <div class="google-map w-full h-full" :id="mapName">
-        <slot/>
-    </div>
+    <div class="google-map w-full h-full" ref="map" />
 </template>
 
 <script>
+import GoogleMapsLoader from 'google-maps';
+import { loadMap } from '../google-maps.service.js';
 export default {
     props: {
         name: {
             type: String,
-            default: ''
+            default: this.name
         },
         latitude: {
             type: Number,
@@ -24,50 +24,14 @@ export default {
             default: 100
         }
     },
-    data: function () {
-        return {
-            mapName: this.name + "-map",
-            markers: [],
-            pins: []
-        }
-    },
-
-    mounted: function () {
-        const element = document.getElementById(this.mapName)
-        const options = {
+    mounted () {
+        let config = {
+            element: this.$refs.map,
             zoom: this.zoom,
-            center: new google.maps.LatLng(this.latitude,this.longitude),
-            disableDefaultUI: true,
-            zoomControl: true,
-            scaleControl: true
-        }
-        const map = new google.maps.Map(element, options);
-        //const bounds = new google.maps.LatLngBounds();
-        this.markers = this.$children;
-
-        for(var i = 0; i < this.markers.length; i++){
-            var pin = this.markers[i];
-            this.pins.push({
-                latitude: pin._data.markerCoordinates.latitude,
-                longitude: pin._data.markerCoordinates.longitude,
-            });
-
-            const position = new google.maps.LatLng(pin.latitude, pin.longitude);
-            const marker = new google.maps.Marker({
-                position,
-                map
-            });
-
-            const infowindow = new google.maps.InfoWindow({
-                maxWidth: 279,
-                content: pin.$refs.infowindow,
-                title: pin._data.name
-            });
-
-            marker.addListener('click', function(){
-                infowindow.open(map, marker);
-            });
-        }
-    },
+            lat: this.latitude,
+            long: this.longitude
+        };
+        loadMap(config);
+    }
 }
 </script>

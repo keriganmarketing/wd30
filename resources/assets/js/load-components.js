@@ -19,7 +19,6 @@ Vue.component('google-map', require('./components/GoogleMap.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 Vue.component('property-type', require('./components/PropertyType.vue'));
-Vue.component('google-map-pin', require('./components/GoogleMapPin.vue'));
 Vue.component('property-photo', require('./components/PropertyPhoto.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
 Vue.component('property-gallery', require('./components/PropertyGallery.vue'));

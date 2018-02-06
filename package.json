@@ -18,6 +18,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "google-maps": "^3.2.1",
         "vue-core-image-upload": "^2.4.2"
     }
 }

@@ -16,6 +16,9 @@ const app = new Vue({
             mls_id: '',
         }
     },
+    mounted () {
+        this.authenticate();
+    },
     methods: {
         sbc (updated) {
             this.user = updated;
@@ -30,9 +33,9 @@ const app = new Vue({
                     address: this.user.address
                 }
             })
-            .then(response => {
-                this.user = response.data;
-            });
+                .then(response => {
+                    this.user = response.data;
+                });
         },
         authenticate () {
             axios.get('/authenticate').then(response => {
@@ -44,8 +47,5 @@ const app = new Vue({
                 this.user.phone_number = response.data.phone_number;
             });
         }
-    },
-    mounted () {
-        this.authenticate();
     }
 });
