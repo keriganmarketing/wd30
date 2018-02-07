@@ -1,17 +1,21 @@
 <template>
-    <div class="google-map w-full h-full" ref="map">
-        <div
-            ref="directionsButton"
-            class="w-1/5 p-4 flex border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center"
-            @click="getDirections"
-        >
-            GET DIRECTIONS
+    <div class="h-full w-full relative flex flex-wrap justify-around">
+        <div class="google-map w-full h-full" ref="map" :class="{'w-1/2': showDirections }">
+            <div
+                ref="directionsButton"
+                class="w-1/5 p-4 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center"
+                @click="getDirections"
+            >
+                GET DIRECTIONS
+            </div>
         </div>
         <div
             ref="directionsPanel"
-            class="w-full h-full bg-white z-99 relative text-black pl-2 relative absolute overflow-auto"
-            v-html="directionsPanel"
-        />
+            class="w-1/2 h-auto absolute pin text-xl bg-white text-brand-darket p-8 overflow-auto"
+            :class="{'hidden': !showDirections}"
+        >
+            <a class="button-brand absolute pin-t cursor-pointer mb-2" @click="showDirections = false">CLOSE DIRECTIONS</a>
+        </div>
     </div>
 </template>
 
@@ -38,7 +42,7 @@ export default {
             renderedMap: {},
             myPosition: {},
             error: '',
-            directionsPanel: ''
+            showDirections: false
         }
     },
     mounted () {
@@ -91,9 +95,9 @@ export default {
                 origin: config.origin,
                 destination: config.destination,
             };
-            let directions = new GoogleMap(config)
+            new GoogleMap(config)
                 .getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
-            console.log(directions);
+            this.showDirections = true;
         }
     }
 }

@@ -44,7 +44,6 @@ export default class GoogleMap {
                 travelMode: 'DRIVING',
             });
             let directionsService = new google.maps.DirectionsService;
-            directionsDisplay.setMap(mapData.map);
             directionsDisplay.setPanel(panel);
             directionsService.route({
                 origin: directionsDisplay.origin,
@@ -57,6 +56,7 @@ export default class GoogleMap {
                     return window.alert('Directions request failed due to ' + status)
                 }
             });
+            directionsDisplay.setMap(mapData.map);
         });
     }
 }
