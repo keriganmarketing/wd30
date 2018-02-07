@@ -136,6 +136,17 @@ let colors = {
   'smoke-lighter': 'rgba(0, 0, 0, 0.25)',
   'smoke-lightest': 'rgba(0, 0, 0, 0.1)',
 
+  'dbblue-darkest': '#375c82',
+  'dbblue-darker': '#375c82',
+  'dbblue-dark': '#4c81b5',
+  'dbblue': '#61a4e7',
+  'dbblue-light': '#73b4f5',
+  'dbblue-lighter': '#82befa',
+  'dbblue-lightest': '#91c8ff',
+
+  'tan-lighter': '#fff6de',
+  'tan-lightest': '#fffdf7',
+
   get ['brand-darkest']() { return this['teal-darkest']; },
   get ['brand-darker']() { return this['teal-darker']; },
   get ['brand-dark']() { return this['teal-dark']; },
