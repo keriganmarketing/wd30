@@ -30652,7 +30652,6 @@ var _this = this;
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -30748,20 +30747,62 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light",
+        "container relative mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light",
       class: {
         "border-red": _vm.lead.important
       }
     },
     [
+      _c("div", { staticClass: "w-full pr-8 text-grey-darkest" }, [
+        _c("small", { staticClass: "text-smoke-lighter" }, [
+          _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "w-full py-3 text-3xl" }, [
+          _vm._v(_vm._s(_vm.lead.name))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "w-full text-sm" }, [
+          _c(
+            "a",
+            {
+              staticClass: "text-brand no-underline w-1/2 pr-2",
+              attrs: { href: "mailto:" + _vm.lead.email }
+            },
+            [_vm._v(_vm._s(_vm.lead.email))]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "text-brand no-underline w-1/2 pr-2",
+              attrs: { href: "tel:" + _vm.lead.email }
+            },
+            [_vm._v(_vm._s(_vm.lead.phone))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "w-full mb-4 flex justify-between text-grey-darker" },
+        {
+          staticClass:
+            "w-full md:w-5/6 lg:w-5/6 xl:w-5/6 flex flex-wrap items-around justify-center text-grey-darkest"
+        },
         [
-          _c("small", { staticClass: "text-grey-darker" }, [
-            _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
-          ]),
-          _vm._v(" "),
+          _c("p", { staticClass: "w-full pt-4 pb-2" }, [
+            _vm._v(_vm._s(_vm.lead.message))
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full xl:w-1/5 lg:w-1/4 xl:mt-2 lg:mt-1 py-4 lg:p-4 xl:p-4  xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between relative lg:absolute xl:absolute items-center text-grey-darker"
+        },
+        [
           _c(
             "a",
             {
@@ -30798,70 +30839,8 @@ var render = function() {
                 _vm._v("Important")
               ])
             ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "sm:w-full lg:w-1/3 pr-8 text-grey-darkest" }, [
-        _c("p", { staticClass: "w-full py-2 border-b" }, [
-          _c("strong", [_vm._v("Name:")]),
-          _vm._v(" " + _vm._s(_vm.lead.name))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "w-full py-2 border-b" }, [
-          _c("strong", [_vm._v("Email:")]),
+          ),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand",
-              attrs: { href: "mailto:" + _vm.lead.email }
-            },
-            [_vm._v(_vm._s(_vm.lead.email))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "w-full py-2 border-b" }, [
-          _c("strong", [_vm._v("Phone:")]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand",
-              attrs: { href: "tel:" + _vm.lead.email }
-            },
-            [_vm._v(_vm._s(_vm.lead.phone))]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "sm:w-full lg:w-3/5 flex flex-wrap items-around justify-center text-grey-darkest"
-        },
-        [
-          _c("p", { staticClass: "w-full font-bold" }, [_vm._v("Message:")]),
-          _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass:
-                "w-full bg-grey-lightest p-4 rounded border border-grey"
-            },
-            [_vm._v(_vm._s(_vm.lead.message))]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "mt-4 mb-2 w-full flex justify-between items-center text-grey-darker"
-        },
-        [
           !_vm.notesExpanded
             ? _c(
                 "a",
@@ -34999,6 +34978,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['pagination'],
@@ -35018,24 +34999,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", { staticClass: "mb-4 font-semibold text-white" }, [
-      _vm._v(
-        "Showing " +
-          _vm._s(_vm.pagination.from) +
-          " - " +
-          _vm._s(_vm.pagination.to) +
-          " out of " +
-          _vm._s(_vm.pagination.total)
-      )
-    ]),
-    _vm._v(" "),
     _c("ul", { staticClass: "list-reset flex justify-start" }, [
       _c("li", { staticClass: "mr-2" }, [
         _c(
           "button",
           {
             staticClass:
-              "text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+              "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm",
             class: {
               "cursor-not-allowed": _vm.pagination.prev_page_url == null,
               "opacity-50": _vm.pagination.prev_page_url == null
@@ -35056,7 +35026,7 @@ var render = function() {
           "a",
           {
             staticClass:
-              "text-grey-darker bg-white px-4 py-2 text-center flex shadow items-center rounded-sm"
+              "text-grey-darker bg-dbblue-lighter px-4 py-2 text-center flex shadow items-center rounded-sm"
           },
           [
             _vm._v(
@@ -35073,7 +35043,7 @@ var render = function() {
           "button",
           {
             staticClass:
-              "text-grey-darker bg-white px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+              "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm",
             class: {
               "cursor-not-allowed": _vm.pagination.next_page_url == null,
               "opacity-50": _vm.pagination.next_page_url == null
@@ -35086,6 +35056,23 @@ var render = function() {
             }
           },
           [_vm._v("\n                   Next\n            ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c(
+          "p",
+          { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
+          [
+            _vm._v(
+              "Showing " +
+                _vm._s(_vm.pagination.from) +
+                " - " +
+                _vm._s(_vm.pagination.to) +
+                " out of " +
+                _vm._s(_vm.pagination.total)
+            )
+          ]
         )
       ])
     ])
