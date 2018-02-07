@@ -71,7 +71,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="location-left w-full md:w-2/5 py-4">
+                <div class="location-left w-full py-4">
                     <table class="border-b-2 border-brand mx-1 shadow flex flex-col text-left text-grey-darkest">
                         <tr class="bg-grey-lighter flex"><td class="w-1/2 p-2">Waterfront</td><td class="w-1/2 p-2">{{ $property->waterfront }}</td></tr>
                         <tr class="flex"><td class="w-1/2 p-2">Waterfront Type</td><td class="w-1/2 p-2">{{ $property->waterview_description }}</td></tr>
@@ -83,7 +83,7 @@
                         <tr class="flex"><td class="w-1/2 p-2">Subdivision</td><td class="w-1/2 p-2">{{ $property->subdivision }}</td></tr>
                     </table>
                 </div>
-                <div class="location-right w-full md:w-3/5 px-4 py-4">
+                <div class="location-right h-64 w-full px-4">
                     <google-map :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" :zoom="15" />
                 </div>
 

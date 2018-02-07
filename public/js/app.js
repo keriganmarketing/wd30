@@ -33606,6 +33606,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -33629,7 +33633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             renderedMap: {},
             myPosition: {},
             error: '',
-            directionsPanel: ''
+            showDirections: false
         };
     },
     mounted: function mounted() {
@@ -33681,8 +33685,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 origin: config.origin,
                 destination: config.destination
             };
-            var directions = new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](config).getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
-            console.log(directions);
+            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](config).getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
+            this.showDirections = true;
         }
     }
 });
@@ -33808,7 +33812,6 @@ var GoogleMap = function () {
                     travelMode: 'DRIVING'
                 });
                 var directionsService = new google.maps.DirectionsService();
-                directionsDisplay.setMap(mapData.map);
                 directionsDisplay.setPanel(panel);
                 directionsService.route({
                     origin: directionsDisplay.origin,
@@ -33821,6 +33824,7 @@ var GoogleMap = function () {
                         return window.alert('Directions request failed due to ' + status);
                     }
                 });
+                directionsDisplay.setMap(mapData.map);
             });
         }
     }]);
@@ -34067,25 +34071,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "map", staticClass: "google-map w-full h-full" }, [
-    _c(
-      "div",
-      {
-        ref: "directionsButton",
-        staticClass:
-          "w-1/5 p-4 flex border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center",
-        on: { click: _vm.getDirections }
-      },
-      [_vm._v("\n        GET DIRECTIONS\n    ")]
-    ),
-    _vm._v(" "),
-    _c("div", {
-      ref: "directionsPanel",
-      staticClass:
-        "w-full h-full bg-white z-99 relative text-black pl-2 relative absolute overflow-auto",
-      domProps: { innerHTML: _vm._s(_vm.directionsPanel) }
-    })
-  ])
+  return _c(
+    "div",
+    { staticClass: "h-full w-full relative flex flex-wrap justify-around" },
+    [
+      _c(
+        "div",
+        {
+          ref: "map",
+          staticClass: "google-map w-full h-full",
+          class: { "w-1/2": _vm.showDirections }
+        },
+        [
+          _c(
+            "div",
+            {
+              ref: "directionsButton",
+              staticClass:
+                "w-1/5 p-4 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center",
+              on: { click: _vm.getDirections }
+            },
+            [_vm._v("\n            GET DIRECTIONS\n        ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          ref: "directionsPanel",
+          staticClass:
+            "w-1/2 h-auto absolute pin text-xl bg-white text-brand-darket p-8 overflow-auto",
+          class: { hidden: !_vm.showDirections }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "button-brand absolute pin-t cursor-pointer mb-2",
+              on: {
+                click: function($event) {
+                  _vm.showDirections = false
+                }
+              }
+            },
+            [_vm._v("CLOSE DIRECTIONS")]
+          )
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
