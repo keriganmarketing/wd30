@@ -1,0 +1,23 @@
+{
+    "name": "kerigansolutions/drone",
+    "description": "A package to communicate with KMA Mothership",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daron Adkins",
+            "email": "daron.adkins@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KeriganSolutions\\Drone\\DroneServiceProvider"
+            ]
+        }
+    }
+}
