@@ -1,4 +1,5 @@
 import GoogleMapsLoader from 'google-maps';
+import GeoLocator from './geolocator.service'
 
 export default class GoogleMap {
     constructor (config) {
@@ -31,6 +32,7 @@ export default class GoogleMap {
                 position: mapData.position,
                 map: mapData.map
             });
+            window.map = mapData.map;
         });
 
         return this.map;

@@ -6,7 +6,7 @@
             @focus="onFocus"
             @keydown.tab="tabPressed"
             @blur="onBlur()"
-            name="omniField"
+            name="omni"
             type="text"
             autocomplete="off"
             placeholder="City, address, subdivision or zip"
@@ -20,10 +20,10 @@
         <div
             v-if="showResults"
             :class="{
-            'omni-results-open':   showResults == true,
-            'omni-results-closed': showResults == false,
-            'h-10':                results.length < 2,
-            'h-48':                results.length > 1
+                'omni-results-open': showResults == true,
+                'omni-results-closed': showResults == false,
+                'h-10': results.length < 2,
+                'h-48': results.length > 1
             }"
             class="block shadow w-full border z-50 absolute text-grey-darker hover:border-grey bg-white overflow-hidden overflow-y-scroll"
         >
@@ -86,9 +86,9 @@ export default {
                     {text: 'Searching...'}
                 ];
                 axios(config)
-                .then(response => {
-                    vm.results = response.data.results;
-                })
+                    .then(response => {
+                        vm.results = response.data.results;
+                    })
             },
             250
         ),
