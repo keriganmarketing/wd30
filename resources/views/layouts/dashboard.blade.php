@@ -43,7 +43,7 @@
                                 {{ csrf_field() }}
                             </form>
                         @endguest
-                    </div
+                    </div>
                 </div>
             </div>
         </nav>
