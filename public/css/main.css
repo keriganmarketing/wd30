@@ -2913,6 +2913,10 @@ button,
   height: 26rem;
 }
 
+.leading-tighter {
+  line-height: 0.75;
+}
+
 .leading-none {
   line-height: 1;
 }
@@ -7712,6 +7716,10 @@ button,
     height: 26rem;
   }
 
+  .sm\:leading-tighter {
+    line-height: 0.75;
+  }
+
   .sm\:leading-none {
     line-height: 1;
   }
@@ -12400,6 +12408,10 @@ button,
 
   .md\:h-avatar {
     height: 26rem;
+  }
+
+  .md\:leading-tighter {
+    line-height: 0.75;
   }
 
   .md\:leading-none {
@@ -17092,6 +17104,10 @@ button,
     height: 26rem;
   }
 
+  .lg\:leading-tighter {
+    line-height: 0.75;
+  }
+
   .lg\:leading-none {
     line-height: 1;
   }
@@ -21780,6 +21796,10 @@ button,
 
   .xl\:h-avatar {
     height: 26rem;
+  }
+
+  .xl\:leading-tighter {
+    line-height: 0.75;
   }
 
   .xl\:leading-none {
