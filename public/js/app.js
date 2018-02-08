@@ -34191,9 +34191,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataUser'],
+    props: ['dataUser', 'avatarPath'],
     computed: {
         user: function user() {
             return this.dataUser;
@@ -34213,24 +34239,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "w-full bg-white text-xl text-center border shadow flex flex-wrap items-center justify-center min-h-full p-8"
-    },
-    [
-      _c("p", { staticClass: "block w-full" }, [
-        _vm._v("Welcome back, " + _vm._s(_vm.firstName) + "!")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "block w-full" }, [
-        _vm._v("*Lead Info, analytics, and notifications go here*")
-      ])
-    ]
-  )
+  return _c("div", { staticClass: "flex w-full text-center mb-4" }, [
+    _c(
+      "div",
+      { staticClass: "w-1/5" },
+      [
+        _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" }, [
+          _vm._v(_vm._s(_vm.firstName) + " Branham")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "block px-2 text-xs text-smoke-light" }, [
+          _vm._v("Beachy Beach Real Estate")
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "flex w-full items-center justify-around leading-tighter mx-auto"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          [
+            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
+              _c("span", { staticClass: "text-4xl" }, [_vm._v("343")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-lg font-hairline" }, [
+                _vm._v("Property Clicks")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          [
+            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
+              _c("span", { staticClass: "text-4xl" }, [_vm._v("4,326")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-lg font-hairline" }, [
+                _vm._v("Property Impressions")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          [
+            _c("p", { staticClass: " block text-5xl text-smoke-darker" }, [
+              _c("span", { staticClass: "text-4xl" }, [_vm._v("12")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-lg font-hairline" }, [
+                _vm._v("Active Leads")
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -34326,7 +34418,7 @@ exports = module.exports = __webpack_require__(96)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34715,6 +34807,7 @@ var STATUS_INITIAL = 0,
     STATUS_SAVING = 1,
     STATUS_SUCCESS = 2,
     STATUS_FAILED = 3;
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         avatarPath: {
