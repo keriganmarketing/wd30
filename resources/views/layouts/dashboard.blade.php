@@ -15,12 +15,12 @@
 </head>
 <body class="h-screen font-Lato text-smoke-darkest">
     <div id="app" class="relative">
-        <nav class="fixed bg-tan-lightest w-full h-12 pb-8 z-50">
+        <nav class="fixed bg-tan-lightest w-full h-12 pb-8 z-50 shadow-md">
             <div class="container mx-auto h-full">
                 <div class="flex items-center justify-center h-12">
                     <div class="mr-6">
                         <a href="{{ url('/') }}" class="no-underline text-xl text-dbblue-dark">
-                            {{ config('app.name', 'Laravel') }}
+                            Dashboard
                         </a>
                     </div>
                     <div class="flex-1 text-right align-middle h-16">
@@ -50,10 +50,10 @@
         <div class='w-full bg-tan-lightest pt-16 pb-8'>
             @yield('top')
         </div>
-        <div class='bg-dbblue-lighter h-24'>
+        <div class='bg-beachy-blue-darker h-24'>
             @yield('navigation')
         </div>
-        <div class='bg-dbblue-lighter py-8'>
+        <div class='bg-beachy-blue py-8'>
             @yield('content')
         </div>
     </div>
