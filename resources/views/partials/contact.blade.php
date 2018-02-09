@@ -1,8 +1,9 @@
 <section id="contact" class="contact flex bg-brand-light py-8 lg:py-16 xl:py-24">
     <div class="w-full lg:max-w-lg mx-auto py-2 text-center">
         <h2 class="text-white text-center pb-4">Contact</h2>
-        <p><a class="no-underline text-2xl text-white text-bold" href="tel:8506484560" >(850) 648-4560</a></p>
-        <p class="text-lg text-white mt-4">3706 Hwy 98, Suite 103<br>Mexico Beach, FL</p>
+        <p><a class="no-underline text-2xl text-white text-bold" href="tel:8506484560" >{{ $realtor->phone_number }}</a></p>
+        <p class="text-lg text-white mt-4">{!! nl2br($realtor->address) !!}</p>
+        <p class="text-lg text-white mt-4">{{ $realtor->email }}</p>
         <form class="pt-6 pb-8 align-top flex flex-wrap">
             <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
                 <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" placeholder="Name" >
