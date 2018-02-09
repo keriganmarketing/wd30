@@ -137,13 +137,20 @@ let colors = {
   'smoke-lightest': 'rgba(0, 0, 0, 0.1)',
 
   'dbblue-darkest': '#375c82',
-  'dbblue-darker': '#375c82',
-  'dbblue-dark': '#4c81b5',
-  'dbblue': '#61a4e7',
-  'dbblue-light': '#73b4f5',
-  'dbblue-lighter': '#82befa',
-  'dbblue-lightest': '#91c8ff',
+  'dbblue-darker': '#4c81b5',
+  'dbblue-dark': '#61a4e7',
+  'dbblue': '#73b4f5',
+  'dbblue-light': '#82befa',
+  'dbblue-lighter': '#91c8ff',
+  'dbblue-lightest': '#d9ecff',
 
+  'brown-brand':'#533B18',
+
+  'tan-darkest':'#f5cc5b',
+  'tan-darker':'#f5d273',
+  'tan-dark':'#f5d98c',
+  'tan':'#fae4a7',
+  'tan-light':'#ffefc4',
   'tan-lighter': '#fff6de',
   'tan-lightest': '#fffdf7',
 
@@ -221,6 +228,7 @@ module.exports = {
 
   fonts: {
     'sans': [
+      'Lato',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -659,6 +667,7 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '12': '3rem',
     '16': '4rem',
     '24': '6rem',
     '32': '8rem'
