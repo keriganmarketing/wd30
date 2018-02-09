@@ -1,5 +1,5 @@
 <template>
-    <ul class="list-reset flex justify-end -mt-6">
+    <ul class="list-reset flex justify-center md:justify-end -mt-6">
         <li class="-mb-px mr-1">
             <a
                 class="bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border"

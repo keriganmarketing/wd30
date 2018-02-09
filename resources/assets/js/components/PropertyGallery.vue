@@ -1,24 +1,25 @@
 <template>
     <div>
-        <div class="hidden md:flex flex-wrap">
+        <div class="hidden lg:flex flex-wrap">
             <slot />
         </div>
         <modal :modal-open="modalOpen">
-            <div class="flex align-middle justify-between h-screen">
-                <div class="flex left-arrow w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center" >
+            <div class="flex align-middle justify-between h-screen flex-wrap items-center">
+                <div class="flex left-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center order-2 md:order-1" >
                     <span
-                        class="text-white text-bold text-xl p-6 bg-smoke-dark text-center"
+                        class="text-white text-bold text-xl p-6 bg-brand text-center"
                         @click="prevPhoto"
                     >
                         &lsaquo;
                     </span>
                 </div>
-                <div class="flex-auto flex-grow h-auto w-2/3 py-4 align-middle flex flex-col justify-center " >
-                    <img class="w-auto h-auto max-h-full max-w-full" :src="activePhotoUrl" >
-                </div>
-                <div class="flex right-arrow w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center" >
+                <div
+                     class="flex-auto flex-grow is-4by3 md:pb-0 md:h-full md:h-full w-full md:w-2/3 py-4 align-middle flex flex-col justify-center bg-contain bg-center bg-no-repeat order-1 md:order-2"
+                     :style="{ 'background-image': 'url(' + activePhotoUrl + ')' }"
+                ></div>
+                <div class="flex right-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center order-3" >
                     <span
-                        class="text-white text-bold text-xl p-6 bg-smoke-dark text-center"
+                        class="text-white text-bold text-xl p-6 bg-brand text-center"
                         @click="nextPhoto"
                     >
                         &rsaquo;

@@ -8,20 +8,15 @@
 
 @section('navigation')<!--make component-->
 <div class="container mx-auto flex-items-center">
-    <div class="inline-flex w-full items-center justify-around mx-auto text-xl text-center">
-        <a href="#">
-        <button class="border-t-4 border-transparent hover:border-dbblue-darkest text-smoke-dark hover:text-smoke-darkest font-hairline py-4 px-8">
+    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24">
+        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
             Leads
-        </button>
         </a>
-        <a href="#">
-        <button class="border-t-4 border-transparent hover:border-dbblue-darkest text-smoke-dark hover:text-smoke-darkest font-hairline py-4 px-8">
+        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
             Properties
-        </button>
-        <a href="#">
-        <button class="border-t-4 border-transparent hover:border-dbblue-darkest text-smoke-dark hover:text-smoke-darkest font-hairline py-4 px-8">
+        </a>
+        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
             Settings
-        </button>
         </a>
     </div>
 </div>
