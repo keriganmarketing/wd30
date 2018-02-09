@@ -17,7 +17,7 @@
     </li>
     <li class="mr-2">
         <a class="text-grey bg-white px-4 py-2 text-center flex shadow items-center border border-grey ">
-            {{-- {{ (isset($_GET['pg']) ? $_GET['pg'] : 1) }} --}}
+            {{ (isset($_GET['pg']) ? $_GET['pg'] : 1) }}
         </a>
     </li>
     <li class="mr-2">

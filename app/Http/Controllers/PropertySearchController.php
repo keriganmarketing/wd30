@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Facades\App\OpenHouse;
 use Facades\App\Feature;
 use Illuminate\Http\Request;
@@ -17,9 +18,10 @@ class PropertySearchController extends Controller
      */
     public function index(Request $request)
     {
+        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
         $properties = Mothership::search($request->all());
 
-        return view('properties.index', compact('properties'));
+        return view('properties.index', compact('properties', 'realtor'));
     }
 
     /**
@@ -32,8 +34,9 @@ class PropertySearchController extends Controller
         $property   = Mothership::listing($mlsNumber);
         $features   = Feature::list($property);
         $openHouses = OpenHouse::extract($property->open_houses);
+        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
 
-        return view('properties.show', compact('property', 'features', 'openHouses'));
+        return view('properties.show', compact('property', 'features', 'openHouses', 'realtor'));
     }
 
 }
