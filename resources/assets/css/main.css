@@ -23,6 +23,8 @@
  * @import "components/forms";
  */
 
+@import "fonts.css";
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -49,6 +51,9 @@
 .button-brand {
     @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
+.button-secondary {
+    @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
 .button-grey {
     @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
@@ -72,4 +77,12 @@
 .is-4by3 {
     height:0;
     padding-bottom: 60%;
+}
+
+h1, h2, h3, h1 span, h2 span, h3 span {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-brand {
+    font-family: 'Bebas Neue', sans-serif;
 }
