@@ -3,12 +3,12 @@
         <a href="/listing/{{ $listing->mls_account }}/" class="absolute pin hover:shadow-inner z-50" ></a>
         <div class="property-image md:h-48 md:overflow-hidden">
             @if($listing->has_open_houses)
-                <div class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10">
+                <div class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl">
                     OPEN HOUSE
                 </div>
             @endif
             @if($listing->status != 'Active')
-                <div class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10">
+                <div class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl">
                     {{ $listing->status }}
                 </div>
             @endif
@@ -20,7 +20,7 @@
                     {{ $listing->city }}, {{ $listing->state }}</p>
             </div>
             <div class="price">
-                <p class="py-2 font-bold text-center text-brand text-2xl">${{ number_format($listing->price, 0, '.', ',') }}</p>
+                <p class="py-2 text-center text-brand text-3xl font-brand">${{ number_format($listing->price, 0, '.', ',') }}</p>
             </div>
             <div class="prop-type">
                 <p class="pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase">{{ $listing->property_type }}</p>

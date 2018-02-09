@@ -3,7 +3,7 @@
         <div class="google-map w-full h-full" ref="map" :class="{'w-1/2': showDirections }">
             <div
                 ref="directionsButton"
-                class="w-1/5 p-4 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center"
+                class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center"
                 @click="getDirections"
             >
                 GET DIRECTIONS
@@ -14,7 +14,7 @@
             class="w-1/2 h-auto absolute pin text-xl bg-white text-brand-darket p-8 overflow-auto"
             :class="{'hidden': !showDirections}"
         >
-            <a class="button-brand absolute pin-t cursor-pointer mb-2" @click="showDirections = false">CLOSE DIRECTIONS</a>
+            <a class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center" @click="showDirections = false">CLOSE DIRECTIONS</a>
         </div>
     </div>
 </template>

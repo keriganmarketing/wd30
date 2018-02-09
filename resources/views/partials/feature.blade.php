@@ -1,5 +1,5 @@
 
-<div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-1 flex-grow" >
+<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1 flex-grow" >
     <div class="card border-grey shadow h-full text-left">
         <div class="card-title py-2 px-4 bg-brand font-bold">
             <p class="text-white">{{ $key }}</p>

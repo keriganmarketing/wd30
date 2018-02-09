@@ -31390,13 +31390,13 @@ var render = function() {
   return _vm.modalOpen
     ? _c(
         "div",
-        { staticClass: "fixed pin bg-smoke-darker" },
+        { staticClass: "fixed pin bg-smoke-darkest" },
         [
           _c(
             "div",
             {
               staticClass:
-                "fixed inline-block p-4 pin-t pin-r bg-smoke-dark text-white cursor-pointer",
+                "fixed inline-block p-4 pin-t pin-r bg-brand text-white cursor-pointer",
               on: { click: _vm.closeModal }
             },
             [_vm._v("X")]
@@ -32667,47 +32667,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ul", { staticClass: "list-reset flex justify-end -mt-6" }, [
-    _c("li", { staticClass: "-mb-px mr-1" }, [
-      _c(
-        "a",
-        {
-          staticClass:
-            "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
-          class: {
-            "active-tab": _vm.viewingActiveLeads,
-            "border-b-grey": !_vm.viewingActiveLeads
-          },
-          on: {
-            click: function($event) {
-              _vm.fetchLeads("active")
+  return _c(
+    "ul",
+    { staticClass: "list-reset flex justify-center md:justify-end -mt-6" },
+    [
+      _c("li", { staticClass: "-mb-px mr-1" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
+            class: {
+              "active-tab": _vm.viewingActiveLeads,
+              "border-b-grey": !_vm.viewingActiveLeads
+            },
+            on: {
+              click: function($event) {
+                _vm.fetchLeads("active")
+              }
             }
-          }
-        },
-        [_vm._v("\n            Active\n        ")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("li", { staticClass: "mr-1" }, [
-      _c(
-        "a",
-        {
-          staticClass:
-            "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
-          class: {
-            "active-tab": !_vm.viewingActiveLeads,
-            "border-b-grey": _vm.viewingActiveLeads
           },
-          on: {
-            click: function($event) {
-              _vm.fetchLeads("archived")
+          [_vm._v("\n            Active\n        ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "mr-1" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border",
+            class: {
+              "active-tab": !_vm.viewingActiveLeads,
+              "border-b-grey": _vm.viewingActiveLeads
+            },
+            on: {
+              click: function($event) {
+                _vm.fetchLeads("archived")
+              }
             }
-          }
-        },
-        [_vm._v("\n            Archived\n        ")]
-      )
-    ])
-  ])
+          },
+          [_vm._v("\n            Archived\n        ")]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34094,7 +34098,7 @@ var render = function() {
             {
               ref: "directionsButton",
               staticClass:
-                "w-1/5 p-4 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-lg rounded text-white text-center",
+                "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center",
               on: { click: _vm.getDirections }
             },
             [_vm._v("\n            GET DIRECTIONS\n        ")]
@@ -34114,7 +34118,8 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "button-brand absolute pin-t cursor-pointer mb-2",
+              staticClass:
+                "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center",
               on: {
                 click: function($event) {
                   _vm.showDirections = false
@@ -34972,84 +34977,97 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("ul", { staticClass: "list-reset flex justify-start" }, [
-      _c("li", { staticClass: "mr-2" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm",
-            class: {
-              "cursor-not-allowed": _vm.pagination.prev_page_url == null,
-              "bg-brand-lightest": _vm.pagination.prev_page_url == null,
-              "bg-tan-lightest": _vm.pagination.prev_page_url != null
-            },
-            attrs: { disabled: _vm.pagination.prev_page_url == null },
-            on: {
-              click: function($event) {
-                _vm.fetchLeads(_vm.pagination.prev_page_url)
+    _c(
+      "ul",
+      {
+        staticClass: "list-reset flex justify-center md:justify-start flex-wrap"
+      },
+      [
+        _c("li", { staticClass: "mr-2 w-auto" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+              class: {
+                "cursor-not-allowed": _vm.pagination.prev_page_url == null,
+                "bg-brand-lightest": _vm.pagination.prev_page_url == null,
+                "bg-tan-lightest": _vm.pagination.prev_page_url != null
+              },
+              attrs: { disabled: _vm.pagination.prev_page_url == null },
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads(_vm.pagination.prev_page_url)
+                }
               }
-            }
-          },
-          [_vm._v("\r\n                   Prev\r\n            ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "mr-2" }, [
+            },
+            [_vm._v("\r\n                   Prev\r\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-2 w-auto" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
+            },
+            [
+              _vm._v(
+                "\r\n            " +
+                  _vm._s(_vm.pagination.current_page) +
+                  "\r\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-2 w-auto" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+              class: {
+                "cursor-not-allowed": _vm.pagination.next_page_url == null,
+                "opacity-50": _vm.pagination.next_page_url == null
+              },
+              attrs: { disabled: _vm.pagination.next_page_url == null },
+              on: {
+                click: function($event) {
+                  _vm.fetchLeads(_vm.pagination.next_page_url)
+                }
+              }
+            },
+            [_vm._v("\r\n                   Next\r\n            ")]
+          )
+        ]),
+        _vm._v(" "),
         _c(
-          "a",
+          "li",
           {
             staticClass:
-              "text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
+              "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
           },
           [
-            _vm._v(
-              "\r\n            " +
-                _vm._s(_vm.pagination.current_page) +
-                "\r\n            "
+            _c(
+              "p",
+              { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
+              [
+                _vm._v(
+                  "Showing " +
+                    _vm._s(_vm.pagination.from) +
+                    " - " +
+                    _vm._s(_vm.pagination.to) +
+                    " out of " +
+                    _vm._s(_vm.pagination.total)
+                )
+              ]
             )
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "mr-2" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm",
-            class: {
-              "cursor-not-allowed": _vm.pagination.next_page_url == null,
-              "opacity-50": _vm.pagination.next_page_url == null
-            },
-            attrs: { disabled: _vm.pagination.next_page_url == null },
-            on: {
-              click: function($event) {
-                _vm.fetchLeads(_vm.pagination.next_page_url)
-              }
-            }
-          },
-          [_vm._v("\r\n                   Next\r\n            ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c(
-          "p",
-          { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
-          [
-            _vm._v(
-              "Showing " +
-                _vm._s(_vm.pagination.from) +
-                " - " +
-                _vm._s(_vm.pagination.to) +
-                " out of " +
-                _vm._s(_vm.pagination.total)
-            )
-          ]
-        )
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -35145,6 +35163,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -35207,7 +35226,7 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "hidden md:flex flex-wrap" },
+        { staticClass: "hidden lg:flex flex-wrap" },
         [_vm._t("default")],
         2
       ),
@@ -35215,20 +35234,23 @@ var render = function() {
       _c("modal", { attrs: { "modal-open": _vm.modalOpen } }, [
         _c(
           "div",
-          { staticClass: "flex align-middle justify-between h-screen" },
+          {
+            staticClass:
+              "flex align-middle justify-between h-screen flex-wrap items-center"
+          },
           [
             _c(
               "div",
               {
                 staticClass:
-                  "flex left-arrow w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center"
+                  "flex left-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center order-2 md:order-1"
               },
               [
                 _c(
                   "span",
                   {
                     staticClass:
-                      "text-white text-bold text-xl p-6 bg-smoke-dark text-center",
+                      "text-white text-bold text-xl p-6 bg-brand text-center",
                     on: { click: _vm.prevPhoto }
                   },
                   [_vm._v("\n                    ‹\n                ")]
@@ -35236,32 +35258,24 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "flex-auto flex-grow h-auto w-2/3 py-4 align-middle flex flex-col justify-center "
-              },
-              [
-                _c("img", {
-                  staticClass: "w-auto h-auto max-h-full max-w-full",
-                  attrs: { src: _vm.activePhotoUrl }
-                })
-              ]
-            ),
+            _c("div", {
+              staticClass:
+                "flex-auto flex-grow is-4by3 md:pb-0 md:h-full md:h-full w-full md:w-2/3 py-4 align-middle flex flex-col justify-center bg-contain bg-center bg-no-repeat order-1 md:order-2",
+              style: { "background-image": "url(" + _vm.activePhotoUrl + ")" }
+            }),
             _vm._v(" "),
             _c(
               "div",
               {
                 staticClass:
-                  "flex right-arrow w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center"
+                  "flex right-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center order-3"
               },
               [
                 _c(
                   "span",
                   {
                     staticClass:
-                      "text-white text-bold text-xl p-6 bg-smoke-dark text-center",
+                      "text-white text-bold text-xl p-6 bg-brand text-center",
                     on: { click: _vm.nextPhoto }
                   },
                   [_vm._v("\n                    ›\n                ")]
