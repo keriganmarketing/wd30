@@ -34245,10 +34245,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex w-full text-center mb-4" }, [
+  return _c("div", { staticClass: "flex w-full text-center mb-4 flex-wrap" }, [
     _c(
       "div",
-      { staticClass: "w-1/5" },
+      { staticClass: "w-full md:w-1/5" },
       [
         _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
         _vm._v(" "),
@@ -34275,15 +34275,20 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "flex w-full items-center justify-around leading-tighter mx-auto"
+          "flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"
       },
       [
         _c(
           "div",
-          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          {
+            staticClass:
+              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
+          },
           [
             _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-4xl" }, [_vm._v("343")]),
+              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
+                _vm._v("343")
+              ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -34296,10 +34301,15 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          {
+            staticClass:
+              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
+          },
           [
             _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-4xl" }, [_vm._v("4,326")]),
+              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
+                _vm._v("4,326")
+              ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -34312,10 +34322,15 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "w-1/3 items-center justify-center mx-auto" },
+          {
+            staticClass:
+              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
+          },
           [
             _c("p", { staticClass: " block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-4xl" }, [_vm._v("12")]),
+              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
+                _vm._v("12")
+              ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
