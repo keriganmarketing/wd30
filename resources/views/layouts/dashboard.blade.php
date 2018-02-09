@@ -15,13 +15,11 @@
 </head>
 <body class="h-screen font-Lato text-smoke-darkest">
     <div id="app" class="relative">
-        <nav class="fixed bg-tan-lightest w-full h-12 pb-8 z-50 shadow-md">
+        <nav class="fixed bg-tan-lightest w-full z-50 shadow-md">
             <div class="container mx-auto h-full">
-                <div class="flex items-center justify-center h-12">
-                    <div class="mr-6">
-                        <a href="{{ url('/') }}" class="no-underline text-xl text-dbblue-dark">
-                            Dashboard
-                        </a>
+                <div class="flex items-center justify-center">
+                    <div class="mr-6 py-2">
+                        @include('partials.logo')
                     </div>
                     <div class="flex-1 text-right align-middle h-16">
                         @guest
@@ -47,7 +45,7 @@
                 </div>
             </div>
         </nav>
-        <div class='w-full bg-tan-lightest pt-16 pb-8'>
+        <div class='w-full bg-tan-lightest pt-24 pb-8'>
             @yield('top')
         </div>
         <div class='bg-beachy-blue-darker h-24'>
