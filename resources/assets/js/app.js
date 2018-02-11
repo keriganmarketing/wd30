@@ -15,7 +15,10 @@ const app = new Vue({
             phone_number: null,
             address: null,
             mls_id: null,
-        })
+        }),
+        leads: true,
+        properties: false,
+        settings: false
     },
     mounted () {
         this.user.authenticate();
@@ -24,5 +27,23 @@ const app = new Vue({
         sbc (data) {
             this.user.update(data);
         },
+        showLeads() {
+            this.properties = false;
+            this.settings   = false;
+
+            this.leads      = true;
+        },
+        showProperties() {
+            this.settings   = false;
+            this.leads      = false;
+
+            this.properties = true;
+        },
+        showSettings() {
+            this.leads      = false;
+            this.properties = false;
+
+            this.settings   = true;
+        }
     }
 });
