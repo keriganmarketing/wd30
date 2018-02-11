@@ -22,6 +22,7 @@ Route::post('/avatar', 'AvatarsController@store');
 // Resourceful routes
 Route::resource('/leads', 'LeadsController');
 Route::resource('/notes', 'NotesController');
+Route::resource('/content', 'ContentController');
 
 // Misc
 Route::get('/leads/{lead}/notes', 'LeadNotesController@index');
