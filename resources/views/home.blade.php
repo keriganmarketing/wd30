@@ -12,17 +12,29 @@
         <a
             href="#"
             class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
+            :class="{'border-secondary': leads}"
+            @click="showLeads"
         >
             Leads
         </a>
-        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
+        <a
+            href="#"
+            class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
+            :class="{'border-secondary': properties}"
+            @click="showProperties"
+        >
             Properties
         </a>
-        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
+        <a
+            href="#"
+            class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
+            :class="{'border-secondary': settings}"
+            @click="showSettings"
+        >
             Settings
         </a>
     </div>
-    <leads></leads>
-    <bio-card :data-user="user" v-on:submit-button-clicked="sbc"></bio-card>
+    <leads v-if="leads"></leads>
+    <bio-card :data-user="user" v-on:submit-button-clicked="sbc" v-if="settings"></bio-card>
 </div>
 @endsection

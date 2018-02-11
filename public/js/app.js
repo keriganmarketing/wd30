@@ -1123,7 +1123,7 @@ var GeoLocator = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(108);
+module.exports = __webpack_require__(109);
 
 
 /***/ }),
@@ -1132,7 +1132,7 @@ module.exports = __webpack_require__(108);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(108);
 __webpack_require__(13);
 
 window.Vue = __webpack_require__(35);
@@ -1150,7 +1150,10 @@ var app = new Vue({
             phone_number: null,
             address: null,
             mls_id: null
-        })
+        }),
+        leads: true,
+        properties: false,
+        settings: false
     },
     mounted: function mounted() {
         this.user.authenticate();
@@ -1159,6 +1162,24 @@ var app = new Vue({
     methods: {
         sbc: function sbc(data) {
             this.user.update(data);
+        },
+        showLeads: function showLeads() {
+            this.properties = false;
+            this.settings = false;
+
+            this.leads = true;
+        },
+        showProperties: function showProperties() {
+            this.settings = false;
+            this.leads = false;
+
+            this.properties = true;
+        },
+        showSettings: function showSettings() {
+            this.leads = false;
+            this.properties = false;
+
+            this.settings = true;
         }
     }
 });
@@ -35275,17 +35296,6 @@ if (false) {
 
 /***/ }),
 /* 108 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35338,6 +35348,12 @@ var User = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (User);
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
