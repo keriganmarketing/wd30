@@ -1,51 +1,90 @@
 <template>
-    <div class="container mx-auto border flex flex-wrap bg-white p-4 text-teal-darker shadow">
-        <p class="text-lg w-full text-teal-darker p-4 border-b">
-            Name: <span class="p-2 text-left" v-if="!editing">{{ user.name }}</span>
+    <div class="container mx-auto bg-white flex flex-wrap justify-center">
+        <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
+            <span class="text-left w-1/2 text-3xl font-brand font-bold text-secondary">
+                BIO
+            </span>
+            <small class="text-xs w-1/2 text-right">Click on the text you want to edit</small>
+        </p>
+        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+            <div class="w-1/6 py-2 px-4 text-center">
+                Name:
+            </div>
             <input
                 type="text"
-                class="border rounded shadow-inner p-1 text-left"
+                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                :class="{
+                    'border-secondary': name
+                }"
+                ref="name"
                 v-model="user.name"
-                v-if="editing"
+                @focus="edit('name')"
+                @blur="submit('name')"
             >
-        </p>
-        <p class="text-lg w-full text-teal-darker p-4 border-b">
-            Email: <span class="" v-if="!editing">{{ user.email }}</span>
-            <input
-                type="text"
-                class="border rounded shadow p-1 text-left"
-                v-model="user.email"
-                v-if="editing"
-            >
-        </p>
-        <p class="text-lg w-full text-teal-darker p-4 border-b">
-            Phone: <span class="" v-if="!editing">{{ user.phone_number }}</span>
-            <input
-                type="text"
-                class="border rounded shadow p-1 text-left"
-                v-model="user.phone_number"
-                v-if="editing"
-            >
-        </p>
-        <p class="text-lg w-full text-teal-darker p-4 border-b">
-            MLS ID: <span class="" v-if="!editing">{{ user.mls_id }}</span>
-            <input
-                type="text"
-                class="border rounded shadow p-1 text-left"
-                v-model="user.mls_id"
-                v-if="editing"
-            >
-        </p>
-        <p class="text-lg w-full text-teal-darker p-4" v-if="!editing">
-            <span class="block w-1/3 mb-2">Address: </span>
-            <span class="block w-2/3 mb-2" v-html="nl2br(user.address)"/>
-        </p>
-        <div class="text-lg w-full text-teal-darker flex flex-wrap py-4" v-if="editing">
-            <span class="block w-full ml-4 mb-4">Address: </span>
-            <textarea rows="2" v-model="user.address" class="border rounded shadow p-4 text-left w-full" />
         </div>
-        <button class="bg-teal w-full pin-b text-white px-8 py-2 rounded float-right" @click="editButtonClick" v-if="!editing">Edit</button>
-        <button class="bg-teal w-full pin-b text-white px-8 py-2 rounded float-right" @click="submitButtonClick" v-if="editing">Submit</button>
+        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+            <div class="w-1/6 py-2 px-4 text-center">
+                Email:
+            </div>
+            <input
+                type="text"
+                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                :class="{
+                    'border-secondary': email
+                }"
+                ref="email"
+                v-model="user.email"
+                @focus="edit('email')"
+                @blur="submit('email')"
+            >
+        </div>
+        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+            <div class="w-1/6 py-2 px-4 text-center">
+                Phone:
+            </div>
+            <input
+                type="text"
+                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                :class="{
+                    'border-secondary': phone_number
+                }"
+                ref="phone_number"
+                v-model="user.phone_number"
+                @focus="edit('phone_number')"
+                @blur="submit('phone_number')"
+            >
+        </div>
+        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+            <div class="w-1/6 py-2 px-4 text-center">
+                MLS IDs:
+            </div>
+            <input
+                type="text"
+                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                :class="{
+                    'border-secondary': mls_id
+                }"
+                ref="mls_id"
+                v-model="user.mls_id"
+                @focus="edit('mls_id')"
+                @blur="submit('mls_id')"
+            >
+        </div>
+        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+            <div class="w-1/6 py-2 px-4 text-center">
+                Address:
+            </div>
+            <textarea
+                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                :class="{
+                    'border-secondary': address
+                }"
+                ref="address"
+                v-model="user.address"
+                @focus="edit('address')"
+                @blur="submit('address')"
+            />
+        </div>
     </div>
 </template>
 
@@ -59,7 +98,11 @@ export default {
     },
     data() {
         return {
-            editing: false,
+            name: false,
+            email: false,
+            phone_number: false,
+            mls_id: false,
+            address: false,
         }
     },
     computed: {
@@ -68,12 +111,13 @@ export default {
         }
     },
     methods: {
-        editButtonClick () {
-            this.editing = true;
+        edit(key) {
+            this[key] = true;
+            this.$refs[key].select();
         },
-        submitButtonClick () {
+        submit (key) {
+            this[key] = false;
             this.$emit('submit-button-clicked', this.user);
-            this.editing = false;
         },
         nl2br (str, is_xhtml) {
             var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';

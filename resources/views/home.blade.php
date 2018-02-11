@@ -2,12 +2,12 @@
 
 @section('top')
 <div class="container flex flex-wrap py-4 mx-auto justify-between">
-    <welcome-card :data-user="user" :avatar-path='"{{ $avatarPath }}"'></welcome-card>
+    <welcome-card :boilerplate="boilerplate" :data-user="user" :avatar-path='"{{ $avatarPath }}"'></welcome-card>
 </div>
 @endsection
 
 @section('content')
-<div class="container mx-auto flex-items-center">
+<div class="container mx-auto min-h-screen">
     <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24 pb-8">
         <a
             href="#"

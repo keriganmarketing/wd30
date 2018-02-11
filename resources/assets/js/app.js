@@ -18,6 +18,11 @@ const app = new Vue({
         }),
         selected: 'leads'
     },
+    computed: {
+        boilerplate: function () {
+            return this.user.name === '';
+        }
+    },
     mounted () {
         this.user.authenticate();
     },
