@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full border flex flex-wrap bg-white p-4 text-teal-darker shadow">
+    <div class="container mx-auto border flex flex-wrap bg-white p-4 text-teal-darker shadow">
         <p class="text-lg w-full text-teal-darker p-4 border-b">
             Name: <span class="p-2 text-left" v-if="!editing">{{ user.name }}</span>
             <input
@@ -38,7 +38,7 @@
         </p>
         <p class="text-lg w-full text-teal-darker p-4" v-if="!editing">
             <span class="block w-1/3 mb-2">Address: </span>
-            <span class="block w-2/3 mb-2" v-html="formattedAddress"/>
+            <span class="block w-2/3 mb-2" v-html="nl2br(user.address)"/>
         </p>
         <div class="text-lg w-full text-teal-darker flex flex-wrap py-4" v-if="editing">
             <span class="block w-full ml-4 mb-4">Address: </span>
@@ -66,9 +66,6 @@ export default {
     computed: {
         user: function () {
             return this.dataUser;
-        },
-        formattedAddress: function () {
-            return this.user.address.replace(new RegExp(/\r?\n/, 'g'), '<br>');
         }
     },
     methods: {
@@ -78,6 +75,10 @@ export default {
         submitButtonClick () {
             this.$emit('submit-button-clicked', this.user);
             this.editing = false;
+        },
+        nl2br (str, is_xhtml) {
+            var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
         }
     }
 }

@@ -6,10 +6,13 @@
 </div>
 @endsection
 
-@section('navigation')<!--make component-->
+@section('content')
 <div class="container mx-auto flex-items-center">
-    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24">
-        <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
+    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24 pb-8">
+        <a
+            href="#"
+            class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
+        >
             Leads
         </a>
         <a href="#" class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl">
@@ -19,9 +22,7 @@
             Settings
         </a>
     </div>
+    <leads></leads>
+    <bio-card :data-user="user" v-on:submit-button-clicked="sbc"></bio-card>
 </div>
-@endsection
-
-@section('content')
-<leads></leads>
 @endsection

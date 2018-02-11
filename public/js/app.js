@@ -1128,60 +1128,37 @@ module.exports = __webpack_require__(108);
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(114);
 __webpack_require__(13);
 
 window.Vue = __webpack_require__(35);
 
 __webpack_require__(38);
 
+
 var app = new Vue({
     el: '#app',
     data: {
-        user: {
-            id: '',
-            name: '',
-            email: '',
-            phone_number: '',
-            address: '',
-            mls_id: ''
-        }
+        user: new __WEBPACK_IMPORTED_MODULE_0__models_user__["a" /* default */]({
+            id: null,
+            name: null,
+            email: null,
+            phone_number: null,
+            address: null,
+            mls_id: null
+        })
     },
     mounted: function mounted() {
-        this.authenticate();
+        this.user.authenticate();
     },
 
     methods: {
-        sbc: function sbc(updated) {
-            var _this = this;
-
-            this.user = updated;
-            axios({
-                method: 'patch',
-                url: '/users/' + this.user.id,
-                data: {
-                    name: this.user.name,
-                    email: this.user.email,
-                    phone_number: this.user.phone_number,
-                    mls_id: this.user.mls_id,
-                    address: this.user.address
-                }
-            }).then(function (response) {
-                _this.user = response.data;
-            });
-        },
-        authenticate: function authenticate() {
-            var _this2 = this;
-
-            axios.get('/authenticate').then(function (response) {
-                _this2.user.id = response.data.id;
-                _this2.user.name = response.data.name;
-                _this2.user.email = response.data.email;
-                _this2.user.mls_id = response.data.mls_id;
-                _this2.user.address = response.data.address;
-                _this2.user.phone_number = response.data.phone_number;
-            });
+        sbc: function sbc(data) {
+            this.user.update(data);
         }
     }
 });
@@ -31777,9 +31754,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         user: function user() {
             return this.dataUser;
-        },
-        formattedAddress: function formattedAddress() {
-            return this.user.address.replace(new RegExp(/\r?\n/, 'g'), '<br>');
         }
     },
     methods: {
@@ -31789,6 +31763,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitButtonClick: function submitButtonClick() {
             this.$emit('submit-button-clicked', this.user);
             this.editing = false;
+        },
+        nl2br: function nl2br(str, is_xhtml) {
+            var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
         }
     }
 });
@@ -31805,7 +31783,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "w-full h-full border flex flex-wrap bg-white p-4 text-teal-darker shadow"
+        "container mx-auto border flex flex-wrap bg-white p-4 text-teal-darker shadow"
     },
     [
       _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
@@ -31942,7 +31920,7 @@ var render = function() {
             _vm._v(" "),
             _c("span", {
               staticClass: "block w-2/3 mb-2",
-              domProps: { innerHTML: _vm._s(_vm.formattedAddress) }
+              domProps: { innerHTML: _vm._s(_vm.nl2br(_vm.user.address)) }
             })
           ])
         : _vm._e(),
@@ -34234,10 +34212,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         user: function user() {
             return this.dataUser;
-        },
-        firstName: function firstName() {
-            var name = this.user.name.split(" ");
-            return name[0];
         }
     }
 });
@@ -34258,7 +34232,7 @@ var render = function() {
         _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
         _vm._v(" "),
         _c("p", { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" }, [
-          _vm._v(_vm._s(_vm.firstName) + " Branham")
+          _vm._v(_vm._s(_vm.user.name))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "block px-2 text-xs text-smoke-light" }, [
@@ -34532,7 +34506,7 @@ var STATUS_INITIAL = 0,
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return upload; });
 function upload(formData) {
     var url = "/avatar";
-    return axios.post(url, formData).then(function (response) {
+    return window.axios.post(url, formData).then(function (response) {
         return response.data;
     }).catch(function (err) {
         return err.data;
@@ -35304,6 +35278,66 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var User = function () {
+    function User(data) {
+        _classCallCheck(this, User);
+
+        for (var field in data) {
+            this[field] = data[field];
+        }
+    }
+
+    _createClass(User, [{
+        key: 'authenticate',
+        value: function authenticate() {
+            var self = this;
+            window.axios.get('/authenticate').then(function (response) {
+                var data = response.data;
+                for (var field in data) {
+                    self[field] = data[field];
+                }
+            });
+        }
+    }, {
+        key: 'update',
+        value: function update(updated) {
+            window.axios({ method: 'patch', url: '/users/' + updated.id,
+                data: {
+                    name: updated.name,
+                    email: updated.email,
+                    phone_number: updated.phone_number,
+                    mls_id: updated.mls_id,
+                    address: updated.address
+                }
+            }).then(function (response) {
+                var data = response.data;
+                for (var field in data) {
+                    console.log(self);
+                    self[field] = data[field];
+                }
+            });
+        }
+    }]);
+
+    return User;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ })
 /******/ ]);

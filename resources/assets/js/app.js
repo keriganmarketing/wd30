@@ -3,49 +3,26 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 require('./load-components');
+import User from './models/user';
 
 const app = new Vue({
     el: '#app',
     data: {
-        user: {
-            id: '',
-            name: '',
-            email: '',
-            phone_number: '',
-            address: '',
-            mls_id: '',
-        }
+        user: new User({
+            id: null,
+            name: null,
+            email: null,
+            phone_number: null,
+            address: null,
+            mls_id: null,
+        })
     },
     mounted () {
-        this.authenticate();
+        this.user.authenticate();
     },
     methods: {
-        sbc (updated) {
-            this.user = updated;
-            axios({
-                method: 'patch',
-                url: '/users/' + this.user.id,
-                data: {
-                    name: this.user.name,
-                    email: this.user.email,
-                    phone_number: this.user.phone_number,
-                    mls_id: this.user.mls_id,
-                    address: this.user.address
-                }
-            })
-                .then(response => {
-                    this.user = response.data;
-                });
+        sbc (data) {
+            this.user.update(data);
         },
-        authenticate () {
-            axios.get('/authenticate').then(response => {
-                this.user.id           = response.data.id;
-                this.user.name         = response.data.name;
-                this.user.email        = response.data.email;
-                this.user.mls_id       = response.data.mls_id;
-                this.user.address      = response.data.address;
-                this.user.phone_number = response.data.phone_number;
-            });
-        }
     }
 });
