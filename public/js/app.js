@@ -1153,6 +1153,11 @@ var app = new Vue({
         }),
         selected: 'leads'
     },
+    computed: {
+        boilerplate: function boilerplate() {
+            return this.user.name === '';
+        }
+    },
     mounted: function mounted() {
         this.user.authenticate();
     },
@@ -31737,6 +31742,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -31747,7 +31791,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            editing: false
+            name: false,
+            email: false,
+            phone_number: false,
+            mls_id: false,
+            address: false
         };
     },
 
@@ -31757,12 +31805,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        editButtonClick: function editButtonClick() {
-            this.editing = true;
+        edit: function edit(key) {
+            this[key] = true;
+            this.$refs[key].select();
         },
-        submitButtonClick: function submitButtonClick() {
+        submit: function submit(key) {
+            this[key] = false;
             this.$emit('submit-button-clicked', this.user);
-            this.editing = false;
         },
         nl2br: function nl2br(str, is_xhtml) {
             var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
@@ -31781,213 +31830,269 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "container mx-auto border flex flex-wrap bg-white p-4 text-teal-darker shadow"
-    },
+    { staticClass: "container mx-auto bg-white flex flex-wrap justify-center" },
     [
-      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
-        _vm._v("\n        Name: "),
-        !_vm.editing
-          ? _c("span", { staticClass: "p-2 text-left" }, [
-              _vm._v(_vm._s(_vm.user.name))
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.editing
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.name,
-                  expression: "user.name"
-                }
-              ],
-              staticClass: "border rounded shadow-inner p-1 text-left",
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "name", $event.target.value)
-                }
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+        },
+        [
+          _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
+            _vm._v("\n            Name:\n        ")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.name,
+                expression: "user.name"
               }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
-        _vm._v("\n        Email: "),
-        !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.email))])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.editing
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.email,
-                  expression: "user.email"
-                }
-              ],
-              staticClass: "border rounded shadow p-1 text-left",
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "email", $event.target.value)
-                }
-              }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
-        _vm._v("\n        Phone: "),
-        !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.phone_number))])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.editing
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.phone_number,
-                  expression: "user.phone_number"
-                }
-              ],
-              staticClass: "border rounded shadow p-1 text-left",
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.phone_number },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "phone_number", $event.target.value)
-                }
-              }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-lg w-full text-teal-darker p-4 border-b" }, [
-        _vm._v("\n        MLS ID: "),
-        !_vm.editing
-          ? _c("span", {}, [_vm._v(_vm._s(_vm.user.mls_id))])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.editing
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.mls_id,
-                  expression: "user.mls_id"
-                }
-              ],
-              staticClass: "border rounded shadow p-1 text-left",
-              attrs: { type: "text" },
-              domProps: { value: _vm.user.mls_id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "mls_id", $event.target.value)
-                }
-              }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      !_vm.editing
-        ? _c("p", { staticClass: "text-lg w-full text-teal-darker p-4" }, [
-            _c("span", { staticClass: "block w-1/3 mb-2" }, [
-              _vm._v("Address: ")
-            ]),
-            _vm._v(" "),
-            _c("span", {
-              staticClass: "block w-2/3 mb-2",
-              domProps: { innerHTML: _vm._s(_vm.nl2br(_vm.user.address)) }
-            })
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editing
-        ? _c(
-            "div",
-            {
-              staticClass: "text-lg w-full text-teal-darker flex flex-wrap py-4"
+            ],
+            ref: "name",
+            staticClass:
+              "font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left",
+            class: {
+              "border-secondary": _vm.name
             },
-            [
-              _c("span", { staticClass: "block w-full ml-4 mb-4" }, [
-                _vm._v("Address: ")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.address,
-                    expression: "user.address"
-                  }
-                ],
-                staticClass: "border rounded shadow p-4 text-left w-full",
-                attrs: { rows: "2" },
-                domProps: { value: _vm.user.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.user, "address", $event.target.value)
-                  }
+            attrs: { type: "text" },
+            domProps: { value: _vm.user.name },
+            on: {
+              focus: function($event) {
+                _vm.edit("name")
+              },
+              blur: function($event) {
+                _vm.submit("name")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              })
-            ]
-          )
-        : _vm._e(),
+                _vm.$set(_vm.user, "name", $event.target.value)
+              }
+            }
+          })
+        ]
+      ),
       _vm._v(" "),
-      !_vm.editing
-        ? _c(
-            "button",
-            {
-              staticClass:
-                "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
-              on: { click: _vm.editButtonClick }
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+        },
+        [
+          _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
+            _vm._v("\n            Email:\n        ")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.email,
+                expression: "user.email"
+              }
+            ],
+            ref: "email",
+            staticClass:
+              "font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left",
+            class: {
+              "border-secondary": _vm.email
             },
-            [_vm._v("Edit")]
-          )
-        : _vm._e(),
+            attrs: { type: "text" },
+            domProps: { value: _vm.user.email },
+            on: {
+              focus: function($event) {
+                _vm.edit("email")
+              },
+              blur: function($event) {
+                _vm.submit("email")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "email", $event.target.value)
+              }
+            }
+          })
+        ]
+      ),
       _vm._v(" "),
-      _vm.editing
-        ? _c(
-            "button",
-            {
-              staticClass:
-                "bg-teal w-full pin-b text-white px-8 py-2 rounded float-right",
-              on: { click: _vm.submitButtonClick }
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+        },
+        [
+          _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
+            _vm._v("\n            Phone:\n        ")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.phone_number,
+                expression: "user.phone_number"
+              }
+            ],
+            ref: "phone_number",
+            staticClass:
+              "font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left",
+            class: {
+              "border-secondary": _vm.phone_number
             },
-            [_vm._v("Submit")]
-          )
-        : _vm._e()
+            attrs: { type: "text" },
+            domProps: { value: _vm.user.phone_number },
+            on: {
+              focus: function($event) {
+                _vm.edit("phone_number")
+              },
+              blur: function($event) {
+                _vm.submit("phone_number")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "phone_number", $event.target.value)
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+        },
+        [
+          _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
+            _vm._v("\n            MLS IDs:\n        ")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.mls_id,
+                expression: "user.mls_id"
+              }
+            ],
+            ref: "mls_id",
+            staticClass:
+              "font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left",
+            class: {
+              "border-secondary": _vm.mls_id
+            },
+            attrs: { type: "text" },
+            domProps: { value: _vm.user.mls_id },
+            on: {
+              focus: function($event) {
+                _vm.edit("mls_id")
+              },
+              blur: function($event) {
+                _vm.submit("mls_id")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "mls_id", $event.target.value)
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+        },
+        [
+          _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
+            _vm._v("\n            Address:\n        ")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.address,
+                expression: "user.address"
+              }
+            ],
+            ref: "address",
+            staticClass:
+              "font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left",
+            class: {
+              "border-secondary": _vm.address
+            },
+            domProps: { value: _vm.user.address },
+            on: {
+              focus: function($event) {
+                _vm.edit("address")
+              },
+              blur: function($event) {
+                _vm.submit("address")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "address", $event.target.value)
+              }
+            }
+          })
+        ]
+      )
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      {
+        staticClass:
+          "w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary"
+      },
+      [
+        _c(
+          "span",
+          {
+            staticClass:
+              "text-left w-1/2 text-3xl font-brand font-bold text-secondary"
+          },
+          [_vm._v("\n            BIO\n        ")]
+        ),
+        _vm._v(" "),
+        _c("small", { staticClass: "text-xs w-1/2 text-right" }, [
+          _vm._v("Click on the text you want to edit")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -34206,9 +34311,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataUser', 'avatarPath'],
+    props: ['dataUser', 'avatarPath', 'boilerplate'],
     computed: {
         user: function user() {
             return this.dataUser;
@@ -34231,9 +34337,17 @@ var render = function() {
       [
         _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
         _vm._v(" "),
-        _c("p", { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" }, [
-          _vm._v(_vm._s(_vm.user.name))
-        ]),
+        !_vm.boilerplate
+          ? _c(
+              "p",
+              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
+              [_vm._v(_vm._s(_vm.user.name))]
+            )
+          : _c(
+              "p",
+              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
+              [_vm._v("Your Name")]
+            ),
         _vm._v(" "),
         _c("p", { staticClass: "block px-2 text-xs text-smoke-light" }, [
           _vm._v("Beachy Beach Real Estate")

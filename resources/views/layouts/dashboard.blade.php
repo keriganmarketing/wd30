@@ -22,7 +22,8 @@
                         @include('partials.logo')
                     </div>
                     <div class="flex-1 text-right align-middle h-16 pb-4 md:py-0">
-                        <span class="text-dbblue text-sm pr-4">@{{ user.name }}</span>
+                        <span class="text-dbblue text-sm pr-4" v-if="! boilerplate">@{{ user.name }}</span>
+                        <span class="text-dbblue text-sm pr-4" v-else>Your Name</span>
 
                         <a href="{{ route('logout') }}"
                             class="no-underline hover:underline text-dbblue-dark text-sm py-4"
@@ -43,9 +44,6 @@
         <div class='w-full bg-tan-lightest pt-24 pb-8'>
             @yield('top')
         </div>
-        {{-- <div class='bg-beachy-blue-darker h-24'>
-            @yield('navigation')
-        </div> --}}
         <div class='bg-beachy-blue'>
             @yield('content')
         </div>

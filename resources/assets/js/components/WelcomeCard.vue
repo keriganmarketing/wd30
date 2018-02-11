@@ -2,7 +2,8 @@
     <div class="flex w-full text-center mb-4 flex-wrap">
         <div class="w-full md:w-1/5"><!--Avatar box and info-->
             <avatar-upload :avatar-path="avatarPath" />
-            <p class="block px-2 mt-2 text-xl text-smoke-dark">{{ user.name }}</p>
+            <p class="block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
+            <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
             <p class="block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
         </div>
         <div class="flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"><!--leading-tighter is a custom utility. Compensates for <br>.-->
@@ -32,7 +33,7 @@
 </template>
 <script>
 export default {
-    props: ['dataUser','avatarPath'],
+    props: ['dataUser','avatarPath', 'boilerplate'],
     computed: {
         user: function () {
             return this.dataUser;
