@@ -1151,9 +1151,7 @@ var app = new Vue({
             address: null,
             mls_id: null
         }),
-        leads: true,
-        properties: false,
-        settings: false
+        selected: 'leads'
     },
     mounted: function mounted() {
         this.user.authenticate();
@@ -1162,24 +1160,6 @@ var app = new Vue({
     methods: {
         sbc: function sbc(data) {
             this.user.update(data);
-        },
-        showLeads: function showLeads() {
-            this.properties = false;
-            this.settings = false;
-
-            this.leads = true;
-        },
-        showProperties: function showProperties() {
-            this.settings = false;
-            this.leads = false;
-
-            this.properties = true;
-        },
-        showSettings: function showSettings() {
-            this.leads = false;
-            this.properties = false;
-
-            this.settings = true;
         }
     }
 });
@@ -31759,7 +31739,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    // props: ['data-user'],
     props: {
         dataUser: {
             type: Object,

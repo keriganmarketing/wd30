@@ -51,7 +51,6 @@
 
 <script>
 export default {
-    // props: ['data-user'],
     props: {
         dataUser: {
             type: Object,
