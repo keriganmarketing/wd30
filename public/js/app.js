@@ -35478,13 +35478,13 @@ var render = function() {
     "div",
     {
       staticClass:
-        "text-grey-darkest flex flex-wrap justify-start p-8 border-t w-full"
+        "text-grey-darkest flex flex-wrap justify-start lg:p-8 border-t w-full"
     },
     [
       _c("div", { staticClass: "w-full mb-8 flex flex-wrap items-start" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "w-1/2" }, [
+        _c("div", { staticClass: "w-full md:w-1/2" }, [
           _c("textarea", {
             directives: [
               {
@@ -37103,7 +37103,7 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-hairline" }, [
+              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
                 _vm._v("Property Clicks")
               ])
             ])
@@ -37124,7 +37124,7 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-hairline" }, [
+              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
                 _vm._v("Property Impressions")
               ])
             ])
@@ -37145,7 +37145,7 @@ var render = function() {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-hairline" }, [
+              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
                 _vm._v("Active Leads")
               ])
             ])
