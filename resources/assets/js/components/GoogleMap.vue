@@ -1,20 +1,21 @@
 <template>
-    <div class="h-full w-full relative flex flex-wrap justify-around">
-        <div class="google-map w-full h-full" ref="map" :class="{'w-1/2': showDirections }">
+    <div class="relative flex flex-col min-h-64">
+        <div ref="map" class="google-map w-full h-64" >
             <div
-                ref="directionsButton"
-                class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center"
-                @click="getDirections"
+                    ref="directionsButton"
+                    class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center"
+                    :class="{'hidden': showDirections}"
+                    @click="getUserLocation"
             >
                 GET DIRECTIONS
             </div>
         </div>
         <div
-            ref="directionsPanel"
-            class="w-1/2 h-auto absolute pin text-xl bg-white text-brand-darket p-8 overflow-auto"
-            :class="{'hidden': !showDirections}"
+                ref="directionsPanel"
+                class="w-full bg-white text-brand-darket p-8 overflow-auto h-auto overflow-y-scroll"
+                :class="{'hidden': !showDirections}"
         >
-            <a class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center" @click="showDirections = false">CLOSE DIRECTIONS</a>
+            <a class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center" @click="closeDirections">CLOSE DIRECTIONS</a>
         </div>
     </div>
 </template>
@@ -37,67 +38,65 @@ export default {
             default: this.zoom
         }
     },
-    data () {
+    data() {
         return {
             renderedMap: {},
-            myPosition: {},
             error: '',
-            showDirections: false
+            showDirections: false,
+            config: {}
         }
     },
-    mounted () {
-        this.getUserLocation();
+    mounted() {
+        this.config = {
+            zoom:    this.zoom,
+            origin:  {}, //we don't know this yet
+            mapElement: this.$refs.map,
+            destination: {
+                latitude: this.latitude,
+                longitude: this.longitude
+            },
+            directionsButton: this.$refs.directionsButton,
+            directionsPanel: this.$refs.directionsPanel
+        };
         this.renderMap();
     },
     methods: {
-        getUserLocation() {
-            let vm = this;
-            let geo = new GeoLocator();
-            geo.getLocation()
-                .then(position => {
-                    vm.myPosition = position;
-                })
-                .catch(error => {
-                    vm.error = error.message;
-                })
-        },
         renderMap() {
-            let config = {
-                zoom:    this.zoom,
-                origin:  this.myPosition,
-                mapElement: this.$refs.map,
-                destination: {
-                    latitude: this.latitude,
-                    longitude: this.longitude
-                },
-                directionsButton: this.$refs.directionsButton,
-                directionsPanel: this.$refs.directionsPanel
-            };
-            new GoogleMap(config)
+            let vm = this;
+            new GoogleMap(vm.config)
                 .load()
                 .then(rendered => {
                     this.renderedMap = rendered;
                 });
         },
-        getDirections () {
-            let config = {
-                zoom:    this.zoom,
-                origin:  this.myPosition,
-                mapElement: this.$refs.map,
-                destination: {
-                    latitude: this.latitude,
-                    longitude: this.longitude
-                },
-                directionsButton: this.$refs.directionsButton,
-                directionsPanel: this.$refs.directionsPanel
-            };
-            let locations = {
-                origin: config.origin,
-                destination: config.destination,
-            };
-            new GoogleMap(config)
-                .getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
+        getUserLocation(){
+            let vm = this;
+            let geo = new GeoLocator();
+            geo.getLocation()
+                .then(position => {
+                    vm.config.origin = position;
+                    vm.openDirections();
+                })
+                .catch(error => {
+                    vm.error = error.message;
+                })
+        },
+        openDirections() {
             this.showDirections = true;
+
+            if(this.config.origin !== null) {
+                let vm = this;
+                let locations = {
+                    origin: vm.config.origin,
+                    destination: vm.config.destination,
+                };
+                new GoogleMap(vm.config)
+                    .getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
+            }
+        },
+        closeDirections(){
+            this.showDirections = false;
+            this.renderMap();
         }
     }
 }
