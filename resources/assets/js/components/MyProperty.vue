@@ -73,7 +73,7 @@ export default {
     },
     computed: {
         ctr: function () {
-            let ratio = this.listing.impressions / this.listing.clicks;
+            let ratio = (this.listing.clicks / this.listing.impressions) * 100;
             return ratio.toFixed(2);
         }
     }

@@ -15,8 +15,8 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable()->default('The tagline for your site');
-            $table->longText('body')->nullable()->default('Here is where you will tell the world why they should purchase or list a home with you');
+            $table->string('title')->nullable();
+            $table->longText('body')->nullable();
             $table->timestamps();
         });
     }

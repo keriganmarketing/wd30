@@ -35078,7 +35078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         ctr: function ctr() {
-            var ratio = this.listing.impressions / this.listing.clicks;
+            var ratio = this.listing.clicks / this.listing.impressions * 100;
             return ratio.toFixed(2);
         }
     }
