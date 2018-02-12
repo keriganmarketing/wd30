@@ -9,8 +9,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="flex-auto w-full md:w-3/4 px-3 py-2 text-center md:text-left">
                     <h1 class="mb-4 text-secondary-lighter">{{ $content->title }}</h1>
-                    <p class="leading-normal text-grey-darker">{{ $content->body }}</p>
-                    {{-- <p class="mt-3 text-grey-darker"><span class="font-brand text-lg">Specialties:</span>  Listing Agent, Buyer’s Agent, New Home Specialist, Home Building</p> --}}
+                    <p class="leading-normal text-grey-darker">{!! nl2br($content->body) !!}</p>
                     <a href="/property-search/" class="button-brand w-auto mt-4 no-underline" >Property Search</a>
                 </div>
                 <div class="flex-auto w-full md:w-1/4 px-3 justify-center text-center py-2">
