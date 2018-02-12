@@ -75,9 +75,9 @@ export default {
                     requestAnimationFrame(animate)
                 }
             }
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+            new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue.toLocaleString() }, 250)
+                .to({ tweeningNumber: newValue }, 1000)
                 .onUpdate(function () {
                     vm.animatedImpressions = this._object.tweeningNumber.toFixed(0);
                 })
@@ -96,9 +96,9 @@ export default {
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+            new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue.toLocaleString() }, 500)
+                .to({ tweeningNumber: newValue }, 500)
                 .onUpdate(function () {
                     vm.animatedClicks = this._object.tweeningNumber.toFixed(0);
                 })
@@ -117,11 +117,11 @@ export default {
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+            new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue.toLocaleString() }, 500)
+                .to({ tweeningNumber: newValue }, 500)
                 .onUpdate(function () {
-                    vm.animatedLeads = this._object.tweeningNumber.toFixed(0).toLocaleString();
+                    vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
                 })
                 .onComplete(function () {
                     vm.animatedLeads = vm.leads.toLocaleString();
