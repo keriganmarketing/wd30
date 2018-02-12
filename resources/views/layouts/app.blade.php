@@ -21,8 +21,6 @@
                     <div class="md:flex items-center justify-between">
                         <div class="flex flex-wrap text-center md:text-right sm:flex-row-reverse w-full">
                             @guest
-                                {{--<a class="inline-block w-1/2 sm:w-auto no-underline text-white text-xs px-2 py-3 md:py-1 pr-4 bg-brand-darker hover:bg-darkest" href="{{ url('/register') }}">Register</a>--}}
-                                {{--<a class="inline-block w-1/2 sm:w-auto no-underline text-white text-xs px-2 py-3 md:py-1 pl-4 bg-brand-darker hover:bg-darkest" href="{{ url('/login') }}">Login</a>--}}
                                 @if(isset($realtor))
                                     <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">{{ $realtor->email }}</a>
                                     <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:8506484560">{{ $realtor->phone_number }}</a>

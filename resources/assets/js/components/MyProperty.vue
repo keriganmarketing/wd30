@@ -1,15 +1,20 @@
 <template>
-    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2" >
+    <div class="w-full md:w-1/2 lg:w-1/3 px-2 py-2" >
         <div class="w-full flex bg-white py-2 text-brand">
-            <p class="flex flex-wrap items-center text-center justify-center py-2 w-1/2 border-r">
+            <p class="flex flex-wrap items-start text-center justify-center py-2 w-1/3 border-r">
+                {{ listing.clicks.toLocaleString() }}
+                <br>
+                Clicks
+            </p>
+            <p class="flex flex-wrap items-center text-center justify-center py-2 w-1/3 border-r">
                 {{ listing.impressions.toLocaleString() }}
                 <br>
                 Impressions
             </p>
-            <p class="flex flex-wrap items-center text-center justify-center py-2 w-1/2 border-r">
-                {{ listing.clicks.toLocaleString() }}
+            <p class="flex flex-wrap items-center text-center justify-center py-2 w-1/3 border-r">
+                {{ ctr }}%
                 <br>
-                Clicks
+                CTR
             </p>
         </div>
         <div
@@ -64,6 +69,12 @@ export default {
         listing: {
             type: Object,
             default: () => {}
+        }
+    },
+    computed: {
+        ctr: function () {
+            let ratio = this.listing.impressions / this.listing.clicks;
+            return ratio.toFixed(2);
         }
     }
 }

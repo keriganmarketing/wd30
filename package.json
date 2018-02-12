@@ -18,6 +18,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@tweenjs/tween.js": "^17.2.0",
         "google-maps": "^3.2.1",
         "vue-core-image-upload": "^2.4.2"
     }

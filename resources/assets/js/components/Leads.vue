@@ -11,7 +11,7 @@
             :lead="lead"
             :active-leads="viewingActiveLeads"
             :current-page="pagination.current_page"
-            @archived="fetchLeads('active', pagination.current_page)"
+            @archived="fetchLeads('active', pagination.current_page);"
             @unarchived="fetchLeads('archived', pagination.current_page)"
             @important="fetchLeads"
         />
@@ -63,11 +63,18 @@ export default {
                 url = type;
                 break;
             }
+            let vm = this;
             axios.get(url)
                 .then(response => {
                     this.pagination = response.data;
                     this.leads = response.data.data;
+                    if (this.viewingActiveLeads) {
+                        this.$emit('archived');
+                    } else {
+                        this.$emit('unarchived')
+                    }
                 })
+
         }
     }
 }

@@ -12,7 +12,7 @@
             </div>
             <input
                 type="text"
-                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
                 :class="{
                     'border-secondary': name
                 }"
@@ -28,7 +28,7 @@
             </div>
             <input
                 type="text"
-                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
                 :class="{
                     'border-secondary': email
                 }"
@@ -44,7 +44,7 @@
             </div>
             <input
                 type="text"
-                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
                 :class="{
                     'border-secondary': phone_number
                 }"
@@ -60,7 +60,7 @@
             </div>
             <input
                 type="text"
-                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
                 :class="{
                     'border-secondary': mls_id
                 }"
@@ -75,7 +75,7 @@
                 Address:
             </div>
             <textarea
-                class="font-semibold border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
                 :class="{
                     'border-secondary': address
                 }"
