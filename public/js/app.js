@@ -32917,6 +32917,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -32938,62 +32939,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             renderedMap: {},
-            myPosition: {},
             error: '',
-            showDirections: false
+            showDirections: false,
+            config: {}
         };
     },
     mounted: function mounted() {
-        this.getUserLocation();
+        this.config = {
+            zoom: this.zoom,
+            origin: {}, //we don't know this yet
+            mapElement: this.$refs.map,
+            destination: {
+                latitude: this.latitude,
+                longitude: this.longitude
+            },
+            directionsButton: this.$refs.directionsButton,
+            directionsPanel: this.$refs.directionsPanel
+        };
         this.renderMap();
     },
 
     methods: {
+        renderMap: function renderMap() {
+            var _this = this;
+
+            var vm = this;
+            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config).load().then(function (rendered) {
+                _this.renderedMap = rendered;
+            });
+        },
         getUserLocation: function getUserLocation() {
             var vm = this;
             var geo = new __WEBPACK_IMPORTED_MODULE_0__services_geolocator_service_js__["a" /* default */]();
             geo.getLocation().then(function (position) {
-                vm.myPosition = position;
+                vm.config.origin = position;
+                vm.openDirections();
             }).catch(function (error) {
                 vm.error = error.message;
             });
         },
-        renderMap: function renderMap() {
-            var _this = this;
-
-            var config = {
-                zoom: this.zoom,
-                origin: this.myPosition,
-                mapElement: this.$refs.map,
-                destination: {
-                    latitude: this.latitude,
-                    longitude: this.longitude
-                },
-                directionsButton: this.$refs.directionsButton,
-                directionsPanel: this.$refs.directionsPanel
-            };
-            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](config).load().then(function (rendered) {
-                _this.renderedMap = rendered;
-            });
-        },
-        getDirections: function getDirections() {
-            var config = {
-                zoom: this.zoom,
-                origin: this.myPosition,
-                mapElement: this.$refs.map,
-                destination: {
-                    latitude: this.latitude,
-                    longitude: this.longitude
-                },
-                directionsButton: this.$refs.directionsButton,
-                directionsPanel: this.$refs.directionsPanel
-            };
-            var locations = {
-                origin: config.origin,
-                destination: config.destination
-            };
-            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](config).getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
+        openDirections: function openDirections() {
             this.showDirections = true;
+
+            if (this.config.origin !== null) {
+                var vm = this;
+                var locations = {
+                    origin: vm.config.origin,
+                    destination: vm.config.destination
+                };
+                new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config).getDirections(locations, this.renderedMap, this.$refs.directionsButton, this.$refs.directionsPanel);
+            }
+        },
+        closeDirections: function closeDirections() {
+            this.showDirections = false;
+            this.renderMap();
         }
     }
 });
@@ -33051,10 +33050,12 @@ var GoogleMap = function () {
                 mapData.map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
 
                 mapData.position = mapData.map.center;
+                mapData.bounds = new google.maps.LatLngBounds(mapData.position);
                 mapData.marker = new google.maps.Marker({
                     position: mapData.position,
                     map: mapData.map
                 });
+
                 window.map = mapData.map;
             });
 
@@ -33070,6 +33071,9 @@ var GoogleMap = function () {
                     destination: new google.maps.LatLng(locations.destination.latitude, locations.destination.longitude),
                     travelMode: 'DRIVING'
                 });
+
+                mapData.bounds.extend(directionsDisplay.destination);
+
                 var directionsService = new google.maps.DirectionsService();
                 directionsDisplay.setPanel(panel);
                 directionsService.route({
@@ -33083,6 +33087,7 @@ var GoogleMap = function () {
                         return window.alert('Directions request failed due to ' + status);
                     }
                 });
+                mapData.map.fitBounds(mapData.bounds);
                 directionsDisplay.setMap(mapData.map);
             });
         }
@@ -33330,57 +33335,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "h-full w-full relative flex flex-wrap justify-around" },
-    [
+  return _c("div", { staticClass: "relative flex flex-col min-h-64" }, [
+    _c("div", { ref: "map", staticClass: "google-map w-full h-64" }, [
       _c(
         "div",
         {
-          ref: "map",
-          staticClass: "google-map w-full h-full",
-          class: { "w-1/2": _vm.showDirections }
-        },
-        [
-          _c(
-            "div",
-            {
-              ref: "directionsButton",
-              staticClass:
-                "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center",
-              on: { click: _vm.getDirections }
-            },
-            [_vm._v("\n            GET DIRECTIONS\n        ")]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          ref: "directionsPanel",
+          ref: "directionsButton",
           staticClass:
-            "w-1/2 h-auto absolute pin text-xl bg-white text-brand-darket p-8 overflow-auto",
-          class: { hidden: !_vm.showDirections }
+            "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center",
+          class: { hidden: _vm.showDirections },
+          on: { click: _vm.getUserLocation }
         },
-        [
-          _c(
-            "a",
-            {
-              staticClass:
-                "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center",
-              on: {
-                click: function($event) {
-                  _vm.showDirections = false
-                }
-              }
-            },
-            [_vm._v("CLOSE DIRECTIONS")]
-          )
-        ]
+        [_vm._v("\n            GET DIRECTIONS\n        ")]
       )
-    ]
-  )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        ref: "directionsPanel",
+        staticClass:
+          "w-full bg-white text-brand-darket p-8 overflow-auto h-auto overflow-y-scroll",
+        class: { hidden: !_vm.showDirections }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass:
+              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center",
+            on: { click: _vm.closeDirections }
+          },
+          [_vm._v("CLOSE DIRECTIONS")]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

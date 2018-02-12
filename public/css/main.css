@@ -6178,6 +6178,10 @@ h3 span {
   font-family: 'Bebas Neue', sans-serif;
 }
 
+.min-h-64 {
+  min-height: 16rem;
+}
+
 .text-shadow {
   text-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
 }
