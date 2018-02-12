@@ -11,21 +11,21 @@
                 <p class="block text-5xl text-smoke-darker">
                     <span class="text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
-                    <span class="text-lg font-hairline">Property Clicks</span>
+                    <span class="text-lg font-brand text-smoke">Property Clicks</span>
                 </p>
             </div>
             <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
                 <p class="block text-5xl text-smoke-darker">
                     <span class="text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
-                    <span class="text-lg font-hairline">Property Impressions</span>
+                    <span class="text-lg font-brand text-smoke">Property Impressions</span>
                 </p>
             </div>
             <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
                 <p class=" block text-5xl text-smoke-darker">
                     <span class="text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
-                    <span class="text-lg font-hairline">Active Leads</span>
+                    <span class="text-lg font-brand text-smoke">Active Leads</span>
                 </p>
             </div>
         </div>
