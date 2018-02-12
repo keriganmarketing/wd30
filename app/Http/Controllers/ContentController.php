@@ -13,14 +13,8 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
+    public function index()
     {
-        if (Content::first() == null) {
-            return Content::create([
-                'title' => 'The tagline for your site',
-                'body' => 'Here is where you will tell the world why they should purchase or list a home with you'
-            ]);
-        }
         return Content::first();
     }
 
@@ -33,6 +27,11 @@ class ContentController extends Controller
      */
     public function update(Request $request, Content $content)
     {
-        //
+        $content->update([
+            'title' => $request->title,
+            'body'  => $request->body
+        ]);
+
+        return $content;
     }
 }

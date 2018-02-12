@@ -16,6 +16,7 @@ Vue.component('bathrooms', require('./components/Bathrooms.vue'));
 Vue.component('total-sqft', require('./components/TotalSqft.vue'));
 Vue.component('search-bar', require('./components/SearchBar.vue'));
 Vue.component('google-map', require('./components/GoogleMap.vue'));
+Vue.component('content-card', require('./components/ContentCard.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
 Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 Vue.component('property-type', require('./components/PropertyType.vue'));

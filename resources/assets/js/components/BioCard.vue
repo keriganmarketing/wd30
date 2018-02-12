@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto bg-white flex flex-wrap justify-center">
+    <div class="container mx-auto bg-white flex flex-wrap justify-center mb-8">
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
             <span class="text-left w-1/2 text-3xl font-brand font-bold text-secondary">
                 BIO
@@ -85,8 +85,7 @@
                 @blur="submit('address')"
             />
         </div>
-    </div>
-</template>
+    </div> </template>
 
 <script>
 export default {
@@ -118,10 +117,6 @@ export default {
         submit (key) {
             this[key] = false;
             this.$emit('submit-button-clicked', this.user);
-        },
-        nl2br (str, is_xhtml) {
-            var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
         }
     }
 }
