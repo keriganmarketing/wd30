@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.TWEEN = require('@tweenjs/tween.js');
 
 require('./load-components');
 import User from './models/user';
@@ -22,7 +23,8 @@ const app = new Vue({
             title: null,
             body: null
         }),
-        selected: 'leads'
+        selected: 'leads',
+        leadsLength: 0
     },
     computed: {
         boilerplate: function () {
@@ -39,6 +41,12 @@ const app = new Vue({
         },
         updateContent(data) {
             this.content.update(data);
+        },
+        updateLeadsCount() {
+            window.axios.get('/leads')
+                .then(response => {
+                    this.leadsLength = response.data.total;
+                });
         }
     }
 });

@@ -9,21 +9,21 @@
         <div class="flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"><!--leading-tighter is a custom utility. Compensates for <br>.-->
             <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
                 <p class="block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">343</span>
+                    <span class="text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
                     <span class="text-lg font-hairline">Property Clicks</span>
                 </p>
             </div>
             <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
                 <p class="block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">4,326</span>
+                    <span class="text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
                     <span class="text-lg font-hairline">Property Impressions</span>
                 </p>
             </div>
             <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
                 <p class=" block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">12</span>
+                    <span class="text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
                     <span class="text-lg font-hairline">Active Leads</span>
                 </p>
@@ -45,11 +45,113 @@ export default {
         boilerplate: {
             type: Boolean,
             default: false
+        },
+        leadsLength: {
+            type: Number,
+            default: 0
+        }
+    },
+    data () {
+        return {
+            impressions: 0,
+            animatedImpressions: 0,
+            clicks: 0,
+            animatedClicks: 0,
+            leads: 0,
+            animatedLeads: 0,
+            properties: []
         }
     },
     computed: {
         user: function () {
             return this.dataUser;
+        }
+    },
+    watch: {
+        impressions: function (newValue, oldValue) {
+            var vm = this
+            function animate () {
+                if (window.TWEEN.update()) {
+                    requestAnimationFrame(animate)
+                }
+            }
+            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+                .easing(window.TWEEN.Easing.Quadratic.Out)
+                .to({ tweeningNumber: newValue.toLocaleString() }, 250)
+                .onUpdate(function () {
+                    vm.animatedImpressions = this._object.tweeningNumber.toFixed(0);
+                })
+                .onComplete(function () {
+                    vm.animatedImpressions = vm.impressions.toLocaleString();
+                })
+                .start()
+
+            animate()
+        },
+        clicks: function (newValue, oldValue) {
+            var vm = this
+            function animate () {
+                if (window.TWEEN.update()) {
+                    requestAnimationFrame(animate)
+                }
+            }
+
+            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+                .easing(window.TWEEN.Easing.Quadratic.Out)
+                .to({ tweeningNumber: newValue.toLocaleString() }, 500)
+                .onUpdate(function () {
+                    vm.animatedClicks = this._object.tweeningNumber.toFixed(0);
+                })
+                .onComplete(function () {
+                    vm.animatedClicks = vm.clicks.toLocaleString();
+                })
+                .start()
+
+            animate()
+        },
+        leads: function (newValue, oldValue) {
+            var vm = this
+            function animate () {
+                if (window.TWEEN.update()) {
+                    requestAnimationFrame(animate)
+                }
+            }
+
+            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() })
+                .easing(window.TWEEN.Easing.Quadratic.Out)
+                .to({ tweeningNumber: newValue.toLocaleString() }, 500)
+                .onUpdate(function () {
+                    vm.animatedLeads = this._object.tweeningNumber.toFixed(0).toLocaleString();
+                })
+                .onComplete(function () {
+                    vm.animatedLeads = vm.leads.toLocaleString();
+                })
+                .start()
+
+            animate()
+        },
+        leadsLength: function (newValue) {
+            this.leads = newValue;
+        }
+    },
+    mounted () {
+        this.getAnalytics();
+    },
+    methods: {
+        getAnalytics () {
+            window.axios.get('my-properties')
+                .then(response => {
+                    this.properties = response.data;
+                    this.properties.map(property => {
+                        this.impressions += property.impressions;
+                        this.clicks += property.clicks;
+                    }, self);
+                });
+
+            window.axios.get('leads')
+                .then(response => {
+                    this.leads = response.data.total;
+                });
         }
     }
 }
