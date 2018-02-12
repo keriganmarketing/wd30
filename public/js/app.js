@@ -1123,7 +1123,7 @@ var GeoLocator = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(113);
+module.exports = __webpack_require__(116);
 
 
 /***/ }),
@@ -1132,8 +1132,8 @@ module.exports = __webpack_require__(113);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(115);
 __webpack_require__(13);
 
 window.Vue = __webpack_require__(35);
@@ -30309,31 +30309,33 @@ exports.clearImmediate = clearImmediate;
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-Vue.component('lead', __webpack_require__(39));
-Vue.component('note', __webpack_require__(42));
-Vue.component('leads', __webpack_require__(45));
-Vue.component('notes', __webpack_require__(48));
-Vue.component('modal', __webpack_require__(51));
-Vue.component('status', __webpack_require__(54));
 Vue.component('acreage', __webpack_require__(56));
-Vue.component('bio-card', __webpack_require__(58));
-Vue.component('omni-bar', __webpack_require__(61));
-Vue.component('bedrooms', __webpack_require__(64));
-Vue.component('features', __webpack_require__(66));
-Vue.component('lead-tabs', __webpack_require__(68));
-Vue.component('min-price', __webpack_require__(71));
-Vue.component('max-price', __webpack_require__(74));
-Vue.component('bathrooms', __webpack_require__(77));
-Vue.component('total-sqft', __webpack_require__(79));
-Vue.component('search-bar', __webpack_require__(82));
-Vue.component('google-map', __webpack_require__(85));
-Vue.component('content-card', __webpack_require__(90));
-Vue.component('welcome-card', __webpack_require__(93));
 Vue.component('avatar-upload', __webpack_require__(96));
-Vue.component('property-type', __webpack_require__(100));
-Vue.component('property-photo', __webpack_require__(102));
-Vue.component('lead-pagination', __webpack_require__(105));
-Vue.component('property-gallery', __webpack_require__(108));
+Vue.component('bathrooms', __webpack_require__(77));
+Vue.component('bedrooms', __webpack_require__(64));
+Vue.component('bio-card', __webpack_require__(58));
+Vue.component('content-card', __webpack_require__(90));
+Vue.component('features', __webpack_require__(66));
+Vue.component('google-map', __webpack_require__(85));
+Vue.component('lead', __webpack_require__(39));
+Vue.component('leads', __webpack_require__(45));
+Vue.component('lead-pagination', __webpack_require__(108));
+Vue.component('lead-tabs', __webpack_require__(68));
+Vue.component('max-price', __webpack_require__(74));
+Vue.component('min-price', __webpack_require__(71));
+Vue.component('modal', __webpack_require__(51));
+Vue.component('my-properties', __webpack_require__(100));
+Vue.component('my-property', __webpack_require__(122));
+Vue.component('note', __webpack_require__(42));
+Vue.component('notes', __webpack_require__(48));
+Vue.component('omni-bar', __webpack_require__(61));
+Vue.component('property-type', __webpack_require__(103));
+Vue.component('property-photo', __webpack_require__(105));
+Vue.component('property-gallery', __webpack_require__(111));
+Vue.component('search-bar', __webpack_require__(82));
+Vue.component('status', __webpack_require__(54));
+Vue.component('total-sqft', __webpack_require__(79));
+Vue.component('welcome-card', __webpack_require__(93));
 
 /***/ }),
 /* 39 */
@@ -31792,6 +31794,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -32032,7 +32036,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b"
+            "w-full py-2 pl-2 bg-white flex flex-wrap items-start border-b"
         },
         [
           _c("div", { staticClass: "w-1/6 py-2 px-4 text-center" }, [
@@ -32054,6 +32058,7 @@ var render = function() {
             class: {
               "border-secondary": _vm.address
             },
+            attrs: { rows: "4" },
             domProps: { value: _vm.user.address },
             on: {
               focus: function($event) {
@@ -32167,6 +32172,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+//
 //
 //
 //
@@ -34596,7 +34602,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataUser', 'avatarPath', 'boilerplate'],
+    props: {
+        dataUser: {
+            type: Object,
+            default: function _default() {}
+        },
+        avatarPath: {
+            type: String,
+            default: ''
+        },
+        boilerplate: {
+            type: Boolean,
+            default: false
+        }
+    },
     computed: {
         user: function user() {
             return this.dataUser;
@@ -34999,9 +35018,154 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
+var __vue_script__ = __webpack_require__(101)
+/* template */
+var __vue_template__ = __webpack_require__(102)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/MyProperties.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a3816b94", Component.options)
+  } else {
+    hotAPI.reload("data-v-a3816b94", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        user: {
+            type: Object,
+            default: function _default() {}
+        }
+    },
+    data: function data() {
+        return {
+            properties: [],
+            loading: false
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        this.loading = true;
+        window.axios.get('my-properties').then(function (response) {
+            _this.properties = response.data;
+            _this.loading = false;
+        });
+    }
+});
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container flex flex-wrap justify-center items-center" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.properties, function(listing) {
+        return _c("my-property", {
+          key: listing.id,
+          attrs: { listing: listing }
+        })
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "w-full text-center text-white text-xl p-4 mb-8" },
+      [
+        _vm._v(
+          "\n        Here is where you can see your properties' analytics data from\n        "
+        ),
+        _c("br"),
+        _vm._v(
+          "\n        Kerigan Marketing Associate's entire real estate network.\n    "
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a3816b94", module.exports)
+  }
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(101)
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35040,7 +35204,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 101 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35122,15 +35286,15 @@ if (false) {
 }
 
 /***/ }),
-/* 102 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(103)
+var __vue_script__ = __webpack_require__(106)
 /* template */
-var __vue_template__ = __webpack_require__(104)
+var __vue_template__ = __webpack_require__(107)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35169,7 +35333,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 103 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35199,7 +35363,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 104 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35233,15 +35397,15 @@ if (false) {
 }
 
 /***/ }),
-/* 105 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = __webpack_require__(109)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(110)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35280,7 +35444,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 106 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35339,7 +35503,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 107 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35451,15 +35615,15 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(112)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(113)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35498,7 +35662,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35584,7 +35748,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 110 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35670,7 +35834,7 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35724,7 +35888,7 @@ var User = function () {
 /* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ }),
-/* 112 */
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35775,10 +35939,321 @@ var Content = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Content);
 
 /***/ }),
-/* 113 */
+/* 116 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(123)
+/* template */
+var __vue_template__ = __webpack_require__(124)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/MyProperty.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ce630ed0", Component.options)
+  } else {
+    hotAPI.reload("data-v-ce630ed0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 123 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        listing: {
+            type: Object,
+            default: function _default() {}
+        }
+    }
+});
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2" },
+    [
+      _c("div", { staticClass: "w-full flex bg-white py-2 text-brand" }, [
+        _c(
+          "p",
+          {
+            staticClass:
+              "flex flex-wrap items-center text-center justify-center py-2 w-1/2 border-r"
+          },
+          [
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.listing.impressions.toLocaleString()) +
+                "\n            "
+            ),
+            _c("br"),
+            _vm._v("\n            Impressions\n        ")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass:
+              "flex flex-wrap items-center text-center justify-center py-2 w-1/2 border-r"
+          },
+          [
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.listing.clicks.toLocaleString()) +
+                "\n            "
+            ),
+            _c("br"),
+            _vm._v("\n            Clicks\n        ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary"
+        },
+        [
+          _c("a", {
+            staticClass: "absolute pin hover:shadow-inner z-50",
+            attrs: { href: "/listing/" + _vm.listing.mls_account }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "property-image md:h-48 md:overflow-hidden" },
+            [
+              _vm.listing.has_open_houses
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
+                    },
+                    [_vm._v("\n                OPEN HOUSE\n            ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.listing.status !== "Active"
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.listing.status) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "w-auto h-auto min-h-full min-w-full",
+                attrs: { src: _vm.listing.preferred_image }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "property-details py-2 px-2" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "address h-12 flex flex-col justify-center align-middle"
+              },
+              [
+                _c(
+                  "p",
+                  { staticClass: "p-2 text-grey-darker text-sm text-center" },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.listing.street_number) +
+                        " " +
+                        _vm._s(_vm.listing.street_name) +
+                        "\n                    "
+                    ),
+                    _vm.listing.unit_number != ""
+                      ? _c("span", [
+                          _vm._v(
+                            "\n                        Unit " +
+                              _vm._s(_vm.listing.unit_number) +
+                              "\n                    "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.listing.city) +
+                        ", " +
+                        _vm._s(_vm.listing.state) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "price" }, [
+              _c(
+                "p",
+                {
+                  staticClass: "py-2 text-center text-brand text-3xl font-brand"
+                },
+                [_vm._v("$" + _vm._s(_vm.listing.price.toLocaleString()))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "prop-type" }, [
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase"
+                },
+                [_vm._v(_vm._s(_vm.listing.property_type))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mls text-center mt-3" }, [
+              _c("p", { staticClass: "text-grey-dark text-xs" }, [
+                _vm._v("MLS# " + _vm._s(_vm.listing.mls_account))
+              ])
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ce630ed0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

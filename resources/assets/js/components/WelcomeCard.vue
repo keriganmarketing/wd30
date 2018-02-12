@@ -33,7 +33,20 @@
 </template>
 <script>
 export default {
-    props: ['dataUser','avatarPath', 'boilerplate'],
+    props: {
+        dataUser: {
+            type: Object,
+            default: () => {}
+        },
+        avatarPath: {
+            type: String,
+            default: ''
+        },
+        boilerplate: {
+            type: Boolean,
+            default: false
+        }
+    },
     computed: {
         user: function () {
             return this.dataUser;
