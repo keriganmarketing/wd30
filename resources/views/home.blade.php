@@ -35,6 +35,7 @@
         </a>
     </div>
     <leads v-if="selected == 'leads'"></leads>
+    <my-properties v-if="selected == 'properties'" :user="user"></my-properties>
     <bio-card :data-user="user" v-on:submit-button-clicked="sbc" v-if="selected == 'settings'"></bio-card>
     <content-card :data-content="content" v-if="selected == 'settings'" v-on:content-edited="updateContent"></content-card>
 </div>

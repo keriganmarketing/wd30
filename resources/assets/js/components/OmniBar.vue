@@ -11,7 +11,7 @@
             autocomplete="off"
             placeholder="City, address, subdivision or zip"
             :class="{
-                'omni-input-open':   showResults == true,
+                'omni-input-open': showResults == true,
                 'omni-input-closed': showResults == false
             }"
             class="text-grey-darkest px-3 py-2 h-10 w-full shadow block"
@@ -31,7 +31,8 @@
                 <li v-for="result in results" :key="result.text">
                     <strong><span class="block px-2 py-2">{{ result.text }}</span></strong>
                     <ul class="list-reset mb-2">
-                        <li class="hover:bg-teal hover:text-white cursor-pointer px-4 py-2"
+                        <li
+                            class="hover:bg-teal hover:text-white cursor-pointer px-4 py-2"
                             v-for="child in result.children"
                             :key="child.id"
                             @click="onResultsClick(child.text)"

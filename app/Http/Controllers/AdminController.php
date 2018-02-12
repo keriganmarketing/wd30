@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Lead;
+use App\User;
 use App\Avatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Facades\KeriganSolutions\Drone\Mothership;
 
 class AdminController extends Controller
 {
@@ -37,6 +39,8 @@ class AdminController extends Controller
 
     public function myProperties()
     {
-        return view('my-properties');
+        $user = User::realtor();
+
+        return Mothership::agentListingsWithAnalytics($user->mls_id);
     }
 }

@@ -70,7 +70,7 @@
                 @blur="submit('mls_id')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
+        <div class="w-full py-2 pl-2 bg-white flex flex-wrap items-start border-b">
             <div class="w-1/6 py-2 px-4 text-center">
                 Address:
             </div>
@@ -83,6 +83,7 @@
                 v-model="user.address"
                 @focus="edit('address')"
                 @blur="submit('address')"
+                rows="4"
             />
         </div>
     </div>
