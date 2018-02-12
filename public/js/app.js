@@ -36981,7 +36981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     requestAnimationFrame(animate);
                 }
             }
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue.toLocaleString() }, 250).onUpdate(function () {
+            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 1000).onUpdate(function () {
                 vm.animatedImpressions = this._object.tweeningNumber.toFixed(0);
             }).onComplete(function () {
                 vm.animatedImpressions = vm.impressions.toLocaleString();
@@ -36997,7 +36997,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue.toLocaleString() }, 500).onUpdate(function () {
+            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 500).onUpdate(function () {
                 vm.animatedClicks = this._object.tweeningNumber.toFixed(0);
             }).onComplete(function () {
                 vm.animatedClicks = vm.clicks.toLocaleString();
@@ -37013,8 +37013,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue.toLocaleString() }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue.toLocaleString() }, 500).onUpdate(function () {
-                vm.animatedLeads = this._object.tweeningNumber.toFixed(0).toLocaleString();
+            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 500).onUpdate(function () {
+                vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
             }).onComplete(function () {
                 vm.animatedLeads = vm.leads.toLocaleString();
             }).start();
