@@ -1,12 +1,13 @@
-export default class User {
-    constructor(data) {
+export default class Content {
+    constructor (data) {
         for (let field in data) {
             this[field] = data[field];
         }
     }
-    authenticate () {
+
+    fetch () {
         var self = this;
-        window.axios.get('/authenticate').then(response => {
+        window.axios.get('/content').then(response => {
             let data = response.data;
             for (let field in data) {
                 self[field] = data[field];
@@ -14,13 +15,10 @@ export default class User {
         });
     }
     update (updated) {
-        window.axios({ method: 'patch', url: '/users/' + updated.id,
+        window.axios({ method: 'patch', url: '/content/' + updated.id,
             data: {
-                name: updated.name,
-                email: updated.email,
-                phone_number: updated.phone_number,
-                mls_id: updated.mls_id,
-                address: updated.address
+                title: updated.title,
+                body: updated.body,
             }
         })
             .then(response => {

@@ -4,6 +4,7 @@ window.Vue = require('vue');
 
 require('./load-components');
 import User from './models/user';
+import Content from './models/content';
 
 const app = new Vue({
     el: '#app',
@@ -16,6 +17,11 @@ const app = new Vue({
             address: null,
             mls_id: null,
         }),
+        content: new Content({
+            id: '',
+            title: null,
+            body: null
+        }),
         selected: 'leads'
     },
     computed: {
@@ -25,10 +31,14 @@ const app = new Vue({
     },
     mounted () {
         this.user.authenticate();
+        this.content.fetch();
     },
     methods: {
         sbc (data) {
             this.user.update(data);
+        },
+        updateContent(data) {
+            this.content.update(data);
         }
     }
 });

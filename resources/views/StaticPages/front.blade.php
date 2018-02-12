@@ -8,9 +8,9 @@
         <div class="container mx-auto py-2">
             <div class="flex flex-wrap items-center">
                 <div class="flex-auto w-full md:w-3/4 px-3 py-2 text-center md:text-left">
-                    <h1 class="mb-4 text-secondary-lighter">Panama City Beach Real Estate Experts, Ron & Karen Branham</h1>
-                    <p class="leading-normal text-grey-darker">Ron and Karen Branham have a simple philosophy – provide “EXCEPTIONAL SERVICE TO EVERYONE THAT WALKS THROUGH THE FRONT DOOR!” They know the market well and have over 20 years experience. Karen and Ron also work closely with numerous local builders to help you find or build that perfect beach home! Whether you are ready to make the move, or just need some great advice, give Ron and Karen a call today!</p>
-                    <p class="mt-3 text-grey-darker"><span class="font-brand text-lg">Specialties:</span>  Listing Agent, Buyer’s Agent, New Home Specialist, Home Building</p>
+                    <h1 class="mb-4 text-secondary-lighter">{{ $content->title }}</h1>
+                    <p class="leading-normal text-grey-darker">{{ $content->body }}</p>
+                    {{-- <p class="mt-3 text-grey-darker"><span class="font-brand text-lg">Specialties:</span>  Listing Agent, Buyer’s Agent, New Home Specialist, Home Building</p> --}}
                     <a href="/property-search/" class="button-brand w-auto mt-4 no-underline" >Property Search</a>
                 </div>
                 <div class="flex-auto w-full md:w-1/4 px-3 justify-center text-center py-2">

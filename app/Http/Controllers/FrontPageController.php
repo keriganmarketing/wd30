@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
+use App\Content;
 
 class FrontPageController extends Controller
 {
@@ -19,7 +20,8 @@ class FrontPageController extends Controller
         if ($realtor){
             $realtor->listings = Mothership::agentListings($realtor->mls_id);
         }
+        $content = Content::first();
 
-        return view('StaticPages.front', compact('realtor'));
+        return view('StaticPages.front', compact('realtor', 'content'));
     }
 }
