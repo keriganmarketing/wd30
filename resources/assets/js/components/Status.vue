@@ -12,7 +12,7 @@
                     <span class="radio-description">Sold</span>
                 </label>
                 <label class="py-2 px-3 h-auto">
-                    <input type="checkbox" name="status[]" value="panding" class="radio-input" >
+                    <input type="checkbox" name="status[]" value="pending" class="radio-input" >
                     <span class="radio-description">Pending</span>
                 </label>
             </div>

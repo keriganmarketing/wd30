@@ -1,12 +1,12 @@
 <template>
     <div class="search-bar">
         <div class="container mx-auto">
-            <form class="flex flex-wrap py-4 my-4" action="/property-search" method="GET">
+            <form class="flex flex-wrap pt-4 pb-2 mt-4" action="/property-search" method="GET">
                 <omni-bar class="relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/2"></omni-bar>
                 <property-type class="relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4"></property-type>
                 <div class="flex flex-auto relative justify-end w-full sm:w-1/2 lg:w-1/8">
                     <div class="relative px-2 py-2 w-full">
-                        <button class="button-grey h-10 block w-full" type="button" @click="toggleAdvanced($event)" >Advanced</button>
+                        <button class="button-grey-darker h-10 block w-full" type="button" @click="toggleAdvanced($event)" >Advanced</button>
                     </div>
                 </div>
                 <div class="flex-auto advanced-menu w-full" :class="{ 'hidden': !this.advancedOpen  }" >
@@ -37,7 +37,7 @@
                     'sm:w-1/2': this.advancedOpen,
                     'lg:w-1/8': this.advancedOpen
                 }" >
-                        <button class="button-brand h-10 w-full" type="submit" >Submit</button>
+                        <button class="button-secondary h-10 w-full" type="submit" >Submit</button>
                     </div>
                 </div>
             </form>
