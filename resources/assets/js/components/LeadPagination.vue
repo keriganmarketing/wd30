@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="mb-8">
     <ul class="list-reset flex justify-center md:justify-start flex-wrap">
         <li class="mr-2 w-auto">
             <button class="text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm"
@@ -10,7 +10,7 @@
                    'bg-tan-lightest': pagination.prev_page_url != null
                    }"
 
-               @click="fetchLeads(pagination.prev_page_url)"
+               @click="prevPage"
             >
                    Prev
             </button>
@@ -29,7 +29,7 @@
                    'opacity-50': pagination.next_page_url == null
                    }"
 
-               @click="fetchLeads(pagination.next_page_url)"
+               @click="nextPage"
             >
                    Next
             </button>
@@ -45,8 +45,11 @@
     export default {
         props: ['pagination'],
         methods: {
-            fetchLeads(type) {
-                this.$emit('fetchleads', type);
+            nextPage () {
+                this.$emit('page', this.pagination.next_page_url);
+            },
+            prevPage() {
+                this.$emit('page', this.pagination.next_page_url);
             }
         }
     }

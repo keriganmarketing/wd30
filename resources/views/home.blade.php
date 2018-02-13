@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="container mx-auto min-h-screen">
-    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24 pb-8">
+    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24 pb-8 mb-4">
         <a
             href="#"
             class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
@@ -40,7 +40,7 @@
             Settings
         </a>
     </div>
-    <leads v-if="selected == 'leads'" v-on:archived="updateLeadsCount" v-on:unarchived="updateLeadsCount"></leads>
+    <leads v-if="selected == 'leads'" v-on:update-leads-count="updateLeadsCount"></leads>
     <my-properties v-if="selected == 'properties'" :user="user"></my-properties>
     <bio-card :data-user="user" v-on:submit-button-clicked="sbc" v-if="selected == 'settings'"></bio-card>
     <content-card :data-content="content" v-if="selected == 'settings'" v-on:content-edited="updateContent"></content-card>

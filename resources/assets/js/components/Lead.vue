@@ -50,7 +50,7 @@
             <a
                 @click="archive(lead.id)"
                 class="cursor-pointer hover:text-red text-center mr-4"
-                v-if="viewingActiveLeads"
+                v-if="viewActiveLeads"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
                     <path class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/>
@@ -59,7 +59,7 @@
             </a>
             <a
                 @click="unarchive(lead.id)"
-                v-if="!viewingActiveLeads"
+                v-else
                 class="cursor-pointer hover:text-red text-center mr-4"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
@@ -82,11 +82,15 @@ export default {
     props: {
         lead: {
             type: Object,
-            default: () => { return this.lead}
+            default: () => { return this.lead }
         },
-        activeLeads: {
+        viewActiveLeads: {
             type: Boolean,
-            default: this.activeLeads
+            default: this.viewActiveLeads
+        },
+        viewImportantLeads: {
+            type: Boolean,
+            default: this.viewImportantLeads
         },
         currentPage: {
             type: Number,
@@ -95,55 +99,39 @@ export default {
     },
     data () {
         return {
-            viewingActiveLeads: this.activeLeads,
             notes: [],
-            notesExpanded: false
+            notesExpanded: false,
+            leadPath: '/leads/' + this.lead.id
         }
     },
     methods: {
         archive(id) {
-            axios({
-                method: 'patch',
-                url: '/leads/' + id,
-                data: {
-                    active: 0
-                }
-            })
+            axios.patch(this.leadPath, { active: 0 })
                 .then(response => {
-                    this.$emit('archived', this.currentPage);
+                    this.$emit('archived', this.viewActiveLeads, this.viewImportantLeads, this.currentPage);
                 });
         },
         unarchive(id) {
-            axios({
-                method: 'patch',
-                url: '/leads/' + id,
-                data: {
-                    active: 1
-                }
-            })
+            axios.patch(this.leadPath, { active: 1 })
                 .then(response => {
-                    this.$emit('unarchived', this.currentPage);
+                    this.$emit('unarchived', this.viewActiveLeads, this.viewImportantLeads, this.currentPage);
                 });
         },
         toggleImportant(id) {
-            let url = '';
-            let page = '';
             let important = ! this.lead.important;
-            axios({
-                method: 'patch',
-                url: '/leads/' + id,
-                data: {
-                    important: important
-                }
-            })
+
+            axios.patch(this.leadPath, { important: important })
                 .then(() => {
-                    url = this.viewingActiveLeads ? 'active' : 'archived';
-                    page = this.currentPage;
-                    this.$emit('important', url, page);
-                })
+                    this.$emit(
+                        'important',
+                        this.viewActiveLeads,
+                        this.viewImportant,
+                        this.currentPage
+                    );
+                });
         },
         getNotes(id) {
-            let url = '/leads/' + id + '/notes';
+            let url = this.leadPath + '/notes';
             axios.get(url)
                 .then(response => {
                     this.notes = response.data;
