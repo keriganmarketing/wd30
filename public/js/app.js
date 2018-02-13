@@ -31737,67 +31737,167 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "w-full sm:w-1/6 py-2 px-3 text-grey-darker border-right bg-grey-lighter rounded-t sm:rounded-l"
+            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
         },
-        [_vm._v("Baths")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+                [_vm._v("Baths")]
+              )
+            ]
+          )
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
-        _c("div", { staticClass: "flex align-middle justify-center" }, [
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "" }
-            }),
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("Any")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("Any")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "1" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "1" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("1+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("1+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "2" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "2" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("2+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("2+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "3" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "3" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("3+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("3+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "4" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "4" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("4+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("4+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bathrooms", value: "5" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("5+")])
-          ])
-        ])
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bathrooms", value: "5" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("5+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            )
+          ]
+        )
       ])
     ])
   }
@@ -31878,67 +31978,167 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "w-full sm:w-1/6 py-2 px-3 text-grey-darker border-right bg-grey-lighter rounded-t sm:rounded-l"
+            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
         },
-        [_vm._v("Beds")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+                [_vm._v("Beds")]
+              )
+            ]
+          )
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
-        _c("div", { staticClass: "flex align-middle justify-center" }, [
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "" }
-            }),
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("Any")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("Any")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "1" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "1" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("1+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("1+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "2" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "2" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("2+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("2+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "3" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "3" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("3+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("3+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "4" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "4" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("4+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("4+")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "radio", name: "bedrooms", value: "5" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("5+")])
-          ])
-        ])
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "radio", name: "bedrooms", value: "5" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "radio-description px-1 text-grey-darker" },
+                  [_vm._v("5+")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input radio" })
+              ]
+            )
+          ]
+        )
       ])
     ])
   }
@@ -32791,44 +32991,110 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "w-full sm:w-1/6 py-2 px-3 text-grey-darker border-right bg-grey-lighter rounded-t sm:rounded-l"
+            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
         },
-        [_vm._v("Features")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "flex-grow h-auto py-1 px-3 text-grey-darker" },
+                [_vm._v("Features")]
+              )
+            ]
+          )
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
-        _c("div", { staticClass: "flex align-middle justify-center" }, [
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "openHouses", value: "1" }
-            }),
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "checkbox", name: "openHouses", value: "1" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Open Houses")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [
-              _vm._v("Open Houses")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "waterfront", value: "1" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "checkbox", name: "waterfront", value: "1" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Waterfront")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [
-              _vm._v("Waterfront")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "pool", value: "1" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("Pool")])
-          ])
-        ])
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "checkbox", name: "pool", value: "1" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Pool")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            )
+          ]
+        )
       ])
     ])
   }
@@ -37128,7 +37394,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("status", {
                               staticClass:
-                                "flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"
+                                "flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
                             })
                           ],
                           1
@@ -37145,17 +37411,17 @@ var render = function() {
                       [
                         _c("bedrooms", {
                           staticClass:
-                            "flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"
+                            "flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
                         }),
                         _vm._v(" "),
                         _c("bathrooms", {
                           staticClass:
-                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"
+                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
                         }),
                         _vm._v(" "),
                         _c("features", {
                           staticClass:
-                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"
+                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
                         })
                       ],
                       1
@@ -37281,42 +37547,114 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "w-full sm:w-1/6 py-2 px-3 text-grey-darker border-right bg-grey-lighter rounded-t sm:rounded-l"
+            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
         },
-        [_vm._v("Features")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+                [_vm._v("Status")]
+              )
+            ]
+          )
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
-        _c("div", { staticClass: "flex align-middle justify-center" }, [
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "status[]", value: "active" }
-            }),
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "checkbox", name: "status[]", value: "active" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Active")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("Active")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "status[]", value: "sold" }
-            }),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: { type: "checkbox", name: "status[]", value: "sold" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Sold")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [_vm._v("Sold")])
-          ]),
-          _vm._v(" "),
-          _c("label", { staticClass: "py-2 px-3 h-auto" }, [
-            _c("input", {
-              staticClass: "radio-input",
-              attrs: { type: "checkbox", name: "status[]", value: "pending" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "radio-description" }, [
-              _vm._v("Pending")
-            ])
-          ])
-        ])
+            _c(
+              "label",
+              {
+                staticClass:
+                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+              },
+              [
+                _c("input", {
+                  staticClass: "radio-input",
+                  attrs: {
+                    type: "checkbox",
+                    name: "status[]",
+                    value: "pending"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "input-description checkbox px-1 text-grey-darker"
+                  },
+                  [_vm._v("Pending")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "custom-input checkmark" })
+              ]
+            )
+          ]
+        )
       ])
     ])
   }
