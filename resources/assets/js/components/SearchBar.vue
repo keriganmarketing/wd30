@@ -18,13 +18,13 @@
                                     <max-price class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></max-price>
                                     <total-sqft class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></total-sqft>
                                     <acreage class="flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"></acreage>
-                                    <status class="flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></status>
+                                    <status class="flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"></status>
                                 </div>
                             </div>
                             <div class="flex-auto relative p-2 w-full md:w-3/4 lg:w-1/2">
-                                <bedrooms class="flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></bedrooms>
-                                <bathrooms class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></bathrooms>
-                                <features class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle"></features>
+                                <bedrooms class="flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"></bedrooms>
+                                <bathrooms class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"></bathrooms>
+                                <features class="flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"></features>
                             </div>
                         </div>
                     </div>
