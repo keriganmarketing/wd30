@@ -54,10 +54,31 @@
 .button-brand {
     @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
+.button-brand:hover {
+    @apply .bg-brand-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
 .button-secondary {
     @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
+.button-secondary:hover {
+    @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.button-grey-darker {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.button-grey-darker:hover {
+    @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.button-grey-dark {
+    @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.button-grey-dark:hover {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
 .button-grey {
+    @apply .bg-grey .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+}
+.button-grey:hover {
     @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
 }
 .bg-image-full {
