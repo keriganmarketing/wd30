@@ -43,9 +43,9 @@ const app = new Vue({
             this.content.update(data);
         },
         updateLeadsCount() {
-            window.axios.get('/leads')
+            window.axios.get('/leads?count=true')
                 .then(response => {
-                    this.leadsLength = response.data.total;
+                    console.log(response);
                 });
         }
     }
