@@ -15,18 +15,10 @@ class LeadsController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->count === 'true') {
-            return Lead::active()->count();
-        }
-
-        $active    = $request->active    === 'true';
         $important = $request->important === 'true';
-
-        $leads = Lead::where('active', $active)->when($important, function ($query) {
+        return Lead::active()->when($important, function ($query) {
             return $query->where('important', 1);
-        })->orderBy('created_at', 'DESC')->paginate(5);
-
-        return $leads;
+        })->latest()->paginate(5);
     }
 
     /**

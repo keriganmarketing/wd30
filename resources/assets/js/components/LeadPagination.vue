@@ -10,7 +10,7 @@
                    'bg-tan-lightest': pagination.prev_page_url != null
                    }"
 
-               @click="prevPage"
+               @click="page(pagination.prev_page_url)"
             >
                    Prev
             </button>
@@ -29,7 +29,7 @@
                    'opacity-50': pagination.next_page_url == null
                    }"
 
-               @click="nextPage"
+               @click="page(pagination.next_page_url)"
             >
                    Next
             </button>
@@ -45,11 +45,8 @@
     export default {
         props: ['pagination'],
         methods: {
-            nextPage () {
-                this.$emit('page', this.pagination.next_page_url);
-            },
-            prevPage() {
-                this.$emit('page', this.pagination.next_page_url);
+            page(url) {
+                this.$emit('page', url);
             }
         }
     }

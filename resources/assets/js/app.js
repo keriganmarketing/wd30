@@ -24,7 +24,7 @@ const app = new Vue({
             body: null
         }),
         selected: 'leads',
-        leadsLength: 0
+        activeLeadsCount: 0
     },
     computed: {
         boilerplate: function () {
@@ -34,6 +34,7 @@ const app = new Vue({
     mounted () {
         this.user.authenticate();
         this.content.fetch();
+        this.updateLeadsCount();
     },
     methods: {
         sbc (data) {
@@ -43,9 +44,9 @@ const app = new Vue({
             this.content.update(data);
         },
         updateLeadsCount() {
-            window.axios.get('/leads?count=true')
+            window.axios.get('/leads/count')
                 .then(response => {
-                    console.log(response);
+                    this.activeLeadsCount = response.data;
                 });
         }
     }

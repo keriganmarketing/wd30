@@ -7,19 +7,17 @@
             @page="page"
             :pagination="pagination"
         />
-        <transition-group name="slide" tag="div">
-            <lead
-                v-for="lead in leads"
-                :key="lead.id"
-                :lead="lead"
-                :view-active-leads="viewActive"
-                :view-important-leads="viewImportant"
-                :current-page="pagination.current_page"
-                @archived="fetch"
-                @unarchived="fetch"
-                @important="fetch"
-            />
-        </transition-group>
+        <lead-tabs @toggle="filter" :active-filter="activeFilter" :important-filter="importantFilter" />
+        <lead
+            v-for="lead in leads"
+            :key="lead.id"
+            :lead="lead"
+            :active-leads="activeFilter"
+            :current-page="pagination.current_page"
+            @archived="onArchived"
+            @unarchived="onUnarchived"
+            @important="refresh"
+        />
         <lead-pagination
             @page="page"
             :pagination="pagination"
@@ -29,13 +27,8 @@
 </template>
 
 <script>
-class Pagination {
-    constructor(data) {
-        for (let field in data) {
-            this[field] = data[field];
-        }
-    }
-}
+import Pagination from '../models/pagination';
+import LeadService from '../services/leads.service';
 export default {
     data() {
         return {
@@ -49,55 +42,74 @@ export default {
                 total: ''
             }),
             leads:  [],
-            viewActive: true,
-            viewImportant: false,
-            base: '/leads?'
+            leadService: new LeadService(),
+            activeFilter: true,
+            importantFilter: false,
         }
     },
     mounted () {
-        this.fetch();
+        this.getActive();
+    },
+    watch: {
+        activeFilter: function (active) {
+            if (active) {
+                this.getActive(this.importantFilter);
+            } else {
+                this.getArchived(this.importantFilter);
+            }
+        },
+        importantFilter: function (important) {
+           if (this.activeFilter) {
+               this.getActive(important);
+            } else {
+                this.getArchived(important);
+            }
+        }
     },
     methods: {
-        fetch (active = this.viewActive, important = this.viewImportant, page = 1) {
-            this.viewActive = active;
-            this.viewImportant = important;
-            axios.get(
-                this.base +
-                'active=' + active +
-                '&important=' + important +
-                '&page=' + page
-            )
+        page (url) {
+            this.leadService.getPage(url)
                 .then(response => {
-                    this.pagination = response.data;
                     this.leads = response.data.data;
-                });
-            this.$emit('update-leads-count');
-        },
-        page(page) {
-            axios.get(page)
-                .then(response => {
-                    this.pagination = response.data;
-                    this.leads = response.data.data;
+                    this.pagination = new Pagination(response.data);
                 })
+        },
+        filter (attribute) {
+            this[attribute] = ! this[attribute];
+        },
+        onArchived () {
+            this.getActive(this.importantFilter, this.pagination.current_page);
+            this.$emit('archived');
+        },
+        onUnarchived () {
+            this.getArchived(this.importantFilter, this.pagination.current_page);
+            this.$emit('unarchived');
+        },
+        getActive (important = this.importantFilter, page = 1) {
+            this.leadService.activeLeads(important, page)
+                .then(response => {
+                    this.leads = response.data.data;
+                    this.pagination = response.data;
+                });
+        },
+        getArchived (important = this.importantFilter, page = 1) {
+            this.leadService.archivedLeads(important, page)
+                .then(response => {
+                    this.leads = response.data.data;
+                    this.pagination = response.data;
+                });
+        },
+        refresh (active, page) {
+            if (active) {
+                this.getActive(this.importantFilter, page);
+            }else {
+                this.getArchived(this.importantFilter, page);
+            }
         }
     }
 }
 </script>
 
 <style>
-.slide-move {
-    transition: transform .5s;
-}
-.slide-enter-active {
-  transition: all .3s ease;
-}
-.slide-leave-active {
-    position: absolute;
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-enter, .slide-leave-to{
-    opacity: 0;
-    transform: translateX(100px);
-}
 </style>
 
