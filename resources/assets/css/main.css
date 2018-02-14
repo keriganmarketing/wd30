@@ -121,6 +121,7 @@
 .custom-input {
     position: absolute;
     left: 0;
+    top: 10px;
     height: 18px;
     width: 18px;
     background-color: #eee;
@@ -209,4 +210,8 @@ h1, h2, h3, h1 span, h2 span, h3 span {
     .order-4 {
         order: 4;
     }
+}
+
+select::-ms-expand {
+    display: none;
 }

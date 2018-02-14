@@ -1,8 +1,5 @@
 <template>
     <div class="container mx-auto">
-        <lead-tabs
-            @toggle-click="fetch"
-        />
         <lead-pagination
             @page="page"
             :pagination="pagination"
