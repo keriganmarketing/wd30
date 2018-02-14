@@ -38115,7 +38115,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 1).onUpdate(function () {
+            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 750).onUpdate(function () {
                 vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
             }).onComplete(function () {
                 vm.animatedLeads = vm.leads.toLocaleString();
