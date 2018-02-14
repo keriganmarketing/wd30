@@ -1,18 +1,18 @@
 <template>
     <div class="container mx-auto bg-white flex flex-wrap justify-center">
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
-            <span class="text-left w-1/2 text-3xl font-brand font-bold text-secondary">
+            <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 CONTENT
             </span>
-            <small class="text-xs w-1/2 text-right">Click on the text you want to edit</small>
+            <small class="text-xs w-auto flex-grow text-right">Click on the text you want to edit</small>
         </p>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Tagline:
             </div>
             <input
                 type="text"
-                class="font-semibold font-brand text-brand border border-transparent text-3xl py-2 bg-white w-4/5 text-left"
+                class="font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': tagline
                 }"
@@ -22,12 +22,12 @@
                 @blur="submit('tagline')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-start border-b">
-            <div class="w-1/6 py-4 px-2 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-start border-b">
+            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Body:
             </div>
             <textarea
-                class="border border-transparent flex items-center py-4 px-2 bg-white w-3/4 text-left"
+                class="border border-transparent flex items-center py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
                 :class="{
                     'border-secondary': body
                 }"

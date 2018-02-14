@@ -15,7 +15,10 @@ class LeadsController extends Controller
      */
     public function index(Request $request)
     {
-        return Lead::active()->latest()->paginate(10);
+        $important = $request->important === 'true';
+        return Lead::active()->when($important, function ($query) {
+            return $query->where('important', 1);
+        })->latest()->paginate(5);
     }
 
     /**
