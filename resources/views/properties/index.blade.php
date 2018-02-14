@@ -9,7 +9,7 @@
     @include('partials.search-bar')
     <div class="properties grid pb-4">
         <div class="container mx-auto">
-            <p class="py-4 px-2 text-left text-grey-dark">Showing {{ number_format(count($properties->data)) }} of {{ number_format($properties->total) }} results</p>
+            @include('partials.sortbar')
             <div class="flex flex-wrap items-center justify-center">
                 @foreach ($properties->data as $listing)
                     @include('partials.mini-listing')

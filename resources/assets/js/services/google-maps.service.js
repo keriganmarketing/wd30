@@ -28,10 +28,12 @@ export default class GoogleMap {
             mapData.map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
 
             mapData.position = mapData.map.center;
+            mapData.bounds = new google.maps.LatLngBounds(mapData.position);
             mapData.marker = new google.maps.Marker({
                 position: mapData.position,
                 map: mapData.map
             });
+
             window.map = mapData.map;
         });
 
@@ -45,6 +47,9 @@ export default class GoogleMap {
                 destination: new google.maps.LatLng(locations.destination.latitude, locations.destination.longitude),
                 travelMode: 'DRIVING',
             });
+
+            mapData.bounds.extend(directionsDisplay.destination);
+
             let directionsService = new google.maps.DirectionsService;
             directionsDisplay.setPanel(panel);
             directionsService.route({
@@ -58,6 +63,7 @@ export default class GoogleMap {
                     return window.alert('Directions request failed due to ' + status)
                 }
             });
+            mapData.map.fitBounds(mapData.bounds);
             directionsDisplay.setMap(mapData.map);
         });
     }
