@@ -10,6 +10,7 @@ Vue.component('lead', require('./components/Lead.vue'));
 Vue.component('leads', require('./components/Leads.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
 Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
+Vue.component('ring-loader', require('./components/RingLoader.vue'));
 Vue.component('max-price', require('./components/MaxPrice.vue'));
 Vue.component('min-price', require('./components/MinPrice.vue'));
 Vue.component('modal', require('./components/Modal.vue'));

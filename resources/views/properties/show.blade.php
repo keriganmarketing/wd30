@@ -28,7 +28,7 @@
                     @include('partials.property.infotable')
                 </div>
                 <div class="listing-map w-full px-1 lg:px-4">
-                    <div class="h-64 border-b-2 border-secondary-light mx-1 my-4 shadow">
+                    <div class="border-b-2 border-secondary-light mx-1 my-4 shadow">
                         <google-map :latitude="{{ $property->latitude }}" :longitude="{{ $property->longitude }}" :zoom="15" />
                     </div>
                 </div>
