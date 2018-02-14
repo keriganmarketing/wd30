@@ -50,7 +50,7 @@
             <a
                 @click="archive(lead.id)"
                 class="cursor-pointer hover:text-red text-center mr-4"
-                v-if="viewingActiveLeads"
+                v-if="lead.active"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
                     <path class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/>
@@ -59,8 +59,8 @@
             </a>
             <a
                 @click="unarchive(lead.id)"
-                v-if="!viewingActiveLeads"
                 class="cursor-pointer hover:text-red text-center mr-4"
+                v-else
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-8 w-8">
                     <path class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/>
@@ -84,10 +84,6 @@ export default {
             type: Object,
             default: () => { return this.lead}
         },
-        activeLeads: {
-            type: Boolean,
-            default: this.activeLeads
-        },
         currentPage: {
             type: Number,
             default: this.currentPage
@@ -95,7 +91,6 @@ export default {
     },
     data () {
         return {
-            viewingActiveLeads: this.activeLeads,
             notes: [],
             notesExpanded: false
         }
@@ -126,20 +121,17 @@ export default {
                 });
         },
         toggleImportant(id) {
-            let url = '';
-            let page = '';
-            let important = ! this.lead.important;
+            this.lead.important = ! this.lead.important;
             axios({
                 method: 'patch',
                 url: '/leads/' + id,
                 data: {
-                    important: important
+                    important: this.lead.important
                 }
             })
                 .then(() => {
-                    url = this.viewingActiveLeads ? 'active' : 'archived';
-                    page = this.currentPage;
-                    this.$emit('important', url, page);
+                    let status = this.lead.active === 1;
+                    this.$emit('important', status, this.currentPage);
                 })
         },
         getNotes(id) {

@@ -1,37 +1,41 @@
 <template>
-    <ul class="list-reset flex justify-center md:justify-end -mt-6">
-        <li class="-mb-px mr-1">
-            <a
-                class="bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border"
-                @click="fetchLeads('active')"
-                :class="{'active-tab': viewingActiveLeads, 'border-b-grey': !viewingActiveLeads}"
-            >
-                Active
-            </a>
-        </li>
-        <li class="mr-1">
-            <a
-                class="bg-white inline-block py-2 px-4 font-semibold hover:text-brand cursor-pointer rounded-t border"
-                @click="fetchLeads('archived')"
-                :class="{'active-tab': !viewingActiveLeads, 'border-b-grey': viewingActiveLeads}"
-            >
-                Archived
-            </a>
-        </li>
-    </ul>
+    <div class="w-full flex items-between h-auto">
+        <input
+            type="checkbox"
+            id="activeToggle"
+            :checked="activeFilter"
+            @change="toggle('activeFilter')"
+        />
+        <label class="active-toggle" for="activeToggle">
+            Active
+        </label>
+        <input
+            type="checkbox"
+            id="importantToggle"
+            :checked="importantFilter"
+            @change="toggle('importantFilter')"
+        />
+        <label class="important-toggle" for="importantToggle">
+            Important
+        </label>
+    </div>
 </template>
 
 <script>
 export default {
     props: {
-        viewingActiveLeads: {
+        activeFilter: {
+            type: Boolean,
+            default: true
+        },
+        importantFilter: {
             type: Boolean,
             default: false
         }
     },
     methods: {
-        fetchLeads(type) {
-            this.$emit('fetchleads', type);
+        toggle(attribute) {
+            this.$emit('toggle', attribute);
         }
     }
 }
