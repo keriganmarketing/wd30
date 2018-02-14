@@ -31558,7 +31558,7 @@ Vue.component('google-map', __webpack_require__(60));
 Vue.component('lead', __webpack_require__(65));
 Vue.component('leads', __webpack_require__(68));
 Vue.component('lead-pagination', __webpack_require__(76));
-Vue.component('lead-tabs', __webpack_require__(79));
+Vue.component('lead-filters', __webpack_require__(79));
 Vue.component('ring-loader', __webpack_require__(84));
 Vue.component('max-price', __webpack_require__(89));
 Vue.component('min-price', __webpack_require__(92));
@@ -34791,7 +34791,7 @@ var render = function() {
         on: { page: _vm.page }
       }),
       _vm._v(" "),
-      _c("lead-tabs", {
+      _c("lead-filters", {
         attrs: {
           "active-filter": _vm.activeFilter,
           "important-filter": _vm.importantFilter
@@ -35081,7 +35081,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/LeadTabs.vue"
+Component.options.__file = "resources/assets/js/components/LeadFilters.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -35090,9 +35090,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3016a531", Component.options)
+    hotAPI.createRecord("data-v-2208b918", Component.options)
   } else {
-    hotAPI.reload("data-v-3016a531", Component.options)
+    hotAPI.reload("data-v-2208b918", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -35113,13 +35113,13 @@ var content = __webpack_require__(81);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("6f56429c", content, false);
+var update = __webpack_require__(6)("79904dfb", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3016a531\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadTabs.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3016a531\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadTabs.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2208b918\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadFilters.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2208b918\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadFilters.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -35238,7 +35238,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3016a531", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2208b918", module.exports)
   }
 }
 
