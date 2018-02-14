@@ -9,11 +9,13 @@
                 <form action="/property-search" method="GET" class="flex justify-center items-center md:justify-end">
                     @include('partials.sortbuttons')
                     <input type="hidden" name="sortBy" value="date_modified">
+                    <input type="hidden" name="orderBy" value="DESC">
                     <button class="@if(!isset($_GET['sortBy']) || (isset($_GET['sortBy']) && $_GET['sortBy'] == 'date_modified')) button-grey-darker @else button-grey @endif h-8 w-auto" type="submit" >Modified</button>
                 </form>
                 <form action="/property-search" method="GET" class="flex justify-center items-center md:justify-end">
                     @include('partials.sortbuttons')
                     <input type="hidden" name="sortBy" value="price">
+                    <input type="hidden" name="orderBy" value="ASC">
                     <button class="@if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'price') button-grey-darker @else button-grey @endif h-8 w-auto" type="submit" >Price</button>
                 </form>
             </div>
