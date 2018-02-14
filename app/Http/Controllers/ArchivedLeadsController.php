@@ -17,9 +17,9 @@ class ArchivedLeadsController extends Controller
     {
         $important = $request->important === 'true';
 
-        $leads = Lead::where('active', 0)->when($important, function ($query) {
+        $leads = Lead::archived()->when($important, function ($query){
             return $query->where('important', 1);
-        })->orderBy('created_at')->paginate(5);
+        })->orderBy('created_at', 'DESC')->paginate(5);
 
         foreach ($leads as $lead) {
             $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();

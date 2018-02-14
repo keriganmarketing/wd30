@@ -6,7 +6,7 @@
         :boilerplate="boilerplate"
         :data-user="user"
         :avatar-path='"{{ $avatarPath }}"'
-        :leads-length="leadsLength"
+        :active-leads-count="activeLeadsCount"
     >
     </welcome-card>
 </div>
