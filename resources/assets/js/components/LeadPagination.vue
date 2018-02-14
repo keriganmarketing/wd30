@@ -10,7 +10,7 @@
                    'bg-tan-lightest': pagination.prev_page_url != null
                    }"
 
-               @click="fetchLeads(pagination.prev_page_url)"
+               @click="page(pagination.prev_page_url)"
             >
                    Prev
             </button>
@@ -29,7 +29,7 @@
                    'opacity-50': pagination.next_page_url == null
                    }"
 
-               @click="fetchLeads(pagination.next_page_url)"
+               @click="page(pagination.next_page_url)"
             >
                    Next
             </button>
@@ -45,8 +45,8 @@
     export default {
         props: ['pagination'],
         methods: {
-            fetchLeads(type) {
-                this.$emit('fetchleads', type);
+            page(url) {
+                this.$emit('page', url);
             }
         }
     }

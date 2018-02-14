@@ -66,6 +66,17 @@ class Lead extends Model
     }
 
     /**
+     * Scope a query to only include archived leads.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeArchived($query)
+    {
+        return $query->where('active', 0);
+    }
+
+    /**
      * Get the created_at time difference in a human-readable format
      *
      * @return string

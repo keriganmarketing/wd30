@@ -1,38 +1,34 @@
 <template>
     <div class="container mx-auto">
         <lead-pagination
-            @fetchleads="fetchLeads"
+            @page="page"
             :pagination="pagination"
         />
-        <lead-tabs @fetchleads="fetchLeads" :viewing-active-leads="viewingActiveLeads"/>
+        <lead-tabs @toggle="filter" :active-filter="activeFilter" :important-filter="importantFilter" />
         <lead
             v-for="lead in leads"
             :key="lead.id"
             :lead="lead"
-            :active-leads="viewingActiveLeads"
+            :active-leads="activeFilter"
             :current-page="pagination.current_page"
-            @archived="fetchLeads('active', pagination.current_page);"
-            @unarchived="fetchLeads('archived', pagination.current_page)"
-            @important="fetchLeads"
+            @archived="onArchived"
+            @unarchived="onUnarchived"
+            @important="refresh"
         />
-        <lead-pagination @fetchleads="fetchLeads" :pagination="pagination"/>
+        <lead-pagination
+            @page="page"
+            :pagination="pagination"
+        />
     </div>
 
 </template>
 
 <script>
-class Pagination {
-    constructor(data) {
-        for (let field in data) {
-            this[field] = data[field];
-        }
-    }
-}
+import Pagination from '../models/pagination';
+import LeadService from '../services/leads.service';
 export default {
     data() {
         return {
-            leads:  [],
-            viewingActiveLeads: true,
             pagination: new Pagination({
                 next_page_url: '',
                 prev_page_url: '',
@@ -41,40 +37,71 @@ export default {
                 last_page: '',
                 current_page: '',
                 total: ''
-            })
+            }),
+            leads:  [],
+            leadService: new LeadService(),
+            activeFilter: true,
+            importantFilter: false,
         }
     },
     mounted () {
-        this.fetchLeads('active');
+        this.getActive();
+    },
+    watch: {
+        activeFilter: function (active) {
+            if (active) {
+                this.getActive(this.importantFilter);
+            } else {
+                this.getArchived(this.importantFilter);
+            }
+        },
+        importantFilter: function (important) {
+           if (this.activeFilter) {
+               this.getActive(important);
+            } else {
+                this.getArchived(important);
+            }
+        }
     },
     methods: {
-        fetchLeads(type, page = 1) {
-            let url = '';
-            switch (type) {
-            case 'active':
-                this.viewingActiveLeads = true;
-                url = '/leads?page=' + page;
-                break;
-            case 'archived':
-                this.viewingActiveLeads = false;
-                url = '/archivedleads?page=' + page;
-                break;
-            default:
-                url = type;
-                break;
-            }
-            let vm = this;
-            axios.get(url)
+        page (url) {
+            this.leadService.getPage(url)
                 .then(response => {
-                    this.pagination = response.data;
                     this.leads = response.data.data;
-                    if (this.viewingActiveLeads) {
-                        this.$emit('archived');
-                    } else {
-                        this.$emit('unarchived')
-                    }
+                    this.pagination = new Pagination(response.data);
                 })
-
+        },
+        filter (attribute) {
+            this[attribute] = ! this[attribute];
+        },
+        onArchived () {
+            this.getActive(this.importantFilter, this.pagination.current_page);
+            this.$emit('archived');
+        },
+        onUnarchived () {
+            this.getArchived(this.importantFilter, this.pagination.current_page);
+            this.$emit('unarchived');
+        },
+        getActive (important = this.importantFilter, page = 1) {
+            this.leadService.activeLeads(important, page)
+                .then(response => {
+                    this.leads = response.data.data;
+                    this.pagination = response.data;
+                });
+        },
+        getArchived (important = this.importantFilter, page = 1) {
+            this.leadService.archivedLeads(important, page)
+                .then(response => {
+                    this.leads = response.data.data;
+                    this.pagination = response.data;
+                });
+        },
+        refresh (active, page) {
+            if (active) {
+                this.getActive(this.importantFilter, page);
+            }else {
+                this.getArchived(this.importantFilter, page);
+            }
         }
     }
 }
