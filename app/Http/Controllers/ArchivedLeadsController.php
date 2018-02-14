@@ -13,14 +13,18 @@ class ArchivedLeadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $leads = Lead::where('active', 0)->orderBy('updated_at', 'DESC')->paginate(5);
+        $important = $request->important === 'true';
+
+        $leads = Lead::archived()->when($important, function ($query){
+            return $query->where('important', 1);
+        })->orderBy('created_at', 'DESC')->paginate(5);
 
         foreach ($leads as $lead) {
             $lead->diff = Carbon::parse($lead->created_at)->diffForHumans();
         }
 
-        return response()->json($leads);
+        return $leads;
     }
 }

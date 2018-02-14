@@ -46,7 +46,7 @@ export default {
             type: Boolean,
             default: false
         },
-        leadsLength: {
+        activeLeadsCount: {
             type: Number,
             default: 0
         }
@@ -119,7 +119,7 @@ export default {
 
             new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue }, 500)
+                .to({ tweeningNumber: newValue }, 1)
                 .onUpdate(function () {
                     vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
                 })
@@ -130,7 +130,7 @@ export default {
 
             animate()
         },
-        leadsLength: function (newValue) {
+        activeLeadsCount: function (newValue) {
             this.leads = newValue;
         }
     },
@@ -148,9 +148,9 @@ export default {
                     }, self);
                 });
 
-            window.axios.get('leads')
+            window.axios.get('leads/count')
                 .then(response => {
-                    this.leads = response.data.total;
+                    this.leads = response.data;
                 });
         }
     }
