@@ -20,7 +20,13 @@
                     {{ $listing->city }}, {{ $listing->state }}</p>
             </div>
             <div class="price">
-                <p class="py-2 text-center text-brand text-3xl font-brand">${{ number_format($listing->price, 0, '.', ',') }}</p>
+                <p class="py-2 text-center text-brand text-3xl font-brand">
+                    @if($listing->class == 'H' && $listing->price == 0)
+                        Auction
+                    @else
+                        ${{ number_format($listing->price, 0, '.', ',') }}
+                    @endif
+                </p>
             </div>
             <div class="prop-type">
                 <p class="pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase">{{ $listing->property_type }}</p>

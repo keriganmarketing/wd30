@@ -1,18 +1,18 @@
 <template>
     <div class="container mx-auto bg-white flex flex-wrap justify-center mb-8">
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
-            <span class="text-left w-1/2 text-3xl font-brand font-bold text-secondary">
+            <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 BIO
             </span>
-            <small class="text-xs w-1/2 text-right">Click on the text you want to edit</small>
+            <small class="text-xs w-auto flex-grow text-right">Click on the text you want to edit</small>
         </p>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Name:
             </div>
             <input
                 type="text"
-                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': name
                 }"
@@ -22,13 +22,13 @@
                 @blur="submit('name')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Email:
             </div>
             <input
                 type="text"
-                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': email
                 }"
@@ -38,13 +38,13 @@
                 @blur="submit('email')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Phone:
             </div>
             <input
                 type="text"
-                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': phone_number
                 }"
@@ -54,13 +54,13 @@
                 @blur="submit('phone_number')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flext-wrap items-center border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
-                MLS IDs:
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
+                MLS&nbsp;IDs:
             </div>
             <input
                 type="text"
-                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': mls_id
                 }"
@@ -70,12 +70,12 @@
                 @blur="submit('mls_id')"
             >
         </div>
-        <div class="w-full py-2 pl-2 bg-white flex flex-wrap items-start border-b">
-            <div class="w-1/6 py-2 px-4 text-center">
+        <div class="w-full py-2 bg-white flex flex-wrap items-start border-b">
+            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Address:
             </div>
             <textarea
-                class="border border-transparent text-xl py-2 bg-white w-1/2 text-left"
+                class="border border-transparent md:text-xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
                 :class="{
                     'border-secondary': address
                 }"
