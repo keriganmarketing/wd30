@@ -8,6 +8,7 @@ use Facades\App\Feature;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class PropertySearchController extends Controller
 {
@@ -18,8 +19,8 @@ class PropertySearchController extends Controller
      */
     public function index(Request $request)
     {
-        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
-        $properties = Mothership::search($request->all());
+        $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        $properties = Mothership::search($request);
 
         return view('properties.index', compact('properties', 'realtor'));
     }
