@@ -14,6 +14,7 @@ Route::get('/authenticate', 'AuthenticationController@show');
 Route::get('/archivedleads', 'ArchivedLeadsController@index');
 Route::get('/mylistings', 'RealtorPropertiesController@index');
 Route::get('/avatar', 'AvatarsController@index');
+Route::get('/leads/count', 'LeadsCountController@show');
 
 Route::patch('/users/{id}', 'UsersController@update');
 
