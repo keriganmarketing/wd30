@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Avatar;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -29,6 +30,11 @@ class User extends Authenticatable
 
     public function scopeRealtor($query)
     {
-        return $query->where('is_realtor', true)->first();
+        return $query->where('is_realtor', true)->with('avatar')->first();
+    }
+
+    public function avatar()
+    {
+        return $this->hasOne(Avatar::class);
     }
 }

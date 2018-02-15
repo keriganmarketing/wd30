@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Facades\App\OpenHouse;
 use Facades\App\Feature;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class PropertySearchController extends Controller
 {
@@ -15,9 +19,10 @@ class PropertySearchController extends Controller
      */
     public function index(Request $request)
     {
-        $properties = Mothership::search($request->all());
+        $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        $properties = Mothership::search($request);
 
-        return view('properties.index', compact('properties'));
+        return view('properties.index', compact('properties', 'realtor'));
     }
 
     /**
@@ -27,10 +32,19 @@ class PropertySearchController extends Controller
      */
     public function show($mlsNumber)
     {
+<<<<<<< HEAD
         $property = Mothership::listing($mlsNumber);
         $features = Feature::list($property);
         
         return view('properties.show', compact('property', 'features'));
+=======
+        $property   = Mothership::listing($mlsNumber);
+        $features   = Feature::list($property);
+        $openHouses = OpenHouse::extract($property->open_houses);
+        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+
+        return view('properties.show', compact('property', 'features', 'openHouses', 'realtor'));
+>>>>>>> upstream/master
     }
 
 }

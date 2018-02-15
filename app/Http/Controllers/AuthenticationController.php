@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
@@ -13,6 +14,6 @@ class AuthenticationController extends Controller
      */
     public function show()
     {
-        return \Auth::user();
+        return User::realtor();
     }
 }

@@ -2,110 +2,52 @@
 namespace KeriganSolutions\Drone;
 
 use \GuzzleHttp\Client;
+use App\SearchParameters;
+use Illuminate\Http\Request;
+use KeriganSolutions\Drone\Paginator;
+use KeriganSolutions\Drone\CallsMothership as CallsMothership;
 
 class Mothership
 {
+    use CallsMothership;
+
     protected $client;
 
-    public function __construct()
+    public function search(Request $request)
     {
-        $this->client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/'
-        ]);
-    }
-
-    public function search($params)
-    {
-        $omni         = $params['omniField'] ?? '';
-        $propertyType = isset($params['propertyType']) && $params['propertyType'] != '' ? implode('|', $this->getPropertyTypes($params['propertyType'])): '';
-        $minPrice     = $params['minPrice'] ?? '';
-        $maxPrice     = $params['maxPrice'] ?? '';
-        $bedrooms     = $params['bedrooms'] ?? '';
-        $bathrooms    = $params['bathrooms'] ?? '';
-        $sq_ft        = $params['sq_ft'] ?? '';
-        $acreage      = $params['acreage'] ?? '';
-        $waterfront   = $params['waterfront'] ?? '';
-        $pool         = $params['pool'] ?? '';
-        $page         = $params['pg'] ?? 1;
-        $sortBy       = $params['sortBy'] ?? 'date_modified';
-        $orderBy      = $params['orderBy'] ?? 'DESC';
-        $status       = '';
-
-        /*
-         * If multiple statuses are selected, create a string from the indexes.
-         * Otherwise, just use the specified status or just default to "Active".
-         */
-        if (isset($params['status'])) {
-            if (is_array($params['status'])) {
-                $status = implode('|', $params['status']);
-            } else {
-                $status = $params['status'];
-            }
-        }
-
-        // make the API call
-        $apiCall = $this->client->request(
-            'GET',
-            'search?'
-                . 'city=' . $omni
-                . '&propertyType=' . $propertyType
-                . '&status=' . $status
-                . '&minPrice=' . $minPrice
-                . '&maxPrice=' . $maxPrice
-                . '&bedrooms=' . $bedrooms
-                . '&bathrooms=' . $bathrooms
-                . '&sq_ft=' . $sq_ft
-                . '&acreage=' . $acreage
-                . '&waterfront=' . $waterfront
-                . '&pool=' . $pool
-                . '&page=' . $page
-                . '&sortBy=' . $sortBy
-                . '&orderBy=' . $orderBy
-        );
-
-        $results = json_decode($apiCall->getBody());
+        $searchTerms = new SearchParameters($request->all());
+        $apiCall     = $this->get($searchTerms->getQueryString());
+        $properties  = json_decode($apiCall->getBody());
+        $results     = $this->paginate($properties, $request);
 
         return $results;
     }
 
     public function listing($mlsNumber)
     {
-        $response = $this->client->request(
-            'GET',
-            'listing/'. $mlsNumber
-        );
+        $response = $this->get('listing/'. $mlsNumber);
 
         return json_decode($response->getBody());
     }
 
     public function agentListings($mlsId)
     {
-        $response = $this->client->request(
-            'GET',
-            'agentlistings?agentId='. $mlsId
-        );
+        $response = $this->get('agentlistings?agentId='. $mlsId);
 
         return json_decode($response->getBody());
     }
 
-    private function getPropertyTypes($class = null)
+    public function agentListingsWithAnalytics($mlsId)
     {
-        $typeArray = [
-            'Single Family Home'   => ['Detached Single Family'],
-            'Condo / Townhome'     => ['Condominium', 'Townhouse', 'Townhomes'],
-            'Commercial'           => ['Office', 'Retail', 'Industrial', 'Income Producing', 'Unimproved Commercial', 'Business Only', 'Auto Repair', 'Improved Commercial', 'Hotel/Motel'],
-            'Lots / Land'          => ['Vacant Land', 'Residential Lots', 'Land', 'Land/Acres', 'Lots/Land'],
-            'Multi-Family Home'    => ['Duplex Multi-Units', 'Triplex Multi-Units'],
-            'Rental'               => ['Apartment', 'House', 'Duplex', 'Triplex', 'Quadruplex', 'Apartments/Multi-family'],
-            'Manufactured'         => ['Mobile Home', 'Mobile/Manufactured'],
-            'Farms / Agricultural' => ['Farm', 'Agricultural', 'Farm/Ranch', 'Farm/Timberland'],
-            'Other'                => ['Attached Single Unit', 'Attached Single Family', 'Dock/Wet Slip', 'Dry Storage', 'Mobile/Trailer Park', 'Mobile Home Park', 'Residential Income', 'Parking Space', 'RV/Mobile Park']
-        ];
+        $response = $this->get('agentlistings?agentId='. $mlsId .'&analytics=true');
 
-        if ($class != null) {
-            return $typeArray[$class];
-        }
+        return json_decode($response->getBody());
+    }
 
-        return $typeArray;
+    protected function paginate($properties, $request)
+    {
+        $paginator = new Paginator($properties, $request);
+
+        return $paginator->configure();
     }
 }

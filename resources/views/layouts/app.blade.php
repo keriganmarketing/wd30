@@ -15,42 +15,44 @@
 </head>
 <body class="bg-white h-screen">
     <div id="app" class="flex flex-col min-h-full justify-between">
-        <div class="top">
-            <nav class="mini-nav bg-brand-dark">
+        <div class="top shadow-md border-b-4 border-secondary">
+            <nav class="bg-brand-dark">
                 <div class="container mx-auto">
                     <div class="md:flex items-center justify-between">
-                        <div></div>
-                        <div class="flex flex-wrap text-center :md-text-right sm:flex-row-reverse w-full">
+                        <div class="flex flex-wrap text-center md:text-right sm:flex-row-reverse w-full">
                             @guest
-                                <a class="inline-block w-1/2 sm:w-auto no-underline text-white text-xs px-2 py-3 md:py-1 pr-4 bg-brand-darker hover:bg-darkest" href="{{ url('/register') }}">Register</a>
-                                <a class="inline-block w-1/2 sm:w-auto no-underline text-white text-xs px-2 py-3 md:py-1 pl-4 bg-brand-darker hover:bg-darkest" href="{{ url('/login') }}">Login</a>
-                                <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">bryan@kerigan.com</a>
-                                <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:8506484560">(850) 648-4560</a>
+                                @if(isset($realtor))
+                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">{{ $realtor->email }}</a>
+                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:8506484560">{{ $realtor->phone_number }}</a>
+                                @endif
                             @else
-
-
-                                <a href="{{ route('logout') }}"
-                                   class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
-                                   onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">Logout</a>
+                                <a
+                                    href="{{ route('logout') }}"
+                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                >
+                                    Logout
+                                </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
-                                <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker" href="{{ route('home') }}" >Dashboard</a>
-                                    <span class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1">Hello, {{ Auth::user()->name }}</span>
-
+                                <a
+                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
+                                    href="{{ route('home') }}"
+                                >
+                                        Dashboard
+                                </a>
+                                <span class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1">Hello, {{ \Auth::user()->name }}</span>
                             @endguest
                         </div>
                     </div>
                 </div>
             </nav>
-            <nav class="bg-white shadow">
+            <nav class="bg-white">
                 <div class="container mx-auto h-full">
                     <div class="md:flex items-center justify-between">
                         <div class="text-center md:mr-6 md:text-left py-8 md:py-0">
-                            <a href="{{ url('/') }}" class="no-underline text-xl text-brand font-semibold">
-                                {{ config('app.name', 'Realtor') }}
-                            </a>
+                            @include('partials.logo')
                         </div>
                         <div class="flex text-right">
                             <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/">Home</a>

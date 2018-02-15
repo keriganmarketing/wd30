@@ -18,8 +18,11 @@ class UpdateLeadsTest extends TestCase
     {
         parent::setUp();
 
-        $this->activeLead   = create('App\Lead');
-        $this->archivedLead = create('App\Lead', [
+        $this->activeLead   = factory('App\Lead')->create([
+            'active' => 1
+        ]);
+
+        $this->archivedLead = factory('App\Lead')->create([
             'active' => 0
         ]);
     }

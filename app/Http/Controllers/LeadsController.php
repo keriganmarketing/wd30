@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Lead;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class LeadsController extends Controller
 {
@@ -13,9 +13,12 @@ class LeadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Lead::active()->latest()->paginate(5);
+        $important = $request->important === 'true';
+        return Lead::active()->when($important, function ($query) {
+            return $query->where('important', 1);
+        })->latest()->paginate(5);
     }
 
     /**
@@ -26,7 +29,9 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        Lead::create($request->all());
+        $lead = Lead::create($request->all());
+
+        return back();
     }
 
     /**

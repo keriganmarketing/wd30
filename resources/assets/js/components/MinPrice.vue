@@ -10,18 +10,18 @@
     </div>
 </template>
 <script>
-    export default {
-        computed: {
-            options: function() {
-                let options = [];
-                for(let i = 0; i < 9; i++){
-                    options[i] = ((i+1) * 100000)
-                }
-                for(let i = 1; i <= 5; i++){
-                    options[i + 8] = ((i) * 1000000)
-                }
-                return options;
+export default {
+    computed: {
+        options: function() {
+            let options = [];
+            for(let i = 0; i < 9; i++){
+                options[i] = ((i+1) * 100000)
             }
+            for(let i = 1; i <= 5; i++){
+                options[i + 8] = ((i) * 1000000)
+            }
+            return options;
         }
     }
+}
 </script>

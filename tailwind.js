@@ -136,13 +136,55 @@ let colors = {
   'smoke-lighter': 'rgba(0, 0, 0, 0.25)',
   'smoke-lightest': 'rgba(0, 0, 0, 0.1)',
 
-  get ['brand-darkest']() { return this['teal-darkest']; },
-  get ['brand-darker']() { return this['teal-darker']; },
-  get ['brand-dark']() { return this['teal-dark']; },
-  get ['brand']() { return this['teal']; },
-  get ['brand-light']() { return this['teal-light']; },
-  get ['brand-lighter']() { return this['teal-lighter']; },
-  get ['brand-lightest']() { return this['teal-lightest']; },
+  'beachy-blue-lightest': '#85e7ff',
+  'beachy-blue-lighter': '#49d5f8',
+  'beachy-blue-light': '#37cbf0',
+  'beachy-blue': '#2bc3ea',
+  'beachy-blue-dark': '#22bce4',
+  'beachy-blue-darker': '#2e92b1',
+  'beachy-blue-darkest': '#016d89',
+
+  'beachy-green-lightest': '',
+  'beachy-green-lighter': '#65b8a8',
+  'beachy-green-light': '#53bd8d',
+  'beachy-green': '#42bc7b',
+  'beachy-green-dark': '#379c66',
+  'beachy-green-darker': '#2b7c51',
+  'beachy-green-darkest': '#25563c',
+
+  'dbblue-darkest': '#375c82',
+  'dbblue-darker': '#4c81b5',
+  'dbblue-dark': '#61a4e7',
+  'dbblue': '#73b4f5',
+  'dbblue-light': '#82befa',
+  'dbblue-lighter': '#91c8ff',
+  'dbblue-lightest': '#d9ecff',
+
+  'brown-brand':'#533B18',
+
+  'tan-darkest':'#f5cc5b',
+  'tan-darker':'#f5d273',
+  'tan-dark':'#f5d98c',
+  'tan':'#fae4a7',
+  'tan-light':'#ffefc4',
+  'tan-lighter': '#fff6de',
+  'tan-lightest': '#fffdf7',
+
+  get ['brand-darkest']() { return this['beachy-blue-darkest']; },
+  get ['brand-darker']() { return this['beachy-blue-darker']; },
+  get ['brand-dark']() { return this['beachy-blue-dark']; },
+  get ['brand']() { return this['beachy-blue']; },
+  get ['brand-light']() { return this['beachy-blue-light']; },
+  get ['brand-lighter']() { return this['beachy-blue-lighter']; },
+  get ['brand-lightest']() { return this['beachy-blue-lightest']; },
+
+  get ['secondary-darkest']() { return this['beachy-green-darkest']; },
+  get ['secondary-darker']() { return this['beachy-green-darker']; },
+  get ['secondary-dark']() { return this['beachy-green-dark']; },
+  get ['secondary']() { return this['beachy-green']; },
+  get ['secondary-light']() { return this['beachy-green-light']; },
+  get ['secondary-lighter']() { return this['beachy-green-lighter']; },
+  get ['secondary-lightest']() { return this['beachy-green-lightest']; },
 }
 
 module.exports = {
@@ -210,6 +252,7 @@ module.exports = {
 
   fonts: {
     'sans': [
+      'Lato',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
@@ -317,6 +360,7 @@ module.exports = {
   */
 
   leading: {
+    'tighter': .75,
     'none': 1,
     'tight': 1.25,
     'normal': 1.5,
@@ -527,7 +571,8 @@ module.exports = {
     '48': '12rem',
     '64': '32rem',
     'full': '100%',
-    'screen': '100vh'
+    'screen': '100vh',
+    'avatar': '26rem'
   },
 
 
@@ -618,6 +663,7 @@ module.exports = {
   maxHeight: {
     'full': '100%',
     'screen': '100vh',
+    'avatar': '26rem'
   },
 
 
@@ -645,6 +691,7 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '12': '3rem',
     '16': '4rem',
     '24': '6rem',
     '32': '8rem'
