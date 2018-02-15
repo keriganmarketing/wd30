@@ -40494,7 +40494,7 @@ Vue.component('google-map', __webpack_require__(386));
 Vue.component('lead', __webpack_require__(391));
 Vue.component('leads', __webpack_require__(394));
 Vue.component('lead-pagination', __webpack_require__(402));
-Vue.component('lead-tabs', __webpack_require__(405));
+Vue.component('lead-filters', __webpack_require__(405));
 Vue.component('ring-loader', __webpack_require__(410));
 Vue.component('max-price', __webpack_require__(415));
 Vue.component('min-price', __webpack_require__(418));
@@ -43735,7 +43735,7 @@ var render = function() {
         on: { page: _vm.page }
       }),
       _vm._v(" "),
-      _c("lead-tabs", {
+      _c("lead-filters", {
         attrs: {
           "active-filter": _vm.activeFilter,
           "important-filter": _vm.importantFilter
@@ -44025,7 +44025,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\LeadTabs.vue"
+Component.options.__file = "resources\\assets\\js\\components\\LeadFilters.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -44034,9 +44034,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3b3a5271", Component.options)
+    hotAPI.createRecord("data-v-6ec703d8", Component.options)
   } else {
-    hotAPI.reload("data-v-3b3a5271", Component.options)
+    hotAPI.reload("data-v-6ec703d8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -44057,13 +44057,13 @@ var content = __webpack_require__(407);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(96)("3690e332", content, false);
+var update = __webpack_require__(96)("b2243ea2", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b3a5271\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadTabs.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b3a5271\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadTabs.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ec703d8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadFilters.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6ec703d8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LeadFilters.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -44182,7 +44182,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3b3a5271", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6ec703d8", module.exports)
   }
 }
 
@@ -44272,7 +44272,7 @@ exports = module.exports = __webpack_require__(95)(false);
 
 
 // module
-exports.push([module.i, "\n.v-spinner .v-bounce\r\n{\n}\n.v-spinner .v-bounce1\r\n{\n}\n.v-spinner .v-bounce2\r\n{\r\n\r\n    -webkit-animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;\r\n            animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;\r\n    -webkit-animation-fill-mode: both;\r\n            animation-fill-mode: both;\n}\n.v-spinner .v-bounce3\r\n{\r\n    -webkit-animation: v-bounceStretchDelay 2s 0s infinite ease-in-out;\r\n            animation: v-bounceStretchDelay 2s 0s infinite ease-in-out;\r\n    -webkit-animation-fill-mode: both;\r\n            animation-fill-mode: both;\n}\n@-webkit-keyframes v-bounceStretchDelay\r\n{\n0%,\r\n    100%\r\n    {\r\n        -webkit-transform: scale(0);\r\n                transform: scale(0);\n}\n50%\r\n    { \r\n        -webkit-transform: scale(1.0);\r\n                transform: scale(1.0);\n}\n}\n@keyframes v-bounceStretchDelay\r\n{\n0%,\r\n    100%\r\n    {\r\n        -webkit-transform: scale(0);\r\n                transform: scale(0);\n}\n50%\r\n    { \r\n        -webkit-transform: scale(1.0);\r\n                transform: scale(1.0);\n}\n}\r\n", ""]);
+exports.push([module.i, "\n.v-spinner .v-bounce2 {\n    -webkit-animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;\n    animation: v-bounceStretchDelay 2s 1s infinite ease-in-out;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n}\n.v-spinner .v-bounce3 {\n    -webkit-animation: v-bounceStretchDelay 2s 0s infinite ease-in-out;\n    animation: v-bounceStretchDelay 2s 0s infinite ease-in-out;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n}\n@-webkit-keyframes v-bounceStretchDelay {\n0%,\n    100% {\n        -webkit-transform: scale(0);\n        transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.0);\n        transform: scale(1.0);\n}\n}\n@keyframes v-bounceStretchDelay {\n0%,\n    100% {\n        -webkit-transform: scale(0);\n        transform: scale(0);\n}\n50% {\n        -webkit-transform: scale(1.0);\n        transform: scale(1.0);\n}\n}\n", ""]);
 
 // exports
 
@@ -44294,52 +44294,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    loading: {
-      type: Boolean,
-      default: true
+    props: {
+        loading: {
+            type: Boolean,
+            default: true
+        },
+        color: {
+            type: String,
+            default: '#5dc596'
+        },
+        size: {
+            type: String,
+            default: '60px'
+        },
+        margin: {
+            type: String,
+            default: '2px'
+        },
+        radius: {
+            type: String,
+            default: '100%'
+        }
     },
-    color: {
-      type: String,
-      default: '#5dc596'
+    data: function data() {
+        return {
+            spinnerStyle: {
+                height: this.size,
+                width: this.size,
+                borderRadius: this.radius,
+                opacity: 0.6,
+                position: 'absolute',
+                top: 0,
+                left: 0
+            }
+        };
     },
-    size: {
-      type: String,
-      default: '60px'
-    },
-    margin: {
-      type: String,
-      default: '2px'
-    },
-    radius: {
-      type: String,
-      default: '100%'
-    }
-  },
-  data: function data() {
-    return {
-      spinnerStyle: {
-        height: this.size,
-        width: this.size,
-        borderRadius: this.radius,
-        opacity: 0.6,
-        position: 'absolute',
-        top: 0,
-        left: 0
-      }
-    };
-  },
 
-  computed: {
-    spinnerBasicStyle: function spinnerBasicStyle() {
-      return {
-        height: this.size,
-        width: this.size,
-        position: 'relative'
-      };
+    computed: {
+        spinnerBasicStyle: function spinnerBasicStyle() {
+            return {
+                height: this.size,
+                width: this.size,
+                position: 'relative'
+            };
+        }
     }
-  }
-
 });
 
 /***/ }),
@@ -47107,7 +47106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
 
-            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 1).onUpdate(function () {
+            new window.TWEEN.Tween({ tweeningNumber: oldValue }).easing(window.TWEEN.Easing.Quadratic.Out).to({ tweeningNumber: newValue }, 750).onUpdate(function () {
                 vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
             }).onComplete(function () {
                 vm.animatedLeads = vm.leads.toLocaleString();

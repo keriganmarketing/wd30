@@ -3,6 +3,8 @@ namespace KeriganSolutions\Drone;
 
 use \GuzzleHttp\Client;
 use App\SearchParameters;
+use Illuminate\Http\Request;
+use KeriganSolutions\Drone\Paginator;
 use KeriganSolutions\Drone\CallsMothership as CallsMothership;
 
 class Mothership
@@ -11,11 +13,12 @@ class Mothership
 
     protected $client;
 
-    public function search($params)
+    public function search(Request $request)
     {
-        $searchTerms = new SearchParameters($params);
+        $searchTerms = new SearchParameters($request->all());
         $apiCall     = $this->get($searchTerms->getQueryString());
-        $results     = json_decode($apiCall->getBody());
+        $properties  = json_decode($apiCall->getBody());
+        $results     = $this->paginate($properties, $request);
 
         return $results;
     }
@@ -41,5 +44,10 @@ class Mothership
         return json_decode($response->getBody());
     }
 
+    protected function paginate($properties, $request)
+    {
+        $paginator = new Paginator($properties, $request);
 
+        return $paginator->configure();
+    }
 }

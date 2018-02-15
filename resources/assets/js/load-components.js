@@ -9,7 +9,7 @@ Vue.component('google-map', require('./components/GoogleMap.vue'));
 Vue.component('lead', require('./components/Lead.vue'));
 Vue.component('leads', require('./components/Leads.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));
-Vue.component('lead-tabs', require('./components/LeadTabs.vue'));
+Vue.component('lead-filters', require('./components/LeadFilters.vue'));
 Vue.component('ring-loader', require('./components/RingLoader.vue'));
 Vue.component('max-price', require('./components/MaxPrice.vue'));
 Vue.component('min-price', require('./components/MinPrice.vue'));
