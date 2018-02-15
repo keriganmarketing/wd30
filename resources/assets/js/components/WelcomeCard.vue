@@ -1,6 +1,6 @@
 <template>
     <div class="flex w-full text-center mb-4 flex-wrap">
-        <div class="w-full md:w-1/5"><!--Avatar box and info-->
+        <div class="w-full md:w-1/5">
             <avatar-upload :avatar-path="avatarPath" />
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
@@ -119,7 +119,7 @@ export default {
 
             new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue }, 1)
+                .to({ tweeningNumber: newValue }, 750)
                 .onUpdate(function () {
                     vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
                 })

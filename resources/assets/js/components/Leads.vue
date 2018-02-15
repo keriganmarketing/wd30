@@ -4,7 +4,7 @@
             @page="page"
             :pagination="pagination"
         />
-        <lead-tabs @toggle="filter" :active-filter="activeFilter" :important-filter="importantFilter" />
+        <lead-filters @toggle="filter" :active-filter="activeFilter" :important-filter="importantFilter" />
         <lead
             v-for="lead in leads"
             :key="lead.id"
