@@ -15,9 +15,9 @@ class CreateLeadsTest extends TestCase
     {
         $lead = make('App\Lead');
         $attributes = [
-            'name' => $lead->name,
-            'email' => $lead->email,
-            'phone' => $lead->phone,
+            'name'    => $lead->name,
+            'email'   => $lead->email,
+            'phone'   => $lead->phone,
             'message' => $lead->message
         ];
 

@@ -1,51 +1,53 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.TWEEN = require('@tweenjs/tween.js');
 
 require('./load-components');
+import User from './models/user';
+import Content from './models/content';
 
 const app = new Vue({
     el: '#app',
     data: {
-        user: {
+        user: new User({
+            id: null,
+            name: null,
+            email: null,
+            phone_number: null,
+            address: null,
+            mls_id: null,
+        }),
+        content: new Content({
             id: '',
-            name: '',
-            email: '',
-            phone_number: '',
-            address: '',
-            mls_id: '',
-        }
+            title: null,
+            body: null
+        }),
+        selected: 'leads',
+        activeLeadsCount: 0
     },
-    methods: {
-        sbc (updated) {
-            this.user = updated;
-            axios({
-                method: 'patch',
-                url: '/users/' + this.user.id,
-                data: {
-                    name: this.user.name,
-                    email: this.user.email,
-                    phone_number: this.user.phone_number,
-                    mls_id: this.user.mls_id,
-                    address: this.user.address
-                }
-            })
-            .then(response => {
-                this.user = response.data;
-            });
-        },
-        authenticate () {
-            axios.get('/authenticate').then(response => {
-                this.user.id           = response.data.id;
-                this.user.name         = response.data.name;
-                this.user.email        = response.data.email;
-                this.user.mls_id       = response.data.mls_id;
-                this.user.address      = response.data.address;
-                this.user.phone_number = response.data.phone_number;
-            });
+    computed: {
+        boilerplate: function () {
+            return this.user.name === '';
         }
     },
     mounted () {
-        this.authenticate();
+        this.user.authenticate();
+        this.content.fetch();
+        this.updateLeadsCount();
+    },
+    methods: {
+        sbc (data) {
+            this.user.update(data);
+        },
+        updateContent(data) {
+            this.content.update(data);
+        },
+        updateLeadsCount() {
+            window.axios.get('/leads/count')
+                .then(response => {
+                    this.activeLeadsCount = response.data;
+                });
+        }
     }
 });

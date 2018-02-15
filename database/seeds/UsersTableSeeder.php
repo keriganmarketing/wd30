@@ -6,7 +6,7 @@ use App\User;
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the user database seed.
      *
      * @return void
      */
@@ -15,12 +15,12 @@ class UsersTableSeeder extends Seeder
         $password = bcrypt('secret');
 
         User::create([
-            'name'         => 'Daron Adkins',
-            'email'        => 'daron@kerigan.com',
+            'name'         => 'Karen Branham',
+            'email'        => 'karenbranham@beachybeach.com',
             'password'     => $password,
-            'phone_number' => '850-866-6248',
-            'address'      => '2418 Jason Drive, Lynn Haven FL',
-            'mls_id'       => 'B3326',
+            'phone_number' => '850-588-7978',
+            'address'      => '5912 Thomas Drive'. PHP_EOL . 'Panama City Beach, FL 32408',
+            'mls_id'       => 'B0851|BR.B0851', //separate mls numbers by strongbar "|"
             'is_realtor'   => 1
         ]);
     }
