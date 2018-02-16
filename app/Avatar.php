@@ -11,11 +11,21 @@ class Avatar extends Model
 {
     protected $guarded = [];
 
+    /**
+     * An avatar belongs to a realtor.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function realtor()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Delete user's avatar if it exists. 
+     * 
+     * @return void
+     */
     public static function deleteIfExists()
     {
         $avatar = Avatar::where('user_id', 1)->exists() ? Avatar::first() : null;
@@ -25,6 +35,12 @@ class Avatar extends Model
         }
     }
 
+    /**
+     * User can create a new avatar.
+     * 
+     * @param
+     * @return
+     */
     public static function upload($file)
     {
         $path = Storage::disk('public')->put('avatar', $file);
