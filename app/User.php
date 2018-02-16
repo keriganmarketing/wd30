@@ -28,11 +28,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * 
+     * @param string $query 
+     * @return
+     */
     public function scopeRealtor($query)
     {
         return $query->where('is_realtor', true)->with('avatar')->first();
     }
 
+    /**
+     * Determine if the user has an avatar.
+     * 
+     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function avatar()
     {
         return $this->hasOne(Avatar::class);
