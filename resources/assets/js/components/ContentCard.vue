@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto bg-white flex flex-wrap justify-center">
+    <div class="container mx-auto bg-white flex flex-wrap justify-center mb-8">
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
             <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 CONTENT
