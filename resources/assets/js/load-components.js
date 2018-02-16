@@ -23,6 +23,7 @@ Vue.component('property-type', require('./components/PropertyType.vue'));
 Vue.component('property-photo', require('./components/PropertyPhoto.vue'));
 Vue.component('property-gallery', require('./components/PropertyGallery.vue'));
 Vue.component('search-bar', require('./components/SearchBar.vue'));
+Vue.component('seo-card', require('./components/SeoCard.vue'));
 Vue.component('status', require('./components/Status.vue'));
 Vue.component('total-sqft', require('./components/TotalSqft.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
