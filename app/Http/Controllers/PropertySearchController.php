@@ -32,19 +32,12 @@ class PropertySearchController extends Controller
      */
     public function show($mlsNumber)
     {
-<<<<<<< HEAD
-        $property = Mothership::listing($mlsNumber);
-        $features = Feature::list($property);
-        
-        return view('properties.show', compact('property', 'features'));
-=======
         $property   = Mothership::listing($mlsNumber);
         $features   = Feature::list($property);
         $openHouses = OpenHouse::extract($property->open_houses);
         $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
 
         return view('properties.show', compact('property', 'features', 'openHouses', 'realtor'));
->>>>>>> upstream/master
     }
 
 }
