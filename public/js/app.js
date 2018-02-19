@@ -42400,7 +42400,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-start border-b"
+            "w-full py-2 bg-white flex flex-wrap items-start border-b pr-2"
         },
         [
           _c(
@@ -42427,7 +42427,7 @@ var render = function() {
             class: {
               "border-secondary": _vm.body
             },
-            attrs: { rows: "8" },
+            attrs: { rows: "5" },
             domProps: { value: _vm.content.body },
             on: {
               focus: function($event) {
@@ -47125,13 +47125,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            title: 'Beachy Beach Real Estate | Karen Branham',
-            description: 'Ron and Karen Branham have a simple philosophy – provide “EXCEPTIONAL SERVICE TO EVERYONE THAT WALKS THROUGH THE FRONT DOOR!” They know the market well and have over 20 years experience.'
+            id: 0,
+            title: '',
+            description: ''
         };
+    },
+    mounted: function mounted() {
+        this.getMetaData();
+    },
+
+    methods: {
+        submit: function submit() {
+            var _this = this;
+
+            window.axios.patch('/metadata/' + this.id, {
+                title: this.title,
+                description: this.description
+            }).then(function (response) {
+                _this.id = response.data.id, _this.title = response.data.title, _this.description = response.data.description;
+            });
+        },
+        getMetaData: function getMetaData() {
+            var _this2 = this;
+
+            window.axios.get('/metadata').then(function (response) {
+                _this2.id = response.data.id, _this2.title = response.data.title, _this2.description = response.data.description;
+            });
+        }
     }
 });
 
@@ -47145,10 +47172,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "container mx-auto bg-white flex flex-wrap justify-center mb-32"
-    },
+    { staticClass: "container mx-auto bg-white flex flex-wrap justify-center" },
     [
       _vm._m(0),
       _vm._v(" "),
@@ -47276,6 +47300,21 @@ var render = function() {
               }
             }
           })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-2 bg-white flex flex-wrap items-center justify-center sm:pr-2 md:pr-4"
+        },
+        [
+          _c(
+            "button",
+            { staticClass: "button-brand w-1/3", on: { click: _vm.submit } },
+            [_vm._v("Submit")]
+          )
         ]
       )
     ]

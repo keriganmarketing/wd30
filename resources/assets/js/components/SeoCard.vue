@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto bg-white flex flex-wrap justify-center mb-32">
+    <div class="container mx-auto bg-white flex flex-wrap justify-center">
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary mb-4">
             <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 SEO
@@ -40,6 +40,9 @@
                 v-model="description"
             />
         </div>
+        <div class="w-full py-2 bg-white flex flex-wrap items-center justify-center sm:pr-2 md:pr-4">
+            <button class="button-brand w-1/3" @click="submit">Submit</button>
+        </div>
     </div>
 
 </template>
@@ -48,8 +51,32 @@
 export default {
     data () {
         return {
-            title: 'Beachy Beach Real Estate | Karen Branham',
-            description: 'Ron and Karen Branham have a simple philosophy – provide “EXCEPTIONAL SERVICE TO EVERYONE THAT WALKS THROUGH THE FRONT DOOR!” They know the market well and have over 20 years experience.'
+            id: 0,
+            title: '',
+            description: ''
+        }
+    },
+    mounted () {
+        this.getMetaData();
+    },
+    methods: {
+        submit () {
+            window.axios.patch('/metadata/' + this.id, {
+                title: this.title,
+                description: this.description
+            })
+                .then(response => {
+                    this.id          = response.data.id,
+                    this.title       = response.data.title,
+                    this.description = response.data.description
+                });
+        },
+        getMetaData () {
+            window.axios.get('/metadata').then(response => {
+                this.id          = response.data.id,
+                this.title       = response.data.title,
+                this.description = response.data.description
+            });
         }
     }
 }
