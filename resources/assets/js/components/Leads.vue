@@ -1,13 +1,18 @@
 <template>
     <div class="container mx-auto">
-        <lead-tabs
-            @toggle-click="fetch"
-        />
-        <lead-pagination
-            @page="page"
-            :pagination="pagination"
-        />
-        <lead-tabs @toggle="filter" :active-filter="activeFilter" :important-filter="importantFilter" />
+        <div class="lead-controls flex justify-between items-center py-2 flex-wrap">
+            <lead-pagination
+                @page="page"
+                :pagination="pagination"
+                class="w-full md:w-auto"
+            />
+            <lead-filters
+                @toggle="filter"
+                :active-filter="activeFilter"
+                :important-filter="importantFilter"
+                class="w-full md:max-w-xs"
+            />
+        </div>
         <lead
             v-for="lead in leads"
             :key="lead.id"
