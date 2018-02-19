@@ -38,6 +38,7 @@ class InstallController extends Controller
     {
         $email = urlencode($request->email);
         $agent = (new Installer())->configure(Mothership::agentData($email));
+
         return response()->json($agent);
     }
 
