@@ -30,6 +30,13 @@ class Mothership
         return json_decode($response->getBody());
     }
 
+    public function agentData($email)
+    {
+        $response = $this->get('agentdata?email='. $email);
+
+        return json_decode($response->getBody());
+    }
+
     public function agentListings($mlsId)
     {
         $response = $this->get('agentlistings?agentId='. $mlsId);

@@ -9,6 +9,10 @@ use App\Content;
 
 class FrontPageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('installed');
+    }
     /**
      * Display a listing of the resource.
      *
