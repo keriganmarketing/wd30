@@ -16,7 +16,7 @@
         </div>
         <div class="property-details py-2 px-2">
             <div class="address h-12 flex flex-col justify-center align-middle">
-                <p class="p-2 text-grey-darker text-sm text-center">{{ $listing->street_number }} {{ $listing->street_name }} @if($listing->unit_number) Unit {{$listing->unit_number}} @endif<br>
+                <p class="p-2 text-grey-darker text-sm text-center">{{ $listing->street_number }} {{ $listing->street_name }} {{ $listing->street_suffix }} @if($listing->unit_number) Unit {{$listing->unit_number}} @endif<br>
                     {{ $listing->city }}, {{ $listing->state }}</p>
             </div>
             <div class="price">

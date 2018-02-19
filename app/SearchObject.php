@@ -19,6 +19,9 @@ class SearchObject
     public $orderBy;
     public $status;
 
+    /**
+     * Constructor
+     */
     public function __construct($params)
     {
         $this->convertParams($params);
@@ -38,6 +41,12 @@ class SearchObject
         return $array;
     }
 
+    /**
+     * Convert the statuses into strings.
+     * 
+     * @param  
+     * @return string 
+     */
     protected function convertParams($params)
     {
         foreach ($params as $key => $value) {
@@ -47,6 +56,11 @@ class SearchObject
         return $this;
     }
 
+    /**
+     * Convert search query into a string.
+     * 
+     * @return string
+     */
     protected function toQueryString()
     {
         $pt = $this->propertyType;
@@ -71,6 +85,11 @@ class SearchObject
         return $sq;
     }
 
+    /**
+     * Group similar property types togther to improve searching.
+     * 
+     * @return array
+     */
     private function getPropertyTypes($class = null)
     {
         $typeArray = [
