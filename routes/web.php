@@ -24,6 +24,7 @@ Route::post('/avatar', 'AvatarsController@store');
 Route::resource('/leads', 'LeadsController');
 Route::resource('/notes', 'NotesController');
 Route::resource('/content', 'ContentController');
+Route::resource('/metadata', 'MetaDataController');
 
 // Misc
 Route::get('/leads/{lead}/notes', 'LeadNotesController@index');
