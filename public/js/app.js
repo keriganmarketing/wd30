@@ -43350,6 +43350,189 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43357,20 +43540,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             name: '',
             email: '',
             company: '',
-            building: false
+            mls_id: [],
+            cell_phone: [],
+            office_phone: [],
+            street_1: [],
+            street_2: [],
+            city: [],
+            state: [],
+            zip: [],
+            photos: [],
+            building: false,
+            password: '',
+            password_confirmation: ''
         };
     },
 
+    computed: {
+        duplicatesFound: function duplicatesFound() {
+            return this.chooseOfficePhone || this.chooseCellPhone || this.chooseStreet1 || this.chooseStreet2 || this.chooseCity || this.chooseState || this.chooseZip;
+        },
+        chooseOfficePhone: function chooseOfficePhone() {
+            return this.office_phone.length > 1;
+        },
+        chooseCellPhone: function chooseCellPhone() {
+            return this.cell_phone.length > 1;
+        },
+        chooseStreet1: function chooseStreet1() {
+            return this.street_1.length > 1;
+        },
+        chooseStreet2: function chooseStreet2() {
+            return this.street_2.length > 1;
+        },
+        chooseCity: function chooseCity() {
+            return this.city.length > 1;
+        },
+        chooseState: function chooseState() {
+            return this.state.length > 1;
+        },
+        chooseZip: function chooseZip() {
+            return this.zip.length > 1;
+        }
+    },
     methods: {
         install: function install() {
+            var _this = this;
+
             this.building = true;
             window.axios.post('/install', {
                 name: this.name,
                 email: this.email,
                 company: this.company
             }).then(function (response) {
-                console.log(response.data);
+                var data = response.data;
+                _this.zip = data.zip;
+                _this.city = data.city;
+                _this.state = data.state;
+                _this.photos = data.photos;
+                _this.mls_id = data.mls_id;
+                _this.street_1 = data.street_1;
+                _this.street_2 = data.street_2;
+                _this.cell_phone = data.cell_phone;
+                _this.office_phone = data.office_phone;
             });
+        },
+        select: function select(key, value) {
+            this[key] = [value];
+        },
+        finishInstall: function finishInstall() {
+            alert('Here we go!');
         }
     }
 });
@@ -43387,165 +43624,628 @@ var render = function() {
     "div",
     { staticClass: "container mx-auto bg-white flex flex-wrap justify-center" },
     [
-      _vm._m(0),
-      _vm._v(" "),
       _c(
-        "div",
+        "p",
         {
           staticClass:
-            "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+            "w-full justify-center flex font-bold items-center text-secondary p-4 border-b border-secondary"
         },
         [
-          _c(
-            "div",
-            {
-              staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
-            },
-            [_vm._v("\n            Your Name:\n        ")]
-          ),
+          !_vm.building
+            ? _c(
+                "span",
+                { staticClass: "text-center w-auto text-2xl text-brand" },
+                [
+                  _vm._v("\n            Welcome to your new site! "),
+                  _c("br"),
+                  _vm._v(
+                    " We just need a couple of things to get started.\n        "
+                  )
+                ]
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              }
-            ],
-            staticClass:
-              "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
-            attrs: { type: "text" },
-            domProps: { value: _vm.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.name = $event.target.value
-              }
-            }
-          })
+          _vm.duplicatesFound
+            ? _c(
+                "span",
+                { staticClass: "text-center w-auto text-2xl text-brand" },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "underline font-bold text-secondary" },
+                    [_vm._v("Awesome!")]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    " We noticed some duplicate values in your MLS data, select the most accurate choice for each field below. If you're not sure, you can always change this later.\n\n        "
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.duplicatesFound && _vm.building
+            ? _c(
+                "span",
+                { staticClass: "text-center w-auto text-2xl text-brand" },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "underline font-bold text-secondary" },
+                    [_vm._v("All set!")]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    " Easy, huh? Click the button below to login to your site. Happy Selling!\n\n        "
+                  )
+                ]
+              )
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
-            },
-            [_vm._v("\n            Your Email:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
+      !_vm.building
+        ? _c("div", { staticClass: "w-full" }, [
+            _c(
+              "div",
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
-              }
-            ],
-            staticClass:
-              "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
-            attrs: { type: "text" },
-            domProps: { value: _vm.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.email = $event.target.value
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right" },
-            [_vm._v("\n            Company/Broker:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
+                staticClass:
+                  "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
+                  },
+                  [_vm._v("\n                Your Name:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  staticClass:
+                    "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.company,
-                expression: "company"
-              }
-            ],
-            staticClass:
-              "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
-            attrs: { type: "text" },
-            domProps: { value: _vm.company },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.company = $event.target.value
-              }
-            }
-          })
-        ]
-      ),
+                staticClass:
+                  "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
+                  },
+                  [_vm._v("\n                Your Email:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  staticClass:
+                    "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                  },
+                  [_vm._v("\n                Company/Broker:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.company,
+                      expression: "company"
+                    }
+                  ],
+                  staticClass:
+                    "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.company },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.company = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
+                  },
+                  [_vm._v("\n                Create Password:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
+                    }
+                  ],
+                  staticClass:
+                    "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
+                  attrs: { type: "password" },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right"
+                  },
+                  [_vm._v("\n                Confirm Password:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password_confirmation,
+                      expression: "password_confirmation"
+                    }
+                  ],
+                  staticClass:
+                    "border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left",
+                  attrs: { type: "password" },
+                  domProps: { value: _vm.password_confirmation },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password_confirmation = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-full bg-white flex flex-wrap h-16 items-center"
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-brand-dark text-white shadow appearance-none inline-block border-brand-darkest .px-3 .py-2 w-full h-16 text-3xl font-bold",
+                    on: { click: _vm.install }
+                  },
+                  [_vm._v("\n                BUILD MY SITE\n            ")]
+                )
+              ]
+            )
+          ])
+        : _vm._e(),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "w-full bg-white flex flex-wrap h-16 items-center" },
-        [
-          _c(
-            "button",
+      _vm.duplicatesFound
+        ? _c(
+            "div",
             {
               staticClass:
-                "bg-brand-dark text-white shadow appearance-none inline-block border-brand-darkest .px-3 .py-2 w-full h-16 text-3xl font-bold",
-              on: { click: _vm.install }
+                "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
             },
-            [_vm._v("\n            BUILD MY SITE\n        ")]
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+                },
+                [
+                  _vm.chooseOfficePhone
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [
+                          _vm._v(
+                            "\n                Office Phone:\n            "
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseOfficePhone
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-2/3 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.office_phone, function(op) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("office_phone", op)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(op) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseCellPhone
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                Cell Phone:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseCellPhone
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-2/3 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.cell_phone, function(cp) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("cell_phone", cp)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(cp) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseStreet1
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                Street 1:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseStreet1
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-2/3 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.street_1, function(s1) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("street_1", s1)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(s1) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseStreet2
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                Street 2:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseStreet2
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-2/3 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.street_2, function(s2) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("street_2", s2)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(s2) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseCity
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                City:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseCity
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-1/2 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.city, function(c) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("city", c)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(c) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseState
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                State:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseState
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-1/2 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.state, function(st) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("state", st)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(st) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseZip
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                        },
+                        [_vm._v("\n                Zip:\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.chooseZip
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-1/2 flex flex-wrap items-center justify-around"
+                        },
+                        _vm._l(_vm.zip, function(z) {
+                          return _c(
+                            "button",
+                            {
+                              staticClass: "button-secondary w-1/3",
+                              on: {
+                                click: function($event) {
+                                  _vm.select("zip", z)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(z) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e()
+                ]
+              )
+            ]
           )
-        ]
-      )
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.duplicatesFound && _vm.building
+        ? _c(
+            "div",
+            { staticClass: "w-1/2 flex flex-wrap items-center justify-around" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "button-secondary w-1/3",
+                  on: { click: _vm.finishInstall }
+                },
+                [_vm._v("\n            GO!\n        ")]
+              )
+            ]
+          )
+        : _vm._e()
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      {
-        staticClass:
-          "w-full justify-center flex font-bold items-center text-secondary p-4 border-b border-secondary"
-      },
-      [
-        _c("span", { staticClass: "text-center w-auto text-2xl text-brand" }, [
-          _vm._v("\n            Welcome to your new site! "),
-          _c("br"),
-          _vm._v(" We just need a couple of things to get started.\n        ")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

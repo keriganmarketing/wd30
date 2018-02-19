@@ -9,7 +9,7 @@ class Installer
         $formatted = [];
         foreach ($agent as $key => $value) {
             if ($key != 'mls_id' && $key != 'photos') {
-                $formatted[$key] = array_filter($this->clean($value));
+                $formatted[$key] = $this->clean($value);
             }
         }
         $formatted['mls_id'] = array_filter($agent->mls_id);
@@ -21,8 +21,8 @@ class Installer
     protected function clean($array)
     {
         $clean = [];
-        foreach ($array as $field) {
-            array_push($clean, ucwords(strtolower(preg_replace('/[^a-z\d \( \) \- ]+/i', '', $field))));
+        foreach (array_filter(array_unique($array)) as $field) {
+            $clean[] = ucwords(strtolower(preg_replace('/[^a-z\d \( \) \- ]+/i', '', $field)));
         }
 
         return array_unique($clean);
