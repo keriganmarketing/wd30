@@ -21,6 +21,6 @@ trait CallsMothership {
 
     public function post($request)
     {
-        return $this->client->request('POST', $request);    
+        return $this->client->request('POST', $request);
     }
 }

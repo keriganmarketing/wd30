@@ -1,6 +1,6 @@
 <template>
     <div class="flex w-full text-center mb-4 flex-wrap">
-        <div class="w-full md:w-1/5"><!--Avatar box and info-->
+        <div class="w-full md:w-1/5">
             <avatar-upload :avatar-path="avatarPath" />
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
@@ -69,7 +69,7 @@ export default {
     },
     watch: {
         impressions: function (newValue, oldValue) {
-            var vm = this
+            let vm = this;
             function animate () {
                 if (window.TWEEN.update()) {
                     requestAnimationFrame(animate)
@@ -84,12 +84,12 @@ export default {
                 .onComplete(function () {
                     vm.animatedImpressions = vm.impressions.toLocaleString();
                 })
-                .start()
+                .start();
 
             animate()
         },
         clicks: function (newValue, oldValue) {
-            var vm = this
+            let vm = this;
             function animate () {
                 if (window.TWEEN.update()) {
                     requestAnimationFrame(animate)
@@ -105,12 +105,12 @@ export default {
                 .onComplete(function () {
                     vm.animatedClicks = vm.clicks.toLocaleString();
                 })
-                .start()
+                .start();
 
             animate()
         },
         leads: function (newValue, oldValue) {
-            var vm = this
+            let vm = this;
             function animate () {
                 if (window.TWEEN.update()) {
                     requestAnimationFrame(animate)
@@ -119,14 +119,14 @@ export default {
 
             new window.TWEEN.Tween({ tweeningNumber: oldValue })
                 .easing(window.TWEEN.Easing.Quadratic.Out)
-                .to({ tweeningNumber: newValue }, 1)
+                .to({ tweeningNumber: newValue }, 750)
                 .onUpdate(function () {
                     vm.animatedLeads = this._object.tweeningNumber.toFixed(0);
                 })
                 .onComplete(function () {
                     vm.animatedLeads = vm.leads.toLocaleString();
                 })
-                .start()
+                .start();
 
             animate()
         },

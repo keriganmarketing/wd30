@@ -37,6 +37,11 @@ class AdminController extends Controller
         return view('home', compact('user', 'avatarPath'));
     }
 
+    /**
+     * Show listings with analytics.
+     * 
+     * @return string
+     */
     public function myProperties()
     {
         $user = User::realtor();

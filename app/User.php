@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number', 'mls_id', 'address'
+        'name', 'email', 'password', 'cell_phone', 'office_phone', 'primary_phone', 'company', 'mls_id', 'address'
     ];
 
     /**
@@ -28,11 +28,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * 
+     * @param string $query 
+     * @return
+     */
     public function scopeRealtor($query)
     {
         return $query->where('is_realtor', true)->with('avatar')->first();
     }
 
+    /**
+     * Determine if the user has an avatar.
+     * 
+     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function avatar()
     {
         return $this->hasOne(Avatar::class);
