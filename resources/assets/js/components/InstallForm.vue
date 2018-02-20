@@ -286,10 +286,12 @@ export default {
     methods: {
         install () {
             this.building = true;
-            window.axios.post('/install', {
+            window.axios.post('/configure-install', {
                 name: this.name,
                 email: this.email,
-                company: this.company
+                company: this.company,
+                password: this.password,
+                password_confirmation: this.password_confirmation
             })
                 .then(response => {
                     let data = response.data;

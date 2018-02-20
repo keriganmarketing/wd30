@@ -20,7 +20,7 @@ Route::get('/leads/count', 'LeadsCountController@show');
 Route::patch('/users/{id}', 'UsersController@update');
 
 Route::post('/avatar', 'AvatarsController@store');
-Route::post('/install', 'InstallController@store');
+Route::post('/configure-install', 'InstallController@configure');
 
 // Resourceful routes
 Route::resource('/leads', 'LeadsController');
