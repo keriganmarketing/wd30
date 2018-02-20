@@ -37,7 +37,7 @@ class PropertySearchController extends Controller
         $openHouses = OpenHouse::extract($property->open_houses);
         $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
 
-        return view('properties.show', compact('property', 'features', 'openHouses', 'realtor'));
+        return view('properties.show', compact('property', 'features', 'openHouses', 'realtor', 'featuresCount'));
     }
 
 }

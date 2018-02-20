@@ -40,7 +40,6 @@ class Feature extends Model
 
         // Remove empty values to make looping easier
         $features = array_filter($raw);
-        $this->features = count($features);
 
         return $features;
     }
