@@ -2,10 +2,17 @@
 
 namespace App;
 
+use Countable;
 use Illuminate\Database\Eloquent\Model;
 
-class Feature extends Model
+class Feature extends Model implements Countable
 {
+    protected $features;
+
+    public function __construct()
+    {
+        $this->features = 0;
+    }
     /**
      * Get all of the features for a property.
      *
@@ -34,8 +41,14 @@ class Feature extends Model
 
         // Remove empty values to make looping easier
         $features = array_filter($raw);
+        $this->features = count($features);
 
         return $features;
+    }
+
+    public function count()
+    {
+        return $this->features;
     }
 
     /**
@@ -59,4 +72,5 @@ class Feature extends Model
     {
         return explode(',', $value);
     }
+
 }
