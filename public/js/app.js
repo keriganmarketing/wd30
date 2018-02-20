@@ -43608,10 +43608,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.building = true;
-            window.axios.post('/install', {
+            window.axios.post('/configure-install', {
                 name: this.name,
                 email: this.email,
-                company: this.company
+                company: this.company,
+                password: this.password,
+                password_confirmation: this.password_confirmation
             }).then(function (response) {
                 var data = response.data;
                 _this.zip = data.zip;

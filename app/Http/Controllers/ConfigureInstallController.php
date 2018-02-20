@@ -2,29 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Installer;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
 
-class InstallController extends Controller
+class ConfigureInstallController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('install');
-    }
-
-    /**
-     * Configure the initial install parameters and prepare for completion
+     * Consolidate user data to prepare for the install.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function configure(Request $request)
+    public function create(Request $request)
     {
         $request->validate([
             'name'     => 'required|max:255',
@@ -46,16 +37,4 @@ class InstallController extends Controller
 
         return response()->json($agentData);
     }
-
-    /**
-     * Complete the install process
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function complete(Request $request)
-    {
-        //
-    }
-
 }

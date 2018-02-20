@@ -18,6 +18,11 @@ class Installer
         return $formatted;
     }
 
+    public function install($data)
+    {
+
+    }
+
     protected function clean($array)
     {
         $clean = [];
