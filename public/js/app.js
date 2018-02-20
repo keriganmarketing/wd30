@@ -41478,7 +41478,7 @@ exports = module.exports = __webpack_require__(52)(false);
 
 
 // module
-exports.push([module.i, "\n.primary-phone-switch input {\n    position: absolute !important;\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    width: 1px;\n    border: 0;\n    overflow: hidden;\n}\n.primary-phone-switch label {\n  display: inline-block;\n  width: 120px;\n  background-color: #e4e4e4;\n  color: rgba(0, 0, 0, 0.6);\n  font-size: 14px;\n  text-align: center;\n  text-shadow: none;\n  padding: 6px 14px;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n  -webkit-transition: all 0.1s ease-in-out;\n  transition:         all 0.1s ease-in-out;\n}\n.primary-phone-switch label:hover {\n\tcursor: pointer;\n}\n.primary-phone-switch input:checked + label {\n  background-color: #A5DC86;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.primary-phone-switch label:first-of-type {\n  border-radius: 4px 0 0 4px;\n}\n.primary-phone-switch label:last-of-type {\n  border-radius: 0 4px 4px 0;\n}\n", ""]);
+exports.push([module.i, "\n.primary-phone-switch input {\n    position: absolute !important;\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    width: 1px;\n    border: 0;\n    overflow: hidden;\n}\n.primary-phone-switch label {\n    display: inline-block;\n    width: 120px;\n    background-color: #e4e4e4;\n    color: rgba(0, 0, 0, 0.6);\n    font-size: 14px;\n    text-align: center;\n    text-shadow: none;\n    padding: 6px 14px;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n    -webkit-transition: all 0.1s ease-in-out;\n    transition: all 0.1s ease-in-out;\n}\n.primary-phone-switch label:hover {\n    cursor: pointer;\n}\n.primary-phone-switch input:checked + label {\n    background-color: #A5DC86;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n}\n.primary-phone-switch label:first-of-type {\n    border-radius: 4px 0 0 4px;\n}\n.primary-phone-switch label:last-of-type {\n    border-radius: 0 4px 4px 0;\n}\n", ""]);
 
 // exports
 
@@ -41522,6 +41522,8 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -41934,78 +41936,80 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b primary-phone-switch"
+            "w-full py-2 bg-white flex flex-wrap items-center border-b"
         },
         [
           _c(
             "div",
             {
               staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
             },
             [_vm._v("\n            Primary Phone:\n        ")]
           ),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.primary_phone,
-                expression: "user.primary_phone"
-              }
-            ],
-            attrs: { type: "radio", id: "switch_left" },
-            domProps: {
-              value: _vm.user.cell_phone,
-              checked: _vm.primary("cell_phone"),
-              checked: _vm._q(_vm.user.primary_phone, _vm.user.cell_phone)
-            },
-            on: {
-              change: [
-                function($event) {
-                  _vm.$set(_vm.user, "primary_phone", _vm.user.cell_phone)
-                },
-                function($event) {
-                  _vm.submit("cell_phone")
+          _c("div", { staticClass: "w-auto primary-phone-switch flex px-4" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.primary_phone,
+                  expression: "user.primary_phone"
                 }
-              ]
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "switch_left" } }, [
-            _vm._v("Cell Phone")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.primary_phone,
-                expression: "user.primary_phone"
+              ],
+              attrs: { type: "radio", id: "switch_left" },
+              domProps: {
+                value: _vm.user.cell_phone,
+                checked: _vm.primary("cell_phone"),
+                checked: _vm._q(_vm.user.primary_phone, _vm.user.cell_phone)
+              },
+              on: {
+                change: [
+                  function($event) {
+                    _vm.$set(_vm.user, "primary_phone", _vm.user.cell_phone)
+                  },
+                  function($event) {
+                    _vm.submit("cell_phone")
+                  }
+                ]
               }
-            ],
-            attrs: { type: "radio", id: "switch_right" },
-            domProps: {
-              value: _vm.user.office_phone,
-              checked: _vm.primary("office_phone"),
-              checked: _vm._q(_vm.user.primary_phone, _vm.user.office_phone)
-            },
-            on: {
-              change: [
-                function($event) {
-                  _vm.$set(_vm.user, "primary_phone", _vm.user.office_phone)
-                },
-                function($event) {
-                  _vm.submit("office_phone")
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "switch_left" } }, [
+              _vm._v("Cell Phone")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.primary_phone,
+                  expression: "user.primary_phone"
                 }
-              ]
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "switch_right" } }, [
-            _vm._v("Office Phone")
+              ],
+              attrs: { type: "radio", id: "switch_right" },
+              domProps: {
+                value: _vm.user.office_phone,
+                checked: _vm.primary("office_phone"),
+                checked: _vm._q(_vm.user.primary_phone, _vm.user.office_phone)
+              },
+              on: {
+                change: [
+                  function($event) {
+                    _vm.$set(_vm.user, "primary_phone", _vm.user.office_phone)
+                  },
+                  function($event) {
+                    _vm.submit("office_phone")
+                  }
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "switch_right" } }, [
+              _vm._v("Office Phone")
+            ])
           ])
         ]
       ),
@@ -42757,6 +42761,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43200,22 +43210,34 @@ var render = function() {
     ),
     _vm._v(" "),
     _c(
-      "div",
-      { ref: "map", staticClass: "relative google-map w-full h-64 z-10" },
-      [
-        _c(
-          "div",
-          {
-            ref: "directionsButton",
-            staticClass:
-              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center",
-            class: { hidden: _vm.showDirections },
-            on: { click: _vm.getUserLocation }
-          },
-          [_vm._v("\n            GET DIRECTIONS\n        ")]
-        )
-      ]
+      "a",
+      {
+        staticClass:
+          "font-brand block w-full px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded-t text-white no-underline text-center md:hidden",
+        attrs: {
+          href:
+            "https://www.google.com/maps/dir/?api=1&destination=" +
+            _vm.latitude +
+            "," +
+            _vm.longitude
+        }
+      },
+      [_vm._v("\n        GET DIRECTIONS\n    ")]
     ),
+    _vm._v(" "),
+    _c("div", { ref: "map", staticClass: "relative w-full h-64 z-10" }, [
+      _c(
+        "div",
+        {
+          ref: "directionsButton",
+          staticClass:
+            "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center absolute z-99 bg-brand-light text-2xl rounded-br text-white invisible md:visible text-center",
+          class: { hidden: _vm.showDirections },
+          on: { click: _vm.getUserLocation }
+        },
+        [_vm._v("\n            GET DIRECTIONS\n        ")]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -43229,7 +43251,7 @@ var render = function() {
           "a",
           {
             staticClass:
-              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center",
+              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded text-white text-center",
             on: { click: _vm.closeDirections }
           },
           [_vm._v("CLOSE DIRECTIONS")]
@@ -45401,7 +45423,7 @@ exports = module.exports = __webpack_require__(52)(false);
 
 
 // module
-exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n}\n.switch-box input[type=\"checkbox\"]{\n    font-size: 30px;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    width: 2.5em;\n    height: 1em;\n    border-radius: 3em;\n    position: relative;\n    cursor: pointer;\n    outline: none;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box input[type=\"checkbox\"]:after{\n    position: absolute;\n    content: \"\";\n    width: 1em;\n    height: 1em;\n    border-radius: 50%;\n    background: #fff;\n    -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);\n    box-shadow: 0 0 .25em rgba(0,0,0,.3);\n    -webkit-transform: scale(.7);\n    -ms-transform: scale(.7);\n        transform: scale(.7);\n    left: 0;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box input[type=\"checkbox\"]:checked:after{\n    left: calc(100% - 1em);\n}\n", ""]);
+exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n}\n.switch-box input {\n    display: none;\n}\n.switch-box .sudo-switcher {\n    font-size: 30px;\n    width: 2.5em;\n    height: 1em;\n    border-radius: 3em;\n    position: relative;\n    cursor: pointer;\n    outline: none;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher:after {\n    position: absolute;\n    content: \"\";\n    width: 1em;\n    height: 1em;\n    border-radius: 50%;\n    background: #fff;\n    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    -webkit-transform: scale(.7);\n    -ms-transform: scale(.7);\n        transform: scale(.7);\n    left: 0;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher.checked:after {\n    left: calc(100% - 1em);\n}\n", ""]);
 
 // exports
 
@@ -45412,6 +45434,12 @@ exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -45490,30 +45518,38 @@ var render = function() {
           "label",
           {
             staticClass:
-              "active-toggle text-white flex-grow w-1/3 text-right px-2",
+              "active-toggle text-white flex-grow w-8 text-right px-2",
             class: { "font-bold": _vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
           [_vm._v("\n            Active\n        ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-1/3" }, [
-          _c("input", {
-            staticClass: "bg-grey-darker",
-            attrs: { type: "checkbox", id: "activeToggle" },
-            domProps: { checked: !_vm.activeFilter },
-            on: {
-              change: function($event) {
-                _vm.toggle("activeFilter")
-              }
-            }
-          })
+        _c("div", { staticClass: "switch-box w-8" }, [
+          _c(
+            "label",
+            {
+              staticClass: "sudo-switcher bg-brand-darker",
+              class: { checked: !_vm.activeFilter }
+            },
+            [
+              _c("input", {
+                attrs: { type: "checkbox", id: "activeToggle" },
+                domProps: { checked: !_vm.activeFilter },
+                on: {
+                  change: function($event) {
+                    _vm.toggle("activeFilter")
+                  }
+                }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c(
           "label",
           {
-            staticClass: "active-toggle text-white flex-grow w-1/3 px-2",
+            staticClass: "active-toggle text-white flex-grow w-8 px-2",
             class: { "font-bold": !_vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
@@ -45533,30 +45569,38 @@ var render = function() {
           "label",
           {
             staticClass:
-              "important-toggle text-white flex-grow w-1/3 text-right px-2",
+              "important-toggle text-white flex-grow w-8 text-right px-2",
             class: { "font-bold": !_vm.importantFilter },
             attrs: { for: "importantToggle" }
           },
           [_vm._v("\n            All\n        ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-1/3" }, [
-          _c("input", {
-            staticClass: "bg-grey-darker",
-            attrs: { type: "checkbox", id: "importantToggle" },
-            domProps: { checked: _vm.importantFilter },
-            on: {
-              change: function($event) {
-                _vm.toggle("importantFilter")
-              }
-            }
-          })
+        _c("div", { staticClass: "switch-box w-8" }, [
+          _c(
+            "label",
+            {
+              staticClass: "sudo-switcher bg-brand-darker",
+              class: { checked: _vm.importantFilter }
+            },
+            [
+              _c("input", {
+                attrs: { type: "checkbox", id: "importantToggle" },
+                domProps: { checked: _vm.importantFilter },
+                on: {
+                  change: function($event) {
+                    _vm.toggle("importantFilter")
+                  }
+                }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c(
           "label",
           {
-            staticClass: "important-toggle text-white flex-grow w-1/3 px-2",
+            staticClass: "important-toggle text-white flex-grow w-8 px-2",
             class: { "font-bold": _vm.importantFilter },
             attrs: { for: "importantToggle" }
           },
@@ -47129,7 +47173,7 @@ var render = function() {
       attrs: {
         name: "omni",
         type: "text",
-        autocomplete: "off",
+        autocomplete: "new-omni",
         placeholder: "City, address, subdivision or zip"
       },
       domProps: { value: _vm.omni },
@@ -48074,7 +48118,7 @@ exports = module.exports = __webpack_require__(52)(false);
 
 
 // module
-exports.push([module.i, "\n.google-title {\n    text-decoration: none;\n    color: #1a0dab;\n    font-size: 18px;\n    line-height: 1.2;\n    text-align: left;\n    font-weight: normal;\n    font-family: Roboto, Arial;\n    white-space: nowrap;\n}\n.google-link {\n    height: 18px;\n    line-height: 16px;\n    font-size: 14px;\n    color: #006621;\n    font-family: Roboto, Arial;\n}\n.google-description {\n    color: #808080;\n    line-height: 1.4;\n    word-wrap: break-word;\n    font-family: Roboto, Arial;\n    font-size: small;\n}\n", ""]);
+exports.push([module.i, "\n.google-title {\n    text-decoration: none;\n    color: #1a0dab;\n    font-size: 15px;\n    line-height: 1.2;\n    text-align: left;\n    font-weight: normal;\n    font-family: 'Roboto', Arial;\n}\n.google-link {\n    height: 18px;\n    line-height: 16px;\n    font-size: 14px;\n    color: #006621;\n    font-family: 'Roboto', Arial;\n}\n.google-description {\n    color: #808080;\n    line-height: 1.4;\n    word-wrap: break-word;\n    font-family: 'Roboto', Arial;\n    font-size: small;\n}\n@media screen and (min-width: 768px){\n.google-title {\n        font-size: 18px;\n}\n}\n", ""]);
 
 // exports
 
@@ -48186,14 +48230,13 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-start border-b sm:pr-2 md:pr-4"
+            "w-full py-2 bg-white flex flex-wrap items-start border-b px-4"
         },
         [
           _c(
             "div",
             {
-              staticClass:
-                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+              staticClass: "font-bold w-full sm:w-1/4 md:w-1/6 py-2 text-left"
             },
             [_vm._v("\n            Preview:\n        ")]
           ),
@@ -48202,26 +48245,41 @@ var render = function() {
             "div",
             {
               staticClass:
-                "w-2/3 p-4 border rounded bg-white flex flex-wrap items-center justify-center mb-8"
+                "w-full sm:w-auto md:w-2/3 p-4 border rounded bg-white mb-8"
             },
             [
-              _c("p", { staticClass: "google-title w-full" }, [
-                _vm._v(
-                  "\n                " + _vm._s(_vm.title) + "\n            "
-                )
-              ]),
+              _c(
+                "p",
+                {
+                  staticClass: "google-title w-full text-left whitespace-normal"
+                },
+                [
+                  _vm._v(
+                    "\n                " + _vm._s(_vm.title) + "\n            "
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("small", { staticClass: "w-full google-link" }, [
-                _vm._v("https://karenbranham.beachybeach.com")
-              ]),
+              _c(
+                "small",
+                { staticClass: "google-link w-full text-left break-words" },
+                [_vm._v("https://karenbranham.beachybeach.com")]
+              ),
               _vm._v(" "),
-              _c("p", { staticClass: "w-full google-description" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.description) +
-                    "\n            "
-                )
-              ])
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "w-full google-description border-t md:border-0 pt-2 md:pt-0 mt-3 md:mt-1"
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.description) +
+                      "\n            "
+                  )
+                ]
+              )
             ]
           )
         ]
@@ -48238,7 +48296,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
             },
             [_vm._v("\n            Site Title:\n        ")]
           ),
@@ -48253,7 +48311,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "border rounded border-secondary py-2 md:px-2 bg-white flex-grow text-left",
+              "py-2 pl-4 sm:pl-0 md:px-2 bg-white flex-grow text-left whitespace-normal",
             attrs: { type: "text" },
             domProps: { value: _vm.title },
             on: {
@@ -48294,7 +48352,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "border rounded border-secondary py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left",
+              "py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left",
             attrs: { rows: "3" },
             domProps: { value: _vm.description },
             on: {
