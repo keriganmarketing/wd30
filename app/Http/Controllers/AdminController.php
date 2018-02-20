@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $avatarPath = Avatar::where('user_id', 1)
-                            ->exists() ? Avatar::first()->path
+                            ->exists() ? '/storage/' . Avatar::first()->path
                             : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
         return view('home', compact('user', 'avatarPath'));
