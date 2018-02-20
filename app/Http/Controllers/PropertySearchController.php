@@ -34,7 +34,6 @@ class PropertySearchController extends Controller
     {
         $property   = Mothership::listing($mlsNumber);
         $features   = Feature::list($property);
-        dd(count($features));
         $openHouses = OpenHouse::extract($property->open_houses);
         $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
 
