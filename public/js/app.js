@@ -43631,7 +43631,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this[key] = [value];
         },
         finishInstall: function finishInstall() {
-            alert('Here we go!');
+            window.axios.post('/finish-install', {
+                mls_id: this.mls_id,
+                cell_phone: this.cell_phone[0],
+                office_phone: this.office_phone[0],
+                street_1: this.street_1[0],
+                street_2: this.street_2[0],
+                city: this.city[0],
+                state: this.state[0],
+                zip: this.zip[0],
+                photo: this.photos[0]
+            }).then(function (response) {
+                window.location = '/login';
+            });
         }
     }
 });
