@@ -32,14 +32,14 @@ class AdminController extends Controller
         $user = Auth::user();
         $avatarPath = Avatar::where('user_id', 1)
                             ->exists() ? Avatar::first()->path
-                            : 'https://media1.popsugar-assets.com/files/thumbor/l3tGpIatkHybxJGKNsK1BDe_WJs/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/08/08/878/n/1922507/9ed5cdef48c5ef69_thumb_temp_image32304521407524949/i/Funny-Cat-GIFs.jpg';
+                            : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
         return view('home', compact('user', 'avatarPath'));
     }
 
     /**
      * Show listings with analytics.
-     * 
+     *
      * @return string
      */
     public function myProperties()
