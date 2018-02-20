@@ -17,7 +17,7 @@ class FrontPageController extends Controller
     public function index()
     {
         $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
-        if ($realtor){
+        if ($realtor) {
             $realtor->listings = Mothership::agentListings($realtor->mls_id);
         }
         $content = Content::first();
