@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Countable;
 use Illuminate\Database\Eloquent\Model;
 
-class Feature extends Model implements Countable
+class Feature extends Model
 {
     /**
      * Get all of the features for a property.
