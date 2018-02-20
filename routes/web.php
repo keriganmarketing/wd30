@@ -21,6 +21,7 @@ Route::patch('/users/{id}', 'UsersController@update');
 
 Route::post('/avatar', 'AvatarsController@store');
 Route::post('/configure-install', 'InstallController@configure');
+Route::post('/finish-install', 'InstallController@complete');
 
 // Resourceful routes
 Route::resource('/leads', 'LeadsController');
