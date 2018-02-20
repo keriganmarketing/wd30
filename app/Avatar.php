@@ -48,7 +48,7 @@ class Avatar extends Model
 
         $avatar = Avatar::create([
             'user_id' => $user->id,
-            'path'    => '/storage/' . $path
+            'path'    => '/storage/'. $path
         ]);
 
         return $path;
