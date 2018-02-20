@@ -42760,6 +42760,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43203,22 +43209,34 @@ var render = function() {
     ),
     _vm._v(" "),
     _c(
-      "div",
-      { ref: "map", staticClass: "relative google-map w-full h-64 z-10" },
-      [
-        _c(
-          "div",
-          {
-            ref: "directionsButton",
-            staticClass:
-              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded absolute z-99 bg-brand-light text-2xl rounded text-white text-center",
-            class: { hidden: _vm.showDirections },
-            on: { click: _vm.getUserLocation }
-          },
-          [_vm._v("\n            GET DIRECTIONS\n        ")]
-        )
-      ]
+      "a",
+      {
+        staticClass:
+          "font-brand block w-full px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded-t text-white no-underline text-center md:hidden",
+        attrs: {
+          href:
+            "https://www.google.com/maps/dir/?api=1&destination=" +
+            _vm.latitude +
+            "," +
+            _vm.longitude
+        }
+      },
+      [_vm._v("\n        GET DIRECTIONS\n    ")]
     ),
+    _vm._v(" "),
+    _c("div", { ref: "map", staticClass: "relative w-full h-64 z-10" }, [
+      _c(
+        "div",
+        {
+          ref: "directionsButton",
+          staticClass:
+            "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center absolute z-99 bg-brand-light text-2xl rounded-br text-white invisible md:visible text-center",
+          class: { hidden: _vm.showDirections },
+          on: { click: _vm.getUserLocation }
+        },
+        [_vm._v("\n            GET DIRECTIONS\n        ")]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -43232,7 +43250,7 @@ var render = function() {
           "a",
           {
             staticClass:
-              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center rounded bg-brand-light text-2xl rounded text-white text-center",
+              "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded text-white text-center",
             on: { click: _vm.closeDirections }
           },
           [_vm._v("CLOSE DIRECTIONS")]
