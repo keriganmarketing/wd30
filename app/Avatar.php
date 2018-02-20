@@ -13,7 +13,7 @@ class Avatar extends Model
 
     /**
      * An avatar belongs to a realtor.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function realtor()
@@ -22,8 +22,8 @@ class Avatar extends Model
     }
 
     /**
-     * Delete user's avatar if it exists. 
-     * 
+     * Delete user's avatar if it exists.
+     *
      * @return void
      */
     public static function deleteIfExists()
@@ -37,7 +37,7 @@ class Avatar extends Model
 
     /**
      * User can create a new avatar.
-     * 
+     *
      * @param
      * @return
      */
@@ -48,7 +48,7 @@ class Avatar extends Model
 
         $avatar = Avatar::create([
             'user_id' => $user->id,
-            'path'    => $path
+            'path'    => '/storage/' . $path
         ]);
 
         return $path;
