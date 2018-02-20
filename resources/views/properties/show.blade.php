@@ -16,7 +16,7 @@
                     @include('partials.property.features')
                 </div>
                 <div class="listing-features w-full py-4 lg:px-4">
-                    @if( (array) count($features) > 0)
+                    @if(count($features) > 0)
                         <div class="flex flex-wrap justify-start">
                             @foreach ($features as $key => $value)
                                 @include('partials.feature')
