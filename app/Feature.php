@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Countable;
 use Illuminate\Database\Eloquent\Model;
 
-class Feature extends Model implements Countable
+class Feature extends Model
 {
     protected $features;
 
@@ -44,11 +43,6 @@ class Feature extends Model implements Countable
         $this->features = count($features);
 
         return $features;
-    }
-
-    public function count()
-    {
-        return $this->features;
     }
 
     /**
