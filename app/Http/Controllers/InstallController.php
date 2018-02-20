@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Installer;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
