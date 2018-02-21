@@ -34,15 +34,4 @@ class AvatarsController extends Controller
 
         return Avatar::upload($request->file('avatar'));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Avatar  $avatar
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Avatar $avatar)
-    {
-        //
-    }
 }

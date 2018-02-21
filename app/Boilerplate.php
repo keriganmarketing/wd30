@@ -33,9 +33,9 @@ class Boilerplate
     public static function lead()
     {
         Lead::create([
-            'name' => 'Kerigan Marketing Associates',
-            'email' => 'web@kerigan.com',
-            'phone' => '(850) 648-4560',
+            'name'    => 'Kerigan Marketing Associates',
+            'email'   => 'web@kerigan.com',
+            'phone'   => '(850) 648-4560',
             'message' => 'Thanks for choosing KMA! We think this is the beginning of a beautiful relationship. Let us know if there\'s anything we can do for you!'
         ]);
     }
