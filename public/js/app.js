@@ -43963,16 +43963,13 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
+                    "w-full py-4 bg-white flex flex-wrap items-center justify-between"
                 },
                 [
                   _vm.chooseOfficePhone
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [
                           _vm._v(
                             "\n                Office Phone:\n            "
@@ -43986,7 +43983,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-2/3 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.office_phone, function(op) {
                           return _c(
@@ -44014,10 +44011,7 @@ var render = function() {
                   _vm.chooseCellPhone
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                Cell Phone:\n            ")]
                       )
                     : _vm._e(),
@@ -44027,7 +44021,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-2/3 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.cell_phone, function(cp) {
                           return _c(
@@ -44055,10 +44049,7 @@ var render = function() {
                   _vm.chooseStreet1
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                Street 1:\n            ")]
                       )
                     : _vm._e(),
@@ -44068,7 +44059,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-2/3 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.street_1, function(s1) {
                           return _c(
@@ -44096,10 +44087,7 @@ var render = function() {
                   _vm.chooseStreet2
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                Street 2:\n            ")]
                       )
                     : _vm._e(),
@@ -44109,7 +44097,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-2/3 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.street_2, function(s2) {
                           return _c(
@@ -44137,10 +44125,7 @@ var render = function() {
                   _vm.chooseCity
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                City:\n            ")]
                       )
                     : _vm._e(),
@@ -44150,7 +44135,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-1/2 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.city, function(c) {
                           return _c(
@@ -44178,10 +44163,7 @@ var render = function() {
                   _vm.chooseState
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                State:\n            ")]
                       )
                     : _vm._e(),
@@ -44191,7 +44173,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-1/2 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.state, function(st) {
                           return _c(
@@ -44219,10 +44201,7 @@ var render = function() {
                   _vm.chooseZip
                     ? _c(
                         "div",
-                        {
-                          staticClass:
-                            "font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
-                        },
+                        { staticClass: "font-bold w-1/3 text-right py-4" },
                         [_vm._v("\n                Zip:\n            ")]
                       )
                     : _vm._e(),
@@ -44232,7 +44211,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "w-1/2 flex flex-wrap items-center justify-around"
+                            "w-2/3 flex flex-wrap items-center justify-around py-4"
                         },
                         _vm._l(_vm.zip, function(z) {
                           return _c(
