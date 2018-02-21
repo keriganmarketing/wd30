@@ -16,7 +16,7 @@ class AppInstalled
      */
     public function handle($request, Closure $next)
     {
-        if (! Storage::disk('public')->exists('installed')) {
+        if (! Storage::disk('public')->exists(public_path('installed'))) {
             return redirect('install');
         }
         return $next($request);
