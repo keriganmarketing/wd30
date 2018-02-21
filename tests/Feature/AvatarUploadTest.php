@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function GuzzleHttp\json_decode;
 
 class AvatarUploadTest extends TestCase
 {
@@ -24,13 +25,13 @@ class AvatarUploadTest extends TestCase
     public function a_realtor_can_upload_an_avatar()
     {
         $response = $this->uploadPhoto();
-        $avatar   = $this->getAvatar();
 
         $response->assertSuccessful();
 
-        self::assertEquals($avatar->path, $response->getContent());
-
-        Storage::disk('public')->assertExists($avatar->path);
+        Storage::disk('public')->assertExists($response->getContent());
+        self::assertDatabaseHas('avatars', [
+            'path' => $response->getContent()
+        ]);
     }
 
     /** @test */
@@ -39,7 +40,7 @@ class AvatarUploadTest extends TestCase
         $response = $this->uploadPhoto();
         $avatar   = $this->getAvatar();
 
-        self::assertEquals($response->getContent(), $avatar->path);
+        self::assertEquals($response->getContent(), $avatar->getContent());
     }
 
     /** @test */
@@ -77,6 +78,6 @@ class AvatarUploadTest extends TestCase
     }
     protected function getAvatar()
     {
-        return Avatar::first();
+        return $this->get('/avatar');
     }
 }
