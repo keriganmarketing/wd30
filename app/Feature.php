@@ -6,11 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feature extends Model
 {
+    protected $features;
+
+    public function __construct()
+    {
+        $this->features = 0;
+    }
     /**
      * Get all of the features for a property.
-     * 
+     *
      * @param $property The selected property.
-     * @return $features Contains all of the featured data that a property has. 
+     * @return $features Contains all of the featured data that a property has.
      */
     public function list($property)
     {
@@ -40,9 +46,9 @@ class Feature extends Model
 
     /**
      * Return a boolean value by determining if a feature has data.
-     * 
+     *
      * @param string $value A specific feature of a property.
-     * @return boolean 
+     * @return boolean
      */
     protected function hasData($value)
     {
@@ -51,12 +57,13 @@ class Feature extends Model
 
     /**
      * Return the contents of a specific feature as an array.
-     * 
+     *
      * @param string$value What a feature contains.
-     * @return array 
+     * @return array
      */
     protected function arrayify($value)
     {
         return explode(',', $value);
     }
+
 }

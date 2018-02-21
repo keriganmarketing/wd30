@@ -6,27 +6,27 @@
             </span>
             <small class="text-xs w-auto flex-grow text-right">This is where you will configure how your site will look on Google</small>
         </p>
-        <div class="w-full py-2 bg-white flex flex-wrap items-start border-b sm:pr-2 md:pr-4">
-            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
+        <div class="w-full py-2 bg-white flex flex-wrap items-start border-b px-4">
+            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 text-left">
                 Preview:
             </div>
-            <div class="w-2/3 p-4 border rounded bg-white flex flex-wrap items-center justify-center mb-8">
-                <p class="google-title w-full">
+            <div class="w-full sm:w-auto md:w-2/3 p-4 border rounded bg-white mb-8">
+                <p class="google-title w-full text-left whitespace-normal">
                     {{ title }}
                 </p>
-                <small class="w-full google-link">https://karenbranham.beachybeach.com</small>
-                <p class="w-full google-description">
+                <small class="google-link w-full text-left break-words">https://karenbranham.beachybeach.com</small>
+                <p class="w-full google-description border-t md:border-0 pt-2 md:pt-0 mt-3 md:mt-1">
                     {{ description }}
                 </p>
             </div>
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b sm:pr-2 md:pr-4">
-            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
+            <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Site Title:
             </div>
             <input
                 type="text"
-                class="border rounded border-secondary py-2 md:px-2 bg-white flex-grow text-left"
+                class="py-2 pl-4 sm:pl-0 md:px-2 bg-white flex-grow text-left whitespace-normal"
                 v-model="title"
             >
         </div>
@@ -35,7 +35,7 @@
                 Site Description:
             </div>
             <textarea
-                class="border rounded border-secondary py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
+                class="py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
                 rows="3"
                 v-model="description"
             />
@@ -86,26 +86,31 @@ export default {
 .google-title {
     text-decoration: none;
     color: #1a0dab;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.2;
     text-align: left;
     font-weight: normal;
-    font-family: Roboto, Arial;
-    white-space: nowrap;
+    font-family: 'Roboto', Arial;
 }
 .google-link {
     height: 18px;
     line-height: 16px;
     font-size: 14px;
     color: #006621;
-    font-family: Roboto, Arial;
+    font-family: 'Roboto', Arial;
 }
 .google-description {
     color: #808080;
     line-height: 1.4;
     word-wrap: break-word;
-    font-family: Roboto, Arial;
+    font-family: 'Roboto', Arial;
     font-size: small;
+}
+
+@media screen and (min-width: 768px){
+    .google-title {
+        font-size: 18px;
+    }
 }
 </style>
 
