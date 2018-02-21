@@ -43,7 +43,7 @@ class Avatar extends Model
      */
     public static function upload($file)
     {
-        $path = Storage::disk('public')->put(public_path('avatar'), $file);
+        $path = Storage::disk('public')->put('avatar', $file);
 
         $user = User::realtor();
 
