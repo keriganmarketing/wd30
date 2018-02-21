@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Facades\KeriganSolutions\Drone\Mothership;
+use App\Realtor;
 
 class AdminController extends Controller
 {
@@ -29,9 +30,9 @@ class AdminController extends Controller
      */
     public function home()
     {
-        $user = Auth::user();
-        $defaultPhoto = $user->default_photo != '' ? $user->default_photo : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
-        $avatarPath = Avatar::where('user_id', 1)
+        $user         = Auth::user();
+        $defaultPhoto = $user->default_photo != '' ? $user->default_photo : Realtor::PLACEHOLDER_PHOTO;
+        $avatarPath   = Avatar::where('user_id', 1)
                             ->exists() ? Avatar::first()->path
                             : $defaultPhoto;
 
