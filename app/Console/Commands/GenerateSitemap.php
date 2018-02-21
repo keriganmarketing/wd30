@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Spatie\Crawler\Url;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
 
@@ -30,6 +31,7 @@ class GenerateSitemap extends Command
     {
         // modify this to your own needs
         SitemapGenerator::create(config('app.url'))
+            ->setMaximumCrawlCount(100)
             ->writeToFile(public_path('sitemap.xml'));
     }
 }
