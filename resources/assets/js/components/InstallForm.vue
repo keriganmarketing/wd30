@@ -86,15 +86,15 @@
             class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
             v-if="duplicatesFound"
         >
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
+            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-between">
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseOfficePhone"
                 >
                     Office Phone:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseOfficePhone"
                 >
                     <button
@@ -106,13 +106,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseCellPhone"
                 >
                     Cell Phone:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseCellPhone"
                 >
                     <button
@@ -124,13 +124,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseStreet1"
                 >
                     Street 1:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseStreet1"
                 >
                     <button
@@ -142,13 +142,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseStreet2"
                 >
                     Street 2:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseStreet2"
                 >
                     <button
@@ -160,13 +160,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseCity"
                 >
                     City:
                 </div>
                 <div
-                    class="w-1/2 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseCity"
                 >
                     <button
@@ -178,13 +178,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseState"
                 >
                     State:
                 </div>
                 <div
-                    class="w-1/2 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseState"
                 >
                     <button
@@ -196,13 +196,13 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right"
+                    class="font-bold w-1/3 text-right py-4"
                     v-if="chooseZip"
                 >
                     Zip:
                 </div>
                 <div
-                    class="w-1/2 flex flex-wrap items-center justify-around"
+                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
                     v-if="chooseZip"
                 >
                     <button
