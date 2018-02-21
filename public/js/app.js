@@ -40792,7 +40792,7 @@ var STATUS_INITIAL = 0,
             Object(__WEBPACK_IMPORTED_MODULE_0__services_file_upload_service_js__["a" /* upload */])(formData).then(function (response) {
                 _this.uploadedFiles = [].concat(response);
                 _this.currentStatus = STATUS_SUCCESS;
-                _this.src = response;
+                _this.src = 'storage/' + response;
             }).catch(function (err) {
                 _this.uploadError = err;
                 _this.currentStatus = STATUS_FAILED;

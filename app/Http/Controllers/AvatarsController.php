@@ -23,16 +23,6 @@ class AvatarsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,40 +33,6 @@ class AvatarsController extends Controller
         Avatar::deleteIfExists();
 
         return Avatar::upload($request->file('avatar'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Avatar  $avatar
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Avatar $avatar)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Avatar  $avatar
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Avatar $avatar)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Avatar  $avatar
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Avatar $avatar)
-    {
-        //
     }
 
     /**

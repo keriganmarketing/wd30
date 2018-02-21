@@ -24,14 +24,11 @@ class AvatarUploadTest extends TestCase
     /** @test */
     public function a_realtor_can_upload_an_avatar()
     {
-        $response = $this->uploadPhoto();
+        $this->uploadPhoto();
 
-        $response->assertSuccessful();
+        $avatar = Avatar::first();
 
-        Storage::disk('public')->assertExists($response->getContent());
-        self::assertDatabaseHas('avatars', [
-            'path' => $response->getContent()
-        ]);
+        Storage::disk('public')->assertExists($avatar->path);
     }
 
     /** @test */
