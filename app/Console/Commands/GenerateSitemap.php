@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Spatie\Crawler\Url;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Sitemap;
 
 class GenerateSitemap extends Command
 {
@@ -30,7 +31,10 @@ class GenerateSitemap extends Command
     public function handle()
     {
         // modify this to your own needs
-        SitemapGenerator::create(config('app.url'))
+        Sitemap::create()
+            ->add(config('app.url'))
+            ->add('/property-search')
+            ->add('/listing')
             ->writeToFile(public_path('sitemap.xml'));
     }
 }
