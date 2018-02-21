@@ -30,7 +30,7 @@ class AvatarUploadTest extends TestCase
 
         self::assertEquals($avatar->path, $response->getContent());
 
-        Storage::disk('public')->assertExists($response->getContent());
+        Storage::disk('public')->assertExists($avatar->path);
     }
 
     /** @test */
