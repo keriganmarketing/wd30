@@ -4,7 +4,7 @@
         <p><a class="no-underline text-2xl text-white text-bold" href="tel:{{ $realtor->primary_phone }}" >{{ $realtor->primary_phone }}</a></p>
         <p class="text-lg text-white mt-4">{!! nl2br($realtor->address) !!}</p>
         <p class="text-lg text-white mt-4"><a class="text-white" href="mailto:{{ $realtor->email }}" >{{ $realtor->email }}</a></p>
-        <form class="pt-6 pb-8 align-top flex flex-wrap" method="post" action="/leads" >
+        {{-- <form class="pt-6 pb-8 align-top flex flex-wrap" method="post" action="/leads" >
             {{ csrf_field() }}
             <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
                 <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" name="name" placeholder="Name" >
@@ -15,7 +15,8 @@
                 <textarea class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-gray h-24 py-2 px-3 mb-4" name="message" ></textarea>
                 <button class="button-secondary w-full h-10" type="submit" >Submit</button>
             </div>
-        </form>
+        </form> --}}
+        <contact-form token="{{ csrf_token() }}"></contact-form>
         <div class="social-agent mt-2 px-4 text-center">
             <a class="facebook" href="#" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.02 34.02" class="h-12" style="enable-background:new 0 0 50 50; width: 50px;" xml:space="preserve">
