@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('primary_phone')->nullable();
             $table->string('company')->nullable();
             $table->string('mls_id')->nullable();
+            $table->string('default_photo')->nullable();
             $table->boolean('is_realtor')->default(0);
             $table->text('address')->nullable();
             $table->rememberToken();
