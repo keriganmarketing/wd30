@@ -40777,7 +40777,7 @@ var STATUS_INITIAL = 0,
     },
     mounted: function mounted() {
         this.reset();
-        this.src = this.avatarPath;
+        this.src = 'storage/' + this.avatarPath;
     },
 
     methods: {
@@ -44917,10 +44917,6 @@ var _this = this;
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -45003,7 +44999,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "w-full md:w-1/3 pr-8 text-grey-darkest" }, [
+      _c("div", { staticClass: "w-full pr-8 text-grey-darkest" }, [
         _c("small", { staticClass: "text-smoke-lighter" }, [
           _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
         ]),
@@ -45014,12 +45010,15 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "w-full lg:w-1/2 block text-sm justify-start mb-2" },
+          {
+            staticClass:
+              "w-full flex flex-wrap block text-sm justify-start mb-2 md:mb-0"
+          },
           [
             _c(
               "a",
               {
-                staticClass: "text-brand no-underline w-full lg:w-1/3 md:pr-2",
+                staticClass: "text-brand no-underline pr-4 mb-2",
                 attrs: { href: "mailto:" + _vm.lead.email }
               },
               [_vm._v(_vm._s(_vm.lead.email))]
@@ -45028,7 +45027,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "text-brand no-underline w-full lg:w-1/3 md:pr-2",
+                staticClass: "text-brand no-underline",
                 attrs: { href: "tel:" + _vm.lead.phone }
               },
               [_vm._v(_vm._s(_vm.lead.phone))]
@@ -45050,97 +45049,79 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm.lead.listing != null
-        ? _c(
-            "div",
+      _c("div", { staticClass: "w-full flex flex-wrap text-grey-darker" }, [
+        _c(
+          "p",
+          {
+            staticClass:
+              "w-full flex flex-wrap block py-3 text-xl border-b border-grey-lighter"
+          },
+          [_vm._v("MLS #" + _vm._s(_vm.lead.listing))]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" }, [
+          _c("p", { staticClass: "block w-full mb-4 text-lg font-bold" }, [
+            _vm._v("Address:")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
+            _vm._v(_vm._s(_vm.lead.listing_address))
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "text-brand w-full md:w-1/3 block mb-4 pl-4",
+              attrs: {
+                href:
+                  "https://www.google.com/maps/dir/?api=1&destination=" +
+                  _vm.lead.listing_latitude +
+                  "," +
+                  _vm.lead.listing_longitude
+              }
+            },
+            [_vm._v("\n                DIRECTIONS\n            ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "text-brand w-auto block px-4",
+              attrs: { href: "/listing/" + _vm.lead.listing }
+            },
+            [_vm._v("\n                VIEW PROPERTY\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" }, [
+          _c("p", { staticClass: "block w-full mb-4 text-lg font-bold" }, [
+            _vm._v("Listing Agent:")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
+            _vm._v("Name: " + _vm._s(_vm.lead.agent))
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
             {
               staticClass:
-                "w-auto border rounded p-8 border-secondary text-grey-darkest"
+                "text-brand w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4",
+              attrs: { href: "#" }
             },
-            [
-              _c(
-                "p",
-                { staticClass: "block font-bold w-full text-center text-lg" },
-                [_vm._v("\n            Listing Info:\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "p",
-                { staticClass: "w-full block flex flex-wrap justify-start" },
-                [
-                  _c("span", { staticClass: "text-grey-dark w-1/2 pr-2" }, [
-                    _vm._v("\n                Listing:\n\n            ")
-                  ]),
-                  _vm._v(" "),
-                  _vm.lead.listing != null
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "text-brand no-underline w-1/2",
-                          attrs: { href: "/listing/" + _vm.lead.listing }
-                        },
-                        [
-                          _vm._v(
-                            "\n                " +
-                              _vm._s(_vm.lead.listing) +
-                              "\n            "
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
-                    _vm._v(
-                      "\n                Listing Agent: " +
-                        _vm._s(_vm.lead.agent) +
-                        "\n            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
-                    _vm._v(
-                      "\n                Listing Agent Email:\n                "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text-brand no-underline w-full pr-2",
-                        attrs: { href: "mailto:" + _vm.lead.agent_email }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.lead.agent_email) +
-                            "\n                "
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
-                    _vm._v(
-                      "\n                Listing Agent Phone:\n                "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text-brand no-underline w-full pr-2",
-                        attrs: { href: "tel:" + _vm.lead.agent_phone }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.lead.agent_phone) +
-                            "\n                "
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]
+            [_vm._v("Email: " + _vm._s(_vm.lead.agent_email))]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "text-brand no-underline w-auto block px-4",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Phone: " + _vm._s(_vm.lead.agent_phone))]
           )
-        : _vm._e(),
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
