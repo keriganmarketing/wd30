@@ -45049,79 +45049,93 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "w-full flex flex-wrap text-grey-darker" }, [
-        _c(
-          "p",
-          {
-            staticClass:
-              "w-full flex flex-wrap block py-3 text-xl border-b border-grey-lighter"
-          },
-          [_vm._v("MLS #" + _vm._s(_vm.lead.listing))]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" }, [
-          _c("p", { staticClass: "block w-full mb-4 text-lg font-bold" }, [
-            _vm._v("Address:")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
-            _vm._v(_vm._s(_vm.lead.listing_address))
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand w-full md:w-1/3 block mb-4 pl-4",
-              attrs: {
-                href:
-                  "https://www.google.com/maps/dir/?api=1&destination=" +
-                  _vm.lead.listing_latitude +
-                  "," +
-                  _vm.lead.listing_longitude
-              }
-            },
-            [_vm._v("\n                DIRECTIONS\n            ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand w-auto block px-4",
-              attrs: { href: "/listing/" + _vm.lead.listing }
-            },
-            [_vm._v("\n                VIEW PROPERTY\n            ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" }, [
-          _c("p", { staticClass: "block w-full mb-4 text-lg font-bold" }, [
-            _vm._v("Listing Agent:")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
-            _vm._v("Name: " + _vm._s(_vm.lead.agent))
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "text-brand w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Email: " + _vm._s(_vm.lead.agent_email))]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand no-underline w-auto block px-4",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Phone: " + _vm._s(_vm.lead.agent_phone))]
-          )
-        ])
-      ]),
+      _vm.lead.listing != null
+        ? _c("div", { staticClass: "w-full flex flex-wrap text-grey-darker" }, [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "w-full flex flex-wrap block py-3 text-xl border-b border-grey-lighter"
+              },
+              [_vm._v("MLS #" + _vm._s(_vm.lead.listing))]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" },
+              [
+                _c(
+                  "p",
+                  { staticClass: "block w-full mb-4 text-lg font-bold" },
+                  [_vm._v("Address:")]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
+                  _vm._v(_vm._s(_vm.lead.listing_address))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-brand w-full md:w-1/3 block mb-4 pl-4",
+                    attrs: {
+                      href:
+                        "https://www.google.com/maps/dir/?api=1&destination=" +
+                        _vm.lead.listing_latitude +
+                        "," +
+                        _vm.lead.listing_longitude
+                    }
+                  },
+                  [_vm._v("\n                DIRECTIONS\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-brand w-auto block px-4",
+                    attrs: { href: "/listing/" + _vm.lead.listing }
+                  },
+                  [_vm._v("\n                VIEW PROPERTY\n            ")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-full md:w-1/2 flex flex-wrap py-3 px-4" },
+              [
+                _c(
+                  "p",
+                  { staticClass: "block w-full mb-4 text-lg font-bold" },
+                  [_vm._v("Listing Agent:")]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "block w-full mb-4 pl-4" }, [
+                  _vm._v("Name: " + _vm._s(_vm.lead.agent))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "text-brand w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("Email: " + _vm._s(_vm.lead.agent_email))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-brand no-underline w-auto block px-4",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("Phone: " + _vm._s(_vm.lead.agent_phone))]
+                )
+              ]
+            )
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",

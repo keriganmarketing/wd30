@@ -16,7 +16,7 @@
         <div class="w-full md:w-5/6 lg:w-5/6 xl:w-5/6 flex flex-wrap items-around justify-center text-grey-darkest">
             <p class="w-full pt-4 pb-2">{{ lead.message }}</p>
         </div>
-        <div class="w-full flex flex-wrap text-grey-darker">
+        <div class="w-full flex flex-wrap text-grey-darker" v-if="lead.listing != null">
             <p class="w-full flex flex-wrap block py-3 text-xl border-b border-grey-lighter">MLS #{{ lead.listing }}</p>
             <div class="w-full md:w-1/2 flex flex-wrap py-3 px-4">
                 <p class="block w-full mb-4 text-lg font-bold">Address:</p>
