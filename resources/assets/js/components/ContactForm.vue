@@ -20,8 +20,11 @@
             </transition>
         </div>
         <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
-            <input type="hidden" name="_token" :value="token">
-            <input type="hidden" name="listing" :value="listing">
+            <input type="hidden" :value="token">
+            <input type="hidden" :value="listing">
+            <input type="hidden" :value="listingAddress">
+            <input type="hidden" :value="listingLatitude">
+            <input type="hidden" :value="listingLongitude">
             <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.name" placeholder="Name" >
             <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.email" placeholder="Email Address" >
             <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3" type="text" v-model="form.phone" placeholder="Phone Number" >
@@ -43,16 +46,47 @@ export default {
         listing: {
             type: String,
             default: ''
+        },
+        listingAddress: {
+            type: String,
+            default: ''
+        },
+        listingLatitude: {
+            type: String,
+            default: ''
+        },
+        listingLongitude: {
+            type: String,
+            default: ''
+        },
+        agent: {
+            type: String,
+            default: ''
+        },
+        agentEmail: {
+            type: String,
+            default: ''
+        },
+        agentPhone: {
+            type: String,
+            default: ''
         }
     },
     data() {
         return {
             form: new ContactForm({
+                _token: this.token,
                 name: '',
                 email: '',
-                listing: '',
+                listing: this.listing,
+                listing_address: this.listingAddress,
+                listing_latitude: this.listingLatitude,
+                listing_longitude: this.listingLongitude,
                 phone: '',
                 message: '',
+                agent: this.agent,
+                agent_email: this.agentEmail,
+                agent_phone: this.agentPhone,
                 errors: {},
                 success: false,
                 successMessage: 'Thanks! We\'ll get back with you as soon as possible!',
