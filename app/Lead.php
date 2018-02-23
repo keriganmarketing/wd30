@@ -14,7 +14,19 @@ class Lead extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'message', 'active', 'important'
+        'name',
+        'agent',
+        'email',
+        'phone',
+        'active',
+        'message',
+        'listing',
+        'important',
+        'agent_email',
+        'agent_phone',
+        'listing_address',
+        'listing_latitude',
+        'listing_longitude'
     ];
 
     /**

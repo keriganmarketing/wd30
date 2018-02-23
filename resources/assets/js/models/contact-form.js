@@ -8,10 +8,18 @@ export default class ContactForm {
     submit () {
         let vm = this;
         window.axios.post('/leads', {
+            _token: this._token,
             name: this.name,
             phone: this.phone,
             email: this.email,
-            message: this.message
+            message: this.message,
+            agent: this.agent,
+            agent_email: this.agent_email,
+            agent_phone: this.agent_phone,
+            listing: this.listing,
+            listing_address: this.listing_address,
+            listing_latitude: this.listing_latitude,
+            listing_longitude: this.listing_longitude,
         })
             .then(response => {
                 let r = response.data;
@@ -19,6 +27,11 @@ export default class ContactForm {
                 this.phone = r.phone;
                 this.email = r.email;
                 this.message = r.message;
+                this.listing = r.listing;
+                this.listing_address = r. listing_address;
+                this.listing_latitude = r. listing_latitude;
+                this.listing_longitude = r. listing_longitude;
+
                 this.reset();
                 this.success = true;
             })

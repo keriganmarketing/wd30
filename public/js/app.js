@@ -42339,6 +42339,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42350,16 +42353,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         listing: {
             type: String,
             default: ''
+        },
+        listingAddress: {
+            type: String,
+            default: ''
+        },
+        listingLatitude: {
+            type: String,
+            default: ''
+        },
+        listingLongitude: {
+            type: String,
+            default: ''
+        },
+        agent: {
+            type: String,
+            default: ''
+        },
+        agentEmail: {
+            type: String,
+            default: ''
+        },
+        agentPhone: {
+            type: String,
+            default: ''
         }
     },
     data: function data() {
         return {
             form: new __WEBPACK_IMPORTED_MODULE_0__models_contact_form__["a" /* default */]({
+                _token: this.token,
                 name: '',
                 email: '',
-                listing: '',
+                listing: this.listing,
+                listing_address: this.listingAddress,
+                listing_latitude: this.listingLatitude,
+                listing_longitude: this.listingLongitude,
                 phone: '',
                 message: '',
+                agent: this.agent,
+                agent_email: this.agentEmail,
+                agent_phone: this.agentPhone,
                 errors: {},
                 success: false,
                 successMessage: 'Thanks! We\'ll get back with you as soon as possible!'
@@ -42399,16 +42433,29 @@ var ContactForm = function () {
 
             var vm = this;
             window.axios.post('/leads', {
+                _token: this._token,
                 name: this.name,
                 phone: this.phone,
                 email: this.email,
-                message: this.message
+                message: this.message,
+                agent: this.agent,
+                agent_email: this.agent_email,
+                agent_phone: this.agent_phone,
+                listing: this.listing,
+                listing_address: this.listing_address,
+                listing_latitude: this.listing_latitude,
+                listing_longitude: this.listing_longitude
             }).then(function (response) {
                 var r = response.data;
                 _this.name = r.name;
                 _this.phone = r.phone;
                 _this.email = r.email;
                 _this.message = r.message;
+                _this.listing = r.listing;
+                _this.listing_address = r.listing_address;
+                _this.listing_latitude = r.listing_latitude;
+                _this.listing_longitude = r.listing_longitude;
+
                 _this.reset();
                 _this.success = true;
             }).catch(function (err) {
@@ -42498,13 +42545,28 @@ var render = function() {
         { staticClass: "flex-auto relative px-2 py-2 w-full md:w-1/2" },
         [
           _c("input", {
-            attrs: { type: "hidden", name: "_token" },
+            attrs: { type: "hidden" },
             domProps: { value: _vm.token }
           }),
           _vm._v(" "),
           _c("input", {
-            attrs: { type: "hidden", name: "listing" },
+            attrs: { type: "hidden" },
             domProps: { value: _vm.listing }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden" },
+            domProps: { value: _vm.listingAddress }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden" },
+            domProps: { value: _vm.listingLatitude }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden" },
+            domProps: { value: _vm.listingLongitude }
           }),
           _vm._v(" "),
           _c("input", {
@@ -44830,6 +44892,35 @@ var _this = this;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -44912,34 +45003,38 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "w-full pr-8 text-grey-darkest" }, [
+      _c("div", { staticClass: "w-full md:w-1/3 pr-8 text-grey-darkest" }, [
         _c("small", { staticClass: "text-smoke-lighter" }, [
           _c("em", [_vm._v(_vm._s(_vm.lead.diff))])
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "w-full py-3 text-3xl" }, [
+        _c("p", { staticClass: "w-full block py-3 text-3xl" }, [
           _vm._v(_vm._s(_vm.lead.name))
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "w-full text-sm" }, [
-          _c(
-            "a",
-            {
-              staticClass: "text-brand no-underline w-1/2 pr-2",
-              attrs: { href: "mailto:" + _vm.lead.email }
-            },
-            [_vm._v(_vm._s(_vm.lead.email))]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "text-brand no-underline w-1/2 pr-2",
-              attrs: { href: "tel:" + _vm.lead.email }
-            },
-            [_vm._v(_vm._s(_vm.lead.phone))]
-          )
-        ])
+        _c(
+          "p",
+          { staticClass: "w-full lg:w-1/2 block text-sm justify-start mb-2" },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "text-brand no-underline w-full lg:w-1/3 md:pr-2",
+                attrs: { href: "mailto:" + _vm.lead.email }
+              },
+              [_vm._v(_vm._s(_vm.lead.email))]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "text-brand no-underline w-full lg:w-1/3 md:pr-2",
+                attrs: { href: "tel:" + _vm.lead.phone }
+              },
+              [_vm._v(_vm._s(_vm.lead.phone))]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -44954,6 +45049,98 @@ var render = function() {
           ])
         ]
       ),
+      _vm._v(" "),
+      _vm.lead.listing != null
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "w-auto border rounded p-8 border-secondary text-grey-darkest"
+            },
+            [
+              _c(
+                "p",
+                { staticClass: "block font-bold w-full text-center text-lg" },
+                [_vm._v("\n            Listing Info:\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "w-full block flex flex-wrap justify-start" },
+                [
+                  _c("span", { staticClass: "text-grey-dark w-1/2 pr-2" }, [
+                    _vm._v("\n                Listing:\n\n            ")
+                  ]),
+                  _vm._v(" "),
+                  _vm.lead.listing != null
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "text-brand no-underline w-1/2",
+                          attrs: { href: "/listing/" + _vm.lead.listing }
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.lead.listing) +
+                              "\n            "
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
+                    _vm._v(
+                      "\n                Listing Agent: " +
+                        _vm._s(_vm.lead.agent) +
+                        "\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
+                    _vm._v(
+                      "\n                Listing Agent Email:\n                "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-brand no-underline w-full pr-2",
+                        attrs: { href: "mailto:" + _vm.lead.agent_email }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.lead.agent_email) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-dark w-full pr-2" }, [
+                    _vm._v(
+                      "\n                Listing Agent Phone:\n                "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-brand no-underline w-full pr-2",
+                        attrs: { href: "tel:" + _vm.lead.agent_phone }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.lead.agent_phone) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
