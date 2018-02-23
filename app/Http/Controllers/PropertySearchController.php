@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use Facades\App\Feature;
 use Facades\App\Realtor;
+use Facades\App\Property;
 use Facades\App\OpenHouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -34,13 +35,21 @@ class PropertySearchController extends Controller
     public function show($mlsNumber)
     {
         $property   = Mothership::listing($mlsNumber);
+        $address    = Property::fullAddress($property); // used for lead generation
         $features   = Feature::list($property);
         $openHouses = OpenHouse::extract($property->open_houses);
         $realtor    = Realtor::exists() ? User::realtor() : null;
 
         return view(
             'properties.show',
-            compact('property', 'features', 'openHouses', 'realtor', 'featuresCount')
+            compact(
+                'address',
+                'realtor',
+                'features',
+                'property',
+                'openHouses',
+                'featuresCount'
+            )
         );
     }
 

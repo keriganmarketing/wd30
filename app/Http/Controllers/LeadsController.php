@@ -29,9 +29,14 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        $lead = Lead::create($request->all());
+        $request->validate([
+            'name'    => 'required|max:255',
+            'email'   => 'required|email|max:190',
+            'phone'   => 'required|max:15',
+            'message' => 'required'
+        ]);
 
-        return back();
+        return Lead::create($request->all());
     }
 
     /**
