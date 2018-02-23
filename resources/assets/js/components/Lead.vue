@@ -5,45 +5,41 @@
             'border-red': lead.important
         }"
     >
-        <div class="w-full md:w-1/3 pr-8 text-grey-darkest">
+        <div class="w-full pr-8 text-grey-darkest">
             <small class="text-smoke-lighter"><em>{{ lead.diff }}</em></small>
             <p class="w-full block py-3 text-3xl">{{ lead.name }}</p>
-            <p class="w-full lg:w-1/2 block text-sm justify-start mb-2">
-                <a class="text-brand no-underline w-full lg:w-1/3 md:pr-2" :href="`mailto:${lead.email}`">{{ lead.email }}</a>
-                <a class="text-brand no-underline w-full lg:w-1/3 md:pr-2" :href="`tel:${lead.phone}`">{{ lead.phone }}</a>
+            <p class="w-full flex flex-wrap block text-sm justify-start mb-2 md:mb-0">
+                <a class="text-brand no-underline pr-4 mb-2" :href="`mailto:${lead.email}`">{{ lead.email }}</a>
+                <a class="text-brand no-underline" :href="`tel:${lead.phone}`">{{ lead.phone }}</a>
             </p>
         </div>
         <div class="w-full md:w-5/6 lg:w-5/6 xl:w-5/6 flex flex-wrap items-around justify-center text-grey-darkest">
             <p class="w-full pt-4 pb-2">{{ lead.message }}</p>
         </div>
-        <div class="w-auto border rounded p-8 border-secondary text-grey-darkest" v-if="lead.listing != null">
-            <p class="block font-bold w-full text-center text-lg">
-                Listing Info:
-            </p>
-            <p class="w-full block flex flex-wrap justify-start">
-                <span class="text-grey-dark w-1/2 pr-2">
-                    Listing:
-
-                </span>
-                <a class="text-brand no-underline w-1/2" :href="'/listing/' + lead.listing" v-if="lead.listing != null">
-                    {{ lead.listing }}
+        <div class="w-full flex flex-wrap text-grey-darker">
+            <p class="w-full flex flex-wrap block py-3 text-xl border-b border-grey-lighter">MLS #{{ lead.listing }}</p>
+            <div class="w-full md:w-1/2 flex flex-wrap py-3 px-4">
+                <p class="block w-full mb-4 text-lg font-bold">Address:</p>
+                <p class="block w-full mb-4 pl-4">{{ lead.listing_address }}</p>
+                <a
+                    :href="'https://www.google.com/maps/dir/?api=1&destination=' + lead.listing_latitude + ',' + lead.listing_longitude"
+                    class="text-brand w-full md:w-1/3 block mb-4 pl-4"
+                >
+                    DIRECTIONS
                 </a>
-                <span class="text-grey-dark w-full pr-2">
-                    Listing Agent: {{ lead.agent }}
-                </span>
-                <span class="text-grey-dark w-full pr-2">
-                    Listing Agent Email:
-                    <a class="text-brand no-underline w-full pr-2" :href="`mailto:${lead.agent_email}`">
-                        {{ lead.agent_email }}
-                    </a>
-                </span>
-                <span class="text-grey-dark w-full pr-2">
-                    Listing Agent Phone:
-                    <a class="text-brand no-underline w-full pr-2" :href="`tel:${lead.agent_phone}`">
-                        {{ lead.agent_phone }}
-                    </a>
-                </span>
-            </p>
+                <a
+                    :href="'/listing/' + lead.listing"
+                    class="text-brand w-auto block px-4"
+                >
+                    VIEW PROPERTY
+                </a>
+            </div>
+            <div class="w-full md:w-1/2 flex flex-wrap py-3 px-4">
+                <p class="block w-full mb-4 text-lg font-bold">Listing Agent:</p>
+                <p class="block w-full mb-4 pl-4">Name: {{ lead.agent }}</p>
+                <a href="#" class="text-brand w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4">Email: {{ lead.agent_email }}</a>
+                <a href="#" class="text-brand no-underline w-auto block px-4">Phone: {{ lead.agent_phone }}</a>
+            </div>
         </div>
         <div class="w-full xl:w-1/4 lg:w-1/3 xl:mt-2 lg:mt-1 py-4 lg:p-4 xl:p-4  xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between relative lg:absolute xl:absolute items-center text-grey-darker">
             <a
