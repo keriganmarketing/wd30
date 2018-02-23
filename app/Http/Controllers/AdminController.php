@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Lead;
 use App\User;
 use App\Avatar;
+use App\Realtor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Facades\KeriganSolutions\Drone\Mothership;
-use App\Realtor;
 
 class AdminController extends Controller
 {

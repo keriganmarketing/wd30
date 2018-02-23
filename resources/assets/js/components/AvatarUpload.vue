@@ -70,7 +70,7 @@ export default {
     },
     mounted() {
         this.reset();
-        this.src = this.avatarPath;
+        this.src = 'storage/' + this.avatarPath;
     },
     methods: {
         reset() {

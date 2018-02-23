@@ -14,8 +14,8 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body class="bg-white h-screen">
-    <div id="app" class="flex flex-col min-h-full items-center justify-center">
-        <div class="w-full border shadow md:w-1/2 flex items-center justify-center">
+    <div id="app" class="flex flex-col min-h-full items-center justify-center bg-grey-darkest">
+        <div class="w-full md:w-1/2 flex items-center justify-center">
             <install-form></install-form>
         </div>
     </div>
