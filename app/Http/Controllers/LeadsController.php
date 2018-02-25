@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Lead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\LeadCreated;
 
 class LeadsController extends Controller
 {
@@ -36,7 +38,11 @@ class LeadsController extends Controller
             'message' => 'required'
         ]);
 
-        return Lead::create($request->all());
+        $lead = Lead::create($request->all());
+
+        Mail::to($request->email)->send(new LeadCreated($lead));
+
+        return $lead;
     }
 
     /**
