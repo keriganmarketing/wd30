@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class LeadCreated extends Mailable implements ShouldQueue
+class LeadReceived extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class LeadCreated extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.leads.created')->with(['lead' => $this->lead]);
+        return $this->markdown('emails.leads.received')->with(['lead' => $this->lead]);
     }
 }
