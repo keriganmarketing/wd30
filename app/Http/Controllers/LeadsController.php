@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Lead;
+use App\User;
 use Carbon\Carbon;
+use App\Mail\LeadCreated;
+use App\Mail\LeadReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\LeadCreated;
 
 class LeadsController extends Controller
 {
@@ -38,9 +40,11 @@ class LeadsController extends Controller
             'message' => 'required'
         ]);
 
+        $realtor = User::realtor();
         $lead = Lead::create($request->all());
 
         Mail::to($request->email)->send(new LeadCreated($lead));
+        Mail::to($realtor->email)->send(new LeadReceived($lead));
 
         return $lead;
     }
