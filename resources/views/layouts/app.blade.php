@@ -52,7 +52,7 @@
             <nav class="bg-white">
                 <div class="container mx-auto h-full">
                     <div class="md:flex items-center justify-between">
-                        <div class="text-center md:mr-6 md:text-left py-8 md:py-0">
+                        <div class="text-center md:mr-6 md:text-left py-4 md:py-0">
                             @include('partials.logo')
                         </div>
                         <div class="flex text-right">

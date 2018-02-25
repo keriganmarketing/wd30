@@ -1,86 +1,99 @@
 <template>
-    <div class="container mx-auto bg-white flex flex-wrap justify-center">
-        <p class="w-full justify-center flex font-bold items-center text-secondary p-4 border-b border-secondary">
-            <span
-                class="text-center w-auto text-2xl text-brand"
+    <div class="container mx-auto bg-white rounded flex flex-wrap justify-center border shadow">
+        <p class="w-full justify-center flex font-bold items-center text-secondary pt-4">
+            <div
+                class="text-center px-4"
                 v-if="! building"
             >
-                Welcome to your new site! <br/> We just need a couple of things to get started.
-            </span>
-            <span
-                class="text-center w-auto text-2xl text-brand"
+                <p class="text-4xl font-brand text-brand">Welcome to your new agent website!</p>
+                <p class="text-grey-darker">We just need a couple of things to get started.</p>
+            </div>
+            <div
+                class="text-center px-4"
                 v-if="duplicatesFound"
             >
-                <span class="underline font-bold text-secondary">Awesome!</span> <br/> <br/> We noticed some duplicate values in your MLS data, select the most accurate choice for each field below. If you're not sure, you can always change this later.
-
-            </span>
-            <span
-                class="text-center w-auto text-2xl text-brand"
+                <p class="text-4xl font-brand text-brand">Awesome!</p>
+                <p class="text-grey-darker">We noticed some duplicate information in your MLS data, select the most accurate choice for each field below. If you're not sure, you can always change this later.</p>
+            </div>
+            <div
+                class="text-center px-4"
                 v-if="! duplicatesFound && building"
             >
-                <span class="underline font-bold text-secondary">All set!</span> <br/> <br/> Easy, huh? Click the button below to login to your site. Happy Selling!
-
-            </span>
+                <p class="text-4xl font-brand text-brand">All set!</p>
+                <p class="text-grey-darker">Easy, huh? Click the button below to login to your site. Happy Selling!</p>
+            </div>
         </p>
         <div v-if="! building" class="w-full">
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
-                <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right">
-                    Your Name:
+            <form @submit.prevent >
+                <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center pt-6">
+                    <div class="font-bold w-full sm:w-1/4 py-2 text-center sm:text-right text-green-darker">
+                        Your Name:
+                    </div>
+                    <input
+                        type="text"
+                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left"
+                        v-model="name"
+                        autocomplete="name"
+                        name="name"
+                    >
                 </div>
-                <input
-                    type="text"
-                    class="border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left"
-                    v-model="name"
-                >
-            </div>
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
-                <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right">
-                    Your Email:
+                <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center ">
+                    <div class="font-bold w-full sm:w-1/4 py-2 text-center sm:text-right text-green-darker">
+                        Your Email:
+                    </div>
+                    <input
+                        type="text"
+                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        v-model="email"
+                        autocomplete="email"
+                        name="email"
+                    >
                 </div>
-                <input
-                    type="text"
-                    class="border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left"
-                    v-model="email"
-                >
-            </div>
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
-                <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 text-right">
-                    Company/Broker:
+                <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center ">
+                    <div class="font-bold w-full sm:w-1/4 py-2 text-center sm:text-right text-green-darker">
+                        Broker:
+                    </div>
+                    <input
+                        type="text"
+                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        v-model="company"
+                        autocomplete="company"
+                        name="company"
+                    >
                 </div>
-                <input
-                    type="text"
-                    class="border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left"
-                    v-model="company"
-                >
-            </div>
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
-                <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right">
-                    Create Password:
+                <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center ">
+                    <div class="font-bold w-full sm:w-1/4 py-2 text-center sm:text-right text-green-darker">
+                        Create Password:
+                    </div>
+                    <input
+                        type="password"
+                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        v-model="password"
+                        autocomplete="password"
+                        name="password"
+                    >
                 </div>
-                <input
-                    type="password"
-                    class="border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left"
-                    v-model="password"
-                >
-            </div>
-            <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b">
-                <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 text-right">
-                    Confirm Password:
+                <div class="w-full py-4 bg-white flex flex-wrap items-center justify-center ">
+                    <div class="font-bold w-full sm:w-1/4 py-2 text-center sm:text-right text-green-darker">
+                        Confirm Password:
+                    </div>
+                    <input
+                        type="password"
+                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        v-model="password_confirmation"
+                        autocomplete="password_confirmation"
+                        name="password_confirmation"
+                    >
                 </div>
-                <input
-                    type="password"
-                    class="border border-brand ml-4 md:text-xl py-2 md:px-2 bg-white w-1/2 text-left"
-                    v-model="password_confirmation"
-                >
-            </div>
-            <div class="w-full bg-white flex flex-wrap h-16 items-center">
-                <button
-                    class="bg-brand-dark text-white shadow appearance-none inline-block border-brand-darkest .px-3 .py-2 w-full h-16 text-3xl font-bold"
-                    @click="install"
-                >
-                    BUILD MY SITE
-                </button>
-            </div>
+                <div class="w-full bg-white flex flex-wrap items-center p-4">
+                    <button
+                        class="button-secondary .px-3 .py-2 w-full h-16 text-2xl font-brand"
+                        @click="install"
+                    >
+                        BUILD MY SITE
+                    </button>
+                </div>
+            </form>
         </div>
         <div
             class="w-full py-4 bg-white flex flex-wrap items-center justify-center border-b"
@@ -88,17 +101,17 @@
         >
             <div class="w-full py-4 bg-white flex flex-wrap items-center justify-between">
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseOfficePhone"
                 >
                     Office Phone:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseOfficePhone"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="op in office_phone"
                         @click="select('office_phone', op)"
                     >
@@ -106,17 +119,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseCellPhone"
                 >
                     Cell Phone:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseCellPhone"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="cp in cell_phone"
                         @click="select('cell_phone', cp)"
                     >
@@ -124,17 +137,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseStreet1"
                 >
                     Street 1:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseStreet1"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="s1 in street_1"
                         @click="select('street_1', s1)"
                     >
@@ -142,17 +155,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseStreet2"
                 >
                     Street 2:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseStreet2"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="s2 in street_2"
                         @click="select('street_2', s2)"
                     >
@@ -160,17 +173,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseCity"
                 >
                     City:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseCity"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="c in city"
                         @click="select('city', c)"
                     >
@@ -178,17 +191,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseState"
                 >
                     State:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseState"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="st in state"
                         @click="select('state', st)"
                     >
@@ -196,17 +209,17 @@
                     </button>
                 </div>
                 <div
-                    class="font-bold w-1/3 text-right py-4"
+                    class="font-bold w-full text-center py-4"
                     v-if="chooseZip"
                 >
                     Zip:
                 </div>
                 <div
-                    class="w-2/3 flex flex-wrap items-center justify-around py-4"
+                    class="w-full flex flex-wrap items-center justify-center py-4"
                     v-if="chooseZip"
                 >
                     <button
-                        class="button-secondary w-1/3"
+                        class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="z in zip"
                         @click="select('zip', z)"
                     >
@@ -216,11 +229,11 @@
             </div>
         </div>
         <div
-            class="w-1/2 flex flex-wrap items-center justify-around"
+            class="w-full p-4 bg-white flex flex-wrap items-center justify-between"
             v-if="! duplicatesFound && building"
         >
             <button
-                class="button-secondary w-1/3"
+                class="button-secondary .px-3 .py-2 w-full h-16 text-2xl font-brand"
                 @click="finishInstall"
             >
                 GO!
