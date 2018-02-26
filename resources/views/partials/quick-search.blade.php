@@ -4,7 +4,7 @@
     </div>
     <form class="bg-white shadow-md md:rounded px-8 pt-6 pb-8 align-top flex flex-wrap h-auto" action="/property-search" method="GET">
         {{ csrf_field() }}
-        <omni-bar class="flex-auto relative px-2 py-2 w-full sm:w-full md:w-3/5"></omni-bar>
+        <omni-bar class="flex-auto relative px-2 py-2 w-full sm:w-full md:w-3/5 text-left"></omni-bar>
         <property-type class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5"></property-type>
         <min-price class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5"></min-price>
         <max-price class="flex-auto relative px-2 py-2 w-full sm:w-1/3 md:w-2/5"></max-price>
