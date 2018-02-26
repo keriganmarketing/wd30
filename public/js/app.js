@@ -43108,7 +43108,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "waterfront", value: "1" }
+                  attrs: { type: "checkbox", name: "waterFront", value: "1" }
                 }),
                 _vm._v(" "),
                 _c(
