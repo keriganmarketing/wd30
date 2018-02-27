@@ -20,15 +20,19 @@ class LeadsController extends Controller
     public function index(Request $request)
     {
         $important = $request->important === 'true';
-        return Lead::active()->when($important, function ($query) {
-            return $query->where('important', 1);
-        })->latest()->paginate(5);
+        return Lead::active()->when(
+            $important,
+            function ($query) {
+                return $query->where('important', 1);
+            }
+        )->latest()->paginate(5);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request The request object
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
