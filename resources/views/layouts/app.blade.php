@@ -14,7 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body class="bg-white h-screen">
+<body class="bg-white h-screen antialiased">
     <div id="app" class="flex flex-col min-h-full justify-between">
         <div class="top shadow-md border-b-4 border-secondary">
             <nav class="bg-brand-dark">
