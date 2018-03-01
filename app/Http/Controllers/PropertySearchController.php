@@ -53,4 +53,24 @@ class PropertySearchController extends Controller
         );
     }
 
+    /**
+     * Show listings in property search.
+     *
+     * @return string
+     */
+    public function search(Request $request)
+    {
+        return response()->json(Mothership::search($request));
+    }
+
+    /**
+     * Show listings in map search.
+     *
+     * @return string
+     */
+    public function mapSearch(Request $request)
+    {
+        return response()->json(Mothership::search($request));
+    }
+
 }
