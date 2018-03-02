@@ -40846,7 +40846,7 @@ var render = function() {
     },
     [
       _c("img", {
-        staticClass: "max-w-full h-full mx-auto",
+        staticClass: "max-w-full mx-auto",
         attrs: { src: _vm.src },
         on: {
           mouseover: function($event) {
@@ -46188,7 +46188,7 @@ var render = function() {
           {
             staticClass:
               "active-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "text-white": _vm.activeFilter },
+            class: { "font-bold": _vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
           [_vm._v("\n            Active\n        ")]
@@ -46219,7 +46219,7 @@ var render = function() {
           "label",
           {
             staticClass: "active-toggle text-white flex-grow w-8 px-2",
-            class: { "text-white": !_vm.activeFilter },
+            class: { "font-bold": !_vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
           [_vm._v("\n            Archived\n        ")]
