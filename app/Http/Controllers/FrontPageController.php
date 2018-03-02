@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use SEOMeta;
 use App\User;
 use App\Content;
+use App\Realtor;
+use Facades\App\MetaData;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
-use App\MetaData;
 
 class FrontPageController extends Controller
 {
@@ -22,16 +22,15 @@ class FrontPageController extends Controller
      */
     public function index()
     {
-        $meta = MetaData::first();
-        SEOMeta::setTitle($meta->title);
-        SEOMeta::setDescription($meta->description);
+        MetaData::generate();
 
-        $realtor = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        $realtor           = User::realtor();
+        $realtor->listings = Mothership::agentListings($realtor->mls_id);
+
+        $default = $realtor->default_photo ?? Realtor::PLACEHOLDER_PHOTO;
+        $avatar  = isset($realtor->avatar->path) ? asset('storage/' . $realtor->avatar->path) : $default;
         $content = Content::first();
-        if ($realtor) {
-            $realtor->listings = Mothership::agentListings($realtor->mls_id);
-        }
 
-        return view('StaticPages.front', compact('realtor', 'content'));
+        return view('StaticPages.front', compact('realtor', 'content', 'avatar'));
     }
 }

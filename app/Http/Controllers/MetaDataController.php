@@ -14,7 +14,7 @@ class MetaDataController extends Controller
      */
     public function index()
     {
-        return MetaData::getOrCreate();
+        return (new MetaData())->getOrCreate();
     }
 
     /**
@@ -43,16 +43,5 @@ class MetaDataController extends Controller
         $metadata->update($request->all());
 
         return $metadata;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\MetaData  $metaData
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MetaData $metaData)
-    {
-        //
     }
 }

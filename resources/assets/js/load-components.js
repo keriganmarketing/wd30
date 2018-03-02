@@ -3,6 +3,7 @@ Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 Vue.component('bathrooms', require('./components/Bathrooms.vue'));
 Vue.component('bedrooms', require('./components/Bedrooms.vue'));
 Vue.component('bio-card', require('./components/BioCard.vue'));
+Vue.component('contact-form', require('./components/ContactForm.vue'));
 Vue.component('content-card', require('./components/ContentCard.vue'));
 Vue.component('features', require('./components/Features.vue'));
 Vue.component('google-map', require('./components/GoogleMap.vue'));

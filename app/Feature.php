@@ -20,12 +20,12 @@ class Feature extends Model
      */
     public function list($property)
     {
-        $exterior        = $this->hasData($property->exterior) ? $this->arrayify($property->exterior):               null;
-        $interior        = $this->hasData($property->interior) ? $this->arrayify($property->interior):               null;
-        $amenities       = $this->hasData($property->amenities) ? $this->arrayify($property->amenities):             null;
-        $utilities       = $this->hasData($property->utilities) ? $this->arrayify($property->utilities):             null;
-        $appliances      = $this->hasData($property->appliances) ? $this->arrayify($property->appliances):           null;
-        $construction    = $this->hasData($property->construction) ? $this->arrayify($property->construction):       null;
+        $exterior        = $this->hasData($property->exterior) ? $this->arrayify($property->exterior): null;
+        $interior        = $this->hasData($property->interior) ? $this->arrayify($property->interior): null;
+        $amenities       = $this->hasData($property->amenities) ? $this->arrayify($property->amenities): null;
+        $utilities       = $this->hasData($property->utilities) ? $this->arrayify($property->utilities): null;
+        $appliances      = $this->hasData($property->appliances) ? $this->arrayify($property->appliances): null;
+        $construction    = $this->hasData($property->construction) ? $this->arrayify($property->construction): null;
         $energy_features = $this->hasData($property->energy_features) ? $this->arrayify($property->energy_features): null;
 
         $raw = [

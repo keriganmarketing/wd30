@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Facades\App\OpenHouse;
-use Facades\App\Feature;
-use Illuminate\Http\Request;
-use Facades\KeriganSolutions\Drone\Mothership;
 use Carbon\Carbon;
+use Facades\App\Feature;
+use Facades\App\Realtor;
+use Facades\App\Property;
+use Facades\App\OpenHouse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Facades\KeriganSolutions\Drone\Mothership;
 
 class PropertySearchController extends Controller
 {
@@ -19,7 +21,7 @@ class PropertySearchController extends Controller
      */
     public function index(Request $request)
     {
-        $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        $realtor    = Realtor::exists() ? User::realtor() : null;
         $properties = Mothership::search($request);
 
         return view('properties.index', compact('properties', 'realtor'));
@@ -33,11 +35,22 @@ class PropertySearchController extends Controller
     public function show($mlsNumber)
     {
         $property   = Mothership::listing($mlsNumber);
+        $address    = Property::fullAddress($property); // used for lead generation
         $features   = Feature::list($property);
         $openHouses = OpenHouse::extract($property->open_houses);
-        $realtor    = User::where('is_realtor', 1)->exists() ? User::realtor() : null;
+        $realtor    = Realtor::exists() ? User::realtor() : null;
 
-        return view('properties.show', compact('property', 'features', 'openHouses', 'realtor', 'featuresCount'));
+        return view(
+            'properties.show',
+            compact(
+                'address',
+                'realtor',
+                'features',
+                'property',
+                'openHouses',
+                'featuresCount'
+            )
+        );
     }
 
 }
