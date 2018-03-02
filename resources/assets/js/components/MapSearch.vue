@@ -9,9 +9,12 @@
             }">
                 <ring-loader :loading="isLoading" :color="'bg-brand'" :size="'150px'"></ring-loader>
             </div>
-            <div ref="map" class="relative w-full flex-grow md:w-3/4 h-64 z-10" ></div>
-            <div v-if="propOpen" class="prop-panel relative w-full md:w-1/4 h-64 z-10 bg-white">
-                [property info here]
+            <div ref="map" class="relative w-full flex-grow md:w-3/4 h-48 md:h-64 z-10" ></div>
+            <div v-if="propOpen" class="prop-panel relative w-full md:w-1/4 md:h-64 z-10 bg-white border-t-2 border-grey-lightest">
+                <mini-listing
+                    class="w-full p-6"
+                    :listing="selectedProperty"
+                />
             </div>
         </div>
     </div>
@@ -33,6 +36,10 @@ export default {
         zoom: {
             type: Number,
             default: this.zoom
+        },
+        dataParams: {
+            type: Object,
+            default: () => {}
         }
     },
     data() {
@@ -42,11 +49,25 @@ export default {
             config: {},
             isLoading: false,
             propOpen: false,
+            selectedProperty: {},
             searchData: {},
-            pins: []
+            pins: [],
+            params: '',
         }
     },
     mounted() {
+        let params = this.dataParams;
+        let numParams = Object.keys(params).length
+
+        for (let i = 0; i < numParams; i++) {
+            let key = Object.keys(params)[i]
+            let value  = Object.values(params)[i]
+            this.params += key + '=' + (value !== null ? value : '');
+            if(i < numParams - 1){
+                this.params += '&';
+            }
+        }
+
         this.config = {
             zoom:    this.zoom,
             destination: {
@@ -57,10 +78,10 @@ export default {
         };
 
         let vm = this;
-        window.axios.get('/map-search/')
+        window.axios.get('/map-search?' + this.params)
             .then(response => {
-                vm.searchData = response.data
-                vm.pins = response.data.data
+                vm.searchData = response.data;
+                vm.pins = response.data.data;
                 vm.renderMap()
             })
             .catch(error => {
@@ -74,8 +95,26 @@ export default {
                 .load()
                 .then(rendered => {
                     vm.renderedMap = rendered;
+                    window.addEventListener('marker_updated', function(event){
+                        vm.getProperty(event.detail.mls_account)
+                        vm.propOpen = true;
+                    });
+                });
+        },
+        getProperty(mlsAccount){
+            let vm = this;
+            window.axios.get('/full-listing/' + mlsAccount)
+                .then(response => {
+                    vm.selectedProperty = response.data;
+                    console.log(vm.selectedProperty);
+                })
+                .catch(error => {
+                    console.log(error)
                 });
         }
     }
 }
 </script>
+<style>
+
+</style>

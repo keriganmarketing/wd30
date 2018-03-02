@@ -5097,22 +5097,62 @@ var GoogleMap = function () {
                 mapData.map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
                 mapData.bounds = new google.maps.LatLngBounds(mapData.position);
                 mapData.markers = [];
-                console.log(pins);
-                for (var i = 0; i < pins.length; i++) {
+                mapData.selected = {};
+
+                var markerShape = {
+                    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+                    scale: .7,
+                    strokeWeight: 3,
+                    strokeColor: '#FFF',
+                    strokeOpacity: .5,
+                    fillColor: '#555',
+                    fillOpacity: 1,
+                    rotation: 0
+                };
+
+                var selectedShape = {
+                    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+                    scale: .7,
+                    strokeWeight: 3,
+                    strokeColor: '#55ff00',
+                    strokeOpacity: .5,
+                    fillColor: '#555',
+                    fillOpacity: 1,
+                    rotation: 0
+                };
+
+                var _loop = function _loop(i) {
                     var obj = pins[i];
                     var position = new google.maps.LatLng(obj.latitude, obj.longitude);
                     var marker = new google.maps.Marker({
                         position: position,
                         map: mapData.map,
-                        pin: 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1'
+                        icon: markerShape,
+                        label: {
+                            fontWeight: 'bold',
+                            fontSize: '12px',
+                            text: pins[i].mls_account
+                        }
+                    });
+
+                    marker.addListener('click', function () {
+                        mapData.selected = obj;
+                        this.setIcon(selectedShape);
+                        window.dispatchEvent(new CustomEvent('marker_updated', {
+                            detail: obj
+                        }));
                     });
 
                     mapData.markers.push(marker);
                     mapData.bounds.extend(position);
                     mapData.map.fitBounds(mapData.bounds);
+                };
+
+                for (var i = 0; i < pins.length; i++) {
+                    _loop(i);
                 }
 
-                window.map = mapData.map;
+                // window.map = mapData.map;
 
                 mapData.markerCluster = new __WEBPACK_IMPORTED_MODULE_2_marker_clusterer_plus___default.a(window.map, mapData.markers, {
                     maxZoom: 14,
@@ -5120,7 +5160,7 @@ var GoogleMap = function () {
                 });
             });
 
-            return this.map;
+            return mapData;
         }
     }, {
         key: 'getDirections',
@@ -48175,6 +48215,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(491)
+}
 var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(428)
@@ -48183,7 +48227,7 @@ var __vue_template__ = __webpack_require__(429)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -48244,6 +48288,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -48260,6 +48307,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         zoom: {
             type: Number,
             default: this.zoom
+        },
+        dataParams: {
+            type: Object,
+            default: function _default() {}
         }
     },
     data: function data() {
@@ -48269,11 +48320,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             config: {},
             isLoading: false,
             propOpen: false,
+            selectedProperty: {},
             searchData: {},
-            pins: []
+            pins: [],
+            params: ''
         };
     },
     mounted: function mounted() {
+        var params = this.dataParams;
+        var numParams = Object.keys(params).length;
+
+        for (var i = 0; i < numParams; i++) {
+            var key = Object.keys(params)[i];
+            var value = Object.values(params)[i];
+            this.params += key + '=' + (value !== null ? value : '');
+            if (i < numParams - 1) {
+                this.params += '&';
+            }
+        }
+
         this.config = {
             zoom: this.zoom,
             destination: {
@@ -48284,7 +48349,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
 
         var vm = this;
-        window.axios.get('/map-search/').then(function (response) {
+        window.axios.get('/map-search?' + this.params).then(function (response) {
             vm.searchData = response.data;
             vm.pins = response.data.data;
             vm.renderMap();
@@ -48298,6 +48363,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config, vm.pins).load().then(function (rendered) {
                 vm.renderedMap = rendered;
+                window.addEventListener('marker_updated', function (event) {
+                    vm.getProperty(event.detail.mls_account);
+                    vm.propOpen = true;
+                });
+            });
+        },
+        getProperty: function getProperty(mlsAccount) {
+            var vm = this;
+            window.axios.get('/full-listing/' + mlsAccount).then(function (response) {
+                vm.selectedProperty = response.data;
+                console.log(vm.selectedProperty);
+            }).catch(function (error) {
+                console.log(error);
             });
         }
     }
@@ -48334,7 +48412,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", {
         ref: "map",
-        staticClass: "relative w-full flex-grow md:w-3/4 h-64 z-10"
+        staticClass: "relative w-full flex-grow md:w-3/4 h-48 md:h-64 z-10"
       }),
       _vm._v(" "),
       _vm.propOpen
@@ -48342,9 +48420,15 @@ var render = function() {
             "div",
             {
               staticClass:
-                "prop-panel relative w-full md:w-1/4 h-64 z-10 bg-white"
+                "prop-panel relative w-full md:w-1/4 md:h-64 z-10 bg-white border-t-2 border-grey-lightest"
             },
-            [_vm._v("\n            [property info here]\n        ")]
+            [
+              _c("mini-listing", {
+                staticClass: "w-full p-6",
+                attrs: { listing: _vm.selectedProperty }
+              })
+            ],
+            1
           )
         : _vm._e()
     ])
@@ -48802,174 +48886,169 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2" },
-    [
-      _c(
-        "div",
-        {
-          staticClass:
-            "property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary"
-        },
-        [
-          _c("a", {
-            staticClass: "absolute pin hover:shadow-inner z-50",
-            attrs: { href: "/listing/" + _vm.listing.mls_account + "/" }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "property-image md:h-48 md:overflow-hidden" },
-            [
-              _vm.listing.has_open_houses
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
-                    },
-                    [_vm._v("\n                OPEN HOUSE\n            ")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.listing.status !== "Active"
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
-                    },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.listing.status) +
-                          "\n            "
-                      )
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.listing.preferred_image !== null
-                ? _c("img", {
-                    staticClass: "w-auto h-auto min-h-full min-w-full",
-                    attrs: { src: _vm.listing.preferred_image }
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.listing.preferred_image === null
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "text-grey-lighter w-full h-full bg-white text-center"
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "h-full ",
-                          attrs: {
-                            version: "1.1",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                            x: "0px",
-                            y: "0px",
-                            viewBox: "0 0 1000 1000",
-                            "enable-background": "new 0 0 1000 1000",
-                            "xml:space": "preserve"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            staticClass:
-                              "fill-current stroke-current opacity-75",
-                            attrs: {
-                              d:
-                                "M200.9,489.4L163.5,444L500,167.2L836.5,444l-37.4,45.4L500,243.4L200.9,489.4z M853.9,645.6h-96.8v93.6H244.2v-93.6h-98.1L10,832.6h54.3c2.5,0,5,0.1,7.5,0.1c120.5,0,240.9,0,361.4,0c6.4,0,12.8,0,19.1,0h111.2c1.2,0,2.2,0,3.4,0c120.5,0,240.9,0.1,361.4,0c2.5,0,5,0,7.5-0.1H990L853.9,645.6z M500,300.2l217.2,179.9v163.7v56.1v6H282.8v-6.7v-55.5V479.4L500,300.2z M496.7,544.3h-80.5v75.2h80.5V544.3z M496.7,459.3h-80.5v75.2h80.5V459.3z M507.2,534.5h80.5v-75.2h-80.5V534.5z M507.2,619.6h80.5v-75.2h-80.5V619.6z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "property-details py-2 px-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "address h-12 flex flex-col justify-center align-middle"
-              },
-              [
-                _c(
-                  "p",
-                  { staticClass: "p-2 text-grey-darker text-sm text-center" },
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary"
+      },
+      [
+        _c("a", {
+          staticClass: "absolute pin hover:shadow-inner z-50",
+          attrs: { href: "/listing/" + _vm.listing.mls_account + "/" }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "property-image md:h-48 md:overflow-hidden" },
+          [
+            _vm.listing.has_open_houses
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
+                  },
+                  [_vm._v("\n                OPEN HOUSE\n            ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.listing.status !== "Active"
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
+                  },
                   [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.listing.street_number) +
-                        " " +
-                        _vm._s(_vm.listing.street_name) +
-                        "\n                    "
-                    ),
-                    _vm.listing.unit_number != ""
-                      ? _c("span", [
-                          _vm._v(
-                            "\n                        Unit " +
-                              _vm._s(_vm.listing.unit_number) +
-                              "\n                    "
-                          )
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.listing.city) +
-                        ", " +
-                        _vm._s(_vm.listing.state) +
-                        "\n                "
+                      "\n                " +
+                        _vm._s(_vm.listing.status) +
+                        "\n            "
                     )
                   ]
                 )
-              ]
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c("div", { staticClass: "price" }, [
+            _vm.listing.preferred_image !== null
+              ? _c("img", {
+                  staticClass: "w-auto h-auto min-h-full min-w-full",
+                  attrs: { src: _vm.listing.preferred_image }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.listing.preferred_image === null
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "text-grey-lighter w-full h-full bg-white text-center"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-full ",
+                        attrs: {
+                          version: "1.1",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                          x: "0px",
+                          y: "0px",
+                          viewBox: "0 0 1000 1000",
+                          "enable-background": "new 0 0 1000 1000",
+                          "xml:space": "preserve"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          staticClass: "fill-current stroke-current opacity-75",
+                          attrs: {
+                            d:
+                              "M200.9,489.4L163.5,444L500,167.2L836.5,444l-37.4,45.4L500,243.4L200.9,489.4z M853.9,645.6h-96.8v93.6H244.2v-93.6h-98.1L10,832.6h54.3c2.5,0,5,0.1,7.5,0.1c120.5,0,240.9,0,361.4,0c6.4,0,12.8,0,19.1,0h111.2c1.2,0,2.2,0,3.4,0c120.5,0,240.9,0.1,361.4,0c2.5,0,5,0,7.5-0.1H990L853.9,645.6z M500,300.2l217.2,179.9v163.7v56.1v6H282.8v-6.7v-55.5V479.4L500,300.2z M496.7,544.3h-80.5v75.2h80.5V544.3z M496.7,459.3h-80.5v75.2h80.5V459.3z M507.2,534.5h80.5v-75.2h-80.5V534.5z M507.2,619.6h80.5v-75.2h-80.5V619.6z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "property-details py-2 px-2" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "address h-12 flex flex-col justify-center align-middle"
+            },
+            [
               _c(
                 "p",
-                {
-                  staticClass: "py-2 text-center text-brand text-3xl font-brand"
-                },
-                [_vm._v("$" + _vm._s(_vm.listing.price.toLocaleString()))]
+                { staticClass: "p-2 text-grey-darker text-sm text-center" },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.listing.street_number) +
+                      " " +
+                      _vm._s(_vm.listing.street_name) +
+                      "\n                    "
+                  ),
+                  _vm.listing.unit_number != ""
+                    ? _c("span", [
+                        _vm._v(
+                          "\n                        Unit " +
+                            _vm._s(_vm.listing.unit_number) +
+                            "\n                    "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.listing.city) +
+                      ", " +
+                      _vm._s(_vm.listing.state) +
+                      "\n                "
+                  )
+                ]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "prop-type" }, [
-              _c(
-                "p",
-                {
-                  staticClass:
-                    "pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase"
-                },
-                [_vm._v(_vm._s(_vm.listing.property_type))]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mls text-center mt-3" }, [
-              _c("p", { staticClass: "text-grey-dark text-xs" }, [
-                _vm._v("MLS# " + _vm._s(_vm.listing.mls_account))
-              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "price" }, [
+            _c(
+              "p",
+              {
+                staticClass: "py-2 text-center text-brand text-3xl font-brand"
+              },
+              [_vm._v("$" + _vm._s(_vm.listing.price.toLocaleString()))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "prop-type" }, [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase"
+              },
+              [_vm._v(_vm._s(_vm.listing.property_type))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mls text-center mt-3" }, [
+            _c("p", { staticClass: "text-grey-dark text-xs" }, [
+              _vm._v("MLS# " + _vm._s(_vm.listing.mls_account))
             ])
           ])
-        ]
-      )
-    ]
-  )
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50635,17 +50714,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        dataParams: {
+            type: Object,
+            default: function _default() {}
+        }
+    },
     data: function data() {
         return {
-            properties: []
+            properties: [],
+            params: ''
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        window.axios.get('/search/').then(function (response) {
+        var params = this.dataParams;
+        var numParams = Object.keys(params).length;
+
+        for (var i = 0; i < numParams; i++) {
+            var key = Object.keys(params)[i];
+            var value = Object.values(params)[i];
+            this.params += key + '=' + (value !== null ? value : '');
+            if (i < numParams - 1) {
+                this.params += '&';
+            }
+        }
+
+        window.axios.get('/search?' + this.params).then(function (response) {
             _this.properties = response.data;
         }).catch(function (error) {
             console.log(error);
@@ -50672,6 +50771,7 @@ var render = function() {
           _vm._l(_vm.properties.data, function(listing) {
             return _c("mini-listing", {
               key: listing.id,
+              staticClass: "w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2",
               attrs: { listing: listing }
             })
           })
@@ -52194,6 +52294,50 @@ var Content = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(492);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(49)("32794064", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e9f6ea86\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MapSearch.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e9f6ea86\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MapSearch.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 492 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(48)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

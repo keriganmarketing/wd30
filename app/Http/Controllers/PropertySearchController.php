@@ -23,8 +23,9 @@ class PropertySearchController extends Controller
     {
         $realtor    = Realtor::exists() ? User::realtor() : null;
         $properties = Mothership::search($request);
+        $searchParams = json_encode($request->all());
 
-        return view('properties.index', compact('properties', 'realtor'));
+        return view('properties.index', compact('properties', 'realtor', 'searchParams'));
     }
 
     /**
@@ -71,6 +72,16 @@ class PropertySearchController extends Controller
     public function mapSearch(Request $request)
     {
         return response()->json(Mothership::search($request));
+    }
+
+    /**
+     * Get single listing when map pin is clicked.
+     *
+     * @return string
+     */
+    public function singleListing($mlsNumber)
+    {
+        return response()->json(Mothership::listing($mlsNumber));
     }
 
 }

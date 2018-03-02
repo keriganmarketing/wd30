@@ -3,17 +3,19 @@ import GeoLocator from './geolocator.service';
 import MarkerClusterer from 'marker-clusterer-plus';
 
 export default class GoogleMap {
-    constructor (config, pins) {
+    constructor(config, pins) {
         this.config = config;
         this.map = {};
         this.apiKey = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
         this.pins = pins;
     }
-    load () {
+
+    load() {
         return new Promise((resolve, reject = null) => {
             resolve(this.render());
         });
     }
+
     render() {
         GoogleMapsLoader.KEY = this.apiKey;
         let config = this.config;
@@ -33,14 +35,50 @@ export default class GoogleMap {
             mapData.map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
             mapData.bounds = new google.maps.LatLngBounds(mapData.position);
             mapData.markers = [];
-            console.log(pins);
+            mapData.selected = {};
+
+            let markerShape = {
+                path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+                scale: .7,
+                strokeWeight: 3,
+                strokeColor: '#FFF',
+                strokeOpacity: .5,
+                fillColor: '#555',
+                fillOpacity: 1,
+                rotation: 0
+            };
+
+            let selectedShape = {
+                path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+                scale: .7,
+                strokeWeight: 3,
+                strokeColor: '#55ff00',
+                strokeOpacity: .5,
+                fillColor: '#555',
+                fillOpacity: 1,
+                rotation: 0
+            };
+
             for (let i = 0; i < pins.length; i++) {
                 let obj = pins[i];
-                let position = new google.maps.LatLng(obj.latitude,obj.longitude);
+                let position = new google.maps.LatLng(obj.latitude, obj.longitude);
                 let marker = new google.maps.Marker({
                     position: position,
                     map: mapData.map,
-                    pin: 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1'
+                    icon: markerShape,
+                    label: {
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        text: pins[i].mls_account
+                    }
+                });
+
+                marker.addListener('click', function(){
+                    mapData.selected = obj;
+                    this.setIcon(selectedShape);
+                    window.dispatchEvent(new CustomEvent('marker_updated', {
+                        detail: obj
+                    }));
                 });
 
                 mapData.markers.push(marker);
@@ -48,16 +86,17 @@ export default class GoogleMap {
                 mapData.map.fitBounds(mapData.bounds);
             }
 
-            window.map = mapData.map;
+            // window.map = mapData.map;
 
             mapData.markerCluster = new MarkerClusterer(window.map, mapData.markers, {
                 maxZoom: 14,
                 gridSize: 60
-            })
+            });
         });
 
-        return this.map;
+        return mapData;
     }
+
     getDirections(locations, mapData, button, panel) {
         GoogleMapsLoader.KEY = this.apiKey;
         GoogleMapsLoader.load(google => {

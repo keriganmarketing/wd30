@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2" >
+    <div>
         <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary">
             <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-50" ></a>
             <div class="property-image md:h-48 md:overflow-hidden">
