@@ -54,4 +54,5 @@ class Avatar extends Model
 
         return $path;
     }
+
 }

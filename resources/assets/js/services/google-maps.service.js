@@ -1,5 +1,5 @@
 import GoogleMapsLoader from 'google-maps';
-import GeoLocator from './geolocator.service'
+import GeoLocator from './geolocator.service';
 
 export default class GoogleMap {
     constructor (config) {
@@ -50,7 +50,7 @@ export default class GoogleMap {
 
             mapData.bounds.extend(directionsDisplay.destination);
 
-            let directionsService = new google.maps.DirectionsService;
+            let directionsService = new google.maps.DirectionsService();
             directionsDisplay.setPanel(panel);
             directionsService.route({
                 origin: directionsDisplay.origin,
@@ -60,7 +60,7 @@ export default class GoogleMap {
                 if (status === 'OK') {
                     return directionsDisplay.setDirections(response);
                 } else {
-                    return window.alert('Directions request failed due to ' + status)
+                    return window.alert('Directions request failed due to ' + status);
                 }
             });
             mapData.map.fitBounds(mapData.bounds);
