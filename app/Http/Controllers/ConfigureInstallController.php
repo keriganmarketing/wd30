@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Installer;
+use Facades\App\Installer;
 use Illuminate\Http\Request;
 use Facades\KeriganSolutions\Drone\Mothership;
 
@@ -32,8 +32,8 @@ class ConfigureInstallController extends Controller
             'password'   => bcrypt($request->password)
         ]);
 
-        $email = urlencode($request->email);
-        $agentData = (new Installer())->configure(Mothership::agentData($email));
+        $email     = urlencode($request->email);
+        $agentData = Installer::configure(Mothership::agentData($email));
 
         return response()->json($agentData);
     }

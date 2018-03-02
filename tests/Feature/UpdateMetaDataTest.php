@@ -16,8 +16,8 @@ class UpdateMetaDataTest extends TestCase
     {
         $meta = create(MetaData::class);
 
-        $this->patch('/metadata/'. $meta->id, [
-            'title' => 'New Title',
+        $response = $this->patch('/metadata/'. $meta->id, [
+            'title'       => 'New Title',
             'description' => 'New Description'
         ])
             ->assertSuccessful()

@@ -13,7 +13,7 @@
                     <span class="custom-input checkmark"></span>
                 </label>
                 <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="waterfront" value="1" class="radio-input" >
+                    <input type="checkbox" name="waterFront" value="1" class="radio-input" >
                     <span class="input-description checkbox px-1 text-grey-darker">Waterfront</span>
                     <span class="custom-input checkmark"></span>
                 </label>

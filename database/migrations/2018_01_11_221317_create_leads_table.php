@@ -19,6 +19,13 @@ class CreateLeadsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('message');
+            $table->string('listing')->nullable();
+            $table->string('listing_address')->nullable();
+            $table->string('listing_latitude')->nullable();
+            $table->string('listing_longitude')->nullable();
+            $table->string('agent')->nullable();
+            $table->string('agent_email')->nullable();
+            $table->string('agent_phone')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('important')->default(0);
             $table->timestamps();

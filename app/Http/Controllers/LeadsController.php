@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Lead;
+use App\User;
 use Carbon\Carbon;
+use App\Mail\LeadCreated;
+use App\Mail\LeadReceived;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LeadsController extends Controller
 {
@@ -16,22 +20,37 @@ class LeadsController extends Controller
     public function index(Request $request)
     {
         $important = $request->important === 'true';
-        return Lead::active()->when($important, function ($query) {
-            return $query->where('important', 1);
-        })->latest()->paginate(5);
+        return Lead::active()->when(
+            $important,
+            function ($query) {
+                return $query->where('important', 1);
+            }
+        )->latest()->paginate(5);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request The request object
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'    => 'required|max:255',
+            'email'   => 'required|email|max:190',
+            'phone'   => 'required|max:15',
+            'message' => 'required'
+        ]);
+
+        $realtor = User::realtor();
         $lead = Lead::create($request->all());
 
-        return back();
+        Mail::to($request->email)->send(new LeadCreated($lead));
+        Mail::to($realtor->email)->send(new LeadReceived($lead));
+
+        return $lead;
     }
 
     /**
