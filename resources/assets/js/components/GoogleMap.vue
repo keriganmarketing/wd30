@@ -59,10 +59,16 @@ export default {
             error: '',
             showDirections: false,
             config: {},
-            isLoading: false
+            isLoading: false,
+            pins: []
         }
     },
     mounted() {
+        this.pins[0] = {
+            latitude: this.latitude,
+            longitude: this.longitude,
+            icon: 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1'
+        };
         this.config = {
             zoom:    this.zoom,
             origin:  {}, //we don't know this yet
@@ -79,7 +85,7 @@ export default {
     methods: {
         renderMap() {
             let vm = this;
-            new GoogleMap(vm.config)
+            new GoogleMap(vm.config,vm.pins)
                 .load()
                 .then(rendered => {
                     this.renderedMap = rendered;

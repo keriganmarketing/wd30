@@ -42,17 +42,11 @@ export default {
             config: {},
             isLoading: false,
             propOpen: false,
-            properties: []
+            searchData: {},
+            pins: []
         }
     },
     mounted() {
-        window.axios.get('/map-search/')
-            .then(response => {
-                this.properties = response.data
-            })
-            .catch(error => {
-                console.log(error)
-            });
         this.config = {
             zoom:    this.zoom,
             destination: {
@@ -61,15 +55,25 @@ export default {
             },
             mapElement: this.$refs.map
         };
-        this.renderMap();
+
+        let vm = this;
+        window.axios.get('/map-search/')
+            .then(response => {
+                vm.searchData = response.data
+                vm.pins = response.data.data
+                vm.renderMap()
+            })
+            .catch(error => {
+                console.log(error)
+            });
     },
     methods: {
         renderMap() {
             let vm = this;
-            new GoogleMap(vm.config)
+            new GoogleMap(vm.config,vm.pins)
                 .load()
                 .then(rendered => {
-                    this.renderedMap = rendered;
+                    vm.renderedMap = rendered;
                 });
         }
     }

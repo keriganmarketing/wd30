@@ -1,46 +1,65 @@
 import GoogleMapsLoader from 'google-maps';
-import GeoLocator from './geolocator.service'
+import GeoLocator from './geolocator.service';
+import MarkerClusterer from 'marker-clusterer-plus';
 
 export default class GoogleMap {
-    constructor (config) {
+    constructor (config, pins) {
         this.config = config;
         this.map = {};
+        this.apiKey = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
+        this.pins = pins;
     }
     load () {
         return new Promise((resolve, reject = null) => {
             resolve(this.render());
         });
     }
-    render () {
-        GoogleMapsLoader.KEY = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
+    render() {
+        GoogleMapsLoader.KEY = this.apiKey;
         let config = this.config;
         let mapData = this.map;
+        let pins = this.pins;
         GoogleMapsLoader.load(google => {
             mapData.map = new google.maps.Map(config.mapElement, {
                 zoom: config.zoom,
                 center: new google.maps.LatLng(config.destination.latitude, config.destination.longitude),
                 disableDefaultUI: true,
                 zoomControl: true,
-                scaleControl: true
+                scaleControl: true,
+                maxZoom: 18
             });
 
             let control = config.directionsButton;
             mapData.map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
-
-            mapData.position = mapData.map.center;
             mapData.bounds = new google.maps.LatLngBounds(mapData.position);
-            mapData.marker = new google.maps.Marker({
-                position: mapData.position,
-                map: mapData.map
-            });
+            mapData.markers = [];
+            console.log(pins);
+            for (let i = 0; i < pins.length; i++) {
+                let obj = pins[i];
+                let position = new google.maps.LatLng(obj.latitude,obj.longitude);
+                let marker = new google.maps.Marker({
+                    position: position,
+                    map: mapData.map,
+                    pin: 'http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png&scale=1'
+                });
+
+                mapData.markers.push(marker);
+                mapData.bounds.extend(position);
+                mapData.map.fitBounds(mapData.bounds);
+            }
 
             window.map = mapData.map;
+
+            mapData.markerCluster = new MarkerClusterer(window.map, mapData.markers, {
+                maxZoom: 14,
+                gridSize: 60
+            })
         });
 
         return this.map;
     }
     getDirections(locations, mapData, button, panel) {
-        GoogleMapsLoader.KEY = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
+        GoogleMapsLoader.KEY = this.apiKey;
         GoogleMapsLoader.load(google => {
             let directionsDisplay = new google.maps.DirectionsRenderer({
                 origin: new google.maps.LatLng(locations.origin.latitude, locations.origin.longitude),
