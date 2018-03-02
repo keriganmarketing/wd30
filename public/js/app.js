@@ -46188,7 +46188,7 @@ var render = function() {
           {
             staticClass:
               "active-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "font-bold": _vm.activeFilter },
+            class: { "text-white": _vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
           [_vm._v("\n            Active\n        ")]
@@ -46219,7 +46219,7 @@ var render = function() {
           "label",
           {
             staticClass: "active-toggle text-white flex-grow w-8 px-2",
-            class: { "font-bold": !_vm.activeFilter },
+            class: { "text-white": !_vm.activeFilter },
             attrs: { for: "activeToggle" }
           },
           [_vm._v("\n            Archived\n        ")]
@@ -49523,6 +49523,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49773,6 +49777,39 @@ var render = function() {
               ]
             )
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "px-4 py-4 relative pin-b pin-r z-50 text-brand-darkest"
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "feather feather-help-circle fixed pin-b pin-r p-4",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "60",
+                height: "60",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              }
+            },
+            [
+              _c("circle", { attrs: { cx: "12", cy: "12", r: "10" } }),
+              _c("path", {
+                attrs: { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }
+              }),
+              _c("line", { attrs: { x1: "12", y1: "17", x2: "12", y2: "17" } })
+            ]
+          )
         ]
       )
     ]
