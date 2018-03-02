@@ -1,8 +1,8 @@
 <template>
-    <div class="max-h-avatar relative rounded-sm bg-transparent overflow-hidden">
+    <div class="max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden">
         <img
             :src="src"
-            class="max-w-full h-auto mx-auto"
+            class="max-w-full h-full mx-auto"
             @mouseover="imageHover = true"
         >
         <form
@@ -13,11 +13,11 @@
         >
             <label
                 for="avatar"
-                class="bg-dbblue absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
+                class="bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
                 :class="{'pin': imageHover, 'opacity-75': imageHover}"
                 @mouseout="imageHover = false"
             >
-                <span class="opacity-100">Click here to upload a new photo</span>
+                <span class="opacity-100 text-sm">Click here to upload a new photo</span>
                 <input
                     type="file"
                     name="avatar"
