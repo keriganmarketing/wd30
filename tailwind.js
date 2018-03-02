@@ -160,8 +160,6 @@ let colors = {
   'dbblue-lighter': '#91c8ff',
   'dbblue-lightest': '#d9ecff',
 
-  'brown-brand':'#533B18',
-
   'tan-darkest':'#f5cc5b',
   'tan-darker':'#f5d273',
   'tan-dark':'#f5d98c',
@@ -362,6 +360,7 @@ module.exports = {
   */
 
   leading: {
+    'tightest': .25,
     'tighter': .75,
     'none': 1,
     'tight': 1.25,

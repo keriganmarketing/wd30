@@ -15,7 +15,7 @@
 </head>
 <body class="h-screen font-Lato text-smoke-darkest">
     <div id="app" class="relative">
-        <nav class="fixed bg-tan-lightest w-full z-50 shadow-md">
+        <nav class="fixed bg-tan-lightest w-full z-50 shadow">
             <div class="container mx-auto h-full">
                 <div class="flex flex-row items-center justify-center">
                     <div class="flex-1 m-0 mx-2">
@@ -24,11 +24,11 @@
                         <!--<span class="text-brand text-sm pr-4" v-if="! boilerplate">@{{ user.name }}</span>
                         <span class="text-brand text-sm pr-4" v-else>Your Name</span>-->
                         <a href="{{ route('logout') }}"
-                            class="no-underline hover:underline text-cta-red px-4 md:px-8 py-7 lg:px-8 my-1 fixed pin-t pin-r"
+                            class="no-underline hover:underline text-cta-red px-4 py-4 md:px-8 md:py-7 lg:px-10 my-1 fixed pin-t pin-r"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            <span class="mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 6 24 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> 
+                            <span class="mb-2 py-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>    
                             </span>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -38,10 +38,10 @@
                 </div>
             </div>
         </nav>
-        <div class='w-full bg-tan-lightest pt-12 md:pt-24 pb-8'>
+        <div class='w-full bg-image-full bg-fixed px-1 pt-24 pb-4' style='background-image: url("https://beachybeach.com/wp-content/themes/kmaidx/img/beachy-illustration.jpg");'>
             @yield('top')
         </div>
-        <div class='bg-beachy-blue pb-16'>
+        <div class='bg-beachy-blue pb-16 shadow-inner'>
             @yield('content')
         </div>
     </div>
