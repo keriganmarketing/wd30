@@ -170,6 +170,8 @@ let colors = {
   'tan-lighter': '#fff6de',
   'tan-lightest': '#fffdf7',
 
+  'cta-red':'#ad373b',
+
   get ['brand-darkest']() { return this['beachy-blue-darkest']; },
   get ['brand-darker']() { return this['beachy-blue-darker']; },
   get ['brand-dark']() { return this['beachy-blue-dark']; },
@@ -690,6 +692,7 @@ module.exports = {
     '3': '0.75rem',
     '4': '1rem',
     '6': '1.5rem',
+    '7': '1.25rem',
     '8': '2rem',
     '12': '3rem',
     '16': '4rem',
