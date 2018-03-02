@@ -9,12 +9,18 @@
     <div v-if="viewType === 'grid'" class="properties grid pb-4">
         <div class="container mx-auto">
             @include('partials.sortbar')
-            <property-search></property-search>
+            <property-search :data-params="{{ $searchParams }}"></property-search>
             @include('partials.pagination')
         </div>
     </div>
     <div v-if="viewType === 'map'" >
-        <map-search :latitude="{{ $properties->data[0]->latitude }}" :longitude="{{ $properties->data[0]->longitude }}" :zoom="15" ></map-search>
+        <map-search
+            :latitude="{{ $properties->data[0]->latitude }}"
+            :longitude="{{ $properties->data[0]->longitude }}"
+            :data-params="{{ $searchParams }}"
+            :zoom="15"
+            class="border-b-2 border-secondary-light"
+        ></map-search>
     </div>
     <div class="container mx-auto">
         @include('partials.disclaimer')
