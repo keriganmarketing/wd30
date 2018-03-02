@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary">
+        <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
             <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-50" ></a>
             <div class="property-image md:h-48 md:overflow-hidden">
                 <div
@@ -54,7 +54,7 @@
                     <acreage :value="listing.acreage"></acreage>
                     <sqft :value="listing.sq_ft"></sqft>
                 </div>
-                <div v-if="listing.class === 'J' || listing.class === 'F' || listing.class === 'E'"
+                <div v-if="listing.class === 'F' || listing.class === 'E'"
                      class="attributes flex text-center justify-around py-2" >
                     <acreage :value="listing.acreage"></acreage>
                     <lot-dimensions :value="listing.lot_dimensions"></lot-dimensions>
