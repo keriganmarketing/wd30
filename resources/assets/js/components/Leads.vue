@@ -84,11 +84,11 @@ export default {
         },
         onArchived () {
             this.getActive(this.importantFilter, this.pagination.current_page);
-            this.$emit('archived');
+            this.$emit('update-leads-count');
         },
         onUnarchived () {
             this.getArchived(this.importantFilter, this.pagination.current_page);
-            this.$emit('unarchived');
+            this.$emit('update-leads-count');
         },
         getActive (important = this.importantFilter, page = 1) {
             this.leadService.activeLeads(important, page)

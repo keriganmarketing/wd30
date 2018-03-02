@@ -41933,87 +41933,107 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
+      _vm.user.office_phone != _vm.user.cell_phone
+        ? _c(
             "div",
             {
               staticClass:
-                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                "w-full py-2 bg-white flex flex-wrap items-center border-b"
             },
-            [_vm._v("\n            Primary Phone:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-auto primary-phone-switch flex px-4" }, [
-            _c("input", {
-              directives: [
+            [
+              _c(
+                "div",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.primary_phone,
-                  expression: "user.primary_phone"
-                }
-              ],
-              attrs: { type: "radio", id: "switch_left" },
-              domProps: {
-                value: _vm.user.cell_phone,
-                checked: _vm.primary("cell_phone"),
-                checked: _vm._q(_vm.user.primary_phone, _vm.user.cell_phone)
-              },
-              on: {
-                change: [
-                  function($event) {
-                    _vm.$set(_vm.user, "primary_phone", _vm.user.cell_phone)
-                  },
-                  function($event) {
-                    _vm.submit("cell_phone")
-                  }
+                  staticClass:
+                    "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                },
+                [_vm._v("\n            Primary Phone:\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "w-auto primary-phone-switch flex px-4" },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.primary_phone,
+                        expression: "user.primary_phone"
+                      }
+                    ],
+                    attrs: { type: "radio", id: "switch_left" },
+                    domProps: {
+                      value: _vm.user.cell_phone,
+                      checked: _vm.primary("cell_phone"),
+                      checked: _vm._q(
+                        _vm.user.primary_phone,
+                        _vm.user.cell_phone
+                      )
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          _vm.$set(
+                            _vm.user,
+                            "primary_phone",
+                            _vm.user.cell_phone
+                          )
+                        },
+                        function($event) {
+                          _vm.submit("cell_phone")
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "switch_left" } }, [
+                    _vm._v("Cell Phone")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.primary_phone,
+                        expression: "user.primary_phone"
+                      }
+                    ],
+                    attrs: { type: "radio", id: "switch_right" },
+                    domProps: {
+                      value: _vm.user.office_phone,
+                      checked: _vm.primary("office_phone"),
+                      checked: _vm._q(
+                        _vm.user.primary_phone,
+                        _vm.user.office_phone
+                      )
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          _vm.$set(
+                            _vm.user,
+                            "primary_phone",
+                            _vm.user.office_phone
+                          )
+                        },
+                        function($event) {
+                          _vm.submit("office_phone")
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "switch_right" } }, [
+                    _vm._v("Office Phone")
+                  ])
                 ]
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "switch_left" } }, [
-              _vm._v("Cell Phone")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.primary_phone,
-                  expression: "user.primary_phone"
-                }
-              ],
-              attrs: { type: "radio", id: "switch_right" },
-              domProps: {
-                value: _vm.user.office_phone,
-                checked: _vm.primary("office_phone"),
-                checked: _vm._q(_vm.user.primary_phone, _vm.user.office_phone)
-              },
-              on: {
-                change: [
-                  function($event) {
-                    _vm.$set(_vm.user, "primary_phone", _vm.user.office_phone)
-                  },
-                  function($event) {
-                    _vm.submit("office_phone")
-                  }
-                ]
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "switch_right" } }, [
-              _vm._v("Office Phone")
-            ])
-          ])
-        ]
-      ),
+              )
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
@@ -45009,7 +45029,7 @@ var _this = this;
         archive: function archive(id) {
             var _this2 = this;
 
-            axios.patch(this.leadPath, { active: 0 }).then(function (response) {
+            axios.patch(this.leadPath, { active: 0 }).then(function () {
                 _this2.$emit('archived', _this2.viewActiveLeads, _this2.viewImportantLeads, _this2.currentPage);
             });
         },
@@ -45613,11 +45633,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         onArchived: function onArchived() {
             this.getActive(this.importantFilter, this.pagination.current_page);
-            this.$emit('archived');
+            this.$emit('update-leads-count');
         },
         onUnarchived: function onUnarchived() {
             this.getArchived(this.importantFilter, this.pagination.current_page);
-            this.$emit('unarchived');
+            this.$emit('update-leads-count');
         },
         getActive: function getActive() {
             var _this2 = this;
