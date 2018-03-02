@@ -40842,11 +40842,11 @@ var render = function() {
     "div",
     {
       staticClass:
-        "max-h-avatar relative rounded-sm bg-transparent overflow-hidden"
+        "max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden"
     },
     [
       _c("img", {
-        staticClass: "max-w-full h-auto mx-auto",
+        staticClass: "max-w-full mx-auto",
         attrs: { src: _vm.src },
         on: {
           mouseover: function($event) {
@@ -40870,7 +40870,7 @@ var render = function() {
                 "label",
                 {
                   staticClass:
-                    "bg-dbblue absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
+                    "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
                   class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
                   attrs: { for: "avatar" },
                   on: {
@@ -40880,7 +40880,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("span", { staticClass: "opacity-100" }, [
+                  _c("span", { staticClass: "opacity-100 text-sm" }, [
                     _vm._v("Click here to upload a new photo")
                   ]),
                   _vm._v(" "),
@@ -49663,104 +49663,140 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex w-full text-center mb-4 flex-wrap" }, [
-    _c(
-      "div",
-      { staticClass: "w-full md:w-1/5" },
-      [
-        _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
-        _vm._v(" "),
-        !_vm.boilerplate
-          ? _c(
+  return _c(
+    "div",
+    {
+      staticClass:
+        "flex static w-full bg-transparent md:bg-tan-lightest items-start text-center mx-4 md:mx-2 flex-wrap rounded"
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-1 md:block md:mx-0 md:py-12 lg:pt-16 md:mx-auto"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "px-12 lg:px-4" },
+            [
+              _c("avatar-upload", {
+                staticClass: "border border-tan-lightest",
+                attrs: { "avatar-path": _vm.avatarPath }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          !_vm.boilerplate
+            ? _c(
+                "p",
+                {
+                  staticClass:
+                    "hidden md:block px-2 mt-2 text-xl text-smoke-dark"
+                },
+                [_vm._v(_vm._s(_vm.user.name))]
+              )
+            : _c(
+                "p",
+                { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
+                [_vm._v("Your Name")]
+              ),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "hidden md:block px-2 text-xs text-smoke-light" },
+            [_vm._v("Beachy Beach Real Estate")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center pt-6 md:pt-6 md:mt-16 mx-auto px-1 md:pr-4 flex-wrap rounded shadow md:shadow-none"
+        },
+        [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
               "p",
-              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
-              [_vm._v(_vm._s(_vm.user.name))]
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Clicks")]
+                )
+              ]
             )
-          : _c(
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
               "p",
-              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
-              [_vm._v("Your Name")]
-            ),
-        _vm._v(" "),
-        _c("p", { staticClass: "block px-2 text-xs text-smoke-light" }, [
-          _vm._v("Beachy Beach Real Estate")
-        ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Property Clicks")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Property Impressions")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: " block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedLeads))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Active Leads")
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Impressions")]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedLeads))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Active Leads")]
+                )
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
