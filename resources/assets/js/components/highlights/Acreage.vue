@@ -25,7 +25,7 @@
             }
         },
         mounted(){
-            this.show = this.value !== null;
+            this.show = this.value !== null && this.value !== '' && this.value !== 0;
         }
     }
 </script>
