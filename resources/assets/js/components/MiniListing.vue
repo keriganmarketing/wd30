@@ -37,10 +37,29 @@
                     </p>
                 </div>
                 <div class="price">
-                    <p class="py-2 text-center text-brand text-3xl font-brand">${{ listing.price.toLocaleString() }}</p>
+                    <p class="py-2 text-center text-brand text-3xl font-brand">${{ price }}</p>
                 </div>
                 <div class="prop-type">
                     <p class="pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase">{{ listing.property_type }}</p>
+                </div>
+                <div v-if="listing.class === 'A' || listing.class === 'G' || listing.class === 'H'"
+                     class="attributes flex text-center justify-around py-2" >
+                    <beds :value="listing.bedrooms"></beds>
+                    <baths :value="listing.bathrooms"></baths>
+                    <sqft :value="listing.sq_ft"></sqft>
+                </div>
+                <div v-if="listing.class === 'J' || listing.class === 'C'"
+                     class="attributes flex text-center justify-around py-2" >
+                    <lot-dimensions :value="listing.lot_dimensions"></lot-dimensions>
+                    <acreage :value="listing.acreage"></acreage>
+                    <sqft :value="listing.sq_ft"></sqft>
+                </div>
+                <div v-if="listing.class === 'J' || listing.class === 'F' || listing.class === 'E'"
+                     class="attributes flex text-center justify-around py-2" >
+                    <acreage :value="listing.acreage"></acreage>
+                    <lot-dimensions :value="listing.lot_dimensions"></lot-dimensions>
+                    <stories :value="listing.stories"></stories>
+                    <sqft :value="listing.sq_ft"></sqft>
                 </div>
                 <div class="mls text-center mt-3">
                     <p class="text-grey-dark text-xs">MLS# {{ listing.mls_account }}</p>
@@ -50,12 +69,27 @@
     </div>
 </template>
 <script>
+Vue.component('beds', require('./highlights/Beds.vue'));
+Vue.component('baths', require('./highlights/Baths.vue'));
+Vue.component('acreage', require('./highlights/Acreage.vue'));
+Vue.component('sqft', require('./highlights/Sqft.vue'));
+Vue.component('stories', require('./highlights/Stories.vue'));
+Vue.component('lot-dimensions', require('./highlights/LotDimensions.vue'));
+
 export default {
     props: {
         listing: {
             type: Object,
             default: () => {}
         }
+    },
+    computed: {
+        price: function(){
+            return this.listing.price.toLocaleString();
+        }
+    },
+    mounted() {
+        console.log(this.listing);
     }
 }
 </script>

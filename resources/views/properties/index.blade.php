@@ -15,11 +15,11 @@
     </div>
     <div v-if="viewType === 'map'" >
         <map-search
-            :latitude="{{ $properties->data[0]->latitude }}"
-            :longitude="{{ $properties->data[0]->longitude }}"
-            :data-params="{{ $searchParams }}"
-            :zoom="15"
-            class="border-b-2 border-secondary-light"
+                :latitude="{{ $properties->data[0]->latitude }}"
+                :longitude="{{ $properties->data[0]->longitude }}"
+                :data-params="{{ $searchParams }}"
+                :zoom="15"
+                class="border-b-2 border-secondary-light"
         ></map-search>
     </div>
     <div class="container mx-auto">
