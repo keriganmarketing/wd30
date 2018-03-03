@@ -38,7 +38,7 @@
                 </div>
             </div>
         </nav>
-        <div class='w-full bg-image-full bg-fixed px-1 pt-24 pb-4' style='background-image: url("https://beachybeach.com/wp-content/themes/kmaidx/img/beachy-illustration.jpg");'>
+        <div class='w-full hero bg-image-full px-1 pt-24 pb-4' style='background-image: url("https://beachybeach.com/wp-content/themes/kmaidx/img/beachy-illustration.jpg");'>
             @yield('top')
         </div>
         <div class='bg-beachy-blue pb-16 shadow-inner'>
