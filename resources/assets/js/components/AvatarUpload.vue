@@ -2,7 +2,7 @@
     <div class="max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden">
         <img
             :src="src"
-            class="max-w-full h-full mx-auto"
+            class="max-w-full mx-auto"
             @mouseover="imageHover = true"
         >
         <form
