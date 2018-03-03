@@ -45757,13 +45757,13 @@ var render = function() {
         },
         [
           _c("lead-pagination", {
-            staticClass: "w-full md:w-auto",
+            staticClass: "flex-1 w-full md:w-auto",
             attrs: { pagination: _vm.pagination },
             on: { page: _vm.page }
           }),
           _vm._v(" "),
           _c("lead-filters", {
-            staticClass: "w-full md:max-w-xs",
+            staticClass: "flex-1 w-full md:max-w-xs",
             attrs: {
               "active-filter": _vm.activeFilter,
               "important-filter": _vm.importantFilter
@@ -45951,7 +45951,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "mr-2 w-auto" }, [
+        _c("li", { staticClass: "hidden md:block mr-2 w-auto" }, [
           _c(
             "a",
             {
