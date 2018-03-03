@@ -49552,10 +49552,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49680,14 +49676,14 @@ var render = function() {
     "div",
     {
       staticClass:
-        "flex static w-full bg-transparent md:bg-tan-lightest items-start text-center mx-4 md:mx-2 flex-wrap rounded"
+        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded"
     },
     [
       _c(
         "div",
         {
           staticClass:
-            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-1 md:block md:mx-0 md:py-12 lg:pt-16 md:mx-auto"
+            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto"
         },
         [
           _c(
@@ -49729,7 +49725,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center pt-6 md:pt-6 md:mt-16 mx-auto px-1 md:pr-4 flex-wrap rounded shadow md:shadow-none"
+            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"
         },
         [
           _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
@@ -49806,39 +49802,6 @@ var render = function() {
               ]
             )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "px-4 py-4 relative pin-b pin-r z-50 text-brand-darkest"
-        },
-        [
-          _c(
-            "svg",
-            {
-              staticClass: "feather feather-help-circle fixed pin-b pin-r p-4",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "60",
-                height: "60",
-                viewBox: "0 0 24 24",
-                fill: "none",
-                stroke: "currentColor",
-                "stroke-width": "2",
-                "stroke-linecap": "round",
-                "stroke-linejoin": "round"
-              }
-            },
-            [
-              _c("circle", { attrs: { cx: "12", cy: "12", r: "10" } }),
-              _c("path", {
-                attrs: { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }
-              }),
-              _c("line", { attrs: { x1: "12", y1: "17", x2: "12", y2: "17" } })
-            ]
-          )
         ]
       )
     ]
