@@ -24,6 +24,7 @@
             @important="refresh"
         />
         <lead-pagination
+            v-if="pagination.total != 0"
             @page="page"
             :pagination="pagination"
         />

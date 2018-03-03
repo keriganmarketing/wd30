@@ -45532,7 +45532,7 @@ exports = module.exports = __webpack_require__(48)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45545,6 +45545,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagination__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_leads_service__ = __webpack_require__(411);
+//
 //
 //
 //
@@ -45790,10 +45791,12 @@ var render = function() {
         })
       }),
       _vm._v(" "),
-      _c("lead-pagination", {
-        attrs: { pagination: _vm.pagination },
-        on: { page: _vm.page }
-      })
+      _vm.pagination.total != 0
+        ? _c("lead-pagination", {
+            attrs: { pagination: _vm.pagination },
+            on: { page: _vm.page }
+          })
+        : _vm._e()
     ],
     2
   )
@@ -45861,6 +45864,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -45989,29 +45993,34 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass:
-              "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
-          },
-          [
-            _c(
-              "p",
-              { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
+        _vm.pagination.total != 0
+          ? _c(
+              "li",
+              {
+                staticClass:
+                  "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
+              },
               [
-                _vm._v(
-                  "Showing " +
-                    _vm._s(_vm.pagination.from) +
-                    " - " +
-                    _vm._s(_vm.pagination.to) +
-                    " out of " +
-                    _vm._s(_vm.pagination.total)
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "m-2 align-middle font-thin text-dbblue-darkest"
+                  },
+                  [
+                    _vm._v(
+                      "Showing " +
+                        _vm._s(_vm.pagination.from) +
+                        " - " +
+                        _vm._s(_vm.pagination.to) +
+                        " out of " +
+                        _vm._s(_vm.pagination.total)
+                    )
+                  ]
                 )
               ]
             )
-          ]
-        )
+          : _vm._e()
       ]
     )
   ])
