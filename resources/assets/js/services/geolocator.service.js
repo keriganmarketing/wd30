@@ -11,7 +11,7 @@ export default class GeoLocator {
                     return {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
-                    }
+                    };
                 })
                 .catch(error => {
                     switch (error.code) {

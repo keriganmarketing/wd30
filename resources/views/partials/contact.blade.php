@@ -1,9 +1,9 @@
 <section id="contact" class="contact flex bg-brand-light py-8 lg:py-16 xl:py-24">
     <div class="w-full lg:max-w-lg mx-auto py-2 text-center">
         <h2 class="text-white text-center pb-4 text-3xl">Contact</h2>
-        <p><a class="no-underline text-2xl text-white text-bold" href="tel:{{ $realtor->primary_phone }}" >{{ $realtor->primary_phone }}</a></p>
-        <p class="text-lg text-white mt-4">{!! nl2br($realtor->address) !!}</p>
-        <p class="text-lg text-white mt-4"><a class="text-white" href="mailto:{{ $realtor->email }}" >{{ $realtor->email }}</a></p>
+        <p><a class="no-underline text-2xl text-white text-bold" href="tel:{{ $realtor->data->primary_phone }}" >{{ $realtor->data->primary_phone }}</a></p>
+        <p class="text-lg text-white mt-4">{!! nl2br($realtor->data->address) !!}</p>
+        <p class="text-lg text-white mt-4"><a class="text-white" href="mailto:{{ $realtor->data->email }}" >{{ $realtor->data->email }}</a></p>
         <contact-form
             token="{{ csrf_token() }}"
             @if (isset($property))

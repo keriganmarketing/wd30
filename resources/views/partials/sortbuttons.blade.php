@@ -1,3 +1,8 @@
+@foreach ($_GET as $key => $value)
+    @if(isset($_GET[$key]))
+        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+    @endif
+@endforeach
 @if(isset($_GET['omni']))
     <input type="hidden" name="omniField" value="{{ $_GET['omni'] }}" >
 @endif
