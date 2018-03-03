@@ -47,3 +47,9 @@
     <seo-card v-if="selected == 'settings'"></seo-card>
 </div>
 @endsection
+
+@section('help')
+    <button class="px-4 py-4 relative pin-b pin-r z-50 text-brand-darkest">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fixed pin-b pin-r p-4"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+    </button>
+@endsection
