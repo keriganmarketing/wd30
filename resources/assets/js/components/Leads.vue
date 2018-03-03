@@ -4,13 +4,13 @@
             <lead-pagination
                 @page="page"
                 :pagination="pagination"
-                class="w-full md:w-auto"
+                class="flex-1 w-full md:w-auto"
             />
             <lead-filters
                 @toggle="filter"
                 :active-filter="activeFilter"
                 :important-filter="importantFilter"
-                class="w-full md:max-w-xs"
+                class="flex-1 w-full md:max-w-xs"
             />
         </div>
         <lead
@@ -24,6 +24,7 @@
             @important="refresh"
         />
         <lead-pagination
+            v-if="pagination.total != 0"
             @page="page"
             :pagination="pagination"
         />
@@ -84,11 +85,11 @@ export default {
         },
         onArchived () {
             this.getActive(this.importantFilter, this.pagination.current_page);
-            this.$emit('archived');
+            this.$emit('update-leads-count');
         },
         onUnarchived () {
             this.getArchived(this.importantFilter, this.pagination.current_page);
-            this.$emit('unarchived');
+            this.$emit('update-leads-count');
         },
         getActive (important = this.importantFilter, page = 1) {
             this.leadService.activeLeads(important, page)

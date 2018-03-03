@@ -15,6 +15,7 @@ class FrontPageController extends Controller
     {
         $this->middleware('installed');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,13 +25,9 @@ class FrontPageController extends Controller
     {
         MetaData::generate();
 
-        $realtor           = User::realtor();
-        $realtor->listings = Mothership::agentListings($realtor->mls_id);
-
-        $default = $realtor->default_photo ?? Realtor::PLACEHOLDER_PHOTO;
-        $avatar  = isset($realtor->avatar->path) ? asset('storage/' . $realtor->avatar->path) : $default;
+        $realtor = (new Realtor())->getProfile()->withListings()->andAvatar();
         $content = Content::first();
 
-        return view('StaticPages.front', compact('realtor', 'content', 'avatar'));
+        return view('StaticPages.front', compact('realtor', 'content'));
     }
 }
