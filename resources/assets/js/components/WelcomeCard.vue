@@ -9,23 +9,23 @@
         <div class="flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
             <div class="w-1/3 items-start mx-auto p-1 mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
-                    <span class="text-xs md:text-lg font-brand text-smoke">Property Clicks</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Property Clicks</span>
                 </p>
             </div>
             <div class="w-1/3 items-start mx-auto p-1 mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
-                    <span class="text-xs md:text-lg font-brand text-smoke">Property Impressions</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Property Impressions</span>
                 </p>
             </div>
             <div class="w-1/3 items-start mx-auto p-1 mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
-                    <span class="text-xs md:text-lg font-brand text-smoke">Active Leads</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Active Leads</span>
                 </p>
             </div>
         </div>

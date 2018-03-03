@@ -49738,7 +49738,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -49746,7 +49746,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Clicks")]
                 )
               ]
@@ -49763,7 +49763,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -49771,7 +49771,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Impressions")]
                 )
               ]
@@ -49788,7 +49788,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedLeads))]
                 ),
                 _vm._v(" "),
@@ -49796,7 +49796,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Active Leads")]
                 )
               ]
