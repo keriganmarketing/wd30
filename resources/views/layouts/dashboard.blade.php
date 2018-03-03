@@ -44,6 +44,9 @@
         <div class='bg-beachy-blue pb-16 shadow-inner'>
             @yield('content')
         </div>
+        <div class=''>
+            @yield('help')
+        </div>
     </div>
 
     <!-- Scripts -->
