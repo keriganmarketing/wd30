@@ -23,8 +23,8 @@
                         <div class="flex flex-wrap text-center md:text-right sm:flex-row-reverse w-full">
                             @guest
                                 @if(isset($realtor))
-                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">{{ $realtor->email }}</a>
-                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:{{ $realtor->primary_phone }}">{{ $realtor->primary_phone }}</a>
+                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1" href="mailto:bryan@kerigan.com">{{ $realtor->data->email }}</a>
+                                    <a class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pb-3 sm:py-3 md:py-1" href="tel:{{ $realtor->data->primary_phone }}">{{ $realtor->data->primary_phone }}</a>
                                 @endif
                             @else
                                 <a

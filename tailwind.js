@@ -160,8 +160,6 @@ let colors = {
   'dbblue-lighter': '#91c8ff',
   'dbblue-lightest': '#d9ecff',
 
-  'brown-brand':'#533B18',
-
   'tan-darkest':'#f5cc5b',
   'tan-darker':'#f5d273',
   'tan-dark':'#f5d98c',
@@ -169,6 +167,8 @@ let colors = {
   'tan-light':'#ffefc4',
   'tan-lighter': '#fff6de',
   'tan-lightest': '#fffdf7',
+
+  'cta-red':'#ad373b',
 
   get ['brand-darkest']() { return this['beachy-blue-darkest']; },
   get ['brand-darker']() { return this['beachy-blue-darker']; },
@@ -360,6 +360,7 @@ module.exports = {
   */
 
   leading: {
+    'tightest': .25,
     'tighter': .75,
     'none': 1,
     'tight': 1.25,
@@ -690,6 +691,7 @@ module.exports = {
     '3': '0.75rem',
     '4': '1rem',
     '6': '1.5rem',
+    '7': '1.25rem',
     '8': '2rem',
     '12': '3rem',
     '16': '4rem',
