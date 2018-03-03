@@ -15,7 +15,7 @@
                    Prev
             </button>
         </li>
-        <li class="mr-2 w-auto">
+        <li class="hidden md:block mr-2 w-auto">
             <a class="text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
             >
             {{ pagination.current_page }}
