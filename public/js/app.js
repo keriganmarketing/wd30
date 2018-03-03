@@ -45532,7 +45532,7 @@ exports = module.exports = __webpack_require__(48)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45545,6 +45545,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagination__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_leads_service__ = __webpack_require__(411);
+//
 //
 //
 //
@@ -45757,13 +45758,13 @@ var render = function() {
         },
         [
           _c("lead-pagination", {
-            staticClass: "w-full md:w-auto",
+            staticClass: "flex-1 w-full md:w-auto",
             attrs: { pagination: _vm.pagination },
             on: { page: _vm.page }
           }),
           _vm._v(" "),
           _c("lead-filters", {
-            staticClass: "w-full md:max-w-xs",
+            staticClass: "flex-1 w-full md:max-w-xs",
             attrs: {
               "active-filter": _vm.activeFilter,
               "important-filter": _vm.importantFilter
@@ -45790,10 +45791,12 @@ var render = function() {
         })
       }),
       _vm._v(" "),
-      _c("lead-pagination", {
-        attrs: { pagination: _vm.pagination },
-        on: { page: _vm.page }
-      })
+      _vm.pagination.total != 0
+        ? _c("lead-pagination", {
+            attrs: { pagination: _vm.pagination },
+            on: { page: _vm.page }
+          })
+        : _vm._e()
     ],
     2
   )
@@ -45904,6 +45907,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['pagination'],
@@ -45951,7 +45955,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "mr-2 w-auto" }, [
+        _c("li", { staticClass: "hidden md:block mr-2 w-auto" }, [
           _c(
             "a",
             {
@@ -45989,29 +45993,34 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass:
-              "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
-          },
-          [
-            _c(
-              "p",
-              { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
+        _vm.pagination.total != 0
+          ? _c(
+              "li",
+              {
+                staticClass:
+                  "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
+              },
               [
-                _vm._v(
-                  "Showing " +
-                    _vm._s(_vm.pagination.from) +
-                    " - " +
-                    _vm._s(_vm.pagination.to) +
-                    " out of " +
-                    _vm._s(_vm.pagination.total)
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "m-2 align-middle font-thin text-dbblue-darkest"
+                  },
+                  [
+                    _vm._v(
+                      "Showing " +
+                        _vm._s(_vm.pagination.from) +
+                        " - " +
+                        _vm._s(_vm.pagination.to) +
+                        " out of " +
+                        _vm._s(_vm.pagination.total)
+                    )
+                  ]
                 )
               ]
             )
-          ]
-        )
+          : _vm._e()
       ]
     )
   ])
@@ -49667,14 +49676,14 @@ var render = function() {
     "div",
     {
       staticClass:
-        "flex static w-full bg-transparent md:bg-tan-lightest items-start text-center mx-4 md:mx-2 flex-wrap rounded"
+        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded"
     },
     [
       _c(
         "div",
         {
           staticClass:
-            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-1 md:block md:mx-0 md:py-12 lg:pt-16 md:mx-auto"
+            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto"
         },
         [
           _c(
@@ -49716,7 +49725,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center pt-6 md:pt-6 md:mt-16 mx-auto px-1 md:pr-4 flex-wrap rounded shadow md:shadow-none"
+            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"
         },
         [
           _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
@@ -49729,7 +49738,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -49737,7 +49746,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Clicks")]
                 )
               ]
@@ -49754,7 +49763,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -49762,7 +49771,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Impressions")]
                 )
               ]
@@ -49779,7 +49788,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedLeads))]
                 ),
                 _vm._v(" "),
@@ -49787,7 +49796,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
                   [_vm._v("Active Leads")]
                 )
               ]
