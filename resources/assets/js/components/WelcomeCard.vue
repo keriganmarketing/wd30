@@ -1,31 +1,31 @@
 <template>
-    <div class="flex w-full text-center mb-4 flex-wrap">
-        <div class="w-full md:w-1/5">
-            <avatar-upload :avatar-path="avatarPath" />
-            <p class="block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
+    <div class="flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded">
+        <div class="w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto">
+            <div class="px-12 lg:px-4"><avatar-upload :avatar-path="avatarPath" class="border border-tan-lightest" /></div>
+            <p class="hidden md:block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
-            <p class="block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
+            <p class="hidden md:block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
         </div>
-        <div class="flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"><!--leading-tighter is a custom utility. Compensates for <br>.-->
-            <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
-                <p class="block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
+        <div class="flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
+            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
-                    <span class="text-lg font-brand text-smoke">Property Clicks</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Property Clicks</span>
                 </p>
             </div>
-            <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
-                <p class="block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
+            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
-                    <span class="text-lg font-brand text-smoke">Property Impressions</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Property Impressions</span>
                 </p>
             </div>
-            <div class="w-full sm:w-1/3 items-center justify-center mx-auto py-2">
-                <p class=" block text-5xl text-smoke-darker">
-                    <span class="text-5xl text-brand font-brand">{{ animatedLeads }}</span>
+            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
-                    <span class="text-lg font-brand text-smoke">Active Leads</span>
+                    <span class="text-sm md:text-lg font-brand text-smoke">Active Leads</span>
                 </p>
             </div>
         </div>

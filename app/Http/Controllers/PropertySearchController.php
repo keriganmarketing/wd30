@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Realtor;
 use Carbon\Carbon;
 use Facades\App\Feature;
-use Facades\App\Realtor;
 use Facades\App\Property;
 use Facades\App\OpenHouse;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class PropertySearchController extends Controller
      */
     public function index(Request $request)
     {
-        $realtor    = Realtor::exists() ? User::realtor() : null;
+        $realtor    = (new Realtor())->getProfile();
         $properties = Mothership::search($request);
         $searchParams = json_encode($request->all());
 
@@ -39,7 +39,7 @@ class PropertySearchController extends Controller
         $address    = Property::fullAddress($property); // used for lead generation
         $features   = Feature::list($property);
         $openHouses = OpenHouse::extract($property->open_houses);
-        $realtor    = Realtor::exists() ? User::realtor() : null;
+        $realtor    = (new Realtor())->getProfile();
 
         return view(
             'properties.show',

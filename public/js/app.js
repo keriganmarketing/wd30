@@ -5056,12 +5056,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var GoogleMap = function () {
-    function GoogleMap(config, pins) {
+    function GoogleMap(config, pins, api) {
         _classCallCheck(this, GoogleMap);
 
         this.config = config;
         this.map = {};
-        this.apiKey = 'AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4';
+        this.apiKey = api;
         this.pins = pins;
     }
 
@@ -5127,25 +5127,27 @@ var GoogleMap = function () {
 
                 var _loop = function _loop(i) {
                     var obj = pins[i];
-                    var position = new google.maps.LatLng(obj.latitude, obj.longitude);
-                    var marker = new google.maps.Marker({
-                        position: position,
-                        map: mapData.map,
-                        icon: markerShape
-                    });
+                    if (obj.latitude < 31 && obj.latitude > 29 && obj.longitude > -90 && obj.longitude < -80) {
+                        var position = new google.maps.LatLng(obj.latitude, obj.longitude);
+                        var marker = new google.maps.Marker({
+                            position: position,
+                            map: mapData.map,
+                            icon: markerShape
+                        });
 
-                    marker.addListener('click', function () {
-                        instance.resetIcons(mapData.markers);
-                        mapData.selected = obj;
-                        this.setIcon(selectedShape);
-                        window.dispatchEvent(new CustomEvent('marker_updated', {
-                            detail: obj
-                        }));
-                    });
+                        marker.addListener('click', function () {
+                            instance.resetIcons(mapData.markers);
+                            mapData.selected = obj;
+                            this.setIcon(selectedShape);
+                            window.dispatchEvent(new CustomEvent('marker_updated', {
+                                detail: obj
+                            }));
+                        });
 
-                    mapData.markers.push(marker);
-                    mapData.bounds.extend(position);
-                    mapData.map.fitBounds(mapData.bounds);
+                        mapData.markers.push(marker);
+                        mapData.bounds.extend(position);
+                        mapData.map.fitBounds(mapData.bounds);
+                    }
                 };
 
                 for (var i = 0; i < pins.length; i++) {
@@ -5261,14 +5263,11 @@ var app = new Vue({
         }),
         selected: 'leads',
         activeLeadsCount: 0,
-        viewState: ''
+        viewType: 'grid'
     },
     computed: {
         boilerplate: function boilerplate() {
             return this.user.name === '';
-        },
-        viewType: function viewType() {
-            return this.viewState === '' ? 'grid' : this.viewState;
         }
     },
     mounted: function mounted() {
@@ -5292,7 +5291,7 @@ var app = new Vue({
             });
         },
         switchView: function switchView() {
-            this.viewState = this.viewState === 'map' || this.viewState === '' ? 'grid' : 'map';
+            this.viewType = this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map';
         }
     }
 });
@@ -41030,11 +41029,11 @@ var render = function() {
     "div",
     {
       staticClass:
-        "max-h-avatar relative rounded-sm bg-transparent overflow-hidden"
+        "max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden"
     },
     [
       _c("img", {
-        staticClass: "max-w-full h-auto mx-auto",
+        staticClass: "max-w-full mx-auto",
         attrs: { src: _vm.src },
         on: {
           mouseover: function($event) {
@@ -41058,7 +41057,7 @@ var render = function() {
                 "label",
                 {
                   staticClass:
-                    "bg-dbblue absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
+                    "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
                   class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
                   attrs: { for: "avatar" },
                   on: {
@@ -41068,7 +41067,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("span", { staticClass: "opacity-100" }, [
+                  _c("span", { staticClass: "opacity-100 text-sm" }, [
                     _vm._v("Click here to upload a new photo")
                   ]),
                   _vm._v(" "),
@@ -42121,87 +42120,107 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
+      _vm.user.office_phone != _vm.user.cell_phone
+        ? _c(
             "div",
             {
               staticClass:
-                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                "w-full py-2 bg-white flex flex-wrap items-center border-b"
             },
-            [_vm._v("\n            Primary Phone:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-auto primary-phone-switch flex px-4" }, [
-            _c("input", {
-              directives: [
+            [
+              _c(
+                "div",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.primary_phone,
-                  expression: "user.primary_phone"
-                }
-              ],
-              attrs: { type: "radio", id: "switch_left" },
-              domProps: {
-                value: _vm.user.cell_phone,
-                checked: _vm.primary("cell_phone"),
-                checked: _vm._q(_vm.user.primary_phone, _vm.user.cell_phone)
-              },
-              on: {
-                change: [
-                  function($event) {
-                    _vm.$set(_vm.user, "primary_phone", _vm.user.cell_phone)
-                  },
-                  function($event) {
-                    _vm.submit("cell_phone")
-                  }
+                  staticClass:
+                    "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                },
+                [_vm._v("\n            Primary Phone:\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "w-auto primary-phone-switch flex px-4" },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.primary_phone,
+                        expression: "user.primary_phone"
+                      }
+                    ],
+                    attrs: { type: "radio", id: "switch_left" },
+                    domProps: {
+                      value: _vm.user.cell_phone,
+                      checked: _vm.primary("cell_phone"),
+                      checked: _vm._q(
+                        _vm.user.primary_phone,
+                        _vm.user.cell_phone
+                      )
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          _vm.$set(
+                            _vm.user,
+                            "primary_phone",
+                            _vm.user.cell_phone
+                          )
+                        },
+                        function($event) {
+                          _vm.submit("cell_phone")
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "switch_left" } }, [
+                    _vm._v("Cell Phone")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.primary_phone,
+                        expression: "user.primary_phone"
+                      }
+                    ],
+                    attrs: { type: "radio", id: "switch_right" },
+                    domProps: {
+                      value: _vm.user.office_phone,
+                      checked: _vm.primary("office_phone"),
+                      checked: _vm._q(
+                        _vm.user.primary_phone,
+                        _vm.user.office_phone
+                      )
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          _vm.$set(
+                            _vm.user,
+                            "primary_phone",
+                            _vm.user.office_phone
+                          )
+                        },
+                        function($event) {
+                          _vm.submit("office_phone")
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "switch_right" } }, [
+                    _vm._v("Office Phone")
+                  ])
                 ]
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "switch_left" } }, [
-              _vm._v("Cell Phone")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.primary_phone,
-                  expression: "user.primary_phone"
-                }
-              ],
-              attrs: { type: "radio", id: "switch_right" },
-              domProps: {
-                value: _vm.user.office_phone,
-                checked: _vm.primary("office_phone"),
-                checked: _vm._q(_vm.user.primary_phone, _vm.user.office_phone)
-              },
-              on: {
-                change: [
-                  function($event) {
-                    _vm.$set(_vm.user, "primary_phone", _vm.user.office_phone)
-                  },
-                  function($event) {
-                    _vm.submit("office_phone")
-                  }
-                ]
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "switch_right" } }, [
-              _vm._v("Office Phone")
-            ])
-          ])
-        ]
-      ),
+              )
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
@@ -43443,6 +43462,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -43459,6 +43480,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         zoom: {
             type: Number,
             default: this.zoom
+        },
+        api: {
+            type: String,
+            default: this.api
         }
     },
     data: function data() {
@@ -43496,7 +43521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var vm = this;
-            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config, vm.pins).load().then(function (rendered) {
+            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config, vm.pins, vm.api).load().then(function (rendered) {
                 _this.renderedMap = rendered;
             });
         },
@@ -46742,7 +46767,7 @@ var _this = this;
         archive: function archive(id) {
             var _this2 = this;
 
-            axios.patch(this.leadPath, { active: 0 }).then(function (response) {
+            axios.patch(this.leadPath, { active: 0 }).then(function () {
                 _this2.$emit('archived', _this2.viewActiveLeads, _this2.viewImportantLeads, _this2.currentPage);
             });
         },
@@ -47245,7 +47270,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47258,6 +47283,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagination__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_leads_service__ = __webpack_require__(412);
+//
 //
 //
 //
@@ -47346,11 +47372,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         onArchived: function onArchived() {
             this.getActive(this.importantFilter, this.pagination.current_page);
-            this.$emit('archived');
+            this.$emit('update-leads-count');
         },
         onUnarchived: function onUnarchived() {
             this.getArchived(this.importantFilter, this.pagination.current_page);
-            this.$emit('unarchived');
+            this.$emit('update-leads-count');
         },
         getActive: function getActive() {
             var _this2 = this;
@@ -47470,13 +47496,13 @@ var render = function() {
         },
         [
           _c("lead-pagination", {
-            staticClass: "w-full md:w-auto",
+            staticClass: "flex-1 w-full md:w-auto",
             attrs: { pagination: _vm.pagination },
             on: { page: _vm.page }
           }),
           _vm._v(" "),
           _c("lead-filters", {
-            staticClass: "w-full md:max-w-xs",
+            staticClass: "flex-1 w-full md:max-w-xs",
             attrs: {
               "active-filter": _vm.activeFilter,
               "important-filter": _vm.importantFilter
@@ -47503,10 +47529,12 @@ var render = function() {
         })
       }),
       _vm._v(" "),
-      _c("lead-pagination", {
-        attrs: { pagination: _vm.pagination },
-        on: { page: _vm.page }
-      })
+      _vm.pagination.total != 0
+        ? _c("lead-pagination", {
+            attrs: { pagination: _vm.pagination },
+            on: { page: _vm.page }
+          })
+        : _vm._e()
     ],
     2
   )
@@ -47617,6 +47645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['pagination'],
@@ -47664,7 +47693,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "mr-2 w-auto" }, [
+        _c("li", { staticClass: "hidden md:block mr-2 w-auto" }, [
           _c(
             "a",
             {
@@ -47702,29 +47731,34 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass:
-              "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
-          },
-          [
-            _c(
-              "p",
-              { staticClass: "m-2 align-middle font-thin text-dbblue-darkest" },
+        _vm.pagination.total != 0
+          ? _c(
+              "li",
+              {
+                staticClass:
+                  "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
+              },
               [
-                _vm._v(
-                  "Showing " +
-                    _vm._s(_vm.pagination.from) +
-                    " - " +
-                    _vm._s(_vm.pagination.to) +
-                    " out of " +
-                    _vm._s(_vm.pagination.total)
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "m-2 align-middle font-thin text-dbblue-darkest"
+                  },
+                  [
+                    _vm._v(
+                      "Showing " +
+                        _vm._s(_vm.pagination.from) +
+                        " - " +
+                        _vm._s(_vm.pagination.to) +
+                        " out of " +
+                        _vm._s(_vm.pagination.total)
+                    )
+                  ]
                 )
               ]
             )
-          ]
-        )
+          : _vm._e()
       ]
     )
   ])
@@ -48315,7 +48349,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48372,6 +48406,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         dataParams: {
             type: Object,
             default: function _default() {}
+        },
+        api: {
+            type: String,
+            default: this.api
         }
     },
     data: function data() {
@@ -48423,7 +48461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         renderMap: function renderMap() {
             var vm = this;
-            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config, vm.pins).load().then(function (rendered) {
+            new __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__["a" /* default */](vm.config, vm.pins, vm.api).load().then(function (rendered) {
                 vm.renderedMap = rendered;
                 window.addEventListener('marker_updated', function (event) {
                     vm.getProperty(event.detail.mls_account);
@@ -48967,9 +49005,6 @@ Vue.component('lot-dimensions', __webpack_require__(455));
         price: function price() {
             return this.listing.price.toLocaleString();
         }
-    },
-    mounted: function mounted() {
-        console.log(this.listing);
     }
 });
 
@@ -50084,7 +50119,7 @@ var render = function() {
       },
       [
         _c("a", {
-          staticClass: "absolute pin hover:shadow-inner z-50",
+          staticClass: "absolute pin hover:shadow-inner z-20",
           attrs: { href: "/listing/" + _vm.listing.mls_account + "/" }
         }),
         _vm._v(" "),
@@ -50238,11 +50273,15 @@ var render = function() {
                   staticClass: "attributes flex text-center justify-around py-2"
                 },
                 [
-                  _c("beds", { attrs: { value: _vm.listing.bedrooms } }),
+                  _c("beds", {
+                    attrs: { value: _vm.listing.bedrooms.toString() }
+                  }),
                   _vm._v(" "),
-                  _c("baths", { attrs: { value: _vm.listing.bathrooms } }),
+                  _c("baths", {
+                    attrs: { value: _vm.listing.bathrooms.toString() }
+                  }),
                   _vm._v(" "),
-                  _c("sqft", { attrs: { value: _vm.listing.sq_ft } })
+                  _c("sqft", { attrs: { value: _vm.listing.sq_ft.toString() } })
                 ],
                 1
               )
@@ -50256,12 +50295,14 @@ var render = function() {
                 },
                 [
                   _c("lot-dimensions", {
-                    attrs: { value: _vm.listing.lot_dimensions }
+                    attrs: { value: _vm.listing.lot_dimensions.toString() }
                   }),
                   _vm._v(" "),
-                  _c("acreage", { attrs: { value: _vm.listing.acreage } }),
+                  _c("acreage", {
+                    attrs: { value: _vm.listing.acreage.toString() }
+                  }),
                   _vm._v(" "),
-                  _c("sqft", { attrs: { value: _vm.listing.sq_ft } })
+                  _c("sqft", { attrs: { value: _vm.listing.sq_ft.toString() } })
                 ],
                 1
               )
@@ -50274,15 +50315,19 @@ var render = function() {
                   staticClass: "attributes flex text-center justify-around py-2"
                 },
                 [
-                  _c("acreage", { attrs: { value: _vm.listing.acreage } }),
-                  _vm._v(" "),
-                  _c("lot-dimensions", {
-                    attrs: { value: _vm.listing.lot_dimensions }
+                  _c("acreage", {
+                    attrs: { value: _vm.listing.acreage.toString() }
                   }),
                   _vm._v(" "),
-                  _c("stories", { attrs: { value: _vm.listing.stories } }),
+                  _c("lot-dimensions", {
+                    attrs: { value: _vm.listing.lot_dimensions.toString() }
+                  }),
                   _vm._v(" "),
-                  _c("sqft", { attrs: { value: _vm.listing.sq_ft } })
+                  _c("stories", {
+                    attrs: { value: _vm.listing.stories.toString() }
+                  }),
+                  _vm._v(" "),
+                  _c("sqft", { attrs: { value: _vm.listing.sq_ft.toString() } })
                 ],
                 1
               )
@@ -53320,104 +53365,140 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex w-full text-center mb-4 flex-wrap" }, [
-    _c(
-      "div",
-      { staticClass: "w-full md:w-1/5" },
-      [
-        _c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } }),
-        _vm._v(" "),
-        !_vm.boilerplate
-          ? _c(
+  return _c(
+    "div",
+    {
+      staticClass:
+        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded"
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "px-12 lg:px-4" },
+            [
+              _c("avatar-upload", {
+                staticClass: "border border-tan-lightest",
+                attrs: { "avatar-path": _vm.avatarPath }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          !_vm.boilerplate
+            ? _c(
+                "p",
+                {
+                  staticClass:
+                    "hidden md:block px-2 mt-2 text-xl text-smoke-dark"
+                },
+                [_vm._v(_vm._s(_vm.user.name))]
+              )
+            : _c(
+                "p",
+                { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
+                [_vm._v("Your Name")]
+              ),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "hidden md:block px-2 text-xs text-smoke-light" },
+            [_vm._v("Beachy Beach Real Estate")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"
+        },
+        [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
               "p",
-              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
-              [_vm._v(_vm._s(_vm.user.name))]
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Clicks")]
+                )
+              ]
             )
-          : _c(
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
               "p",
-              { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
-              [_vm._v("Your Name")]
-            ),
-        _vm._v(" "),
-        _c("p", { staticClass: "block px-2 text-xs text-smoke-light" }, [
-          _vm._v("Beachy Beach Real Estate")
-        ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "flex w-full md:w-4/5 items-center justify-around leading-tighter mx-auto pt-6 md:pt-0 flex-wrap"
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Property Clicks")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: "block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Property Impressions")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full sm:w-1/3 items-center justify-center mx-auto py-2"
-          },
-          [
-            _c("p", { staticClass: " block text-5xl text-smoke-darker" }, [
-              _c("span", { staticClass: "text-5xl text-brand font-brand" }, [
-                _vm._v(_vm._s(_vm.animatedLeads))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-lg font-brand text-smoke" }, [
-                _vm._v("Active Leads")
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Impressions")]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedLeads))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  [_vm._v("Active Leads")]
+                )
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

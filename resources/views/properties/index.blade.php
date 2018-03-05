@@ -19,6 +19,7 @@
                 :longitude="{{ $properties->data[0]->longitude }}"
                 :data-params="{{ $searchParams }}"
                 :zoom="15"
+                api="{{ config('google.api_key') }}"
                 class="border-b-2 border-secondary-light"
         ></map-search>
     </div>
