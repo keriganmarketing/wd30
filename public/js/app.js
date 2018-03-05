@@ -46175,47 +46175,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -46251,6 +46210,53 @@ var render = function() {
           "switch-container flex-wrap justify-end items-center mx-auto text-center"
       },
       [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mt-1 md:mt-0"
+          },
+          [
+            _c("input", {
+              attrs: { type: "checkbox", id: "switch_left_2" },
+              domProps: { checked: !_vm.importantFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("importantFilter")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 mr-1 py-2",
+                attrs: { for: "switch_left_2" }
+              },
+              [_vm._v("All")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "checkbox", id: "switch_right_2" },
+              domProps: { checked: _vm.importantFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("importantFilter")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 py-2",
+                attrs: { for: "switch_right_2" }
+              },
+              [_vm._v("Important")]
+            )
+          ]
+        ),
+        _vm._v(" "),
         _c(
           "div",
           {
@@ -46295,53 +46301,6 @@ var render = function() {
                 attrs: { for: "switch_right" }
               },
               [_vm._v("Inactive")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mt-1 md:mt-0"
-          },
-          [
-            _c("input", {
-              attrs: { type: "checkbox", id: "switch_left_2" },
-              domProps: { checked: !_vm.importantFilter },
-              on: {
-                change: function($event) {
-                  _vm.toggle("importantFilter")
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "shadow-sm flex-1 mr-1 py-2",
-                attrs: { for: "switch_left_2" }
-              },
-              [_vm._v("All")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "checkbox", id: "switch_right_2" },
-              domProps: { checked: _vm.importantFilter },
-              on: {
-                change: function($event) {
-                  _vm.toggle("importantFilter")
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "shadow-sm flex-1 py-2",
-                attrs: { for: "switch_right_2" }
-              },
-              [_vm._v("Important")]
             )
           ]
         )
