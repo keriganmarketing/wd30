@@ -16,6 +16,9 @@ Route::get('/archivedleads', 'ArchivedLeadsController@index');
 Route::get('/mylistings', 'RealtorPropertiesController@index');
 Route::get('/avatar', 'AvatarsController@index');
 Route::get('/leads/count', 'LeadsCountController@show');
+Route::get('/search', 'PropertySearchController@search');
+Route::get('/map-search', 'PropertySearchController@mapSearch');
+Route::get('/full-listing/{mlsNumber}', 'PropertySearchController@singleListing');
 
 Route::patch('/users/{id}', 'UsersController@update');
 
