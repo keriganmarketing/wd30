@@ -46214,7 +46214,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mt-1 md:mt-0"
+              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mb-1 md:mb-0"
           },
           [
             _c("input", {
@@ -46261,7 +46261,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mb-2 md:mb-0"
+              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mt-2 md:mt-0"
           },
           [
             _c("input", {

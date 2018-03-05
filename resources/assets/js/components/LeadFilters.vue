@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="switch-container flex-wrap justify-end items-center mx-auto text-center">
-            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mt-1 md:mt-0">
+            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mb-1 md:mb-0">
                 <input
                         type="checkbox"
                         id="switch_left_2"
@@ -17,7 +17,7 @@
                 />  
                 <label for="switch_right_2" class="shadow-sm flex-1 py-2">Important</label>
             </div>
-            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mb-2 md:mb-0">
+            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mt-2 md:mt-0">
                 <input
                         type="checkbox"
                         id="switch_left"
