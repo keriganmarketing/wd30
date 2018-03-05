@@ -51040,6 +51040,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -51058,10 +51063,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full mb-4 shadow" }, [
-    _c("div", { staticClass: "w-full bg-grey p-8 text-grey-darkest" }, [
-      _vm._v("\n        " + _vm._s(_vm.note.message) + " - "),
-      _c("small", [_vm._v(_vm._s(_vm.note.diff))])
+  return _c("div", { staticClass: "w-full relative my-2" }, [
+    _c("div", { staticClass: "w-full border-l p-1 text-grey-darkest" }, [
+      _c("div", { staticClass: "pin-r pin-t p-2 absolute text-cta-red" }, [
+        _c(
+          "svg",
+          {
+            staticClass: "feather feather-x",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "18",
+              height: "18",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              "stroke-width": "2",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            }
+          },
+          [
+            _c("line", { attrs: { x1: "18", y1: "6", x2: "6", y2: "18" } }),
+            _c("line", { attrs: { x1: "6", y1: "6", x2: "18", y2: "18" } })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pr-12 pl-2 " }, [
+        _vm._v("\n            " + _vm._s(_vm.note.message) + " "),
+        _c("br"),
+        _c("small", { staticClass: "italic text-smoke mt-1" }, [
+          _vm._v(_vm._s(_vm.note.diff))
+        ])
+      ])
     ])
   ])
 }
@@ -51140,7 +51174,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notes', 'lead'],
@@ -51181,13 +51214,11 @@ var render = function() {
     "div",
     {
       staticClass:
-        "text-grey-darkest flex flex-wrap justify-start lg:p-8 border-t w-full"
+        "text-grey-darkest flex flex-wrap justify-start lg:p-8 w-full"
     },
     [
       _c("div", { staticClass: "w-full mb-8 flex flex-wrap items-start" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:w-1/2" }, [
+        _c("div", { staticClass: "w-full" }, [
           _c("textarea", {
             directives: [
               {
@@ -51197,8 +51228,8 @@ var render = function() {
                 expression: "newNote"
               }
             ],
-            staticClass: "border rounded-t shadow-inner p-4 w-full",
-            attrs: { rows: "4" },
+            staticClass: "rounded-t border p-4 w-full",
+            attrs: { rows: "2" },
             domProps: { value: _vm.newNote },
             on: {
               input: function($event) {
@@ -51213,10 +51244,11 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "bg-teal text-white px-8 py-2 rounded-b w-full",
+              staticClass:
+                "bg-beachy-green text-white px-8 py-2 rounded-b w-full",
               on: { click: _vm.addNote }
             },
-            [_vm._v("Submit")]
+            [_vm._v("Add Note")]
           )
         ])
       ]),
@@ -51228,16 +51260,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "block w-full mb-1" }, [
-      _c("strong", [_vm._v("Add a note:")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
