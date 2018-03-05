@@ -43,6 +43,10 @@
                 type: Object,
                 default: () => {
                 }
+            },
+            api: {
+                type: String,
+                default: this.api
             }
         },
         data() {
@@ -95,7 +99,7 @@
         methods: {
             renderMap() {
                 let vm = this;
-                new GoogleMap(vm.config, vm.pins)
+                new GoogleMap(vm.config, vm.pins, vm.api)
                     .load()
                     .then(rendered => {
                         vm.renderedMap = rendered;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
-            <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-50" ></a>
+            <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-20" ></a>
             <div class="property-image md:h-48 md:overflow-hidden">
                 <div
                     class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
@@ -44,22 +44,22 @@
                 </div>
                 <div v-if="listing.class === 'A' || listing.class === 'G' || listing.class === 'H'"
                      class="attributes flex text-center justify-around py-2" >
-                    <beds :value="listing.bedrooms"></beds>
-                    <baths :value="listing.bathrooms"></baths>
-                    <sqft :value="listing.sq_ft"></sqft>
+                    <beds :value="listing.bedrooms.toString()"></beds>
+                    <baths :value="listing.bathrooms.toString()"></baths>
+                    <sqft :value="listing.sq_ft.toString()"></sqft>
                 </div>
                 <div v-if="listing.class === 'J' || listing.class === 'C'"
                      class="attributes flex text-center justify-around py-2" >
-                    <lot-dimensions :value="listing.lot_dimensions"></lot-dimensions>
-                    <acreage :value="listing.acreage"></acreage>
-                    <sqft :value="listing.sq_ft"></sqft>
+                    <lot-dimensions :value="listing.lot_dimensions.toString()"></lot-dimensions>
+                    <acreage :value="listing.acreage.toString()"></acreage>
+                    <sqft :value="listing.sq_ft.toString()"></sqft>
                 </div>
                 <div v-if="listing.class === 'F' || listing.class === 'E'"
                      class="attributes flex text-center justify-around py-2" >
-                    <acreage :value="listing.acreage"></acreage>
-                    <lot-dimensions :value="listing.lot_dimensions"></lot-dimensions>
-                    <stories :value="listing.stories"></stories>
-                    <sqft :value="listing.sq_ft"></sqft>
+                    <acreage :value="listing.acreage.toString()"></acreage>
+                    <lot-dimensions :value="listing.lot_dimensions.toString()"></lot-dimensions>
+                    <stories :value="listing.stories.toString()"></stories>
+                    <sqft :value="listing.sq_ft.toString()"></sqft>
                 </div>
                 <div class="mls text-center mt-3">
                     <p class="text-grey-dark text-xs">MLS# {{ listing.mls_account }}</p>
@@ -87,9 +87,6 @@ export default {
         price: function(){
             return this.listing.price.toLocaleString();
         }
-    },
-    mounted() {
-        console.log(this.listing);
     }
 }
 </script>

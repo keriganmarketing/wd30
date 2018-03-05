@@ -15,7 +15,7 @@
                    Prev
             </button>
         </li>
-        <li class="mr-2 w-auto">
+        <li class="hidden md:block mr-2 w-auto">
             <a class="text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
             >
             {{ pagination.current_page }}
@@ -34,7 +34,8 @@
                    Next
             </button>
         </li>
-        <li class="w-full md:w-auto text-center md:text-left mb-8 md:mb-0">
+        <li class="w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
+            v-if="pagination.total != 0">
             <p class="m-2 align-middle font-thin text-dbblue-darkest">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
         </li>
     </ul>

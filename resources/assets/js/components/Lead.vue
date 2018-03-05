@@ -124,7 +124,7 @@ export default {
     methods: {
         archive(id) {
             axios.patch(this.leadPath, { active: 0 })
-                .then(response => {
+                .then(() => {
                     this.$emit('archived', this.viewActiveLeads, this.viewImportantLeads, this.currentPage);
                 });
         },

@@ -28,14 +28,11 @@ const app = new Vue({
         }),
         selected: 'leads',
         activeLeadsCount: 0,
-        viewState: ''
+        viewType: 'grid'
     },
     computed: {
         boilerplate: function () {
             return this.user.name === '';
-        },
-        viewType: function () {
-            return (this.viewState === '' ? 'grid' : this.viewState)
         }
     },
     mounted () {
@@ -57,7 +54,7 @@ const app = new Vue({
                 });
         },
         switchView(){
-            this.viewState = (this.viewState === 'map' || this.viewState === '' ? 'grid' : 'map');
+            this.viewType = (this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map');
         }
     }
 });
