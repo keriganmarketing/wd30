@@ -45754,22 +45754,23 @@ var render = function() {
         "div",
         {
           staticClass:
-            "lead-controls flex justify-between items-center py-2 flex-wrap"
+            "lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-48 md:h-32"
         },
         [
-          _c("lead-pagination", {
-            staticClass: "flex-1 w-full md:w-auto",
-            attrs: { pagination: _vm.pagination },
-            on: { page: _vm.page }
-          }),
-          _vm._v(" "),
           _c("lead-filters", {
-            staticClass: "flex-1 w-full md:max-w-xs",
+            staticClass: "md:flex-1 w-full md:w-2/3 items-end mb-2",
             attrs: {
               "active-filter": _vm.activeFilter,
               "important-filter": _vm.importantFilter
             },
             on: { toggle: _vm.filter }
+          }),
+          _vm._v(" "),
+          _c("lead-pagination", {
+            staticClass:
+              "md:flex-1 w-full justify-center mx-auto md:w-1/3 items-end h-16",
+            attrs: { pagination: _vm.pagination },
+            on: { page: _vm.page }
           })
         ],
         1
@@ -45908,6 +45909,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['pagination'],
@@ -45930,15 +45934,37 @@ var render = function() {
     _c(
       "ul",
       {
-        staticClass: "list-reset flex justify-center md:justify-start flex-wrap"
+        staticClass: "list-reset flex justify-start md:justify-start flex-wrap"
       },
       [
-        _c("li", { staticClass: "mr-2 w-auto" }, [
+        _vm.pagination.total != 0
+          ? _c("li", { staticClass: "w-full text-sm" }, [
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "align-middle font-thin text-smoke-light mb-2 text-center"
+                },
+                [
+                  _vm._v(
+                    "Showing " +
+                      _vm._s(_vm.pagination.from) +
+                      " - " +
+                      _vm._s(_vm.pagination.to) +
+                      " out of " +
+                      _vm._s(_vm.pagination.total)
+                  )
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("li", { staticClass: "mr-2 w-full flex-1 md:w-auto" }, [
           _c(
             "button",
             {
               staticClass:
-                "text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+                "text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm w-full",
               class: {
                 "cursor-not-allowed": _vm.pagination.prev_page_url == null,
                 "bg-brand-lightest": _vm.pagination.prev_page_url == null,
@@ -45955,29 +45981,35 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "hidden md:block mr-2 w-auto" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
-            },
-            [
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.pagination.current_page) +
-                  "\n            "
-              )
-            ]
-          )
-        ]),
+        _c(
+          "li",
+          { staticClass: "mr-2 flex w-1/8 text-center justify-center" },
+          [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm w-full"
+              },
+              [
+                _c("span", { staticClass: "text-center" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.pagination.current_page) +
+                      "\n            "
+                  )
+                ])
+              ]
+            )
+          ]
+        ),
         _vm._v(" "),
-        _c("li", { staticClass: "mr-2 w-auto" }, [
+        _c("li", { staticClass: "w-full flex-1 md:w-auto" }, [
           _c(
             "button",
             {
               staticClass:
-                "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm",
+                "text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm w-full",
               class: {
                 "cursor-not-allowed": _vm.pagination.next_page_url == null,
                 "opacity-50": _vm.pagination.next_page_url == null
@@ -45991,36 +46023,7 @@ var render = function() {
             },
             [_vm._v("\n                   Next\n            ")]
           )
-        ]),
-        _vm._v(" "),
-        _vm.pagination.total != 0
-          ? _c(
-              "li",
-              {
-                staticClass:
-                  "w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
-              },
-              [
-                _c(
-                  "p",
-                  {
-                    staticClass:
-                      "m-2 align-middle font-thin text-dbblue-darkest"
-                  },
-                  [
-                    _vm._v(
-                      "Showing " +
-                        _vm._s(_vm.pagination.from) +
-                        " - " +
-                        _vm._s(_vm.pagination.to) +
-                        " out of " +
-                        _vm._s(_vm.pagination.total)
-                    )
-                  ]
-                )
-              ]
-            )
-          : _vm._e()
+        ])
       ]
     )
   ])
@@ -46121,7 +46124,7 @@ exports = module.exports = __webpack_require__(48)(false);
 
 
 // module
-exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n}\n.switch-box input {\n    display: none;\n}\n.switch-box .sudo-switcher {\n    font-size: 30px;\n    width: 2.5em;\n    height: 1em;\n    border-radius: 3em;\n    position: relative;\n    cursor: pointer;\n    outline: none;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher:after {\n    position: absolute;\n    content: \"\";\n    width: 1em;\n    height: 1em;\n    border-radius: 50%;\n    background: #fff;\n    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    -webkit-transform: scale(.7);\n    -ms-transform: scale(.7);\n        transform: scale(.7);\n    left: 0;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher.checked:after {\n    left: calc(100% - 1em);\n}\n", ""]);
+exports.push([module.i, "\n.active-or-inactive-switch input {\n    position: absolute !important;\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    width: 1px;\n    border: 0;\n    overflow: hidden;\n}\n.active-or-inactive-switch label {\n    display: inline-block;\n    background-color:rgba(0, 0, 0, 0.1);\n    width:90px;\n    font-size: 14px;\n    color: rgba(0, 0, 0, 0.6);\n    text-align: center;\n    text-shadow: none;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    -webkit-transition: all 0.15s ease-in-out;\n    transition: all 0.15s ease-in-out;\n}\n.active-or-inactive-switch label:hover {\n    cursor: pointer;\n}\n.active-or-inactive-switch input:checked + label {\n    background-color:#24728a;\n    color:#fffdf7;\n    -webkit-box-shadow: inset 0 1px     3px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);\n    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);\n}\n.active-or-inactive-switch label:first-of-type {\n    border-radius: .125rem 0 0 .125rem;\n}\n.active-or-inactive-switch label:last-of-type {\n    border-radius: 0 .125rem .125rem 0;\n}\n", ""]);
 
 // exports
 
@@ -46132,6 +46135,42 @@ exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -46209,100 +46248,102 @@ var render = function() {
       "div",
       {
         staticClass:
-          "switch-container flex justify-center items-center w-full px-4 py-1"
+          "switch-container flex-wrap justify-end items-center mx-auto text-center"
       },
       [
         _c(
-          "label",
+          "div",
           {
             staticClass:
-              "active-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "font-bold": _vm.activeFilter },
-            attrs: { for: "activeToggle" }
+              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mb-2 md:mb-0"
           },
-          [_vm._v("\n            Active\n        ")]
+          [
+            _c("input", {
+              attrs: { type: "checkbox", id: "switch_left" },
+              domProps: { checked: _vm.activeFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("activeFilter")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 mr-1 py-2",
+                attrs: { for: "switch_left" }
+              },
+              [_vm._v("Active")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "flex-1",
+              attrs: { type: "checkbox", id: "switch_right" },
+              domProps: { checked: !_vm.activeFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("activeFilter")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 py-2",
+                attrs: { for: "switch_right" }
+              },
+              [_vm._v("Inactive")]
+            )
+          ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-8" }, [
-          _c(
-            "label",
-            {
-              staticClass: "sudo-switcher bg-brand-darker",
-              class: { checked: !_vm.activeFilter }
-            },
-            [
-              _c("input", {
-                attrs: { type: "checkbox", id: "activeToggle" },
-                domProps: { checked: !_vm.activeFilter },
-                on: {
-                  change: function($event) {
-                    _vm.toggle("activeFilter")
-                  }
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
         _c(
-          "label",
-          {
-            staticClass: "active-toggle text-white flex-grow w-8 px-2",
-            class: { "font-bold": !_vm.activeFilter },
-            attrs: { for: "activeToggle" }
-          },
-          [_vm._v("\n            Archived\n        ")]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "switch-container flex justify-center items-center w-full px-4 py-1"
-      },
-      [
-        _c(
-          "label",
+          "div",
           {
             staticClass:
-              "important-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "font-bold": !_vm.importantFilter },
-            attrs: { for: "importantToggle" }
+              "w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mt-1 md:mt-0"
           },
-          [_vm._v("\n            All\n        ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-8" }, [
-          _c(
-            "label",
-            {
-              staticClass: "sudo-switcher bg-brand-darker",
-              class: { checked: _vm.importantFilter }
-            },
-            [
-              _c("input", {
-                attrs: { type: "checkbox", id: "importantToggle" },
-                domProps: { checked: _vm.importantFilter },
-                on: {
-                  change: function($event) {
-                    _vm.toggle("importantFilter")
-                  }
+          [
+            _c("input", {
+              attrs: { type: "checkbox", id: "switch_left_2" },
+              domProps: { checked: !_vm.importantFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("importantFilter")
                 }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "important-toggle text-white flex-grow w-8 px-2",
-            class: { "font-bold": _vm.importantFilter },
-            attrs: { for: "importantToggle" }
-          },
-          [_vm._v("\n            Important\n        ")]
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 mr-1 py-2",
+                attrs: { for: "switch_left_2" }
+              },
+              [_vm._v("All")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "checkbox", id: "switch_right_2" },
+              domProps: { checked: _vm.importantFilter },
+              on: {
+                change: function($event) {
+                  _vm.toggle("importantFilter")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "shadow-sm flex-1 py-2",
+                attrs: { for: "switch_right_2" }
+              },
+              [_vm._v("Important")]
+            )
+          ]
         )
       ]
     )

@@ -1,8 +1,12 @@
 <template>
 <div>
-    <ul class="list-reset flex justify-center md:justify-start flex-wrap">
-        <li class="mr-2 w-auto">
-            <button class="text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm"
+    <ul class="list-reset flex justify-start md:justify-start flex-wrap">
+        <li class="w-full text-sm"
+           v-if="pagination.total != 0">
+           <p class="align-middle font-thin text-smoke-light mb-2 text-center">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
+        </li>
+        <li class="mr-2 w-full flex-1 md:w-auto">
+            <button class="text-grey-darker px-4 py-2 text-center cursor-pointer shadow rounded-sm w-full"
                :disabled="pagination.prev_page_url == null"
                :class="{
                    'cursor-not-allowed': pagination.prev_page_url == null,
@@ -15,14 +19,16 @@
                    Prev
             </button>
         </li>
-        <li class="hidden md:block mr-2 w-auto">
-            <a class="text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm"
+        <li class="mr-2 flex w-1/8 text-center justify-center">
+            <a class="text-grey-darker bg-brand-lightest px-4 py-2 text-center flex shadow items-center rounded-sm w-full"
             >
+            <span class="text-center">
             {{ pagination.current_page }}
+            </span>
             </a>
         </li>
-        <li class="mr-2 w-auto">
-            <button class="text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm"
+        <li class="w-full flex-1 md:w-auto">
+            <button class="text-grey-darker bg-tan-lightest px-4 py-2 text-center cursor-pointer shadow rounded-sm w-full"
                :disabled="pagination.next_page_url == null"
                :class="{
                    'cursor-not-allowed': pagination.next_page_url == null,
@@ -34,10 +40,7 @@
                    Next
             </button>
         </li>
-        <li class="w-full md:w-auto text-center md:text-left mb-8 md:mb-0"
-            v-if="pagination.total != 0">
-            <p class="m-2 align-middle font-thin text-dbblue-darkest">Showing {{ pagination.from }} - {{ pagination.to }} out of {{ pagination.total }}</p>
-        </li>
+       
     </ul>
 </div>
 </template>
