@@ -20,9 +20,6 @@
                 <div class="flex flex-row items-center justify-center">
                     <div class="flex-1 m-0 mx-2">
                         @include('partials.logo')
-                    <!--<div class="flex-1 text-right align-middle h-16 small:p-0 md:pb-4 md:py-0 w-1 pin-t pin-r">-->
-                        <!--<span class="text-brand text-sm pr-4" v-if="! boilerplate">@{{ user.name }}</span>
-                        <span class="text-brand text-sm pr-4" v-else>Your Name</span>-->
                         <a href="{{ route('logout') }}"
                             class="no-underline hover:underline text-cta-red px-4 py-4 md:px-8 md:py-7 lg:px-10 my-1 fixed pin-t pin-r"
                             onclick="event.preventDefault();
