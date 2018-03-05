@@ -46274,7 +46274,7 @@ var render = function() {
               staticClass: "shadow flex-1 mr-2 py-2 border border-dbblue-dark",
               attrs: { for: "switch_left" }
             },
-            [_vm._v("Active")]
+            [_vm._v("Actives")]
           ),
           _vm._v(" "),
           _c("input", {
