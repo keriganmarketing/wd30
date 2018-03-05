@@ -23,7 +23,7 @@
                     @change="toggle('activeFilter')"
                     :checked="activeFilter"
             />
-            <label for="switch_left" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">Active</label>
+            <label for="switch_left" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">Actives</label>
             <input
                     type="checkbox"
                     id="switch_right"
