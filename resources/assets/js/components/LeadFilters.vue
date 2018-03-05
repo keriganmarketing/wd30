@@ -1,39 +1,36 @@
 <template>
-    <div>
-        <div class="switch-container flex-wrap justify-end items-center mx-auto text-center">
-            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 ml-0 md:pl-1 mb-1 md:mb-0">
-                <input
-                        type="checkbox"
-                        id="switch_left_2"
-                        @change="toggle('importantFilter')"
-                        :checked="!importantFilter"
-                />
-                <label for="switch_left_2" class="shadow-sm flex-1 mr-1 py-2">All</label>
-                <input
-                        type="checkbox"
-                        id="switch_right_2"
-                        @change="toggle('importantFilter')"
-                        :checked="importantFilter"
-                />  
-                <label for="switch_right_2" class="shadow-sm flex-1 py-2">Important</label>
-            </div>
-            <div class="w-full md:w-1/2 active-or-inactive-switch flex md:flex-1 mr-0 md:pr-1 mt-2 md:mt-0">
-                <input
-                        type="checkbox"
-                        id="switch_left"
-                        @change="toggle('activeFilter')"
-                        :checked="activeFilter"
-                />
-                <label for="switch_left" class="shadow-sm flex-1 mr-1 py-2">Active</label>
-                <input
-                        type="checkbox"
-                        id="switch_right"
-                        class="flex-1"
-                        @change="toggle('activeFilter')"
-                        :checked="!activeFilter"
-                />
-                <label for="switch_right" class="shadow-sm flex-1 py-2">Inactive</label>
-            </div>
+    <div class="switch-container flex-wrap justify-end items-center mx-auto text-center">
+        <div class="w-full active-or-inactive-switch flex ml-0 mb-2 md:mb-0">
+            <input
+                    type="checkbox"
+                    id="switch_left_2"
+                    @change="toggle('importantFilter')"
+                    :checked="!importantFilter"
+            />
+            <label for="switch_left_2" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">All</label>
+            <input
+                    type="checkbox"
+                    id="switch_right_2"
+                    @change="toggle('importantFilter')"
+                    :checked="importantFilter"
+            />  
+            <label for="switch_right_2" class="shadow flex-1 py-2 border border-dbblue-dark">Important</label>
+        </div>
+        <div class="w-full active-or-inactive-switch flex mr-0 mt-2">
+            <input
+                    type="checkbox"
+                    id="switch_left"
+                    @change="toggle('activeFilter')"
+                    :checked="activeFilter"
+            />
+            <label for="switch_left" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">Active</label>
+            <input
+                    type="checkbox"
+                    id="switch_right"
+                    @change="toggle('activeFilter')"
+                    :checked="!activeFilter"
+            />
+            <label for="switch_right" class="shadow flex-1 py-2 border border-dbblue-dark">Inactive</label>
         </div>
     </div>
 </template>
@@ -70,18 +67,18 @@
 
     .active-or-inactive-switch label {
         display: inline-block;
-        background-color:rgba(0, 0, 0, 0.1);
-        width:90px;
-        font-size: 14px;
+        width: 120px;
+        background-color: #e4e4e4;
         color: rgba(0, 0, 0, 0.6);
         text-align: center;
         text-shadow: none;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
         -webkit-transition: all 0.15s ease-in-out;
         -moz-transition: all 0.15s ease-in-out;
         -ms-transition: all 0.15s ease-in-out;
         -o-transition: all 0.15s ease-in-out;
-        transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out; 
     }
 
     .active-or-inactive-switch label:hover {
@@ -89,10 +86,9 @@
     }
 
     .active-or-inactive-switch input:checked + label {
-        background-color:#24728a;
-        color:#fffdf7;
-        -webkit-box-shadow: inset 0 1px     3px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+        background-color: #A5DC86;
+        -webkit-box-shadow: none;
+        box-shadow: none;
     }
 
     .active-or-inactive-switch label:first-of-type {

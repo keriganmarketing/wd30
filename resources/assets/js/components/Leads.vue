@@ -5,12 +5,12 @@
                 @toggle="filter"
                 :active-filter="activeFilter"
                 :important-filter="importantFilter"
-                class="md:flex-1 w-full md:w-2/3 items-end mb-2"
+                class="md:flex-1 w-2/3 items-end mb-2 md:mb-1 md:ml-8 text-base"
             />
             <lead-pagination
                 @page="page"
                 :pagination="pagination"
-                class="md:flex-1 w-full justify-center mx-auto md:w-1/3 items-end h-16"
+                class="md:flex-1 w-full justify-start mx-auto md:w-1/3 md:mr-8 items-end h-16 text-base"
             />
         </div>
         <lead
