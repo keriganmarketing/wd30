@@ -52582,6 +52582,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        siteUrl: {
+            type: String,
+            default: ''
+        }
+    },
     data: function data() {
         return {
             id: 0,
@@ -52665,7 +52671,7 @@ var render = function() {
               _c(
                 "small",
                 { staticClass: "google-link w-full text-left break-words" },
-                [_vm._v("https://karenbranham.beachybeach.com")]
+                [_vm._v(_vm._s(_vm.siteUrl))]
               ),
               _vm._v(" "),
               _c(
