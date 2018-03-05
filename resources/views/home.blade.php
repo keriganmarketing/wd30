@@ -44,7 +44,7 @@
     <my-properties v-if="selected == 'properties'" :user="user"></my-properties>
     <bio-card :data-user="user" v-on:submit-button-clicked="sbc" v-if="selected == 'settings'"></bio-card>
     <content-card :data-content="content" v-if="selected == 'settings'" v-on:content-edited="updateContent"></content-card>
-    <seo-card v-if="selected == 'settings'"></seo-card>
+    <seo-card v-if="selected == 'settings'" :site-url="'{{ config('app.url') }}'"></seo-card>
 </div>
 @endsection
 
