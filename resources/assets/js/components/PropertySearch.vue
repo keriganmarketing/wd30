@@ -4,10 +4,10 @@
             <div class="container mx-auto">
                 <div class="flex flex-wrap justify-center items-start min-h-full">
                     <mini-listing
-                            class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2"
-                            v-for="listing in properties.data"
-                            :key="listing.id"
-                            :listing="listing"
+                        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2"
+                        v-for="listing in properties.data"
+                        :key="listing.id"
+                        :listing="listing"
                     />
                 </div>
             </div>
@@ -18,8 +18,8 @@
     export default {
         props: {
             dataParams: {
-                type: Object,
-                default: () => {}
+                type: Array,
+                default: []
             }
         },
         data() {
