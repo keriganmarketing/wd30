@@ -46983,18 +46983,23 @@ var render = function() {
               _c(
                 "svg",
                 {
-                  staticClass: "fill-current h-8 w-8",
+                  staticClass: "feather feather-bookmark",
                   attrs: {
                     xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
+                    width: "24",
+                    height: "24",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    "stroke-width": "2",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
                   }
                 },
                 [
                   _c("path", {
-                    staticClass: "heroicon-ui",
                     attrs: {
-                      d:
-                        "M6.1 21.98a1 1 0 0 1-1.45-1.06l1.03-6.03-4.38-4.26a1 1 0 0 1 .56-1.71l6.05-.88 2.7-5.48a1 1 0 0 1 1.8 0l2.7 5.48 6.06.88a1 1 0 0 1 .55 1.7l-4.38 4.27 1.04 6.03a1 1 0 0 1-1.46 1.06l-5.4-2.85-5.42 2.85zm4.95-4.87a1 1 0 0 1 .93 0l4.08 2.15-.78-4.55a1 1 0 0 1 .29-.88l3.3-3.22-4.56-.67a1 1 0 0 1-.76-.54l-2.04-4.14L9.47 9.4a1 1 0 0 1-.75.54l-4.57.67 3.3 3.22a1 1 0 0 1 .3.88l-.79 4.55 4.09-2.15z"
+                      d: "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
                     }
                   })
                 ]
@@ -47022,20 +47027,34 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-file-text",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-5 4h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2v-2a1 1 0 0 1 2 0v2z"
+                            "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
                         }
-                      })
+                      }),
+                      _c("polyline", { attrs: { points: "14 2 14 8 20 8" } }),
+                      _c("line", {
+                        attrs: { x1: "16", y1: "13", x2: "8", y2: "13" }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "16", y1: "17", x2: "8", y2: "17" }
+                      }),
+                      _c("polyline", { attrs: { points: "10 9 9 9 8 9" } })
                     ]
                   ),
                   _vm._v(" "),
@@ -47062,20 +47081,27 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-file",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-2 4a1 1 0 0 1-1 1H9a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1z"
+                            "M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
                         }
-                      })
+                      }),
+                      _c("polyline", { attrs: { points: "13 2 13 9 20 9" } })
                     ]
                   ),
                   _vm._v(" "),
@@ -47102,19 +47128,31 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-folder-plus",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"
+                            "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
                         }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "12", y1: "11", x2: "12", y2: "17" }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "9", y1: "14", x2: "15", y2: "14" }
                       })
                     ]
                   ),
@@ -47139,19 +47177,28 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-folder-minus",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"
+                            "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
                         }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "9", y1: "14", x2: "15", y2: "14" }
                       })
                     ]
                   ),
