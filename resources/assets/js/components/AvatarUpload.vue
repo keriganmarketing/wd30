@@ -1,8 +1,8 @@
 <template>
-    <div class="max-h-avatar relative rounded overflow-hidden">
+    <div class="max-h-avatar relative overflow-hidden">
         <img
             :src="src"
-            class="max-w-full mx-auto"
+            class="max-w-full mx-auto rounded"
             style="max-height:8rem"
             @mouseover="imageHover = true"
         >
