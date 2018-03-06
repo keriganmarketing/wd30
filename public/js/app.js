@@ -5263,6 +5263,7 @@ var app = new Vue({
         }),
         selected: 'leads',
         activeLeadsCount: 0,
+        archivedLeadsCount: 0,
         viewType: 'grid'
     },
     computed: {
@@ -41025,68 +41026,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden"
-    },
-    [
-      _c("img", {
-        staticClass: "max-w-full mx-auto",
-        attrs: { src: _vm.src },
-        on: {
-          mouseover: function($event) {
-            _vm.imageHover = true
-          }
+  return _c("div", [
+    _c("img", {
+      staticClass: "max-w-full mx-auto max-h-full",
+      attrs: { src: _vm.src },
+      on: {
+        mouseover: function($event) {
+          _vm.imageHover = true
         }
-      }),
-      _vm._v(" "),
-      _vm.imageHover
-        ? _c(
-            "form",
-            {
-              attrs: {
-                action: "/avatar",
-                method: "POST",
-                enctype: "multipart/form-data"
-              }
-            },
-            [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
-                  class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
-                  attrs: { for: "avatar" },
+      }
+    }),
+    _vm._v(" "),
+    _vm.imageHover
+      ? _c(
+          "form",
+          {
+            attrs: {
+              action: "/avatar",
+              method: "POST",
+              enctype: "multipart/form-data"
+            }
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
+                class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
+                attrs: { for: "avatar" },
+                on: {
+                  mouseout: function($event) {
+                    _vm.imageHover = false
+                  }
+                }
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "opacity-100 text-sm cursor-pointer" },
+                  [_vm._v("Click here to upload a new photo")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "hidden",
+                  attrs: { type: "file", name: "avatar", id: "avatar" },
                   on: {
-                    mouseout: function($event) {
-                      _vm.imageHover = false
+                    change: function($event) {
+                      _vm.fileChanged($event.target.name, $event.target.files)
                     }
                   }
-                },
-                [
-                  _c("span", { staticClass: "opacity-100 text-sm" }, [
-                    _vm._v("Click here to upload a new photo")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "hidden",
-                    attrs: { type: "file", name: "avatar", id: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.fileChanged($event.target.name, $event.target.files)
-                      }
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        : _vm._e()
-    ]
-  )
+                })
+              ]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41858,12 +41854,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         dataUser: {
             type: Object,
             default: function _default() {}
+        },
+        avatarPath: {
+            type: String,
+            default: ''
         }
     },
     data: function data() {
@@ -41907,475 +41920,486 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "container mx-auto bg-white flex flex-wrap justify-center mb-8"
-    },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-            },
-            [_vm._v("\n            Name:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.name,
-                expression: "user.name"
-              }
-            ],
-            ref: "name",
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Photo:\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
             staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.name
-            },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.name },
-            on: {
-              focus: function($event) {
-                _vm.edit("name")
-              },
-              blur: function($event) {
-                _vm.submit("name")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "name", $event.target.value)
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-            },
-            [_vm._v("\n            Email:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.email,
-                expression: "user.email"
-              }
-            ],
-            ref: "email",
-            staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.email
-            },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.email },
-            on: {
-              focus: function($event) {
-                _vm.edit("email")
-              },
-              blur: function($event) {
-                _vm.submit("email")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "email", $event.target.value)
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-            },
-            [_vm._v("\n            Cell Phone:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.cell_phone,
-                expression: "user.cell_phone"
-              }
-            ],
-            ref: "cell_phone",
-            staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.cell_phone
-            },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.cell_phone },
-            on: {
-              focus: function($event) {
-                _vm.edit("cell_phone")
-              },
-              blur: function($event) {
-                _vm.submit("cell_phone")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "cell_phone", $event.target.value)
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-            },
-            [_vm._v("\n            Office Phone:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.office_phone,
-                expression: "user.office_phone"
-              }
-            ],
-            ref: "office_phone",
-            staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.office_phone
-            },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.office_phone },
-            on: {
-              focus: function($event) {
-                _vm.edit("office_phone")
-              },
-              blur: function($event) {
-                _vm.submit("office_phone")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "office_phone", $event.target.value)
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _vm.user.office_phone != _vm.user.cell_phone
-        ? _c(
-            "div",
-            {
-              staticClass:
-                "w-full py-2 bg-white flex flex-wrap items-center border-b"
-            },
-            [
-              _c(
-                "div",
-                {
+              "w-2/3 py-2 md:px-2 bg-white w-auto flex-grow text-left"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "flex max-h-32 md:h-48 w-auto pr-4" },
+              [
+                _c("avatar-upload", {
                   staticClass:
-                    "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-                },
-                [_vm._v("\n            Primary Phone:\n        ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "w-auto primary-phone-switch flex px-4" },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user.primary_phone,
-                        expression: "user.primary_phone"
-                      }
-                    ],
-                    attrs: { type: "radio", id: "switch_left" },
-                    domProps: {
-                      value: _vm.user.cell_phone,
-                      checked: _vm.primary("cell_phone"),
-                      checked: _vm._q(
-                        _vm.user.primary_phone,
-                        _vm.user.cell_phone
-                      )
-                    },
-                    on: {
-                      change: [
-                        function($event) {
-                          _vm.$set(
-                            _vm.user,
-                            "primary_phone",
-                            _vm.user.cell_phone
-                          )
-                        },
-                        function($event) {
-                          _vm.submit("cell_phone")
-                        }
-                      ]
+                    "max-h-32 md:h-48 w-auto relative rounded overflow-hidden cursor-pointer",
+                  attrs: { "avatar-path": _vm.avatarPath }
+                })
+              ],
+              1
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Name:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.name,
+              expression: "user.name"
+            }
+          ],
+          ref: "name",
+          staticClass:
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.name
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.name },
+          on: {
+            focus: function($event) {
+              _vm.edit("name")
+            },
+            blur: function($event) {
+              _vm.submit("name")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.user, "name", $event.target.value)
+            }
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Email:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.email,
+              expression: "user.email"
+            }
+          ],
+          ref: "email",
+          staticClass:
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.email
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.email },
+          on: {
+            focus: function($event) {
+              _vm.edit("email")
+            },
+            blur: function($event) {
+              _vm.submit("email")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.user, "email", $event.target.value)
+            }
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Cell Phone:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.cell_phone,
+              expression: "user.cell_phone"
+            }
+          ],
+          ref: "cell_phone",
+          staticClass:
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.cell_phone
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.cell_phone },
+          on: {
+            focus: function($event) {
+              _vm.edit("cell_phone")
+            },
+            blur: function($event) {
+              _vm.submit("cell_phone")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.user, "cell_phone", $event.target.value)
+            }
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Office Phone:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.office_phone,
+              expression: "user.office_phone"
+            }
+          ],
+          ref: "office_phone",
+          staticClass:
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.office_phone
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.office_phone },
+          on: {
+            focus: function($event) {
+              _vm.edit("office_phone")
+            },
+            blur: function($event) {
+              _vm.submit("office_phone")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.user, "office_phone", $event.target.value)
+            }
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _vm.user.office_phone !== _vm.user.cell_phone
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "w-full py-2 bg-white flex flex-wrap items-center border-b"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+              },
+              [_vm._v("\n            Primary Phone:\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-auto primary-phone-switch flex px-4" },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.primary_phone,
+                      expression: "user.primary_phone"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "switch_left" } }, [
-                    _vm._v("Cell Phone")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user.primary_phone,
-                        expression: "user.primary_phone"
+                  ],
+                  attrs: { type: "radio", id: "switch_left" },
+                  domProps: {
+                    value: _vm.user.cell_phone,
+                    checked: _vm.primary("cell_phone"),
+                    checked: _vm._q(_vm.user.primary_phone, _vm.user.cell_phone)
+                  },
+                  on: {
+                    change: [
+                      function($event) {
+                        _vm.$set(_vm.user, "primary_phone", _vm.user.cell_phone)
+                      },
+                      function($event) {
+                        _vm.submit("cell_phone")
                       }
-                    ],
-                    attrs: { type: "radio", id: "switch_right" },
-                    domProps: {
-                      value: _vm.user.office_phone,
-                      checked: _vm.primary("office_phone"),
-                      checked: _vm._q(
-                        _vm.user.primary_phone,
-                        _vm.user.office_phone
-                      )
-                    },
-                    on: {
-                      change: [
-                        function($event) {
-                          _vm.$set(
-                            _vm.user,
-                            "primary_phone",
-                            _vm.user.office_phone
-                          )
-                        },
-                        function($event) {
-                          _vm.submit("office_phone")
-                        }
-                      ]
+                    ]
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "switch_left" } }, [
+                  _vm._v("Cell Phone")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.primary_phone,
+                      expression: "user.primary_phone"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "switch_right" } }, [
-                    _vm._v("Office Phone")
-                  ])
-                ]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
+                  ],
+                  attrs: { type: "radio", id: "switch_right" },
+                  domProps: {
+                    value: _vm.user.office_phone,
+                    checked: _vm.primary("office_phone"),
+                    checked: _vm._q(
+                      _vm.user.primary_phone,
+                      _vm.user.office_phone
+                    )
+                  },
+                  on: {
+                    change: [
+                      function($event) {
+                        _vm.$set(
+                          _vm.user,
+                          "primary_phone",
+                          _vm.user.office_phone
+                        )
+                      },
+                      function($event) {
+                        _vm.submit("office_phone")
+                      }
+                    ]
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "switch_right" } }, [
+                  _vm._v("Office Phone")
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            MLS IDs:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
             {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-            },
-            [_vm._v("\n            MLS IDs:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.mls_id,
-                expression: "user.mls_id"
-              }
-            ],
-            ref: "mls_id",
-            staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.mls_id
-            },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.mls_id },
-            on: {
-              focus: function($event) {
-                _vm.edit("mls_id")
-              },
-              blur: function($event) {
-                _vm.submit("mls_id")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "mls_id", $event.target.value)
-              }
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.mls_id,
+              expression: "user.mls_id"
             }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
+          ],
+          ref: "mls_id",
           staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-center border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.mls_id
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.mls_id },
+          on: {
+            focus: function($event) {
+              _vm.edit("mls_id")
             },
-            [_vm._v("\n            Company:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.company,
-                expression: "user.company"
-              }
-            ],
-            ref: "company",
-            staticClass:
-              "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.company
+            blur: function($event) {
+              _vm.submit("mls_id")
             },
-            attrs: { type: "text" },
-            domProps: { value: _vm.user.company },
-            on: {
-              focus: function($event) {
-                _vm.edit("company")
-              },
-              blur: function($event) {
-                _vm.submit("company")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "company", $event.target.value)
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
+              _vm.$set(_vm.user, "mls_id", $event.target.value)
             }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Company:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.company,
+              expression: "user.company"
+            }
+          ],
+          ref: "company",
           staticClass:
-            "w-full py-2 bg-white flex flex-wrap items-start border-b"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+            "border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.company
+          },
+          attrs: { type: "text" },
+          domProps: { value: _vm.user.company },
+          on: {
+            focus: function($event) {
+              _vm.edit("company")
             },
-            [_vm._v("\n            Address:\n        ")]
-          ),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.address,
-                expression: "user.address"
-              }
-            ],
-            ref: "address",
-            staticClass:
-              "border border-transparent md:text-xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left",
-            class: {
-              "border-secondary": _vm.address
+            blur: function($event) {
+              _vm.submit("company")
             },
-            attrs: { rows: "4" },
-            domProps: { value: _vm.user.address },
-            on: {
-              focus: function($event) {
-                _vm.edit("address")
-              },
-              blur: function($event) {
-                _vm.submit("address")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "address", $event.target.value)
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
+              _vm.$set(_vm.user, "company", $event.target.value)
             }
-          })
-        ]
-      )
-    ]
-  )
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "w-full py-2 bg-white flex flex-wrap items-start border-b"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+          },
+          [_vm._v("\n            Address:\n        ")]
+        ),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.user.address,
+              expression: "user.address"
+            }
+          ],
+          ref: "address",
+          staticClass:
+            "border border-transparent md:text-xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left",
+          class: {
+            "border-secondary": _vm.address
+          },
+          attrs: { rows: "4" },
+          domProps: { value: _vm.user.address },
+          on: {
+            focus: function($event) {
+              _vm.edit("address")
+            },
+            blur: function($event) {
+              _vm.submit("address")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.user, "address", $event.target.value)
+            }
+          }
+        })
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -46817,7 +46841,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container relative mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light",
+        "container relative mx-auto flex flex-wrap py-4 px-8 bg-white mb-2 shadow border-l-4 border-grey-light",
       class: {
         "border-red": _vm.lead.important
       }
@@ -47270,7 +47294,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47283,11 +47307,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_pagination__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_leads_service__ = __webpack_require__(412);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47486,23 +47505,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto" },
     [
       _c(
         "div",
         {
           staticClass:
-            "lead-controls flex justify-between items-center py-2 flex-wrap"
+            "lead-controls flex flex-col justify-between items-center py-2 flex-wrap"
         },
         [
-          _c("lead-pagination", {
-            staticClass: "flex-1 w-full md:w-auto",
-            attrs: { pagination: _vm.pagination },
-            on: { page: _vm.page }
-          }),
-          _vm._v(" "),
           _c("lead-filters", {
-            staticClass: "flex-1 w-full md:max-w-xs",
+            staticClass: "flex w-full flex-wrap justify-center",
             attrs: {
               "active-filter": _vm.activeFilter,
               "important-filter": _vm.importantFilter
@@ -47859,7 +47871,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n}\n.switch-box input {\n    display: none;\n}\n.switch-box .sudo-switcher {\n    font-size: 30px;\n    width: 2.5em;\n    height: 1em;\n    border-radius: 3em;\n    position: relative;\n    cursor: pointer;\n    outline: none;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher:after {\n    position: absolute;\n    content: \"\";\n    width: 1em;\n    height: 1em;\n    border-radius: 50%;\n    background: #fff;\n    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);\n    -webkit-transform: scale(.7);\n    -ms-transform: scale(.7);\n        transform: scale(.7);\n    left: 0;\n    -webkit-transition: all .2s ease-in-out;\n    transition: all .2s ease-in-out;\n}\n.switch-box .sudo-switcher.checked:after {\n    left: calc(100% - 1em);\n}\n", ""]);
+exports.push([module.i, "\n.lead-switch input {\n    position: absolute !important;\n    clip: rect(0, 0, 0, 0);\n    height: 1px;\n    width: 1px;\n    border: 0;\n    overflow: hidden;\n}\n.lead-switch label {\n    display: inline-block;\n    width: 120px;\n    background-color: #e4e4e4;\n    color: rgba(0, 0, 0, 0.6);\n    font-size: 14px;\n    text-align: center;\n    text-shadow: none;\n    padding: 6px 14px;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);\n    -webkit-transition: all 0.1s ease-in-out;\n    transition: all 0.1s ease-in-out;\n}\n.lead-switch label:hover {\n    cursor: pointer;\n}\n.lead-switch input:checked + label {\n    background-color: #A5DC86;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n}\n.lead-switch label:first-of-type {\n    border-radius: 4px 0 0 4px;\n}\n.lead-switch label:last-of-type {\n    border-radius: 0 4px 4px 0;\n}\n", ""]);
 
 // exports
 
@@ -47870,6 +47882,47 @@ exports.push([module.i, "\n.switch-box {\n    display: -webkit-box;\n    display
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47943,107 +47996,63 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "switch-container flex justify-center items-center w-full px-4 py-1"
-      },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "active-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "font-bold": _vm.activeFilter },
-            attrs: { for: "activeToggle" }
-          },
-          [_vm._v("\n            Active\n        ")]
-        ),
+    _c("div", { staticClass: "w-auto pt-2" }, [
+      _c("div", { staticClass: "lead-switch flex px-4" }, [
+        _c("input", {
+          attrs: { type: "radio", id: "switch_active", value: "active" },
+          domProps: { checked: _vm.activeFilter },
+          on: {
+            change: function($event) {
+              _vm.toggle("activeFilter")
+            }
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-8" }, [
-          _c(
-            "label",
-            {
-              staticClass: "sudo-switcher bg-brand-darker",
-              class: { checked: !_vm.activeFilter }
-            },
-            [
-              _c("input", {
-                attrs: { type: "checkbox", id: "activeToggle" },
-                domProps: { checked: !_vm.activeFilter },
-                on: {
-                  change: function($event) {
-                    _vm.toggle("activeFilter")
-                  }
-                }
-              })
-            ]
-          )
-        ]),
+        _c("label", { attrs: { for: "switch_active" } }, [_vm._v("Active")]),
         _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "active-toggle text-white flex-grow w-8 px-2",
-            class: { "font-bold": !_vm.activeFilter },
-            attrs: { for: "activeToggle" }
-          },
-          [_vm._v("\n            Archived\n        ")]
-        )
-      ]
-    ),
+        _c("input", {
+          attrs: { type: "radio", id: "switch_archived", value: "archived" },
+          domProps: { checked: !_vm.activeFilter },
+          on: {
+            change: function($event) {
+              _vm.toggle("activeFilter")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "switch_archived" } }, [_vm._v("Archived")])
+      ])
+    ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "switch-container flex justify-center items-center w-full px-4 py-1"
-      },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "important-toggle text-white flex-grow w-8 text-right px-2",
-            class: { "font-bold": !_vm.importantFilter },
-            attrs: { for: "importantToggle" }
-          },
-          [_vm._v("\n            All\n        ")]
-        ),
+    _c("div", { staticClass: "w-auto pt-2" }, [
+      _c("div", { staticClass: "lead-switch flex px-4" }, [
+        _c("input", {
+          attrs: { type: "radio", id: "switch_all", value: "all" },
+          domProps: { checked: !_vm.importantFilter },
+          on: {
+            change: function($event) {
+              _vm.toggle("importantFilter")
+            }
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "switch-box w-8" }, [
-          _c(
-            "label",
-            {
-              staticClass: "sudo-switcher bg-brand-darker",
-              class: { checked: _vm.importantFilter }
-            },
-            [
-              _c("input", {
-                attrs: { type: "checkbox", id: "importantToggle" },
-                domProps: { checked: _vm.importantFilter },
-                on: {
-                  change: function($event) {
-                    _vm.toggle("importantFilter")
-                  }
-                }
-              })
-            ]
-          )
-        ]),
+        _c("label", { attrs: { for: "switch_all" } }, [_vm._v("All")]),
         _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "important-toggle text-white flex-grow w-8 px-2",
-            class: { "font-bold": _vm.importantFilter },
-            attrs: { for: "importantToggle" }
-          },
-          [_vm._v("\n            Important\n        ")]
-        )
-      ]
-    )
+        _c("input", {
+          attrs: { type: "radio", id: "switch_important", value: "important" },
+          domProps: { checked: _vm.importantFilter },
+          on: {
+            change: function($event) {
+              _vm.toggle("importantFilter")
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "switch_important" } }, [
+          _vm._v("Important")
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -50539,10 +50548,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -50569,31 +50574,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "container flex flex-wrap justify-center items-start min-h-full"
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "w-full text-center text-white text-xl p-4 bg-brand mb-4"
-        },
-        [
-          _vm._v(
-            "\n        Here is where you can see your properties' analytics data from\n        Kerigan Marketing Associate's entire real estate network.\n    "
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.properties, function(listing) {
-        return _c("my-property", {
-          key: listing.id,
-          attrs: { listing: listing }
-        })
-      })
-    ],
-    2
+    _vm._l(_vm.properties, function(listing) {
+      return _c("my-property", { key: listing.id, attrs: { listing: listing } })
+    })
   )
 }
 var staticRenderFns = []
@@ -53262,6 +53245,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -53269,15 +53267,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Object,
             default: function _default() {}
         },
-        avatarPath: {
-            type: String,
-            default: ''
-        },
         boilerplate: {
             type: Boolean,
             default: false
         },
         activeLeadsCount: {
+            type: Number,
+            default: 0
+        },
+        archivedLeadsCount: {
             type: Number,
             default: 0
         }
@@ -53290,13 +53288,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             animatedClicks: 0,
             leads: 0,
             animatedLeads: 0,
-            properties: []
+            properties: [],
+            archivedLeads: 0,
+            animatedArchivedLeads: 0
         };
     },
 
     computed: {
         user: function user() {
             return this.dataUser;
+        },
+        totalLeads: function totalLeads() {
+            return this.leads + this.archivedLeads;
+        },
+        clickThruRate: function clickThruRate() {
+            return (this.clicks / this.impressions * 100).toFixed(2) + '%';
         }
     },
     watch: {
@@ -53382,142 +53388,221 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded"
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto"
-        },
-        [
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "pb-1 pt-4 w-full flex items-center justify-center flex-wrap"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
+          [
+            _c("p", {
+              staticClass:
+                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+            }),
+            _c(
+              "p",
+              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+              [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
+            ),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("p")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
+          [
+            _c("p", {
+              staticClass:
+                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+            }),
+            _c(
+              "p",
+              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+              [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
+            ),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
+          [
+            _c("p", {
+              staticClass:
+                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+            }),
+            _c(
+              "p",
+              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+              [_vm._v(_vm._s(_vm.clickThruRate.toLocaleString()))]
+            ),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("p")
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
+          _c("p", {
+            staticClass:
+              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+          }),
           _c(
-            "div",
-            { staticClass: "px-12 lg:px-4" },
-            [
-              _c("avatar-upload", {
-                staticClass: "border border-tan-lightest",
-                attrs: { "avatar-path": _vm.avatarPath }
-              })
-            ],
-            1
+            "p",
+            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+            [_vm._v(_vm._s(_vm.animatedLeads))]
           ),
-          _vm._v(" "),
-          !_vm.boilerplate
-            ? _c(
-                "p",
-                {
-                  staticClass:
-                    "hidden md:block px-2 mt-2 text-xl text-smoke-dark"
-                },
-                [_vm._v(_vm._s(_vm.user.name))]
-              )
-            : _c(
-                "p",
-                { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
-                [_vm._v("Your Name")]
-              ),
           _vm._v(" "),
           _c(
             "p",
-            { staticClass: "hidden md:block px-2 text-xs text-smoke-light" },
-            [_vm._v("Beachy Beach Real Estate")]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"
-        },
-        [
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-                  [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
-                  [_vm._v("Property Clicks")]
-                )
-              ]
-            )
-          ]),
+            {
+              staticClass:
+                "text-sm md:text-lg font-brand text-smoke leading-tight"
+            },
+            [_vm._v("Active")]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-                  [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
-                  [_vm._v("Property Impressions")]
-                )
-              ]
-            )
-          ]),
+          _c("p")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
+          _c("p", {
+            staticClass:
+              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+          }),
+          _c(
+            "p",
+            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+            [_vm._v(_vm._s(_vm.animatedArchivedLeads))]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-                  [_vm._v(_vm._s(_vm.animatedLeads))]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
-                  [_vm._v("Active Leads")]
-                )
-              ]
-            )
-          ])
-        ]
-      )
-    ]
-  )
+          _c(
+            "p",
+            {
+              staticClass:
+                "text-sm md:text-lg font-brand text-smoke leading-tight"
+            },
+            [_vm._v("Archived")]
+          ),
+          _vm._v(" "),
+          _c("p")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
+          _c("p", {
+            staticClass:
+              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+          }),
+          _c(
+            "p",
+            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+            [_vm._v(_vm._s(_vm.totalLeads))]
+          ),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              staticClass:
+                "text-sm md:text-lg font-brand text-smoke leading-tight"
+            },
+            [_vm._v("Total")]
+          ),
+          _vm._v(" "),
+          _c("p")
+        ])
+      ]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-full text-grey-darker md:pt-2" }, [
+      _c("h3", { staticClass: "font-brand text-xl" }, [
+        _vm._v("Property Analytics")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
+      [
+        _vm._v("Total "),
+        _c("span", { staticClass: "md:hidden clearfix" }),
+        _vm._v("Clicks")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
+      [
+        _vm._v("Total "),
+        _c("span", { staticClass: "md:hidden clearfix" }),
+        _vm._v("Impressions")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
+      [
+        _vm._v("Average "),
+        _c("span", { staticClass: "md:hidden clearfix" }),
+        _vm._v("Click-thru Rate")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "w-full text-grey-darker pt-2 md:pt-6 border-grey-light border-t"
+      },
+      [
+        _c("h3", { staticClass: "font-brand text-xl" }, [
+          _vm._v("Lead Analytics")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
