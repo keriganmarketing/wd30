@@ -7,7 +7,7 @@
                     @change="toggle('importantFilter')"
                     :checked="!importantFilter"
             />
-            <label for="switch_left_2" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">All</label>
+            <label for="switch_left_2" class="shadow flex-1 mr-1 py-2 border border-dbblue-dark">All</label>
             <input
                     type="checkbox"
                     id="switch_right_2"
@@ -23,7 +23,7 @@
                     @change="toggle('activeFilter')"
                     :checked="activeFilter"
             />
-            <label for="switch_left" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">Actives</label>
+            <label for="switch_left" class="shadow flex-1 mr-1 py-2 border border-dbblue-dark">Actives</label>
             <input
                     type="checkbox"
                     id="switch_right"
