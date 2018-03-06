@@ -1,11 +1,23 @@
 <template>
-    <div class="container mx-auto bg-white flex flex-wrap justify-center mb-8">
+    <div>
         <p class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
             <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 BIO
             </span>
             <small class="text-xs w-auto flex-grow text-right">Click on the text you want to edit</small>
         </p>
+
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
+            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
+                Photo:
+            </div>
+            <div class="w-2/3 py-2 md:px-2 bg-white w-auto flex-grow text-left">
+                <div class="flex max-h-32 md:h-48 w-auto pr-4">
+                    <avatar-upload :avatar-path="avatarPath"
+                                   class="max-h-32 md:h-48 w-auto relative rounded overflow-hidden cursor-pointer"/>
+                </div>
+            </div>
+        </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Name:
@@ -20,7 +32,7 @@
                     v-model="user.name"
                     @focus="edit('name')"
                     @blur="submit('name')"
-            >
+            />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
@@ -36,7 +48,7 @@
                     v-model="user.email"
                     @focus="edit('email')"
                     @blur="submit('email')"
-            >
+            />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
@@ -52,7 +64,7 @@
                     v-model="user.cell_phone"
                     @focus="edit('cell_phone')"
                     @blur="submit('cell_phone')"
-            >
+            />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
@@ -68,9 +80,10 @@
                     v-model="user.office_phone"
                     @focus="edit('office_phone')"
                     @blur="submit('office_phone')"
-            >
+            />
         </div>
-        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b" v-if="user.office_phone != user.cell_phone">
+        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b"
+             v-if="user.office_phone !== user.cell_phone">
             <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Primary Phone:
             </div>
@@ -109,7 +122,7 @@
                     v-model="user.mls_id"
                     @focus="edit('mls_id')"
                     @blur="submit('mls_id')"
-            >
+            />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
@@ -125,7 +138,7 @@
                     v-model="user.company"
                     @focus="edit('company')"
                     @blur="submit('company')"
-            >
+            />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-start border-b">
             <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
@@ -153,6 +166,10 @@
                 type: Object,
                 default: () => {
                 }
+            },
+            avatarPath: {
+                type: String,
+                default: ''
             }
         },
         data() {
