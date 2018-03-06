@@ -5,9 +5,9 @@
         :key="mlsNumber.id"
         :mls-number="mlsNumber"
         @delete-number="deleteNumber"
-        class="w-1/2 md:w-1/3 lg:w-1/5 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center"
+        class="w-2/3 md:w-1/3 lg:w-1/4 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center"
     />
-    <div class="w-full text-brand flex flex-wrap items-center justify-center md:justify-start">
+    <div class="w-full text-brand flex flex-wrap items-center justify-center md:justify-start h-auto py-2 md:py-0 md:h-12">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="36"
@@ -27,14 +27,14 @@
         </svg>
         <input
                 type="text"
-                class="border border-secondary mx-2 md:text-xl py-2 md:px-2 bg-white w-full md:w-1/4 text-left"
+                class="border border-secondary mx-16 mt-4 md:mt-1 md:mx-2 md:text-xl py-1 px-2 bg-white w-full md:w-1/4 text-center"
                 v-model="mls_id"
                 v-if="addingMlsNumber"
                 @keydown.enter="addNumber"
                 @blur="onBlur"
         />
         <span
-            class="block w-auto border border-red p-4 m-2"
+            class="block w-auto text-cta-red mt-1 py-1 px-1 mx-1"
             v-if="error != ''"
         >
             {{ error }}
