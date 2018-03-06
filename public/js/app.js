@@ -41026,66 +41026,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "max-h-avatar relative rounded overflow-hidden" },
-    [
-      _c("img", {
-        staticClass: "max-w-full mx-auto",
-        staticStyle: { "max-height": "8rem" },
-        attrs: { src: _vm.src },
-        on: {
-          mouseover: function($event) {
-            _vm.imageHover = true
-          }
+  return _c("div", { staticClass: "max-h-avatar relative overflow-hidden" }, [
+    _c("img", {
+      staticClass: "max-w-full mx-auto rounded",
+      staticStyle: { "max-height": "8rem" },
+      attrs: { src: _vm.src },
+      on: {
+        mouseover: function($event) {
+          _vm.imageHover = true
         }
-      }),
-      _vm._v(" "),
-      _vm.imageHover
-        ? _c(
-            "form",
-            {
-              attrs: {
-                action: "/avatar",
-                method: "POST",
-                enctype: "multipart/form-data"
-              }
-            },
-            [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
-                  class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
-                  attrs: { for: "avatar" },
+      }
+    }),
+    _vm._v(" "),
+    _vm.imageHover
+      ? _c(
+          "form",
+          {
+            attrs: {
+              action: "/avatar",
+              method: "POST",
+              enctype: "multipart/form-data"
+            }
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow",
+                class: { pin: _vm.imageHover, "opacity-75": _vm.imageHover },
+                attrs: { for: "avatar" },
+                on: {
+                  mouseout: function($event) {
+                    _vm.imageHover = false
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "opacity-100 text-sm" }, [
+                  _vm._v("Click here to upload a new photo")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "hidden",
+                  attrs: { type: "file", name: "avatar", id: "avatar" },
                   on: {
-                    mouseout: function($event) {
-                      _vm.imageHover = false
+                    change: function($event) {
+                      _vm.fileChanged($event.target.name, $event.target.files)
                     }
                   }
-                },
-                [
-                  _c("span", { staticClass: "opacity-100 text-sm" }, [
-                    _vm._v("Click here to upload a new photo")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "hidden",
-                    attrs: { type: "file", name: "avatar", id: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.fileChanged($event.target.name, $event.target.files)
-                      }
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        : _vm._e()
-    ]
-  )
+                })
+              ]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
