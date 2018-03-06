@@ -1,16 +1,16 @@
 <template>
     <div class="container mx-auto">
-        <div class="lead-controls flex justify-between items-center py-2 flex-wrap">
-            <lead-pagination
-                @page="page"
-                :pagination="pagination"
-                class="flex-1 w-full md:w-auto"
-            />
+        <div class="lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-44 md:h-32">
             <lead-filters
                 @toggle="filter"
                 :active-filter="activeFilter"
                 :important-filter="importantFilter"
-                class="flex-1 w-full md:max-w-xs"
+                class="md:flex-1 w-2/3 items-end mb-1 md:ml-8 text-base"
+            />
+            <lead-pagination
+                @page="page"
+                :pagination="pagination"
+                class="md:flex-1 w-full justify-start mx-auto md:w-1/3 md:mr-8 items-end h-16 text-base"
             />
         </div>
         <lead
