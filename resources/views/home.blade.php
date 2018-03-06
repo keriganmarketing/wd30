@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('top')
-<div class="container flex flex-wrap py-4 mx-auto justify-between">
+<div class="container flex flex-wrap py-4 mt-0 md:py-6 md:mt-1 mx-auto justify-between">
     <welcome-card
         :boilerplate="boilerplate"
         :data-user="user"
@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="container mx-auto min-h-screen px-2">
-    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24 pb-8 mb-4">
+    <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24">
         <a
             href="#"
             class="w-1/3 no-underline border-t-4 border-transparent hover:border-secondary text-white font-brand py-4 text-center text-2xl"
