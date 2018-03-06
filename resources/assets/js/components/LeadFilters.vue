@@ -1,44 +1,36 @@
 <template>
-    <div>
-        <div class="switch-container flex justify-center items-center w-full px-4 py-1">
-            <label class="active-toggle text-white flex-grow w-8 text-right px-2"
-                   :class="{ 'font-bold': activeFilter }" for="activeToggle">
-                Active
-            </label>
-            <div class="switch-box w-8">
-                <label class="sudo-switcher bg-brand-darker" :class="{ 'checked': !activeFilter }" >
-                    <input
-                            type="checkbox"
-                            id="activeToggle"
-                            :checked="!activeFilter"
-                            @change="toggle('activeFilter')"
-                    />
-                </label>
-            </div>
-            <label class="active-toggle text-white flex-grow w-8 px-2" :class="{ 'font-bold': !activeFilter }"
-                   for="activeToggle">
-                Archived
-            </label>
+    <div class="switch-container flex-wrap justify-end items-center mx-auto text-center">
+        <div class="w-full active-or-inactive-switch flex ml-0 mb-2 md:mb-0">
+            <input
+                    type="checkbox"
+                    id="switch_left_2"
+                    @change="toggle('importantFilter')"
+                    :checked="!importantFilter"
+            />
+            <label for="switch_left_2" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">All</label>
+            <input
+                    type="checkbox"
+                    id="switch_right_2"
+                    @change="toggle('importantFilter')"
+                    :checked="importantFilter"
+            />  
+            <label for="switch_right_2" class="shadow flex-1 py-2 border border-dbblue-dark">Important</label>
         </div>
-        <div class="switch-container flex justify-center items-center w-full px-4 py-1">
-            <label class="important-toggle text-white flex-grow w-8 text-right px-2"
-                   :class="{ 'font-bold': !importantFilter }" for="importantToggle">
-                All
-            </label>
-            <div class="switch-box w-8">
-                <label class="sudo-switcher bg-brand-darker" :class="{ 'checked': importantFilter }" >
-                    <input
-                            type="checkbox"
-                            id="importantToggle"
-                            :checked="importantFilter"
-                            @change="toggle('importantFilter')"
-                    />
-                </label>
-            </div>
-            <label class="important-toggle text-white flex-grow w-8 px-2" :class="{ 'font-bold': importantFilter }"
-                   for="importantToggle">
-                Important
-            </label>
+        <div class="w-full active-or-inactive-switch flex mr-0 mt-2">
+            <input
+                    type="checkbox"
+                    id="switch_left"
+                    @change="toggle('activeFilter')"
+                    :checked="activeFilter"
+            />
+            <label for="switch_left" class="shadow flex-1 mr-2 py-2 border border-dbblue-dark">Actives</label>
+            <input
+                    type="checkbox"
+                    id="switch_right"
+                    @change="toggle('activeFilter')"
+                    :checked="!activeFilter"
+            />
+            <label for="switch_right" class="shadow flex-1 py-2 border border-dbblue-dark">Inactive</label>
         </div>
     </div>
 </template>
@@ -64,55 +56,46 @@
 </script>
 
 <style>
-    .switch-box {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+    .active-or-inactive-switch input {
+        position: absolute !important;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
     }
 
-    .switch-box input {
-        display: none;
+    .active-or-inactive-switch label {
+        display: inline-block;
+        width: 120px;
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        text-shadow: none;
+        -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        -ms-transition: all 0.15s ease-in-out;
+        -o-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out; 
     }
 
-    .switch-box .sudo-switcher {
-        font-size: 30px;
-        width: 2.5em;
-        height: 1em;
-        border-radius: 3em;
-        position: relative;
+    .active-or-inactive-switch label:hover {
         cursor: pointer;
-        outline: none;
-        -webkit-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
     }
 
-    .switch-box .sudo-switcher:after {
-        position: absolute;
-        content: "";
-        width: 1em;
-        height: 1em;
-        border-radius: 50%;
-        background: #fff;
-        -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
-        box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
-        -webkit-transform: scale(.7);
-        transform: scale(.7);
-        left: 0;
-        -webkit-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
+    .active-or-inactive-switch input:checked + label {
+        background-color: #A5DC86;
+        -webkit-box-shadow: none;
+        box-shadow: none;
     }
 
-    .switch-box .sudo-switcher.checked:after {
-        left: calc(100% - 1em);
+    .active-or-inactive-switch label:first-of-type {
+        border-radius: .125rem 0 0 .125rem;
+    }
+
+    .active-or-inactive-switch label:last-of-type {
+        border-radius: 0 .125rem .125rem 0;
     }
 </style>
-
