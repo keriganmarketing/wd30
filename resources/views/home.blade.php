@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('top')
-    <div class="container flex flex-wrap mx-auto justify-between">
+    <div class="container flex flex-wrap mx-auto justify-between py-8">
         <welcome-card
-                class="flex static w-full bg-transparent items-center text-center mx-2 rounded-b bg-white flex-wrap shadow"
+                class="flex static w-full bg-transparent md:bg-white items-center text-center mx-2 rounded-b flex-wrap shadow"
                 :boilerplate="boilerplate"
                 :data-user="user"
                 :active-leads-count="activeLeadsCount"
-                :archived-leads-count="archivedLeadsCount"
+                :avatar-path="'{{ $avatarPath }}'"
         >
         </welcome-card>
     </div>
@@ -19,7 +19,7 @@
             <div class="container flex w-full items-center justify-around mx-auto text-xl text-center">
                 <a
                         href="#"
-                        class="w-1/3 no-underline text-white font-brand py-4 text-center text-xl"
+                        class="w-1/3 no-underline text-white font-brand py-2 text-center text-xl"
                         :class="{'bg-brand': selected == 'leads'}"
                         @click="selected ='leads'"
                 >
@@ -27,7 +27,7 @@
                 </a>
                 <a
                         href="#"
-                        class="w-1/3 no-underline text-white font-brand py-4 text-center text-xl"
+                        class="w-1/3 no-underline text-white font-brand py-2 text-center text-xl"
                         :class="{'bg-brand': selected == 'properties'}"
                         @click="selected = 'properties'"
                 >
@@ -35,7 +35,7 @@
                 </a>
                 <a
                         href="#"
-                        class="w-1/3 no-underline text-white font-brand py-4 text-center text-xl"
+                        class="w-1/3 no-underline text-white font-brand py-2 text-center text-xl"
                         :class="{'bg-brand': selected == 'settings'}"
                         @click="selected = 'settings'"
                 >
@@ -66,7 +66,7 @@
                     v-if="selected === 'settings'"
                     v-on:content-edited="updateContent"
             ></content-card>
-            <seo-card v-if="selected === 'settings'"></seo-card>
+            <seo-card v-if="selected === 'settings'" :site-url="'{{ config('app.url') }}'"></seo-card>
         </div>
     </div>
 </div>

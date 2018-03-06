@@ -41026,9 +41026,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "relative" }, [
     _c("img", {
-      staticClass: "max-w-full mx-auto max-h-full",
+      staticClass: "max-w-full mx-auto rounded border",
       attrs: { src: _vm.src },
       on: {
         mouseover: function($event) {
@@ -41856,17 +41856,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -41922,44 +41911,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "w-full py-2 bg-white flex flex-wrap items-center border-b"
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
-          },
-          [_vm._v("\n            Photo:\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-2/3 py-2 md:px-2 bg-white w-auto flex-grow text-left"
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "flex max-h-32 md:h-48 w-auto pr-4" },
-              [
-                _c("avatar-upload", {
-                  staticClass:
-                    "max-h-32 md:h-48 w-auto relative rounded overflow-hidden cursor-pointer",
-                  attrs: { "avatar-path": _vm.avatarPath }
-                })
-              ],
-              1
-            )
-          ]
-        )
-      ]
-    ),
     _vm._v(" "),
     _c(
       "div",
@@ -47007,18 +46958,23 @@ var render = function() {
               _c(
                 "svg",
                 {
-                  staticClass: "fill-current h-8 w-8",
+                  staticClass: "feather feather-bookmark",
                   attrs: {
                     xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
+                    width: "24",
+                    height: "24",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    "stroke-width": "2",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
                   }
                 },
                 [
                   _c("path", {
-                    staticClass: "heroicon-ui",
                     attrs: {
-                      d:
-                        "M6.1 21.98a1 1 0 0 1-1.45-1.06l1.03-6.03-4.38-4.26a1 1 0 0 1 .56-1.71l6.05-.88 2.7-5.48a1 1 0 0 1 1.8 0l2.7 5.48 6.06.88a1 1 0 0 1 .55 1.7l-4.38 4.27 1.04 6.03a1 1 0 0 1-1.46 1.06l-5.4-2.85-5.42 2.85zm4.95-4.87a1 1 0 0 1 .93 0l4.08 2.15-.78-4.55a1 1 0 0 1 .29-.88l3.3-3.22-4.56-.67a1 1 0 0 1-.76-.54l-2.04-4.14L9.47 9.4a1 1 0 0 1-.75.54l-4.57.67 3.3 3.22a1 1 0 0 1 .3.88l-.79 4.55 4.09-2.15z"
+                      d: "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
                     }
                   })
                 ]
@@ -47046,20 +47002,34 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-file-text",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-5 4h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2v-2a1 1 0 0 1 2 0v2z"
+                            "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
                         }
-                      })
+                      }),
+                      _c("polyline", { attrs: { points: "14 2 14 8 20 8" } }),
+                      _c("line", {
+                        attrs: { x1: "16", y1: "13", x2: "8", y2: "13" }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "16", y1: "17", x2: "8", y2: "17" }
+                      }),
+                      _c("polyline", { attrs: { points: "10 9 9 9 8 9" } })
                     ]
                   ),
                   _vm._v(" "),
@@ -47086,20 +47056,27 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-file",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M6 2h9a1 1 0 0 1 .7.3l4 4a1 1 0 0 1 .3.7v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm9 2.41V7h2.59L15 4.41zM18 9h-3a2 2 0 0 1-2-2V4H6v16h12V9zm-2 4a1 1 0 0 1-1 1H9a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1z"
+                            "M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
                         }
-                      })
+                      }),
+                      _c("polyline", { attrs: { points: "13 2 13 9 20 9" } })
                     ]
                   ),
                   _vm._v(" "),
@@ -47126,19 +47103,31 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-folder-plus",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"
+                            "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
                         }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "12", y1: "11", x2: "12", y2: "17" }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "9", y1: "14", x2: "15", y2: "14" }
                       })
                     ]
                   ),
@@ -47163,19 +47152,28 @@ var render = function() {
                   _c(
                     "svg",
                     {
-                      staticClass: "fill-current h-8 w-8",
+                      staticClass: "feather feather-folder-minus",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24"
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
                       }
                     },
                     [
                       _c("path", {
-                        staticClass: "heroicon-ui",
                         attrs: {
                           d:
-                            "M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"
+                            "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
                         }
+                      }),
+                      _c("line", {
+                        attrs: { x1: "9", y1: "14", x2: "15", y2: "14" }
                       })
                     ]
                   ),
@@ -47882,47 +47880,6 @@ exports.push([module.i, "\n.lead-switch input {\n    position: absolute !importa
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50976,6 +50933,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -50994,10 +50956,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full mb-4 shadow" }, [
-    _c("div", { staticClass: "w-full bg-grey p-8 text-grey-darkest" }, [
-      _vm._v("\n        " + _vm._s(_vm.note.message) + " - "),
-      _c("small", [_vm._v(_vm._s(_vm.note.diff))])
+  return _c("div", { staticClass: "w-full relative my-2" }, [
+    _c("div", { staticClass: "w-full border-l p-1 text-grey-darkest" }, [
+      _c("div", { staticClass: "pin-r pin-t p-2 absolute text-cta-red" }, [
+        _c(
+          "svg",
+          {
+            staticClass: "feather feather-x",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "18",
+              height: "18",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              "stroke-width": "2",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            }
+          },
+          [
+            _c("line", { attrs: { x1: "18", y1: "6", x2: "6", y2: "18" } }),
+            _c("line", { attrs: { x1: "6", y1: "6", x2: "18", y2: "18" } })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pr-12 pl-2 " }, [
+        _vm._v("\n            " + _vm._s(_vm.note.message) + " "),
+        _c("br"),
+        _c("small", { staticClass: "italic text-smoke mt-1" }, [
+          _vm._v(_vm._s(_vm.note.diff))
+        ])
+      ])
     ])
   ])
 }
@@ -51076,7 +51067,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notes', 'lead'],
@@ -51117,13 +51107,11 @@ var render = function() {
     "div",
     {
       staticClass:
-        "text-grey-darkest flex flex-wrap justify-start lg:p-8 border-t w-full"
+        "text-grey-darkest flex flex-wrap justify-start lg:p-8 w-full"
     },
     [
       _c("div", { staticClass: "w-full mb-8 flex flex-wrap items-start" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:w-1/2" }, [
+        _c("div", { staticClass: "w-full" }, [
           _c("textarea", {
             directives: [
               {
@@ -51133,8 +51121,8 @@ var render = function() {
                 expression: "newNote"
               }
             ],
-            staticClass: "border rounded-t shadow-inner p-4 w-full",
-            attrs: { rows: "4" },
+            staticClass: "rounded-t border p-4 w-full",
+            attrs: { rows: "2" },
             domProps: { value: _vm.newNote },
             on: {
               input: function($event) {
@@ -51149,10 +51137,11 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "bg-teal text-white px-8 py-2 rounded-b w-full",
+              staticClass:
+                "bg-beachy-green text-white px-8 py-2 rounded-b w-full",
               on: { click: _vm.addNote }
             },
-            [_vm._v("Submit")]
+            [_vm._v("Add Note")]
           )
         ])
       ]),
@@ -51164,16 +51153,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "block w-full mb-1" }, [
-      _c("strong", [_vm._v("Add a note:")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -53245,21 +53225,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -53275,9 +53240,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Number,
             default: 0
         },
-        archivedLeadsCount: {
-            type: Number,
-            default: 0
+        avatarPath: {
+            type: String,
+            default: ''
         }
     },
     data: function data() {
@@ -53288,9 +53253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             animatedClicks: 0,
             leads: 0,
             animatedLeads: 0,
-            properties: [],
-            archivedLeads: 0,
-            animatedArchivedLeads: 0
+            properties: []
         };
     },
 
@@ -53388,221 +53351,137 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "pb-1 pt-4 w-full flex items-center justify-center flex-wrap"
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
-          [
-            _c("p", {
-              staticClass:
-                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-            }),
+  return _c(
+    "div",
+    {
+      staticClass:
+        "flex static w-full bg-transparent items-center text-center mx-1 flex-wrap rounded"
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "px-12 lg:px-4" },
+            [_c("avatar-upload", { attrs: { "avatar-path": _vm.avatarPath } })],
+            1
+          ),
+          _vm._v(" "),
+          !_vm.boilerplate
+            ? _c(
+                "p",
+                {
+                  staticClass:
+                    "hidden md:block px-2 mt-2 text-xl text-smoke-dark"
+                },
+                [_vm._v(_vm._s(_vm.user.name))]
+              )
+            : _c(
+                "p",
+                { staticClass: "block px-2 mt-2 text-xl text-smoke-dark" },
+                [_vm._v("Your Name")]
+              ),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "hidden md:block px-2 text-xs text-smoke-light" },
+            [_vm._v("Beachy Beach Real Estate")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex py-4 w-full md:w-3/5 bg-white items-center justify-center md:mt-12 mx-auto md:pr-8 flex-wrap rounded shadow md:shadow-none"
+        },
+        [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
-              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-              [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
-            ),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("p")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
-          [
-            _c("p", {
-              staticClass:
-                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-            }),
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Clicks")]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
-              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-              [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
-            ),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _c("p")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-1/3 items-start mx-auto p-1 mb-2 md:mb-4" },
-          [
-            _c("p", {
-              staticClass:
-                "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-            }),
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Property Impressions")]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
-              { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-              [_vm._v(_vm._s(_vm.clickThruRate.toLocaleString()))]
-            ),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("p")
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
-          _c("p", {
-            staticClass:
-              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-          }),
-          _c(
-            "p",
-            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-            [_vm._v(_vm._s(_vm.animatedLeads))]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass:
-                "text-sm md:text-lg font-brand text-smoke leading-tight"
-            },
-            [_vm._v("Active")]
-          ),
-          _vm._v(" "),
-          _c("p")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
-          _c("p", {
-            staticClass:
-              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-          }),
-          _c(
-            "p",
-            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-            [_vm._v(_vm._s(_vm.animatedArchivedLeads))]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass:
-                "text-sm md:text-lg font-brand text-smoke leading-tight"
-            },
-            [_vm._v("Archived")]
-          ),
-          _vm._v(" "),
-          _c("p")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 md:mb-4" }, [
-          _c("p", {
-            staticClass:
-              "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
-          }),
-          _c(
-            "p",
-            { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
-            [_vm._v(_vm._s(_vm.totalLeads))]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass:
-                "text-sm md:text-lg font-brand text-smoke leading-tight"
-            },
-            [_vm._v("Total")]
-          ),
-          _vm._v(" "),
-          _c("p")
-        ])
-      ]
-    )
-  ])
+              {
+                staticClass:
+                  "block text-5xl text-smoke-darker leading-tightest md:leading-tighter"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
+                  [_vm._v(_vm._s(_vm.animatedLeads))]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
+                  [_vm._v("Active Leads")]
+                )
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full text-grey-darker md:pt-2" }, [
-      _c("h3", { staticClass: "font-brand text-xl" }, [
-        _vm._v("Property Analytics")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
-      [
-        _vm._v("Total "),
-        _c("span", { staticClass: "md:hidden clearfix" }),
-        _vm._v("Clicks")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
-      [
-        _vm._v("Total "),
-        _c("span", { staticClass: "md:hidden clearfix" }),
-        _vm._v("Impressions")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "text-sm md:text-lg font-brand text-smoke leading-tight" },
-      [
-        _vm._v("Average "),
-        _c("span", { staticClass: "md:hidden clearfix" }),
-        _vm._v("Click-thru Rate")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "w-full text-grey-darker pt-2 md:pt-6 border-grey-light border-t"
-      },
-      [
-        _c("h3", { staticClass: "font-brand text-xl" }, [
-          _vm._v("Lead Analytics")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
