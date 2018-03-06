@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MlsNumber extends Model
 {
     protected $fillable = [
+        'user_id',
         'mls_id'
     ];
 
@@ -15,5 +16,13 @@ class MlsNumber extends Model
     public function realtor()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function toString()
+    {
+        $mlsNumbers = MlsNumber::all()->pluck('mls_id');
+
+        return implode('|', $mlsNumbers->toArray());
+
     }
 }
