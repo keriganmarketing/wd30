@@ -21,7 +21,7 @@
                     <div class="flex-1 m-0 mx-2">
                         @include('partials.logo')
                         <a href="{{ route('logout') }}"
-                            class="no-underline hover:underline text-cta-red px-4 py-4 md:px-8 md:py-7 lg:px-10 my-1 fixed pin-t pin-r"
+                            class="no-underline hover:underline text-smoke-darker px-4 py-4 md:px-8 md:py-7 lg:px-10 my-1 fixed pin-t pin-r"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             <span class="mb-2 py-2">
