@@ -1,11 +1,11 @@
 <template>
     <div class="container mx-auto">
-        <div class="lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-48 md:h-32">
+        <div class="lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-44 md:h-32">
             <lead-filters
                 @toggle="filter"
                 :active-filter="activeFilter"
                 :important-filter="importantFilter"
-                class="md:flex-1 w-2/3 items-end mb-2 md:mb-1 md:ml-8 text-base"
+                class="md:flex-1 w-2/3 items-end mb-1 md:ml-8 text-base"
             />
             <lead-pagination
                 @page="page"
