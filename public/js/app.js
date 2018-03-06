@@ -50456,7 +50456,7 @@ var render = function() {
         return _c("mls-number", {
           key: mlsNumber.id,
           staticClass:
-            "w-1/2 md:w-1/3 lg:w-1/5 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center",
+            "w-2/3 md:w-1/3 lg:w-1/4 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center",
           attrs: { "mls-number": mlsNumber },
           on: { "delete-number": _vm.deleteNumber }
         })
@@ -50466,7 +50466,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-full text-brand flex flex-wrap items-center justify-center md:justify-start"
+            "w-full text-brand flex flex-wrap items-center justify-center md:justify-start h-auto py-2 md:py-0 md:h-12"
         },
         [
           _c(
@@ -50510,7 +50510,7 @@ var render = function() {
                   }
                 ],
                 staticClass:
-                  "border border-secondary mx-2 md:text-xl py-2 md:px-2 bg-white w-full md:w-1/4 text-left",
+                  "border border-secondary mx-16 mt-4 md:mt-1 md:mx-2 md:text-xl py-1 px-2 bg-white w-full md:w-1/4 text-center",
                 attrs: { type: "text" },
                 domProps: { value: _vm.mls_id },
                 on: {
@@ -50537,7 +50537,9 @@ var render = function() {
           _vm.error != ""
             ? _c(
                 "span",
-                { staticClass: "block w-auto border border-red p-4 m-2" },
+                {
+                  staticClass: "block w-auto text-cta-red mt-1 py-1 px-1 mx-1"
+                },
                 [_vm._v("\n            " + _vm._s(_vm.error) + "\n        ")]
               )
             : _vm._e()
