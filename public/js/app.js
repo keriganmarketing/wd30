@@ -53440,7 +53440,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-2 flex-wrap rounded"
+        "flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-1 flex-wrap rounded"
     },
     [
       _c(
@@ -53497,7 +53497,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedClicks.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -53505,7 +53505,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Clicks")]
                 )
               ]
@@ -53522,7 +53522,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedImpressions.toLocaleString()))]
                 ),
                 _vm._v(" "),
@@ -53530,7 +53530,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
                   [_vm._v("Property Impressions")]
                 )
               ]
@@ -53547,7 +53547,7 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-3xl md:text-5xl text-brand font-brand" },
+                  { staticClass: "text-2xl md:text-5xl text-brand font-brand" },
                   [_vm._v(_vm._s(_vm.animatedLeads))]
                 ),
                 _vm._v(" "),
@@ -53555,7 +53555,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "text-sm md:text-lg font-brand text-smoke" },
+                  { staticClass: "text-xs md:text-lg font-brand text-smoke" },
                   [_vm._v("Active Leads")]
                 )
               ]
