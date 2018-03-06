@@ -9,17 +9,6 @@
 
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
-                Photo:
-            </div>
-            <div class="w-2/3 py-2 md:px-2 bg-white w-auto flex-grow text-left">
-                <div class="flex max-h-32 md:h-48 w-auto pr-4">
-                    <avatar-upload :avatar-path="avatarPath"
-                                   class="max-h-32 md:h-48 w-auto relative rounded overflow-hidden cursor-pointer"/>
-                </div>
-            </div>
-        </div>
-        <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
-            <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Name:
             </div>
             <input

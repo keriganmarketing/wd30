@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('top')
-    <div class="container flex flex-wrap mx-auto justify-between">
+    <div class="container flex flex-wrap mx-auto justify-between py-8">
         <welcome-card
-                class="flex static w-full bg-transparent items-center text-center mx-2 rounded-b bg-white flex-wrap shadow"
+                class="flex static w-full bg-transparent md:bg-white items-center text-center mx-2 rounded-b flex-wrap shadow"
                 :boilerplate="boilerplate"
                 :data-user="user"
                 :active-leads-count="activeLeadsCount"
-                :archived-leads-count="archivedLeadsCount"
+                :avatar-path="'{{ $avatarPath }}'"
         >
         </welcome-card>
     </div>
