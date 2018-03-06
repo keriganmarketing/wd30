@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-<div class="container mx-auto min-h-screen px-2">
+<div class="container mx-auto min-h-screen px-1">
     <div class="flex w-full items-center justify-around mx-auto text-xl text-center lg:px-24">
         <a
             href="#"

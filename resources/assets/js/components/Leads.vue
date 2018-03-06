@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto">
-        <div class="lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-44 md:h-32">
+        <div class="lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-40 md:h-32">
             <lead-filters
                 @toggle="filter"
                 :active-filter="activeFilter"

@@ -41031,8 +41031,8 @@ var render = function() {
     { staticClass: "max-h-avatar relative rounded overflow-hidden" },
     [
       _c("img", {
-        staticClass: "max-w-full mx-auto maxh-16",
-        staticStyle: { "max-height": "12rem" },
+        staticClass: "max-w-full mx-auto",
+        staticStyle: { "max-height": "8rem" },
         attrs: { src: _vm.src },
         on: {
           mouseover: function($event) {
@@ -47538,7 +47538,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-44 md:h-32"
+            "lead-controls flex md:flex-row-reverse items-end justify-center md:justify-end py-2 flex-wrap h-40 md:h-32"
         },
         [
           _c("lead-filters", {
@@ -53484,10 +53484,10 @@ var render = function() {
         "div",
         {
           staticClass:
-            "flex pb-2 pt-6 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"
+            "flex pt-4 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:mt-12 mx-auto md:pr-8 flex-wrap rounded shadow md:shadow-none"
         },
         [
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
               {
@@ -53512,7 +53512,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
               {
@@ -53537,7 +53537,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/3 items-start mx-auto p-1 mb-4" }, [
+          _c("div", { staticClass: "w-1/3 items-start mx-auto mb-4" }, [
             _c(
               "p",
               {

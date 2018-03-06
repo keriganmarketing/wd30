@@ -6,22 +6,22 @@
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
             <p class="hidden md:block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
         </div>
-        <div class="flex pb-2 pt-6 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+        <div class="flex pt-4 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:mt-12 mx-auto md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
                     <span class="text-xs md:text-lg font-brand text-smoke">Property Clicks</span>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
                     <span class="text-xs md:text-lg font-brand text-smoke">Property Impressions</span>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
