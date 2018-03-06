@@ -1,6 +1,6 @@
 <template>
     <div
-        class="container relative mx-auto flex flex-wrap py-4 px-8 bg-tan-lightest mb-2 shadow border-l-4 border-grey-light"
+        class="container relative mx-auto flex flex-wrap py-4 px-8 bg-white mb-2 shadow border-l-4 border-grey-light"
         :class="{
             'border-red': lead.important
         }"
