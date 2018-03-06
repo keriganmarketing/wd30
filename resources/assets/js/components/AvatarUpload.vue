@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="relative">
         <img
             :src="src"
-            class="max-w-full mx-auto max-h-full"
+            class="max-w-full mx-auto rounded border"
             @mouseover="imageHover = true"
         >
         <form
