@@ -48006,7 +48006,7 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "shadow flex-1 mr-2 py-2 border border-dbblue-dark",
+              staticClass: "shadow flex-1 mr-1 py-2 border border-dbblue-dark",
               attrs: { for: "switch_left_2" }
             },
             [_vm._v("All")]
@@ -48050,7 +48050,7 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "shadow flex-1 mr-2 py-2 border border-dbblue-dark",
+              staticClass: "shadow flex-1 mr-1 py-2 border border-dbblue-dark",
               attrs: { for: "switch_left" }
             },
             [_vm._v("Actives")]
