@@ -3434,6 +3434,10 @@ button,
   height: 8rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .h-44 {
   height: 11rem;
 }
@@ -9231,6 +9235,10 @@ select::-ms-expand {
     height: 8rem;
   }
 
+  .sm\:h-40 {
+    height: 10rem;
+  }
+
   .sm\:h-44 {
     height: 11rem;
   }
@@ -14672,6 +14680,10 @@ select::-ms-expand {
 
   .md\:h-32 {
     height: 8rem;
+  }
+
+  .md\:h-40 {
+    height: 10rem;
   }
 
   .md\:h-44 {
@@ -20117,6 +20129,10 @@ select::-ms-expand {
     height: 8rem;
   }
 
+  .lg\:h-40 {
+    height: 10rem;
+  }
+
   .lg\:h-44 {
     height: 11rem;
   }
@@ -25558,6 +25574,10 @@ select::-ms-expand {
 
   .xl\:h-32 {
     height: 8rem;
+  }
+
+  .xl\:h-40 {
+    height: 10rem;
   }
 
   .xl\:h-44 {

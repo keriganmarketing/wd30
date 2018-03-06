@@ -2,8 +2,8 @@
     <div class="max-h-avatar relative rounded overflow-hidden">
         <img
             :src="src"
-            class="max-w-full mx-auto maxh-16"
-            style="max-height:12rem"
+            class="max-w-full mx-auto"
+            style="max-height:8rem"
             @mouseover="imageHover = true"
         >
         <form
