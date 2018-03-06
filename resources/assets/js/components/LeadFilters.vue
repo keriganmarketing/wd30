@@ -41,47 +41,6 @@
             </div>
         </div>
     </div>
-        <!--<div class="switch-container flex justify-center items-center w-full px-4 py-1">-->
-            <!--<label class="active-toggle text-white flex-grow w-8 text-right px-2"-->
-                   <!--:class="{ 'font-bold': activeFilter }" for="activeToggle">-->
-                <!--Active-->
-            <!--</label>-->
-            <!--<div class="switch-box w-8">-->
-                <!--<label class="sudo-switcher bg-brand-darker" :class="{ 'checked': !activeFilter }" >-->
-                    <!--<input-->
-                            <!--type="checkbox"-->
-                            <!--id="activeToggle"-->
-                            <!--:checked="!activeFilter"-->
-                            <!--@change="toggle('activeFilter')"-->
-                    <!--/>-->
-                <!--</label>-->
-            <!--</div>-->
-            <!--<label class="active-toggle text-white flex-grow w-8 px-2" :class="{ 'font-bold': !activeFilter }"-->
-                   <!--for="activeToggle">-->
-                <!--Archived-->
-            <!--</label>-->
-
-        <!--<div class="switch-container flex justify-center items-center w-full px-4 py-1">-->
-            <!--<label class="important-toggle text-white flex-grow w-8 text-right px-2"-->
-                   <!--:class="{ 'font-bold': !importantFilter }" for="importantToggle">-->
-                <!--All-->
-            <!--</label>-->
-            <!--<div class="switch-box w-8">-->
-                <!--<label class="sudo-switcher bg-brand-darker" :class="{ 'checked': importantFilter }" >-->
-                    <!--<input-->
-                            <!--type="checkbox"-->
-                            <!--id="importantToggle"-->
-                            <!--:checked="importantFilter"-->
-                            <!--@change="toggle('importantFilter')"-->
-                    <!--/>-->
-                <!--</label>-->
-            <!--</div>-->
-            <!--<label class="important-toggle text-white flex-grow w-8 px-2" :class="{ 'font-bold': importantFilter }"-->
-                   <!--for="importantToggle">-->
-                <!--Important-->
-            <!--</label>-->
-        <!--</div>-->
-    </div>
 </template>
 
 <script>
@@ -150,4 +109,3 @@
         border-radius: 0 4px 4px 0;
     }
 </style>
-
