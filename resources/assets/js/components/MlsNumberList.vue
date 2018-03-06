@@ -1,13 +1,13 @@
 <template>
-<div class="w-full md:w-3/4 flex flex-wrap justify-center md:justify-start items-center">
+<div class="w-full md:w-3/4 flex flex-wrap justify-center md:justify-start items-center ml-1">
     <mls-number
         v-for="mlsNumber in mlsNumbers"
         :key="mlsNumber.id"
         :mls-number="mlsNumber"
         @delete-number="deleteNumber"
-        class="w-1/2 md:w-1/6 flex flex-wrap rounded px-2 py-3 m-2 text-center bg-brand text-white items-center"
+        class="w-1/2 md:w-1/3 lg:w-1/5 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center"
     />
-    <div class="w-full text-brand flex flex-wrap items-center">
+    <div class="w-full text-brand flex flex-wrap items-center justify-center md:justify-start">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="36"
@@ -18,7 +18,7 @@
             stroke-width="1"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="feather m-4 feather-plus-circle text-center"
+            class="feather mt-1 feather-plus-circle text-center"
             @click="addingMlsNumber = ! addingMlsNumber"
         >
             <circle cx="12" cy="12" r="10"></circle>
