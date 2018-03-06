@@ -1,27 +1,27 @@
 <template>
-    <div class="flex static w-full bg-transparent md:bg-tan-lightest items-start text-center mx-4 md:mx-2 flex-wrap rounded">
-        <div class="w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-1 md:block md:mx-0 md:py-12 lg:pt-16 md:mx-auto">
-            <div class="px-12 lg:px-4"><avatar-upload :avatar-path="avatarPath" class="border border-tan-lightest" /></div>
+    <div class="flex static w-full bg-transparent items-center text-center mx-1 flex-wrap rounded">
+        <div class="w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto">
+            <div class="px-12 lg:px-4"><avatar-upload :avatar-path="avatarPath" /></div>
             <p class="hidden md:block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
             <p class="hidden md:block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
         </div>
-        <div class="flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center pt-6 md:pt-6 md:mt-16 mx-auto px-1 md:pr-4 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+        <div class="flex py-4 w-full md:w-3/5 bg-white items-center justify-center md:mt-12 mx-auto md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
                     <br>
                     <span class="text-xs md:text-lg font-brand text-smoke">Property Clicks</span>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
                     <br>
                     <span class="text-xs md:text-lg font-brand text-smoke">Property Impressions</span>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
                     <span class="text-2xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
                     <br>
@@ -29,10 +29,6 @@
                 </p>
             </div>
         </div>
-        <button class="px-4 py-4 relative pin-b pin-r z-50 text-brand-darkest">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fixed pin-b pin-r p-4"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
-        </button>
-
     </div>
 </template>
 <script>
@@ -42,10 +38,6 @@ export default {
             type: Object,
             default: () => {}
         },
-        avatarPath: {
-            type: String,
-            default: ''
-        },
         boilerplate: {
             type: Boolean,
             default: false
@@ -53,6 +45,10 @@ export default {
         activeLeadsCount: {
             type: Number,
             default: 0
+        },
+        avatarPath: {
+            type: String,
+            default: ''
         }
     },
     data () {
@@ -63,12 +59,18 @@ export default {
             animatedClicks: 0,
             leads: 0,
             animatedLeads: 0,
-            properties: []
+            properties: [],
         }
     },
     computed: {
         user: function () {
             return this.dataUser;
+        },
+        totalLeads: function () {
+            return this.leads + this.archivedLeads;
+        },
+        clickThruRate: function () {
+            return ((this.clicks/this.impressions) * 100).toFixed(2) + '%';
         }
     },
     watch: {
