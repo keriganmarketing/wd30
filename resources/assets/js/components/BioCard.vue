@@ -101,17 +101,7 @@
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 MLS&nbsp;IDs:
             </div>
-            <input
-                    type="text"
-                    class="border border-transparent md:text-xl py-2 md:px-2 bg-white w-auto flex-grow text-left"
-                    :class="{
-                    'border-secondary': mls_id
-                }"
-                    ref="mls_id"
-                    v-model="user.mls_id"
-                    @focus="edit('mls_id')"
-                    @blur="submit('mls_id')"
-            />
+            <mls-number-list></mls-number-list>
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
             <div class="font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left">

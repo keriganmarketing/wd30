@@ -17,6 +17,8 @@ Vue.component('map-search', require('./components/MapSearch.vue'));
 Vue.component('max-price', require('./components/MaxPrice.vue'));
 Vue.component('min-price', require('./components/MinPrice.vue'));
 Vue.component('mini-listing', require('./components/MiniListing.vue'));
+Vue.component('mls-number-list', require('./components/MlsNumberList.vue'));
+Vue.component('mls-number', require('./components/MlsNumber.vue'));
 Vue.component('modal', require('./components/Modal.vue'));
 Vue.component('my-properties', require('./components/MyProperties.vue'));
 Vue.component('my-property', require('./components/MyProperty.vue'));

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MlsNumber;
 use Illuminate\Http\Request;
+use App\User;
 
 class MlsNumbersController extends Controller
 {
@@ -26,11 +27,15 @@ class MlsNumbersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
-            'mls_id' => 'required|max:10'
+            'mls_id' => 'required|max:10|unique:mls_numbers'
         ]);
 
-        $mlsNumber = MlsNumber::create($request->all());
+        $user = User::realtor();
+
+        $mlsNumber = MlsNumber::create([
+            'user_id' => $user->id,
+            'mls_id' => $request->mls_id
+        ]);
 
         return $mlsNumber;
     }
