@@ -1,31 +1,46 @@
 <template>
-    <div class="flex static w-full bg-transparent md:bg-tan-lightest items-center text-center mx-4 md:mx-2 flex-wrap rounded">
-        <div class="w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto">
-            <div class="px-12 lg:px-4"><avatar-upload :avatar-path="avatarPath" class="border border-tan-lightest" /></div>
-            <p class="hidden md:block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
-            <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
-            <p class="hidden md:block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>
-        </div>
-        <div class="flex pb-4 pt-8 w-full md:w-3/5 bg-tan-lightest items-center justify-center md:pt-4 md:mt-12 mx-auto p-1 md:pr-8 flex-wrap rounded shadow md:shadow-none"><!--leading-tighter is a custom utility. Compensates for <br>.-->
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+    <div>
+        <div class="pb-1 pt-4 w-full flex items-center justify-center flex-wrap"><!--leading-tighter is a custom utility. Compensates for <br>.-->
+            <div class="w-full text-grey-darker md:pt-2">
+                <h3 class="font-brand text-xl">Property Analytics</h3>
+            </div>
+            <div class="w-1/3 items-start mx-auto p-1 mb-2 md:mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</span>
-                    <br>
-                    <span class="text-sm md:text-lg font-brand text-smoke">Property Clicks</span>
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ animatedClicks.toLocaleString() }}</p>
+                    <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Total <span class="md:hidden clearfix"></span>Clicks</p>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto p-1 mb-2 md:mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</span>
-                    <br>
-                    <span class="text-sm md:text-lg font-brand text-smoke">Property Impressions</span>
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ animatedImpressions.toLocaleString() }}</p>
+                <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Total <span class="md:hidden clearfix"></span>Impressions</p>
                 </p>
             </div>
-            <div class="w-1/3 items-start mx-auto p-1 mb-4">
+            <div class="w-1/3 items-start mx-auto p-1 mb-2 md:mb-4">
                 <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
-                    <span class="text-3xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</span>
-                    <br>
-                    <span class="text-sm md:text-lg font-brand text-smoke">Active Leads</span>
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ clickThruRate.toLocaleString() }}</p>
+                    <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Average <span class="md:hidden clearfix"></span>Click-thru Rate</p>
+                </p>
+            </div>
+            <div class="w-full text-grey-darker pt-2 md:pt-6 border-grey-light border-t">
+                <h3 class="font-brand text-xl">Lead Analytics</h3>
+            </div>
+            <div class="w-1/3 items-start mx-auto p-1 md:mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ animatedLeads }}</p>
+                    <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Active</p>
+                </p>
+            </div>
+            <div class="w-1/3 items-start mx-auto p-1 md:mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ animatedArchivedLeads }}</p>
+                    <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Archived</p>
+                </p>
+            </div>
+            <div class="w-1/3 items-start mx-auto p-1 md:mb-4">
+                <p class="block text-5xl text-smoke-darker leading-tightest md:leading-tighter">
+                    <p class="text-3xl md:text-5xl text-brand font-brand">{{ totalLeads }}</p>
+                    <p class="text-sm md:text-lg font-brand text-smoke leading-tight">Total</p>
                 </p>
             </div>
         </div>
@@ -38,15 +53,15 @@ export default {
             type: Object,
             default: () => {}
         },
-        avatarPath: {
-            type: String,
-            default: ''
-        },
         boilerplate: {
             type: Boolean,
             default: false
         },
         activeLeadsCount: {
+            type: Number,
+            default: 0
+        },
+        archivedLeadsCount: {
             type: Number,
             default: 0
         }
@@ -59,12 +74,20 @@ export default {
             animatedClicks: 0,
             leads: 0,
             animatedLeads: 0,
-            properties: []
+            properties: [],
+            archivedLeads: 0,
+            animatedArchivedLeads: 0
         }
     },
     computed: {
         user: function () {
             return this.dataUser;
+        },
+        totalLeads: function () {
+            return this.leads + this.archivedLeads;
+        },
+        clickThruRate: function () {
+            return ((this.clicks/this.impressions) * 100).toFixed(2) + '%';
         }
     },
     watch: {

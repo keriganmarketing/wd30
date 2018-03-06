@@ -28,6 +28,7 @@ const app = new Vue({
         }),
         selected: 'leads',
         activeLeadsCount: 0,
+        archivedLeadsCount: 0,
         viewType: 'grid'
     },
     computed: {
