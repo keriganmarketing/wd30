@@ -18,16 +18,6 @@ class MlsNumbersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,41 +25,14 @@ class MlsNumbersController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'user_id' => 'required',
+            'mls_id' => 'required|max:10'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\MlsNumber  $mlsNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MlsNumber $mlsNumber)
-    {
-        //
-    }
+        $mlsNumber = MlsNumber::create($request->all());
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\MlsNumber  $mlsNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MlsNumber $mlsNumber)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MlsNumber  $mlsNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MlsNumber $mlsNumber)
-    {
-        //
+        return $mlsNumber;
     }
 
     /**
@@ -80,6 +43,6 @@ class MlsNumbersController extends Controller
      */
     public function destroy(MlsNumber $mlsNumber)
     {
-        //
+        $mlsNumber->delete();
     }
 }
