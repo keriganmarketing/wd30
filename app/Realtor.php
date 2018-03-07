@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\MlsNumber;
 use Facades\KeriganSolutions\Drone\Mothership;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,13 +12,11 @@ class Realtor
     const PLACEHOLDER_PHOTO = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
     public $data;
-    public $avatar;
     public $listings;
 
     public function __construct()
     {
         $this->data = [];
-        $this->avatar = '';
         $this->listings = [];
     }
     public function exists()
@@ -34,15 +33,9 @@ class Realtor
 
     public function withListings()
     {
-        $this->listings = Mothership::agentListings($this->data->mls_id);
+        $agentMlsNumberString = MlsNumber::toString();
 
-        return $this;
-    }
-
-    public function andAvatar()
-    {
-        $default = $this->data->default_photo ?? self::PLACEHOLDER_PHOTO;
-        $this->avatar  = isset($this->data->avatar->path) ? asset('storage/' . $this->data->avatar->path) : $default;
+        $this->listings = Mothership::agentListings($agentMlsNumberString);
 
         return $this;
     }
