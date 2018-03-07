@@ -12,13 +12,11 @@ class Realtor
     const PLACEHOLDER_PHOTO = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
     public $data;
-    public $avatar;
     public $listings;
 
     public function __construct()
     {
         $this->data = [];
-        $this->avatar = '';
         $this->listings = [];
     }
     public function exists()
@@ -38,14 +36,6 @@ class Realtor
         $agentMlsNumberString = MlsNumber::toString();
 
         $this->listings = Mothership::agentListings($agentMlsNumberString);
-
-        return $this;
-    }
-
-    public function andAvatar()
-    {
-        $default = $this->data->default_photo ?? self::PLACEHOLDER_PHOTO;
-        $this->avatar  = isset($this->data->avatar->path) ? asset('storage/' . $this->data->avatar->path) : $default;
 
         return $this;
     }

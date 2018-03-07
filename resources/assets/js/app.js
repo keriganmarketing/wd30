@@ -19,7 +19,7 @@ const app = new Vue({
             primary_phone: null,
             company: null,
             address: null,
-            mls_id: null,
+            avatar_path: null
         }),
         content: new Content({
             id: '',

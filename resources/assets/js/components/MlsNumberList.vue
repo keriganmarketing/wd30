@@ -81,12 +81,17 @@ export default {
                 vm.mlsNumbers.push(response.data);
             })
             .catch(err => {
-                vm.error = err.response.data.errors.mls_id[0];
+                vm.error = vm.ucWords(err.response.data.errors.mls_id[0]);
             })
         },
         onBlur () {
             this.error = '';
             this.addingMlsNumber = false;
+        },
+        ucWords (str) {
+            return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+                return $1.toUpperCase();
+            });
         }
     }
 }
