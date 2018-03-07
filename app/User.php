@@ -2,14 +2,12 @@
 
 namespace App;
 
-use App\Avatar;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +25,8 @@ class User extends Authenticatable
         'is_realtor',
         'office_phone',
         'primary_phone',
-        'default_photo'
+        'default_photo',
+        'avatar_path'
     ];
 
     /**
@@ -46,16 +45,11 @@ class User extends Authenticatable
      */
     public function scopeRealtor($query)
     {
-        return $query->where('is_realtor', true)->with('avatar')->first();
+        return $query->where('is_realtor', true)->with('mls_numbers')->first();
     }
 
-    /**
-     * Determine if the user has an avatar.
-     *
-     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function avatar()
+    public function mls_numbers()
     {
-        return $this->hasOne(Avatar::class);
+        return $this->hasMany(MlsNumber::class);
     }
 }
