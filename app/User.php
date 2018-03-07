@@ -22,11 +22,16 @@ class User extends Authenticatable
         'company',
         'password',
         'cell_phone',
+        'fb_page_id',
         'is_realtor',
+        'avatar_path',
         'office_phone',
         'primary_phone',
         'default_photo',
-        'avatar_path'
+        'twitter_handle',
+        'fb_access_token',
+        'instagram_handle',
+        'youtube_channel_id',
     ];
 
     /**

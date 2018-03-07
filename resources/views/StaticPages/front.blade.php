@@ -31,5 +31,11 @@
             @endif
         </div>
     </section>
+    <section class="bg-secondary-lighter py-8 lg:py-16 xl:py-24">
+        <div class="container mx-auto py-2">
+            <h2 class="text-white text-center pb-4 text-3xl">Latest News</h2>
+            <facebook-feed class="flex flex-wrap w-full items-center justify-center"></facebook-feed>
+        </div>
+    </section>
     @include('partials.contact')
 @endsection

@@ -23,7 +23,11 @@ export default class User {
                 primary_phone: updated.primary_phone,
                 company: updated.company,
                 mls_id: updated.mls_id,
-                address: updated.address
+                address: updated.address,
+                fb_page_id: updated.fb_page_id,
+                youtube_channel_id: updated.youtube_channel_id,
+                twitter_handle: updated.twitter_handle,
+                instagram_handle: updated.instagram_handle,
             }
         })
             .then(response => {

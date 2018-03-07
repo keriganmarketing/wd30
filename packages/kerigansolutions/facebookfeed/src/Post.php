@@ -2,6 +2,7 @@
 namespace KeriganSolutions\FacebookFeed;
 
 use KeriganSolutions\FacebookFeed\Fetchers\EventsFetcher;
+use Carbon\Carbon;
 
 class Post
 {
@@ -28,6 +29,8 @@ class Post
         if (isset($this->data->attachments->data[0]->media->image->width) && $this->data->attachments->data[0]->media->image->width <= 100) {
             $this->full_picture = null;
         }
+
+        $this->data->diff = Carbon::parse($this->data->created_time)->diffForHumans();
 
         return $this;
     }

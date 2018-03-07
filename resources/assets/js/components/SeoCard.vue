@@ -4,7 +4,7 @@
             <span class="text-left w-auto text-3xl font-brand font-bold text-secondary">
                 SEO
             </span>
-            <small class="text-xs w-auto flex-grow text-right">This is where you will configure how your site will look on Google</small>
+            <small class="text-xs w-auto flex-grow text-right">How your site will look on Google</small>
         </p>
         <div class="w-full py-2 bg-white flex flex-wrap items-start border-b px-4">
             <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 text-left">

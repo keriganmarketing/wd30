@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\User;
 use Socialite;
 use Illuminate\Http\Request;
+use KeriganSolutions\FacebookFeed\FacebookFeed;
 
 class FacebookController extends Controller
 {
+    public function index()
+    {
+        return response()->json(FacebookFeed::fetch(3));
+    }
+
     public function redirectToProvider()
     {
         return Socialite::driver('facebook')->redirect();
