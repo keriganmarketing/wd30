@@ -11,9 +11,13 @@ class PostFetcher implements DataFetcher
     const FEED = 'permalink_url,full_picture,message,object_id,type,status_type,caption,created_time,link,attachments{target,media}';
 
     protected $client;
+    protected $pageId;
+    protected $accessToken;
 
     public function __construct()
     {
+        $this->accessToken = auth()->user()->fb_access_token;
+        $this->pageId      = auth()->user()->fb_page_id;
         $this->client = new Client(['base_uri' => 'https://graph.facebook.com/v2.11']);
     }
 
@@ -22,10 +26,10 @@ class PostFetcher implements DataFetcher
         try {
             $response = $this->client->request(
                 'GET',
-                '/' . FACEBOOK_PAGE_ID .
+                '/' . $this->pageId .
                 '/posts/?fields=' . self::FEED .
                 '&limit=' . $limit .
-                '&access_token=' . FACEBOOK_ACCESS_TOKEN .
+                '&access_token=' . $this->accessToken .
                 '&before=' . $before .
                 '&after=' . $after
             );

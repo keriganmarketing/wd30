@@ -12,10 +12,14 @@ class EventsFetcher implements DataFetcher
     const EVENT_PHOTO = 'photos{images}';
 
     protected $client;
+    protected $accessToken;
+    protected $pageId;
 
     public function __construct()
     {
         $this->client = new Client(['base_uri' => 'https://graph.facebook.com/v2.11']);
+        $this->accessToken = auth()->user()->fb_access_token;
+        $this->pageId      = auth()->user()->fb_page_id;
     }
 
     public function get($limit, $before, $after)
@@ -23,12 +27,12 @@ class EventsFetcher implements DataFetcher
         try {
             $response = $this->client->request(
                 'GET',
-                '/' . FACEBOOK_PAGE_ID .
+                '/' . $this->pageId .
                 '/events/?fields=' . self::EVENTS .
                 '&limit=' . $limit .
                 '&before=' . $before .
                 '&after=' . $after .
-                '&access_token=' . FACEBOOK_ACCESS_TOKEN
+                '&access_token=' . $this->accessToken
             );
 
             $feed = json_decode($response->getBody());
@@ -47,7 +51,7 @@ class EventsFetcher implements DataFetcher
                 'GET',
                 $eventId .
                 '?fields=' . self::EVENT_PHOTO .
-                '&access_token=' . FACEBOOK_ACCESS_TOKEN
+                '&access_token=' . $this->accessToken
             );
 
             return json_decode($response->getBody())->photos->data[0]->images[0]->source;

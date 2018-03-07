@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('company')->nullable();
             $table->string('default_photo')->nullable();
             $table->string('avatar_path')->nullable();
+            $table->text('fb_access_token')->nullable();
+            $table->string('fb_page_id')->nullable();
             $table->boolean('is_realtor')->default(0);
             $table->text('address')->nullable();
             $table->rememberToken();
