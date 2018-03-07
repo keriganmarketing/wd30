@@ -21,9 +21,8 @@ class FacebookController extends Controller
         $realtor = auth()->user();
         dd($realtor);
 
-        $realtor->update([
-            'fb_access_token' => $user->token
-        ]);
+        $realtor->fb_access_token = $user->token;
+        $realtor->save();
 
         return view('callbacks.success');
     }
