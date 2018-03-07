@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="flex hero lg:h-64 bg-brand-darker py-4 bg-image-full" style="background-image: url('https://beachybeach.com/wp-content/themes/kmaidx/img/beachy-illustration.jpg')">
+    <section class="flex lg:h-64 bg-brand-darker py-4 bg-image-full" style="background-image: url('https://beachybeach.com/wp-content/themes/kmaidx/img/beachy-illustration.jpg')">
         @include('partials.quick-search')
     </section>
     <section id="about" class="about bg-white py-8 lg:py-16 xl:py-24">
@@ -12,7 +12,7 @@
                     <a href="/property-search/" class="button-brand w-auto mt-4 no-underline" >Property Search</a>
                 </div>
                 <div class="flex-auto w-full md:w-1/4 px-3 justify-center text-center py-2">
-                    <img src="{{ $avatar }}" class="border border-grey-darker rounded inline-block" >
+                    <img src="{{ asset('/storage/'. $realtor->data->avatar_path) }}" class="border border-grey-darker rounded inline-block" >
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
     <section id="featured-listings" class="featured-listings bg-brand-dark py-8 lg:py-16 xl:py-24">
         <div class="container mx-auto py-2">
             @if(count($realtor->listings) > 0)
-            <h2 class="text-white text-center pb-4 text-3xl">{{ $realtor->name }}'s Listings</h2>
+            <h2 class="text-white text-center pb-4 text-3xl">{{ $realtor->data->name }}'s Listings</h2>
             <div class="flex flex-wrap items-center justify-center">
                 @foreach ($realtor->listings as $listing)
                     @include('partials.mini-listing')

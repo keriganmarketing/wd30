@@ -1,8 +1,8 @@
-<a href="{{ url('/') }}" class="no-underline text-2xl text-grey font-brand inline-flex justify-start items-center leading-none pt-1">
-    <span class="realtor-name text-brand font-brand text-4xl py-2">
+<a href="{{ url('/') }}" class="no-underline text-left text-grey font-brand inline-flex justify-start items-center leading-none pt-1">
+    <span class="realtor-name text-brand font-brand py-2 mx-1 md:m-0 text-2xl md:text-3xl">
         <span v-if="! boilerplate" class="font-brand">@{{ user.name }}</span>
-        <span v-else class="font-brand">Your Name</span>
-        <span class="block text-sm text-grey-dark pb-2">@{{ user.company }}</span>
+        <span v-else class="font-brand text-2xl md:text-4xl">Your Name</span>
+        <span class="block text-xs md:text-sm text-grey-dark pb-2">@{{ user.company }}</span>
     </span>
     {{--<span class="logo-block pr-2 px-8">--}}
         {{--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.57 28.57" class="h-12" style="enable-background:new 0 0 50 50; width: 50px;" xml:space="preserve" >--}}
