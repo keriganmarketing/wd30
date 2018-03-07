@@ -21,7 +21,9 @@ const app = new Vue({
             address: null,
             avatar_path: null,
             fb_page_id: null,
-            youtube_channel_id: null
+            youtube_channel_id: null,
+            twitter_handle: null,
+            instagram_handle: null
         }),
         content: new Content({
             id: '',

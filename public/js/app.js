@@ -5256,7 +5256,9 @@ var app = new Vue({
             address: null,
             avatar_path: null,
             fb_page_id: null,
-            youtube_channel_id: null
+            youtube_channel_id: null,
+            twitter_handle: null,
+            instagram_handle: null
         }),
         content: new __WEBPACK_IMPORTED_MODULE_1__models_content__["a" /* default */]({
             id: '',
