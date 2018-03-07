@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id' => '353903931781568',
         'client_secret' => 'fb7179ad6bc42644f8182c221c6cb444',
-        'redirect' => config('app.url').'/facebook/callback'
+        'redirect' => 'https://agentexpress.kerigan.com/facebook/callback'
     ]
 
 ];
