@@ -9,6 +9,7 @@ class FacebookController extends Controller
 {
     public function redirectToProvider()
     {
+        session(['redirect' => 'foo']);
         return Socialite::driver('facebook')->redirect();
     }
 
