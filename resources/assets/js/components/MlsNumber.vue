@@ -1,7 +1,7 @@
 <template>
-<div>
+<div class="relative">
     <span
-        class="text-sm -my-3 w-full cursor-pointer block text-right"
+        class="text-sm absolute pin-r pin-t pt-1 px-2 w-auto cursor-pointer block text-right"
         @click="deleteNumber"
     >
         x
