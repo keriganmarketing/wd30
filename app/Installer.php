@@ -49,7 +49,7 @@ class Installer
     {
         $cell_phone   = $request->has('cell_phone') ? $request->cell_phone : '';
         $office_phone = $request->has('office_phone') ? $request->office_phone : '';
-        $photo        = $request->has('photo') && $request->photo[0]['url'] ? $request->photo[0]['url'] : '';
+        $photo        = $request->has('photo') && $request->photo[0]['url'] ? $request->photo[0]['url'] : Realtor::PLACEHOLDER_PHOTO;
         $address      = self::buildAddress($request);
         $user         = User::first();
 

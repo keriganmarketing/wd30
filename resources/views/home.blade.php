@@ -58,7 +58,6 @@
                     :data-user="user"
                     v-on:submit-button-clicked="sbc"
                     v-if="selected === 'settings'"
-                    :avatar-path='"{{ $avatarPath }}"'
                     class="container mx-auto bg-white flex flex-wrap justify-center mb-8 mt-4"
             ></bio-card>
             <content-card

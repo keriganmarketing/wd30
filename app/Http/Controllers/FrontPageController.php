@@ -25,7 +25,7 @@ class FrontPageController extends Controller
     {
         MetaData::generate();
 
-        $realtor = (new Realtor())->getProfile()->withListings()->andAvatar();
+        $realtor = (new Realtor())->getProfile()->withListings();
         $content = Content::first();
 
         return view('StaticPages.front', compact('realtor', 'content'));

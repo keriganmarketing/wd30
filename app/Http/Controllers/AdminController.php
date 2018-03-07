@@ -22,7 +22,6 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('installed');
     }
 
     /**
@@ -32,11 +31,8 @@ class AdminController extends Controller
      */
     public function home()
     {
-        $user         = Auth::user();
-        $defaultPhoto = $user->default_photo != '' ? $user->default_photo : Realtor::PLACEHOLDER_PHOTO;
-        $avatarPath   = Avatar::where('user_id', $user->id)
-                            ->exists() ? Avatar::first()->path
-                            : $defaultPhoto;
+        $user       = Auth::user();
+        $avatarPath = $user->avatar_path != null ? asset('storage/'. $user->avatar_path): $user->default_photo;
 
         return view('home', compact('user', 'avatarPath'));
     }

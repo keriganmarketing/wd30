@@ -14,15 +14,14 @@ class CreateMlsNumbersTest extends TestCase
     public function an_mls_number_can_be_added_to_a_realtor()
     {
         $user = create('App\User');
-        $mls  = factory('App\MlsNumber')->make();
 
         $this->post('/mls-numbers', [
-            'mls_id' => $mls->mls_id
+            'mls_id' => 'B1234'
         ])
         ->assertSuccessful()
         ->assertJsonFragment([
             'user_id' => $user->id,
-            'mls_id' => $mls->mls_id
+            'mls_id' => 'B1234'
         ]);
     }
 

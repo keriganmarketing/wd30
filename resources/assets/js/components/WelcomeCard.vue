@@ -1,7 +1,9 @@
 <template>
     <div class="flex static w-full bg-transparent items-center text-center mx-1 flex-wrap rounded">
         <div class="w-full mx-12 px-12 py-0 md:px-0 md:w-2/5 lg:w-1/5 relative md:pin-l -mb-4 z-40 md:mb-0 md:block md:mx-0 md:py-8 lg:pt-8 md:mx-auto">
-            <div class="px-12 lg:px-4"><avatar-upload :avatar-path="avatarPath" /></div>
+            <div class="px-12 lg:px-4">
+                <avatar-upload :avatar-path="avatarPath" />
+            </div>
             <p class="hidden md:block px-2 mt-2 text-xl text-smoke-dark" v-if="! boilerplate">{{ user.name }}</p>
             <p class="block px-2 mt-2 text-xl text-smoke-dark" v-else>Your Name</p>
             <p class="hidden md:block px-2 text-xs text-smoke-light">Beachy Beach Real Estate</p>

@@ -70,7 +70,7 @@ export default {
     },
     mounted() {
         this.reset();
-        this.src = 'storage/' + this.avatarPath;
+        this.src = this.avatarPath;
     },
     methods: {
         reset() {
@@ -84,7 +84,7 @@ export default {
                 .then(response => {
                     this.uploadedFiles = [].concat(response);
                     this.currentStatus = STATUS_SUCCESS;
-                    this.src = 'storage/' + response;
+                    this.src = response;
                 })
                 .catch(err => {
                     this.uploadError = err;
