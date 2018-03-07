@@ -2,6 +2,7 @@
 
 namespace KeriganSolutions\FacebookFeed\Fetchers;
 
+use App\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use KeriganSolutions\FacebookFeed\Contracts\DataFetcher;
@@ -13,12 +14,14 @@ class PostFetcher implements DataFetcher
     protected $client;
     protected $pageId;
     protected $accessToken;
+    protected $realtor;
 
     public function __construct()
     {
-        $this->accessToken = auth()->user()->fb_access_token;
-        $this->pageId      = auth()->user()->fb_page_id;
+        $this->realtor = User::realtor();
         $this->client = new Client(['base_uri' => 'https://graph.facebook.com/v2.11']);
+        $this->accessToken = $this->realtor->fb_access_token;
+        $this->pageId      = $this->realtor->fb_page_id;
     }
 
     public function get($limit, $before, $after)
@@ -36,8 +39,9 @@ class PostFetcher implements DataFetcher
 
             return json_decode($response->getBody());
 
-        } catch (ClientException $e) {
+        } catch (\Exception $e) {
             // Most likely a bad token or improperly formatted request
+            echo $e->getMessage();
             echo '<p>This content is currently unavailable due to an error.</p>';
         }
     }

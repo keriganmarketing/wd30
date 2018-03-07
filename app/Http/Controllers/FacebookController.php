@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Socialite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
-use App\User;
 
 class FacebookController extends Controller
 {
