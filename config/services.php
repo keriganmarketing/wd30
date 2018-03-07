@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '353903931781568',
+        'client_secret' => 'fb7179ad6bc42644f8182c221c6cb444',
+        'redirect' => 'https://agentexpress.kerigan.com/facebook/callback'
+    ]
+
 ];
