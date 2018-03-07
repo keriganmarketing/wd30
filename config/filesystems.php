@@ -63,6 +63,11 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'testing' => [
+            'driver' => 'local',
+            'root' => storage_path('framework/testing/disks'),
+            'visibility' => 'public'
+        ]
     ],
 
 ];

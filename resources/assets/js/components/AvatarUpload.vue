@@ -1,8 +1,8 @@
 <template>
-    <div class="max-h-avatar relative rounded shadow bg-tan-lightest overflow-hidden">
+    <div class="relative">
         <img
             :src="src"
-            class="max-w-full mx-auto"
+            class="max-w-full mx-auto rounded border"
             @mouseover="imageHover = true"
         >
         <form
@@ -17,7 +17,7 @@
                 :class="{'pin': imageHover, 'opacity-75': imageHover}"
                 @mouseout="imageHover = false"
             >
-                <span class="opacity-100 text-sm">Click here to upload a new photo</span>
+                <span class="opacity-100 text-sm cursor-pointer">Click here to upload a new photo</span>
                 <input
                     type="file"
                     name="avatar"
@@ -70,7 +70,7 @@ export default {
     },
     mounted() {
         this.reset();
-        this.src = 'storage/' + this.avatarPath;
+        this.src = this.avatarPath;
     },
     methods: {
         reset() {
@@ -84,7 +84,7 @@ export default {
                 .then(response => {
                     this.uploadedFiles = [].concat(response);
                     this.currentStatus = STATUS_SUCCESS;
-                    this.src = 'storage/' + response;
+                    this.src = response;
                 })
                 .catch(err => {
                     this.uploadError = err;
