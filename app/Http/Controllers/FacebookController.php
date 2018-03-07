@@ -9,7 +9,6 @@ class FacebookController extends Controller
 {
     public function redirectToProvider()
     {
-        dd($request->all());
         return Socialite::driver('facebook')->redirect();
     }
 
