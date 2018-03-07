@@ -18,7 +18,7 @@ class FacebookController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        dd($user);
+        dd($user->token);
         $realtor = auth()->user();
 
         $realtor->update([
