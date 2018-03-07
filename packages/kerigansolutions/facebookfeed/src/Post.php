@@ -19,7 +19,9 @@ class Post
 
         if ($this->data->type == 'video') {
             $video            = new Video();
-            $this->data->link = $video->getConvertedLink($this->data->link, $this->data->caption);
+            $caption  = $this->data->caption ?? 'Try Facebook Player';
+
+            $this->data->link = $video->getConvertedLink($this->data->link, $caption);
         }
 
         if ($this->data->type == 'event') {
