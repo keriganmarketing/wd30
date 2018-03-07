@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->string('avatar_path')->nullable();
             $table->text('fb_access_token')->nullable();
             $table->string('fb_page_id')->nullable();
+            $table->string('youtube_channel_id')->nullable();
+            $table->string('twitter_handle')->nullable();
+            $table->string('instagram_handle')->nullable();
             $table->boolean('is_realtor')->default(0);
             $table->text('address')->nullable();
             $table->rememberToken();

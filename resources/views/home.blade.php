@@ -65,7 +65,18 @@
                     v-if="selected === 'settings'"
                     v-on:content-edited="updateContent"
             ></content-card>
-            <seo-card v-if="selected === 'settings'" :site-url="'{{ config('app.url') }}'"></seo-card>
+            <seo-card
+                v-if="selected === 'settings'"
+                :site-url="'{{ config('app.url') }}'"
+            >
+            </seo-card>
+            <social-card
+                v-if="selected === 'settings'"
+                :data-user="user"
+                v-on:submit-button-clicked="sbc"
+                class="container mx-auto bg-white flex flex-wrap justify-center mb-8 mt-4"
+            >
+            </social-card>
         </div>
     </div>
 </div>

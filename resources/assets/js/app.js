@@ -19,7 +19,9 @@ const app = new Vue({
             primary_phone: null,
             company: null,
             address: null,
-            avatar_path: null
+            avatar_path: null,
+            fb_page_id: null,
+            youtube_channel_id: null
         }),
         content: new Content({
             id: '',
