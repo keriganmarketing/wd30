@@ -76,7 +76,7 @@
             <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Primary Phone:
             </div>
-            <div class="w-auto primary-phone-switch flex px-4">
+            <div class="w-auto primary-phone-switch flex px-2">
                 <input
                         type="radio"
                         id="switch_left"
