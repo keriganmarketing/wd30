@@ -9,6 +9,8 @@ Route::get('/property-search', 'PropertySearchController@index')->name('property
 Route::get('/listing/{mlsNumber}', 'PropertySearchController@show')->name('property.show');
 Route::get('/my-properties', 'AdminController@myProperties')->name('realtorproperties');
 Route::get('/install', 'InstallController@create')->name('install');
+Route::get('/facebook', 'FacebookController@redirectToProvider');
+Route::get('/facebook/callback', 'FacebookController@handleProviderCallback');
 
 // API Routes
 Route::get('/authenticate', 'AuthenticationController@show');
