@@ -32,7 +32,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "KeriganSolutions\\Drone\\": "packages/kerigansolutions/drone/src"
+            "KeriganSolutions\\Drone\\": "packages/kerigansolutions/drone/src",
+            "KeriganSolutions\\FacebookFeed\\": "packages/kerigansolutions/facebookfeed/src"
         }
     },
     "autoload-dev": {

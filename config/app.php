@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         KeriganSolutions\Drone\DroneServiceProvider::class,
+        KeriganSolutions\FacebookFeed\FacebookServiceProvider::class,
 
         /*
          * Application Service Providers...
