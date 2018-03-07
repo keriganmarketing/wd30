@@ -11,8 +11,8 @@ class FacebookPhotoGallery
 
     public function __construct()
     {
-        $this->accessToken = FACEBOOK_ACCESS_TOKEN;
-        $this->pageId      = FACEBOOK_PAGE_ID;
+        $this->accessToken = auth()->user()->fb_access_token;
+        $this->pageId      = auth()->user()->fb_page_id;
         $this->client      = new Client(['base_uri' => 'https://graph.facebook.com/v2.11/']);
     }
     public function albums($limit = null, $before = null, $after = null)

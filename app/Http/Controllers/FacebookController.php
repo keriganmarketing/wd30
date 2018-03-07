@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Socialite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use App\User;
 
 class FacebookController extends Controller
 {
     public function redirectToProvider()
     {
-        session(['redirect' => 'foo']);
         return Socialite::driver('facebook')->redirect();
     }
 
@@ -17,7 +18,13 @@ class FacebookController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        dd($user);
+        $realtor = User::realtor();
+
+        $realtor->update([
+            'fb_access_token' => $user->token
+        ]);
+
+        return view('callbacks.success');
     }
 }
 
