@@ -1,9 +1,22 @@
 <template>
     <div>
         <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
-            <a :href="post.permalink_url" class="absolute pin hover:shadow-inner z-20" ></a>
-            <div class="md:h-48 md:overflow-hidden">
+            <a :href="post.permalink_url" class="absolute pin hover:shadow-inner z-20" v-if="post.type != 'video'"></a>
+            <div class="md:h-48 md:overflow-hidden" v-if="post.type != 'video'">
                 <img v-if="post.full_picture != null" class="w-auto h-auto min-h-full min-w-full" :src="post.full_picture" >
+            </div>
+            <div class="md:h-48 md:overflow-hidden w-full" v-if="post.type == 'video'">
+                <iframe
+                        :src="post.link"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowTransparency="true"
+                        allowFullScreen="true"
+                        width="100%"
+                        height="190">
+
+                </iframe>
             </div>
             <div class="py-2 px-2">
                 <div class="h-32 flex flex-col justify-center align-middle">
@@ -14,7 +27,7 @@
                 <div class="flex flex-wrap items-center justify-center">
                     <a class="facebook text-center w-full no-underline" :href="post.permalink_url" target="_blank">
                         <p class="text-xs text-grey-darker text-center w-full pb-2">
-                            Read on Facebook
+                            {{ cta }}
                         </p>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.02 34.02" class="h-4" style="enable-background:new 0 0 50 50; width: 50px;" xml:space="preserve">
                             <path fill="#43609C" d="M17,34A17,17,0,1,0,0,17,17,17,0,0,0,17,34"></path>
@@ -48,6 +61,13 @@ export default {
             }
 
             return this.post.message;
+        },
+        cta: function () {
+            if (this.post.type == 'video') {
+                return 'View on Facebook';
+            }
+
+            return 'Read on Facebook';
         }
     }
 }
