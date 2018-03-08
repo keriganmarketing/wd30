@@ -82,7 +82,7 @@
 </div>
 @endsection
 
-@section('help')
+{{-- @section('help')
     <button class="px-4 py-4 relative pin-b pin-r z-50 text-brand-darkest">
         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -92,4 +92,4 @@
             <line x1="12" y1="17" x2="12" y2="17"></line>
         </svg>
     </button>
-@endsection
+@endsection --}}
