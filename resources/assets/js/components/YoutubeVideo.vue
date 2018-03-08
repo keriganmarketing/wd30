@@ -64,7 +64,7 @@ export default {
     methods: {
         getVideo () {
             this.playVideo = true;
-            this.src = 'https://youtube.com/embed/' + this.video.id.videoId;
+            this.src = 'https://youtube.com/embed/' + this.video.id.videoId + '?autoplay=1';
         }
     }
 }
