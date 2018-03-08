@@ -81,7 +81,7 @@
                 return this.post.type !== 'video' && this.post.full_picture === undefined;
             },
             message: function () {
-                let limit = 240;
+                let limit = 200;
                 let truncated = '';
 
                 if (this.post.message.length > limit) {
