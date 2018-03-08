@@ -5222,7 +5222,7 @@ var GoogleMap = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(139);
-module.exports = __webpack_require__(521);
+module.exports = __webpack_require__(524);
 
 
 /***/ }),
@@ -5231,8 +5231,8 @@ module.exports = __webpack_require__(521);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(519);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(520);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(523);
 __webpack_require__(140);
 
 window.Vue = __webpack_require__(364);
@@ -40714,6 +40714,8 @@ Vue.component('social-card', __webpack_require__(508));
 Vue.component('status', __webpack_require__(511));
 Vue.component('total-sqft', __webpack_require__(513));
 Vue.component('welcome-card', __webpack_require__(516));
+Vue.component('youtube-gallery', __webpack_require__(519));
+Vue.component('youtube-video', __webpack_require__(529));
 
 /***/ }),
 /* 369 */
@@ -54582,6 +54584,115 @@ if (false) {
 
 /***/ }),
 /* 519 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(520)
+/* template */
+var __vue_template__ = __webpack_require__(521)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/YoutubeGallery.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8d9b05b4", Component.options)
+  } else {
+    hotAPI.reload("data-v-8d9b05b4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 520 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            videos: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        window.axios.get('youtube-gallery').then(function (response) {
+            _this.videos = response.data;
+        });
+    }
+});
+
+/***/ }),
+/* 521 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.videos, function(video) {
+      return _c("youtube-video", {
+        key: video.id.videoId,
+        staticClass: "w-full md:w-1/4 m-2",
+        attrs: { video: video }
+      })
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8d9b05b4", module.exports)
+  }
+}
+
+/***/ }),
+/* 522 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54642,7 +54753,7 @@ var User = function () {
 /* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ }),
-/* 520 */
+/* 523 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54693,10 +54804,263 @@ var Content = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Content);
 
 /***/ }),
-/* 521 */
+/* 524 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(530)
+/* template */
+var __vue_template__ = __webpack_require__(531)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/YoutubeVideo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d9418662", Component.options)
+  } else {
+    hotAPI.reload("data-v-d9418662", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 530 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        video: {
+            type: Object,
+            default: this.video
+        }
+    },
+    data: function data() {
+        return {
+            playVideo: false,
+            src: '',
+            thumbnail: this.video.snippet.thumbnails.medium.url
+        };
+    },
+
+    methods: {
+        getVideo: function getVideo() {
+            this.playVideo = true;
+            this.src = 'https://youtube.com/embed/' + this.video.id.videoId;
+        }
+    }
+});
+
+/***/ }),
+/* 531 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full"
+      },
+      [
+        !_vm.playVideo
+          ? _c("div", { staticClass: "md:h-48 md:overflow-hidden" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute flex w-full h-48 items-center justify-center text-red",
+                  on: { click: _vm.getVideo }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                        viewBox: "0 0 48 48",
+                        version: "1.1",
+                        width: "48px",
+                        height: "48px"
+                      }
+                    },
+                    [
+                      _c("g", { attrs: { id: "surface1" } }, [
+                        _c("path", {
+                          staticStyle: { fill: "#FF3D00" },
+                          attrs: {
+                            d:
+                              "M 43.199219 33.898438 C 42.800781 36 41.101563 37.601563 39 37.898438 C 35.699219 38.398438 30.199219 39 24 39 C 17.898438 39 12.398438 38.398438 9 37.898438 C 6.898438 37.601563 5.199219 36 4.800781 33.898438 C 4.398438 31.601563 4 28.199219 4 24 C 4 19.800781 4.398438 16.398438 4.800781 14.101563 C 5.199219 12 6.898438 10.398438 9 10.101563 C 12.300781 9.601563 17.800781 9 24 9 C 30.199219 9 35.601563 9.601563 39 10.101563 C 41.101563 10.398438 42.800781 12 43.199219 14.101563 C 43.601563 16.398438 44.101563 19.800781 44.101563 24 C 44 28.199219 43.601563 31.601563 43.199219 33.898438 Z "
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          staticStyle: { fill: "#FFFFFF" },
+                          attrs: { d: "M 20 31 L 20 17 L 32 24 Z " }
+                        })
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.thumbnail != ""
+                ? _c("img", {
+                    staticClass: "w-auto h-auto min-h-full min-w-full",
+                    attrs: { src: _vm.thumbnail }
+                  })
+                : _vm._e()
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.playVideo
+          ? _c("div", { staticClass: "md:h-48 md:overflow-hidden w-full" }, [
+              _c("iframe", {
+                staticStyle: { border: "none", overflow: "hidden" },
+                attrs: {
+                  src: _vm.src,
+                  allow: "autoplay",
+                  scrolling: "no",
+                  frameborder: "0",
+                  allowTransparency: "true",
+                  allowFullScreen: "true",
+                  width: "100%",
+                  height: "190"
+                }
+              })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2 px-2" }, [
+          _c(
+            "div",
+            { staticClass: "h-32 flex flex-col justify-center align-middle" },
+            [
+              _c(
+                "p",
+                { staticClass: "p-2 text-grey-darker text-sm text-left" },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.video.snippet.description) +
+                      "\n                "
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mls text-center mt-3" }, [
+            _c("p", { staticClass: "text-grey-dark text-xs" }, [
+              _vm._v("Posted: " + _vm._s(_vm.video.snippet.publishedAt))
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d9418662", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

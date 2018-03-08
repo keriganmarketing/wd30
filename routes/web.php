@@ -22,6 +22,8 @@ Route::get('/search', 'PropertySearchController@search');
 Route::get('/map-search', 'PropertySearchController@mapSearch');
 Route::get('/full-listing/{mlsNumber}', 'PropertySearchController@singleListing');
 Route::get('/facebook-feed', 'FacebookController@index');
+Route::get('/youtube-gallery', 'YoutubeController@index');
+Route::get('/youtube-video', 'YoutubeController@show');
 
 Route::patch('/users/{id}', 'UsersController@update');
 
