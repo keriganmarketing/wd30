@@ -5,7 +5,7 @@
             <h1 class="text-white">Property Search</h1>
         </div>
     </section>
-    <search-bar v-on:switch-view="switchView" :view="viewType"></search-bar>
+    <search-bar :data-map-module="'{{ config('modules.map_search') }}'" v-on:switch-view="switchView" :view="viewType"></search-bar>
     <div v-if="viewType === 'grid'" class="properties grid pb-4">
         <div class="container mx-auto">
             @include('partials.sortbar')
@@ -13,16 +13,18 @@
             @include('partials.pagination')
         </div>
     </div>
-    <div v-if="viewType === 'map'" >
-        <map-search
-                :latitude="{{ $properties->data[0]->latitude }}"
-                :longitude="{{ $properties->data[0]->longitude }}"
-                :data-params="{{ $searchParams }}"
-                :zoom="15"
-                api="{{ config('google.api_key') }}"
-                class="border-b-2 border-secondary-light"
-        ></map-search>
-    </div>
+    @if(config('modules.map_search'))
+        <div v-if="viewType === 'map'" >
+            <map-search
+                    :latitude="{{ $properties->data[0]->latitude }}"
+                    :longitude="{{ $properties->data[0]->longitude }}"
+                    :data-params="{{ $searchParams }}"
+                    :zoom="15"
+                    api="{{ config('google.api_key') }}"
+                    class="border-b-2 border-secondary-light"
+            ></map-search>
+        </div>
+    @endif
     <div class="container mx-auto">
         @include('partials.disclaimer')
     </div>
