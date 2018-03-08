@@ -37,3 +37,5 @@ Vue.component('social-card', require('./components/SocialCard.vue'));
 Vue.component('status', require('./components/Status.vue'));
 Vue.component('total-sqft', require('./components/TotalSqft.vue'));
 Vue.component('welcome-card', require('./components/WelcomeCard.vue'));
+Vue.component('youtube-gallery', require('./components/YoutubeGallery.vue'));
+Vue.component('youtube-video', require('./components/YoutubeVideo.vue'));
