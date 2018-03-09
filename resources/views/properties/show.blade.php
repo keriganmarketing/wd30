@@ -10,7 +10,7 @@
                 <div class="listing-details w-full lg:w-1/2 lg:px-4 py-4">
                     @include('partials.property.actionbuttons')
                     @include('partials.property.info')
-                    @if($property->has_open_houses)
+                    @if($property->has_open_houses && count($openHouses) > 0)
                         @include('partials.property.openhouses')
                     @endif
                     @include('partials.property.features')
