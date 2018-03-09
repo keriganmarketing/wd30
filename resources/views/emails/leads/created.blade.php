@@ -14,13 +14,4 @@ Email: {{ $lead->email }}
 Phone: {{ $lead->phone }}
 
 Message: {{ $lead->message }}
-
-
-
-@component('mail::button', ['url' => ""])
-Browse newest listings
-@endcomponent
-
-Thanks,<br>
-Daron
 @endcomponent
