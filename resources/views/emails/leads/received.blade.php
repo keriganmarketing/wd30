@@ -17,8 +17,4 @@ Message: {{ $lead->message }}
    Address: {{ $lead->listing_address }}
 @endif
 
-@component('mail::button', ['url' => ''])
-View Lead
-@endcomponent
-
 @endcomponent
