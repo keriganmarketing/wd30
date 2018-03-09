@@ -15,7 +15,7 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
+        'domain' => 'mg.beachybeach.com',
         'secret' => env('MAILGUN_SECRET'),
     ],
 
