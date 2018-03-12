@@ -25,11 +25,16 @@ class Post
         }
 
         if ($this->data->type == 'event') {
-            $this->full_picture = $fetcher->getEventPhoto($this->data->attachments->data[0]->target->id);
+            $this->data->full_picture = $this->data->attachments->data[0]->media->image->src ?? null;
+            $this->data->message = $this->data->caption;
         }
 
         if (isset($this->data->attachments->data[0]->media->image->width) && $this->data->attachments->data[0]->media->image->width <= 100) {
             $this->full_picture = null;
+        }
+
+        if (! isset($this->data->message)) {
+            $this->data->message = $this->data->description ?? 'Click here to read more on Facebook';
         }
 
         $this->data->diff = Carbon::parse($this->data->created_time)->diffForHumans();
