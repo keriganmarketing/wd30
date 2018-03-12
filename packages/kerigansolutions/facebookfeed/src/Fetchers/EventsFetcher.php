@@ -41,8 +41,9 @@ class EventsFetcher implements DataFetcher
             $feed = json_decode($response->getBody());
 
             return $feed;
-        } catch (ClientException $e) {
+        } catch (\Exception $e) {
             // Most likely a bad token or improperly formatted request
+            echo $e->getMessage();
             echo '<p>This content is currently unavailable due to an error.</p>';
         }
     }
@@ -61,6 +62,7 @@ class EventsFetcher implements DataFetcher
 
         } catch (ClientException $e) {
             // Most likely a bad token or improperly formatted request
+            echo $e->getMessage();
             echo '<p>This content is currently unavailable due to an error.</p>';
         }
     }

@@ -17,7 +17,7 @@ class CreateLeadsTest extends TestCase
         $lead = [
             'name'              => 'Joe Testerson',
             'phone'             => '850-555-5555',
-            'email'             => 'test@test.com',
+            'email'             => 'daron@kerigan.com',
             'message'           => 'Message contents',
             'listing'           => 'B2345',
             'listing_address'   => '123 Example Street Lynn Haven, FL',
