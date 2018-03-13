@@ -15,11 +15,11 @@ class SearchParameters extends SearchObject
 
     /**
      * Get the query for the property search.
-     * 
+     *
      * @return string
      */
-    public function getQueryString()
+    public function getQueryString($view)
     {
-        return $this->toQueryString();
+        return $this->toQueryString($view);
     }
 }

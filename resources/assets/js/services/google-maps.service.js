@@ -37,28 +37,6 @@ export default class GoogleMap {
             mapData.markers = [];
             mapData.selected = {};
 
-            let markerShape = {
-                path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-                scale: .7,
-                strokeWeight: 3,
-                strokeColor: '#FFF',
-                strokeOpacity: .5,
-                fillColor: '#555',
-                fillOpacity: 1,
-                rotation: 0
-            };
-
-            let selectedShape = {
-                path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-                scale: .7,
-                strokeWeight: 3,
-                strokeColor: '#55ff00',
-                strokeOpacity: .5,
-                fillColor: '#555',
-                fillOpacity: 1,
-                rotation: 0
-            };
-
             let instance = this;
 
             for (let i = 0; i < pins.length; i++) {
@@ -72,13 +50,10 @@ export default class GoogleMap {
                     let marker = new google.maps.Marker({
                         position: position,
                         map: mapData.map,
-                        icon: markerShape,
                     });
 
                     marker.addListener('click', function () {
-                        instance.resetIcons(mapData.markers);
                         mapData.selected = obj;
-                        this.setIcon(selectedShape);
                         window.dispatchEvent(new CustomEvent('marker_updated', {
                             detail: obj
                         }));
@@ -92,7 +67,7 @@ export default class GoogleMap {
 
             // window.map = mapData.map;
 
-            mapData.markerCluster = new MarkerClusterer(window.map, mapData.markers, {
+            mapData.markerCluster = new MarkerClusterer(mapData.map, mapData.markers, {
                 maxZoom: 14,
                 gridSize: 60
             });

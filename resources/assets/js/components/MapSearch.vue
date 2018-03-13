@@ -95,8 +95,7 @@ export default {
 
         window.axios.get('/map-search?' + this.params)
             .then(response => {
-                vm.searchData = response.data;
-                vm.pins = response.data.data;
+                vm.pins = response.data;
                 vm.renderMap();
                 vm.isLoading = false;
             })
