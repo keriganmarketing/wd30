@@ -16,11 +16,20 @@ class Mothership
     public function search(Request $request)
     {
         $searchTerms = new SearchParameters($request->all());
-        $apiCall     = $this->get($searchTerms->getQueryString());
+        $apiCall     = $this->get($searchTerms->getQueryString('grid'));
         $properties  = json_decode($apiCall->getBody());
         $results     = $this->paginate($properties, $request);
 
         return $results;
+    }
+
+    public function mapSearch(Request $request)
+    {
+        $searchTerms = new SearchParameters($request->all());
+        $apiCall     = $this->get($searchTerms->getQueryString('map'));
+        $properties  = json_decode($apiCall->getBody());
+
+        return $properties;
     }
 
     public function listing($mlsNumber)

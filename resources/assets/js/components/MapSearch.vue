@@ -22,7 +22,6 @@
 </template>
 
 <script>
-
 import GeoLocator from '../services/geolocator.service.js';
 import GoogleMap from '../services/google-maps.service.js';
 
@@ -41,8 +40,8 @@ export default {
             default: this.zoom
         },
         dataParams: {
-            type: Array,
-            default: []
+            type: Object,
+            default: {}
         },
         api: {
             type: String,
@@ -52,64 +51,71 @@ export default {
     data () {
         return {
             renderedMap: {},
-            error: '',
             config: {},
             isLoading: true,
             propOpen: false,
             selectedProperty: {},
             searchData: {},
-            pins: [],
             params: '',
+            errors: []
         }
     },
     mounted () {
-        let params = this.dataParams;
-        let numParams = Object.keys(params).length
-
-        // TODO: make Query Builder Object
-        ////////////////////////////////
-
-        for (let i = 0; i < numParams; i++) {
-            let key = Object.keys(params)[i];
-            let value = Object.values(params)[i];
-            this.params += key + '=' + (value !== null ? value : '');
-            if (i < numParams - 1) {
-                this.params += '&';
-            }
-        }
-
-        ///////////////////////////////////
-
         this.config = {
             zoom: this.zoom,
-            destination: {
+            center: {
                 latitude: this.latitude,
                 longitude: this.longitude
             },
-            mapElement: this.$refs.map
+            mapElement: this.$refs.map,
+            markers: [],
+            origin: {}
         };
-
-        let vm = this;
-        // TODO: Use a service to perform this action
-        /////////////////////////////////////////////
-
-        window.axios.get('/map-search?' + this.params)
-            .then(response => {
-                vm.searchData = response.data;
-                vm.pins = response.data.data;
-                vm.renderMap();
-                vm.isLoading = false;
-            })
-            .catch(error => {
-                console.log(error)
-            });
-
-        /////////////////////////////////////////////
+        this.buildQuery();
+        this.setCenter();
     },
     methods: {
+        buildQuery() {
+            // TODO: make Query Builder Object
+            ////////////////////////////////
+            let params = this.dataParams;
+            let numParams = Object.keys(params).length;
+
+            for (let i = 0; i < numParams; i++) {
+                let key = Object.keys(params)[i];
+                let value = Object.values(params)[i];
+                this.params += key + '=' + (value !== null ? value : '');
+                if (i < numParams - 1) {
+                    this.params += '&';
+                }
+            }
+            ///////////////////////////////////
+        },
+        setCenter(){
+            if(this.dataParams.length === 0){
+                this.getUserLocation();
+            }else{
+                this.getMarkers();
+            }
+        },
+        getUserLocation() {
+            this.isLoading = true;
+            let vm = this;
+            let geo = new GeoLocator();
+            if (Object.keys(vm.config.origin).length === 0) {
+                geo.getLocation()
+                  .then(position => {
+                      vm.config.center = position;
+                      vm.getMarkers();
+                  })
+                  .catch(e => {
+                      this.errors.push(e)
+                  })
+            }
+        },
         renderMap() {
             let vm = this;
-            new GoogleMap(vm.config, vm.pins, vm.api)
+            new GoogleMap(vm.config, vm.api)
                 .load()
                 .then(rendered => {
                     vm.renderedMap = rendered;
@@ -118,6 +124,22 @@ export default {
                     });
                 });
         },
+        getMarkers() {
+            // TODO: Use a service to perform this action
+            /////////////////////////////////////////////
+            let vm = this;
+
+            window.axios.get('/map-search?' + this.params)
+                .then(response => {
+                    vm.config.markers = response.data;
+                    vm.renderMap();
+                    vm.isLoading = false;
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                })
+            /////////////////////////////////////////////
+        },
         getProperty(mlsAccount) {
             let vm = this;
             window.axios.get('/full-listing/' + mlsAccount)
@@ -125,9 +147,9 @@ export default {
                     vm.selectedProperty = response.data;
                     vm.propOpen = true;
                 })
-                .catch(error => {
-                    console.log(error)
-                });
+                .catch(e => {
+                    this.errors.push(e)
+                })
         }
     }
 }
