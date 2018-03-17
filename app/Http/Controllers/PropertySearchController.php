@@ -71,7 +71,7 @@ class PropertySearchController extends Controller
      */
     public function mapSearch(Request $request)
     {
-        return response()->json(Mothership::search($request));
+        return response()->json(Mothership::mapSearch($request));
     }
 
     /**

@@ -43,9 +43,9 @@ class SearchObject
 
     /**
      * Convert the statuses into strings.
-     * 
-     * @param  
-     * @return string 
+     *
+     * @param
+     * @return string
      */
     protected function convertParams($params)
     {
@@ -58,17 +58,17 @@ class SearchObject
 
     /**
      * Convert search query into a string.
-     * 
+     *
      * @return string
      */
-    protected function toQueryString()
+    protected function toQueryString($view)
     {
         $pt = $this->propertyType;
         if ($pt != null){
             $this->propertyType = $this->stringify($this->getPropertyTypes($pt));
         }
         $terms = get_object_vars($this);
-        $sq = 'search?';
+        $sq = $view == 'grid' ? 'search?' : 'allMapListings?';
         $iterator = 0;
         foreach ($terms as $key => $value) {
             if ($iterator > 0 ) {
@@ -87,7 +87,7 @@ class SearchObject
 
     /**
      * Group similar property types togther to improve searching.
-     * 
+     *
      * @return array
      */
     private function getPropertyTypes($class = null)
