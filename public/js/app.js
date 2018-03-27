@@ -5275,7 +5275,7 @@ var GoogleMap = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(139);
-module.exports = __webpack_require__(537);
+module.exports = __webpack_require__(538);
 
 
 /***/ }),
@@ -5284,8 +5284,8 @@ module.exports = __webpack_require__(537);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(535);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(537);
 __webpack_require__(140);
 
 window.Vue = __webpack_require__(364);
@@ -40768,11 +40768,11 @@ Vue.component('search-bar', __webpack_require__(508));
 Vue.component('seo-card', __webpack_require__(511));
 Vue.component('social-card', __webpack_require__(516));
 Vue.component('sortbar', __webpack_require__(519));
-Vue.component('status-field', __webpack_require__(521));
-Vue.component('total-sqft-field', __webpack_require__(523));
-Vue.component('welcome-card', __webpack_require__(526));
-Vue.component('youtube-gallery', __webpack_require__(529));
-Vue.component('youtube-video', __webpack_require__(532));
+Vue.component('status-field', __webpack_require__(522));
+Vue.component('total-sqft-field', __webpack_require__(524));
+Vue.component('welcome-card', __webpack_require__(527));
+Vue.component('youtube-gallery', __webpack_require__(530));
+Vue.component('youtube-video', __webpack_require__(533));
 
 /***/ }),
 /* 369 */
@@ -53112,7 +53112,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             //         to: null,
             //         total: null
             //     },
-            //     properties: null
+            //     properties: []
             // })
         };
     },
@@ -53125,29 +53125,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this = this;
 
             axios.get('/modules/map').then(function (response) {
-                console.log(response);
                 _this.hasMapModule = response.data;
             }).catch(function () {
                 _this.hasMapModule = false;
             });
         },
         onSubmit: function onSubmit(form) {
-            // console.log(form.omni.value);
             this.searchTerms.omni = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
-            // this.searchTerms.minPrice = form.minPrice.value;
-            // this.searchTerms.maxPrice = form.maxPrice.value;
-            // this.searchTerms.status = form.status[].value;
-            // this.searchTerms.bedrooms = form.bedrooms.value;
-            // this.searchTerms.bathrooms = form.bathrooms.value;
-            // this.searchTerms.sq_ft = form.sq_ft.value;
-            // this.searchTerms.acreage = form.acreage.value;
-            // this.searchTerms.openHouses = form.openHouses.value;
-            // this.searchTerms.waterFront = form.waterFront.value;
-            // this.searchTerms.pool = form.pool.value;
+            this.searchTerms.minPrice = form.minPrice.value;
+            this.searchTerms.maxPrice = form.maxPrice.value;
+            this.searchTerms.bedrooms = form.bedrooms.value;
+            this.searchTerms.bathrooms = form.bathrooms.value;
+            this.searchTerms.sq_ft = form.sq_ft.value;
+            this.searchTerms.acreage = form.acreage.value;
+            this.searchTerms.openHouses = form.openHouses.value;
+            this.searchTerms.waterFront = form.waterFront.value;
+            this.searchTerms.pool = form.pool.value;
+            if (form.active.checked) {
+                this.searchTerms.status.push('active');
+            }
+            if (form.sold.checked) {
+                this.searchTerms.status.push('sold');
+            }
+            if (form.pending.checked) {
+                this.searchTerms.status.push('pending');
+            }
+            this.getProperties(this.searchTerms);
         },
         getProperties: function getProperties(searchTerms) {
-            //
+            var queryString = this.buildQueryString(searchTerms);
+            window.axios.get('/search' + queryString).then(function (response) {
+                return console.log(response.data);
+            });
+        },
+        buildQueryString: function buildQueryString(searchTerms) {
+            var queryString = '?';
+            var i = 0;
+            Object.keys(searchTerms).forEach(function (key) {
+                queryString += key + '=' + searchTerms[key];
+                i++;
+                if (i < Object.keys(searchTerms).length - 1) {
+                    queryString += '&';
+                }
+            });
+
+            return queryString;
         },
         onViewChange: function onViewChange(viewingMap) {
             this.mapView = viewingMap;
@@ -53467,8 +53490,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         dataMapModule: {
-            type: String,
-            default: this.dataMapModule === 'true'
+            type: Boolean,
+            default: this.dataMapModule === true
         }
     },
     data: function data() {
@@ -53517,7 +53540,7 @@ var render = function() {
         {
           ref: "form",
           staticClass: "flex flex-wrap pt-4 pb-2 mt-4",
-          attrs: { action: "#", method: "GET" },
+          attrs: { action: "", method: "GET" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -54459,9 +54482,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(542)
+var __vue_script__ = __webpack_require__(520)
 /* template */
-var __vue_template__ = __webpack_require__(520)
+var __vue_template__ = __webpack_require__(521)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54501,6 +54524,63 @@ module.exports = Component.exports
 
 /***/ }),
 /* 520 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    // props: {
+    //     dataFrom: {
+    //         type: Number,
+    //         default: this.dataFrom
+    //     },
+    //     dataTo: {
+    //         type: Number,
+    //         default: this.dataTo
+    //     },
+    //     dataTotal: {
+    //         type: Number,
+    //         default: this.dataTotal
+    //     }
+    // }
+});
+
+/***/ }),
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54520,7 +54600,7 @@ if (false) {
 }
 
 /***/ }),
-/* 521 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -54528,7 +54608,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(522)
+var __vue_template__ = __webpack_require__(523)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54567,7 +54647,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54623,7 +54703,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "status[]", value: "active" }
+                  attrs: { type: "checkbox", name: "active" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -54648,7 +54728,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "status[]", value: "sold" }
+                  attrs: { type: "checkbox", name: "sold" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -54673,11 +54753,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: {
-                    type: "checkbox",
-                    name: "status[]",
-                    value: "pending"
-                  }
+                  attrs: { type: "checkbox", name: "pending" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -54708,15 +54784,15 @@ if (false) {
 }
 
 /***/ }),
-/* 523 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(524)
+var __vue_script__ = __webpack_require__(525)
 /* template */
-var __vue_template__ = __webpack_require__(525)
+var __vue_template__ = __webpack_require__(526)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54755,7 +54831,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 524 */
+/* 525 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54793,7 +54869,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54865,15 +54941,15 @@ if (false) {
 }
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(527)
+var __vue_script__ = __webpack_require__(528)
 /* template */
-var __vue_template__ = __webpack_require__(528)
+var __vue_template__ = __webpack_require__(529)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54912,7 +54988,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55071,7 +55147,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55219,15 +55295,15 @@ if (false) {
 }
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(530)
+var __vue_script__ = __webpack_require__(531)
 /* template */
-var __vue_template__ = __webpack_require__(531)
+var __vue_template__ = __webpack_require__(532)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55266,7 +55342,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55299,7 +55375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55328,15 +55404,15 @@ if (false) {
 }
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(533)
+var __vue_script__ = __webpack_require__(534)
 /* template */
-var __vue_template__ = __webpack_require__(534)
+var __vue_template__ = __webpack_require__(535)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55375,7 +55451,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55453,7 +55529,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55581,7 +55657,7 @@ if (false) {
 }
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55642,7 +55718,7 @@ var User = function () {
 /* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55693,71 +55769,10 @@ var Content = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Content);
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 538 */,
-/* 539 */,
-/* 540 */,
-/* 541 */,
-/* 542 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    // props: {
-    //     dataFrom: {
-    //         type: Number,
-    //         default: this.dataFrom
-    //     },
-    //     dataTo: {
-    //         type: Number,
-    //         default: this.dataTo
-    //     },
-    //     dataTotal: {
-    //         type: Number,
-    //         default: this.dataTotal
-    //     }
-    // }
-});
 
 /***/ })
 /******/ ]);
