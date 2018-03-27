@@ -71,12 +71,12 @@ class SearchObject
         $sq = $view == 'grid' ? 'search?' : 'allMapListings?';
         $iterator = 0;
         foreach ($terms as $key => $value) {
+            if ($key == 'omni') {
+                $sq .= 'city=' . $this->$key;
+            }
             if ($iterator > 0 ) {
                 $sq .= '&';
                 $sq .= $key .'=' . $value;
-            }
-            if ($key == 'omni') {
-                $sq .= 'city=' . $this->$key;
             }
 
             ++$iterator;
