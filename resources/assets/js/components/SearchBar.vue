@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
         <div class="container mx-auto">
-            <form class="flex flex-wrap pt-4 pb-2 mt-4" action="#" method="GET" ref="form" @submit.prevent="onSubmit()">
+            <form class="flex flex-wrap pt-4 pb-2 mt-4" action="" method="GET" ref="form" @submit.prevent="onSubmit()">
                 <omni-bar class="relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/3"></omni-bar>
                 <property-type class="relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4"></property-type>
                 <div class="flex flex-auto relative justify-end w-full lg:w-1/8" v-if="dataMapModule">
@@ -53,8 +53,8 @@
     export default {
         props: {
             dataMapModule: {
-                type: String,
-                default: this.dataMapModule === 'true'
+                type: Boolean,
+                default: this.dataMapModule === true
             }
         },
         data(){

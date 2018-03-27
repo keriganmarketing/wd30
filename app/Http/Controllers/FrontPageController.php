@@ -29,9 +29,6 @@ class FrontPageController extends Controller
 
         $realtor = (new Realtor())->getProfile()->withListings();
         $content = Content::first();
-        // $fbPosts = FacebookFeed::fetch(3);
-        // $videos = Youtube::listChannelVideos('UCJ-wGf3uz3BqdcGg6MJnTmA', 3, 'date');
-        // dd($videos);
 
 
         return view('StaticPages.front', compact('realtor', 'content'));

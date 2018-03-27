@@ -69,7 +69,7 @@ export default {
             //         to: null,
             //         total: null
             //     },
-            //     properties: null
+            //     properties: []
             // })
         }
     },
@@ -80,7 +80,6 @@ export default {
         getMapAvailability () {
             axios.get('/modules/map')
                  .then(response => {
-                     console.log(response);
                      this.hasMapModule = response.data;
                 })
                  .catch(() => {
@@ -88,22 +87,46 @@ export default {
                  })
         },
         onSubmit (form) {
-            // console.log(form.omni.value);
-            this.searchTerms.omni = form.omni.value;
+            this.searchTerms.omni         = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
-            // this.searchTerms.minPrice = form.minPrice.value;
-            // this.searchTerms.maxPrice = form.maxPrice.value;
-            // this.searchTerms.status = form.status[].value;
-            // this.searchTerms.bedrooms = form.bedrooms.value;
-            // this.searchTerms.bathrooms = form.bathrooms.value;
-            // this.searchTerms.sq_ft = form.sq_ft.value;
-            // this.searchTerms.acreage = form.acreage.value;
-            // this.searchTerms.openHouses = form.openHouses.value;
-            // this.searchTerms.waterFront = form.waterFront.value;
-            // this.searchTerms.pool = form.pool.value;
+            this.searchTerms.minPrice     = form.minPrice.value;
+            this.searchTerms.maxPrice     = form.maxPrice.value;
+            this.searchTerms.bedrooms     = form.bedrooms.value;
+            this.searchTerms.bathrooms    = form.bathrooms.value;
+            this.searchTerms.sq_ft        = form.sq_ft.value;
+            this.searchTerms.acreage      = form.acreage.value;
+            this.searchTerms.openHouses   = form.openHouses.value;
+            this.searchTerms.waterFront   = form.waterFront.value;
+            this.searchTerms.pool         = form.pool.value;
+            if (form.active.checked) {
+                this.searchTerms.status.push('active');
+            }
+            if (form.sold.checked) {
+                this.searchTerms.status.push('sold');
+            }
+            if (form.pending.checked) {
+                this.searchTerms.status.push('pending');
+            }
+            this.getProperties(this.searchTerms);
+
         },
         getProperties (searchTerms) {
-            //
+            let queryString = this.buildQueryString(searchTerms);
+            window.axios.get('/search' + queryString)
+                .then(response => console.log(response.data));
+        },
+        buildQueryString(searchTerms) {
+            let queryString = '?';
+            let i = 0;
+            Object.keys(searchTerms).forEach(key => {
+                queryString += key + '=' + searchTerms[key];
+                i++;
+                if (i < (Object.keys(searchTerms).length - 1 )) {
+                    queryString += '&';
+                }
+            });
+
+            return queryString;
         },
         onViewChange (viewingMap) {
             this.mapView = viewingMap;
