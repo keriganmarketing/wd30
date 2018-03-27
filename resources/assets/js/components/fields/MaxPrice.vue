@@ -1,7 +1,11 @@
 <template>
     <div>
-        <select name="maxPrice" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-            <option value="">Max-price</option>
+        <select
+            name="maxPrice"
+            class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8"
+            v-model="selected"
+        >
+            <option disabled value="">Max-price</option>
             <option v-for="option in options" :value="option" >${{ option.toLocaleString() }}</option>
         </select>
         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -19,6 +23,17 @@
 </template>
 <script>
 export default {
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data () {
+        return {
+            selected: this.fieldValue
+        }
+    },
     computed: {
         options: function() {
             let options = [];

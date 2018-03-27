@@ -8,17 +8,17 @@
         <div class="w-full sm:w-auto flex-grow p-0 m-0">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2">
                 <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="openHouses" class="radio-input" >
+                    <input type="checkbox" name="openHouses" class="radio-input" v-model="openHouses">
                     <span class="input-description checkbox px-1 text-grey-darker">Open Houses</span>
                     <span class="custom-input checkmark"></span>
                 </label>
                 <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="waterFront" class="radio-input" >
+                    <input type="checkbox" name="waterFront" class="radio-input" v-model="waterFront">
                     <span class="input-description checkbox px-1 text-grey-darker">Waterfront</span>
                     <span class="custom-input checkmark"></span>
                 </label>
                 <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="pool" class="radio-input" >
+                    <input type="checkbox" name="pool" class="radio-input" v-model="pool">
                     <span class="input-description checkbox px-1 text-grey-darker">Pool</span>
                     <span class="custom-input checkmark"></span>
                 </label>
@@ -26,3 +26,29 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            dataOpenHouses: {
+                type: Number,
+                default: this.openHouses
+            },
+            dataWaterFront: {
+                type: Number,
+                default: this.waterFront
+            },
+            dataPool: {
+                type: Number,
+                default: this.pool
+            },
+        },
+        data () {
+            return {
+                openHouses: this.dataOpenHouses,
+                waterFront: this.dataWaterFront,
+                pool: this.dataPool
+            }
+        }
+    }
+</script>

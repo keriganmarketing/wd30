@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select name="sq_ft" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
+        <select name="sq_ft" v-model="selected" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
             <option value="">Total H/C SqFt</option>
             <option v-for="option in options" :value="option" >{{ option.toLocaleString() }}</option>
         </select>
@@ -19,6 +19,17 @@
 </template>
 <script>
     export default {
+        props: {
+            fieldValue: {
+                type: String,
+                default: this.fieldValue
+            }
+        },
+        data () {
+            return {
+                selected: this.fieldValue
+            }
+        },
         computed: {
             options: function() {
                 let options = [];

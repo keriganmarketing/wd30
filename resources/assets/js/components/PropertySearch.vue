@@ -7,6 +7,7 @@
     </section>
     <search-bar
         :data-map-module="hasMapModule"
+        :searchTerms="searchTerms"
         v-on:view-changed="onViewChange"
         v-on:form-submitted="onSubmit"
     />
@@ -53,19 +54,18 @@ export default {
             hasMapModule: false,
             mapView: false,
             searchTerms: {
-                omni: '',
-                propertyType: '',
-                minPrice: '',
-                maxPrice: '',
+                omni: 'Panama City Beach',
+                propertyType: 'Single Family Home',
+                minPrice: '200000',
                 maxPrice: '',
                 sq_ft: '',
                 acreage: '',
-                status: [],
-                bedrooms: 0,
-                bathrooms: 0,
-                openHouses: false,
-                waterFront: false,
-                pool: false
+                status: ['active'],
+                bedrooms: 3,
+                bathrooms: 2,
+                openHouses: 0,
+                waterFront: 1,
+                pool: 0
             },
             searchResults: new SearchResults({
                 pagination: {
@@ -86,6 +86,7 @@ export default {
     },
     mounted () {
         this.getMapAvailability();
+        this.getProperties(this.searchTerms);
     },
     methods: {
         getMapAvailability () {
@@ -98,7 +99,7 @@ export default {
                  })
         },
         onSubmit (form) {
-            // TODO: Clean this
+            // TODO: Clean this with a loop
             this.searchTerms.omni         = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
             this.searchTerms.minPrice     = form.minPrice.value;
@@ -124,7 +125,9 @@ export default {
 
         },
         getProperties (searchTerms) {
+            // this can be an array, so we need to stringify it before building the query string
             searchTerms.status = searchTerms.status.join('|');
+            //
             let queryString = this.buildQueryString(searchTerms);
             window.axios.get('/search' + queryString)
                 .then(response => {

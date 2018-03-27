@@ -13,6 +13,7 @@
                             name="bedrooms"
                             value=""
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">Any</span>
                     <span class="custom-input radio"></span>
@@ -23,6 +24,7 @@
                             name="bedrooms"
                             value="1"
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">1+</span>
                     <span class="custom-input radio"></span>
@@ -33,6 +35,7 @@
                             name="bedrooms"
                             value="2"
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">2+</span>
                     <span class="custom-input radio"></span>
@@ -43,6 +46,7 @@
                             name="bedrooms"
                             value="3"
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">3+</span>
                     <span class="custom-input radio"></span>
@@ -53,6 +57,7 @@
                             name="bedrooms"
                             value="4"
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">4+</span>
                     <span class="custom-input radio"></span>
@@ -63,6 +68,7 @@
                             name="bedrooms"
                             value="5"
                             class="radio-input"
+                            v-model="bedrooms"
                     >
                     <span class="radio-description px-1 text-grey-darker">5+</span>
                     <span class="custom-input radio"></span>
@@ -71,3 +77,19 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            fieldValue: {
+                type: Number,
+                default: this.fieldValue
+            }
+        },
+        data() {
+            return {
+                bedrooms: this.fieldValue
+            }
+        }
+    }
+</script>

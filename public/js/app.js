@@ -40781,7 +40781,7 @@ Vue.component('youtube-video', __webpack_require__(533));
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(547)
 /* template */
 var __vue_template__ = __webpack_require__(370)
 /* template functional */
@@ -40830,7 +40830,50 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selected,
+            expression: "selected"
+          }
+        ],
+        staticClass:
+          "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
+        attrs: { name: "acreage" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.selected = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
+      },
+      [
+        _c("option", { attrs: { value: "" } }, [_vm._v("Acreage")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: ".5" } }, [_vm._v("1/2 or more")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "1" } }, [_vm._v("1 or more")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("2 or more")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "5" } }, [_vm._v("5 or more")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "10" } }, [_vm._v("10 or more")])
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -40866,34 +40909,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass:
-          "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
-        attrs: { name: "acreage" }
-      },
-      [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Acreage")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: ".5" } }, [_vm._v("1/2 or more")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("1 or more")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "2" } }, [_vm._v("2 or more")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "5" } }, [_vm._v("5 or more")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "10" } }, [_vm._v("10 or more")])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -41169,7 +41185,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(550)
 /* template */
 var __vue_template__ = __webpack_require__(376)
 /* template functional */
@@ -41217,181 +41233,265 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+        },
+        [
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = ""
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("Any")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "1" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "1") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = "1"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("1+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "2" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "2") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = "2"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("2+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "3" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "3") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = "3"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("3+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "4" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "4") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = "4"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("4+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bathrooms,
+                    expression: "bathrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bathrooms", value: "5" },
+                domProps: { checked: _vm._q(_vm.bathrooms, "5") },
+                on: {
+                  change: function($event) {
+                    _vm.bathrooms = "5"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("5+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
-            },
-            [
-              _c(
-                "span",
-                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
-                [_vm._v("Baths")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+    return _c(
+      "div",
+      {
+        staticClass:
+          "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
+      },
+      [
         _c(
           "div",
           {
             staticClass:
-              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+              "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
           },
           [
             _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("Any")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "1" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("1+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "2" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("2+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "3" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("3+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "4" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("4+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bathrooms", value: "5" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("5+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
+              "span",
+              { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+              [_vm._v("Baths")]
             )
           ]
         )
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -41410,7 +41510,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(549)
 /* template */
 var __vue_template__ = __webpack_require__(378)
 /* template functional */
@@ -41458,181 +41558,265 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+        },
+        [
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = ""
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("Any")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "1" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "1") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = "1"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("1+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "2" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "2") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = "2"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("2+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "3" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "3") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = "3"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("3+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "4" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "4") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = "4"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("4+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bedrooms,
+                    expression: "bedrooms"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "radio", name: "bedrooms", value: "5" },
+                domProps: { checked: _vm._q(_vm.bedrooms, "5") },
+                on: {
+                  change: function($event) {
+                    _vm.bedrooms = "5"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "radio-description px-1 text-grey-darker" },
+                [_vm._v("5+")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input radio" })
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
-            },
-            [
-              _c(
-                "span",
-                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
-                [_vm._v("Beds")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+    return _c(
+      "div",
+      {
+        staticClass:
+          "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
+      },
+      [
         _c(
           "div",
           {
             staticClass:
-              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+              "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
           },
           [
             _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("Any")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "1" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("1+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "2" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("2+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "3" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("3+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "4" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("4+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "radio", name: "bedrooms", value: "5" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "radio-description px-1 text-grey-darker" },
-                  [_vm._v("5+")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input radio" })
-              ]
+              "span",
+              { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+              [_vm._v("Beds")]
             )
           ]
         )
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -43308,7 +43492,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(551)
 /* template */
 var __vue_template__ = __webpack_require__(398)
 /* template functional */
@@ -43356,124 +43540,226 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+        },
+        [
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.openHouses,
+                    expression: "openHouses"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "openHouses" },
+                domProps: {
+                  checked: Array.isArray(_vm.openHouses)
+                    ? _vm._i(_vm.openHouses, null) > -1
+                    : _vm.openHouses
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.openHouses,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.openHouses = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.openHouses = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.openHouses = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Open Houses")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.waterFront,
+                    expression: "waterFront"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "waterFront" },
+                domProps: {
+                  checked: Array.isArray(_vm.waterFront)
+                    ? _vm._i(_vm.waterFront, null) > -1
+                    : _vm.waterFront
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.waterFront,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.waterFront = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.waterFront = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.waterFront = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Waterfront")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pool,
+                    expression: "pool"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "pool" },
+                domProps: {
+                  checked: Array.isArray(_vm.pool)
+                    ? _vm._i(_vm.pool, null) > -1
+                    : _vm.pool
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.pool,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pool = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pool = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.pool = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Pool")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
-            },
-            [
-              _c(
-                "span",
-                { staticClass: "flex-grow h-auto py-1 px-3 text-grey-darker" },
-                [_vm._v("Features")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+    return _c(
+      "div",
+      {
+        staticClass:
+          "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
+      },
+      [
         _c(
           "div",
           {
             staticClass:
-              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+              "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
           },
           [
             _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "openHouses" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Open Houses")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "waterFront" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Waterfront")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "pool" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Pool")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
+              "span",
+              { staticClass: "flex-grow h-auto py-1 px-3 text-grey-darker" },
+              [_vm._v("Features")]
             )
           ]
         )
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -48861,8 +49147,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            selected: this.fieldValue
+        };
+    },
+
     computed: {
         options: function options() {
             var options = [];
@@ -48889,12 +49191,37 @@ var render = function() {
     _c(
       "select",
       {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selected,
+            expression: "selected"
+          }
+        ],
         staticClass:
           "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
-        attrs: { name: "maxPrice" }
+        attrs: { name: "maxPrice" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.selected = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Max-price")]),
+        _c("option", { attrs: { disabled: "", value: "" } }, [
+          _vm._v("Max-price")
+        ]),
         _vm._v(" "),
         _vm._l(_vm.options, function(option) {
           return _c("option", { domProps: { value: option } }, [
@@ -49021,8 +49348,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            selected: this.fieldValue
+        };
+    },
+
     computed: {
         options: function options() {
             var options = [];
@@ -49049,9 +49392,32 @@ var render = function() {
     _c(
       "select",
       {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selected,
+            expression: "selected"
+          }
+        ],
         staticClass:
           "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
-        attrs: { name: "minPrice" }
+        attrs: { name: "minPrice" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.selected = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
       },
       [
         _c("option", { attrs: { value: "" } }, [_vm._v("Min-price")]),
@@ -52291,9 +52657,15 @@ var Results = function Results() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
     data: function data() {
         return {
-            omni: '',
+            omni: this.fieldValue,
             results: new Results(),
             showResults: false
         };
@@ -52474,7 +52846,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(546)
 /* template */
 var __vue_template__ = __webpack_require__(493)
 /* template functional */
@@ -52523,7 +52895,58 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selected,
+            expression: "selected"
+          }
+        ],
+        staticClass:
+          "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
+        attrs: { name: "propertyType" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.selected = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
+      },
+      [
+        _c("option", { attrs: { value: "" } }, [_vm._v("Property Type")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Single Family Home")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Condo / Townhome")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Commercial")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Lots / Land")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Multi-Family Home")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Rental")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Manufactured")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Farms / Agricultural")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Other")])
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -52551,42 +52974,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass:
-          "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
-        attrs: { name: "propertyType" }
-      },
-      [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Property Type")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Single Family Home")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Condo / Townhome")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Commercial")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Lots / Land")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Multi-Family Home")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Rental")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Manufactured")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Farms / Agricultural")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("Other")])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -53047,8 +53435,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_search_results__ = __webpack_require__(543);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
 //
 //
 //
@@ -53100,17 +53487,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
     },
     data: function data() {
-        var _searchTerms;
-
         return {
             hasMapModule: false,
             mapView: false,
-            searchTerms: (_searchTerms = {
-                omni: '',
-                propertyType: '',
-                minPrice: '',
-                maxPrice: ''
-            }, _defineProperty(_searchTerms, 'maxPrice', ''), _defineProperty(_searchTerms, 'sq_ft', ''), _defineProperty(_searchTerms, 'acreage', ''), _defineProperty(_searchTerms, 'status', []), _defineProperty(_searchTerms, 'bedrooms', 0), _defineProperty(_searchTerms, 'bathrooms', 0), _defineProperty(_searchTerms, 'openHouses', false), _defineProperty(_searchTerms, 'waterFront', false), _defineProperty(_searchTerms, 'pool', false), _searchTerms),
+            searchTerms: {
+                omni: 'Panama City Beach',
+                propertyType: 'Single Family Home',
+                minPrice: '200000',
+                maxPrice: '',
+                sq_ft: '',
+                acreage: '',
+                status: ['active'],
+                bedrooms: 3,
+                bathrooms: 2,
+                openHouses: 0,
+                waterFront: 1,
+                pool: 0
+            },
             searchResults: new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */]({
                 pagination: {
                     from: null,
@@ -53130,6 +53523,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     mounted: function mounted() {
         this.getMapAvailability();
+        this.getProperties(this.searchTerms);
     },
 
     methods: {
@@ -53143,7 +53537,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             });
         },
         onSubmit: function onSubmit(form) {
-            // TODO: Clean this
+            // TODO: Clean this with a loop
             this.searchTerms.omni = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
             this.searchTerms.minPrice = form.minPrice.value;
@@ -53170,7 +53564,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         getProperties: function getProperties(searchTerms) {
             var _this2 = this;
 
+            // this can be an array, so we need to stringify it before building the query string
             searchTerms.status = searchTerms.status.join('|');
+            //
             var queryString = this.buildQueryString(searchTerms);
             window.axios.get('/search' + queryString).then(function (response) {
                 _this2.searchResults = new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */](response.data);
@@ -53210,7 +53606,10 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("search-bar", {
-        attrs: { "data-map-module": _vm.hasMapModule },
+        attrs: {
+          "data-map-module": _vm.hasMapModule,
+          searchTerms: _vm.searchTerms
+        },
         on: { "view-changed": _vm.onViewChange, "form-submitted": _vm.onSubmit }
       }),
       _vm._v(" "),
@@ -53503,12 +53902,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         dataMapModule: {
             type: Boolean,
             default: this.dataMapModule === true
+        },
+        searchTerms: {
+            type: Object,
+            default: this.searchTerms
         }
     },
     data: function data() {
@@ -53567,11 +54025,13 @@ var render = function() {
         },
         [
           _c("omni-bar", {
-            staticClass: "relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/3"
+            staticClass: "relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/3",
+            attrs: { "field-value": _vm.searchTerms.omni }
           }),
           _vm._v(" "),
           _c("property-type", {
-            staticClass: "relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4"
+            staticClass: "relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4",
+            attrs: { "field-value": _vm.searchTerms.propertyType }
           }),
           _vm._v(" "),
           _vm.dataMapModule
@@ -53589,7 +54049,13 @@ var render = function() {
                         staticClass: "button-grey-darker h-10 block w-full",
                         on: { click: _vm.onViewToggle }
                       },
-                      [_vm._v(_vm._s(_vm.viewText) + " view")]
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.viewText) +
+                            " view\n                    "
+                        )
+                      ]
                     )
                   ])
                 ]
@@ -53615,7 +54081,11 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Advanced")]
+                  [
+                    _vm._v(
+                      "\n                        Advanced\n                    "
+                    )
+                  ]
                 )
               ])
             ]
@@ -53646,27 +54116,32 @@ var render = function() {
                           [
                             _c("min-price-field", {
                               staticClass:
-                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"
+                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2",
+                              attrs: { "field-value": _vm.searchTerms.minPrice }
                             }),
                             _vm._v(" "),
                             _c("max-price-field", {
                               staticClass:
-                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"
+                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2",
+                              attrs: { "field-value": _vm.searchTerms.maxPrice }
                             }),
                             _vm._v(" "),
                             _c("total-sqft-field", {
                               staticClass:
-                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"
+                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2",
+                              attrs: { "field-value": _vm.searchTerms.sq_ft }
                             }),
                             _vm._v(" "),
                             _c("acreage-field", {
                               staticClass:
-                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2"
+                                "flex-auto relative p-2 w-full sm:w-1/2 md:w-full lg:w-1/2",
+                              attrs: { "field-value": _vm.searchTerms.acreage }
                             }),
                             _vm._v(" "),
                             _c("status-field", {
                               staticClass:
-                                "flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
+                                "flex mt-2 mx-2 w-full border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden",
+                              attrs: { "search-terms": _vm.searchTerms }
                             })
                           ],
                           1
@@ -53683,17 +54158,24 @@ var render = function() {
                       [
                         _c("bedrooms-field", {
                           staticClass:
-                            "flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
+                            "flex my-1 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden",
+                          attrs: { "field-value": _vm.searchTerms.bedrooms }
                         }),
                         _vm._v(" "),
                         _c("bathrooms-field", {
                           staticClass:
-                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
+                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden",
+                          attrs: { "field-value": _vm.searchTerms.bathrooms }
                         }),
                         _vm._v(" "),
                         _c("features-field", {
                           staticClass:
-                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden"
+                            "flex mt-4 border border-grey-light shadow rounded flex-wrap h-auto sm:h-10 align-middle overflow-hidden",
+                          attrs: {
+                            "data-open-houses": _vm.searchTerms.openHouses,
+                            "data-water-front": _vm.searchTerms.waterFront,
+                            "data-pool": _vm.searchTerms.pool
+                          }
                         })
                       ],
                       1
@@ -54623,7 +55105,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(548)
 /* template */
 var __vue_template__ = __webpack_require__(523)
 /* template functional */
@@ -54671,124 +55153,226 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+        },
+        [
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.active,
+                    expression: "active"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "active" },
+                domProps: {
+                  checked: Array.isArray(_vm.active)
+                    ? _vm._i(_vm.active, null) > -1
+                    : _vm.active
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.active,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.active = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.active = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.active = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Active")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.sold,
+                    expression: "sold"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "sold" },
+                domProps: {
+                  checked: Array.isArray(_vm.sold)
+                    ? _vm._i(_vm.sold, null) > -1
+                    : _vm.sold
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.sold,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.sold = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.sold = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.sold = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Sold")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pending,
+                    expression: "pending"
+                  }
+                ],
+                staticClass: "radio-input",
+                attrs: { type: "checkbox", name: "pending" },
+                domProps: {
+                  checked: Array.isArray(_vm.pending)
+                    ? _vm._i(_vm.pending, null) > -1
+                    : _vm.pending
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.pending,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pending = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pending = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.pending = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "input-description checkbox px-1 text-grey-darker"
+                },
+                [_vm._v("Pending")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "custom-input checkmark" })
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass:
-            "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
-            },
-            [
-              _c(
-                "span",
-                { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
-                [_vm._v("Status")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full sm:w-auto flex-grow p-0 m-0" }, [
+    return _c(
+      "div",
+      {
+        staticClass:
+          "w-full sm:w-1/6 border-right h-auto md:h-10 overflow-hidden"
+      },
+      [
         _c(
           "div",
           {
             staticClass:
-              "flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2"
+              "flex h-auto md:h-10 justify-start items-center bg-grey-lighter rounded-t sm:rounded-t-none sm:rounded-l"
           },
           [
             _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "active" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Active")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "sold" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Sold")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass:
-                  "custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap"
-              },
-              [
-                _c("input", {
-                  staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "pending" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "input-description checkbox px-1 text-grey-darker"
-                  },
-                  [_vm._v("Pending")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "custom-input checkmark" })
-              ]
+              "span",
+              { staticClass: "flex-grow h-auto py-2 px-3 text-grey-darker" },
+              [_vm._v("Status")]
             )
           ]
         )
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -54874,6 +55458,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            selected: this.fieldValue
+        };
+    },
+
     computed: {
         options: function options() {
             var options = [];
@@ -54897,9 +55493,32 @@ var render = function() {
     _c(
       "select",
       {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.selected,
+            expression: "selected"
+          }
+        ],
         staticClass:
           "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8",
-        attrs: { name: "sq_ft" }
+        attrs: { name: "sq_ft" },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.selected = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
       },
       [
         _c("option", { attrs: { value: "" } }, [_vm._v("Total H/C SqFt")]),
@@ -55851,6 +56470,385 @@ exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-t
 
 // exports
 
+
+/***/ }),
+/* 546 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            selected: this.fieldValue
+        };
+    },
+    mounted: function mounted() {
+        console.log(this.$refs.selectbox);
+    }
+});
+
+/***/ }),
+/* 547 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            selected: this.fieldValue
+        };
+    }
+});
+
+/***/ }),
+/* 548 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        searchTerms: {
+            type: Object,
+            default: this.searchTerms
+        }
+    },
+    data: function data() {
+        return {
+            status: this.searchTerms.status,
+            active: false,
+            sold: false,
+            pending: false
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        this.status.forEach(function (key) {
+            _this[key] = true;
+        });
+    }
+});
+
+/***/ }),
+/* 549 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: Number,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            bedrooms: this.fieldValue
+        };
+    }
+});
+
+/***/ }),
+/* 550 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        fieldValue: {
+            type: Number,
+            default: this.fieldValue
+        }
+    },
+    data: function data() {
+        return {
+            bathrooms: this.fieldValue
+        };
+    }
+});
+
+/***/ }),
+/* 551 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        dataOpenHouses: {
+            type: Number,
+            default: this.openHouses
+        },
+        dataWaterFront: {
+            type: Number,
+            default: this.waterFront
+        },
+        dataPool: {
+            type: Number,
+            default: this.pool
+        }
+    },
+    data: function data() {
+        return {
+            openHouses: this.dataOpenHouses,
+            waterFront: this.dataWaterFront,
+            pool: this.dataPool
+        };
+    }
+});
 
 /***/ })
 /******/ ]);
