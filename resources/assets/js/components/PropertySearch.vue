@@ -17,7 +17,10 @@
                 :data-to="searchResults.pagination.to"
                 :data-total="searchResults.pagination.total"
             /> -->
-            <!-- <property-search-results> -->
+            <property-search-results
+                :searchResults="searchResults"
+            >
+            </property-search-results>
             <!-- <property-pagination /> -->
         </div>
     </div>
@@ -37,6 +40,7 @@
 </template>
 
 <script>
+import SearchResults from '../models/search-results';
 export default {
     props: {
         dataMapModule: {
@@ -63,14 +67,21 @@ export default {
                 waterFront: false,
                 pool: false
             },
-            // searchResults: new SearchResults({
-            //     pagination: {
-            //         from: null,
-            //         to: null,
-            //         total: null
-            //     },
-            //     properties: []
-            // })
+            searchResults: new SearchResults({
+                pagination: {
+                    from: null,
+                    to: null,
+                    total: null,
+                    last_page: 0,
+                    first_page_url: '',
+                    prev_page_url: '',
+                    next_page_url: '',
+                    last_page_url: '',
+                    current_page: 0,
+                    per_page: 0
+                },
+                properties: []
+            })
         }
     },
     mounted () {
@@ -87,6 +98,7 @@ export default {
                  })
         },
         onSubmit (form) {
+            // TODO: Clean this
             this.searchTerms.omni         = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
             this.searchTerms.minPrice     = form.minPrice.value;
@@ -95,9 +107,10 @@ export default {
             this.searchTerms.bathrooms    = form.bathrooms.value;
             this.searchTerms.sq_ft        = form.sq_ft.value;
             this.searchTerms.acreage      = form.acreage.value;
-            this.searchTerms.openHouses   = form.openHouses.value;
-            this.searchTerms.waterFront   = form.waterFront.value;
-            this.searchTerms.pool         = form.pool.value;
+            this.searchTerms.openHouses   = form.openHouses.checked ? 1: 0;
+            this.searchTerms.waterFront   = form.waterFront.checked ? 1: 0;
+            this.searchTerms.pool         = form.pool.checked ? 1:       0;
+            this.searchTerms.status       = [];
             if (form.active.checked) {
                 this.searchTerms.status.push('active');
             }
@@ -111,11 +124,15 @@ export default {
 
         },
         getProperties (searchTerms) {
+            searchTerms.status = searchTerms.status.join('|');
             let queryString = this.buildQueryString(searchTerms);
             window.axios.get('/search' + queryString)
-                .then(response => console.log(response.data));
+                .then(response => {
+                    this.searchResults = new SearchResults(response.data);
+                });
         },
         buildQueryString(searchTerms) {
+            // loop through searchTerms object and build a url query string from it
             let queryString = '?';
             let i = 0;
             Object.keys(searchTerms).forEach(key => {

@@ -21,7 +21,7 @@ trait CallsMothership {
             return $this->client->request('GET', $request);
         }
         catch(ServerException $e) {
-            return [];
+            return $e->getMessage();
         }
     }
 

@@ -43405,7 +43405,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "openHouses", value: "1" }
+                  attrs: { type: "checkbox", name: "openHouses" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -43430,7 +43430,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "waterFront", value: "1" }
+                  attrs: { type: "checkbox", name: "waterFront" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -43455,7 +43455,7 @@ var staticRenderFns = [
               [
                 _c("input", {
                   staticClass: "radio-input",
-                  attrs: { type: "checkbox", name: "pool", value: "1" }
+                  attrs: { type: "checkbox", name: "pool" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -53046,6 +53046,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_search_results__ = __webpack_require__(543);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -53086,6 +53087,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -53105,15 +53110,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 propertyType: '',
                 minPrice: '',
                 maxPrice: ''
-            }, _defineProperty(_searchTerms, 'maxPrice', ''), _defineProperty(_searchTerms, 'sq_ft', ''), _defineProperty(_searchTerms, 'acreage', ''), _defineProperty(_searchTerms, 'status', []), _defineProperty(_searchTerms, 'bedrooms', 0), _defineProperty(_searchTerms, 'bathrooms', 0), _defineProperty(_searchTerms, 'openHouses', false), _defineProperty(_searchTerms, 'waterFront', false), _defineProperty(_searchTerms, 'pool', false), _searchTerms)
-            // searchResults: new SearchResults({
-            //     pagination: {
-            //         from: null,
-            //         to: null,
-            //         total: null
-            //     },
-            //     properties: []
-            // })
+            }, _defineProperty(_searchTerms, 'maxPrice', ''), _defineProperty(_searchTerms, 'sq_ft', ''), _defineProperty(_searchTerms, 'acreage', ''), _defineProperty(_searchTerms, 'status', []), _defineProperty(_searchTerms, 'bedrooms', 0), _defineProperty(_searchTerms, 'bathrooms', 0), _defineProperty(_searchTerms, 'openHouses', false), _defineProperty(_searchTerms, 'waterFront', false), _defineProperty(_searchTerms, 'pool', false), _searchTerms),
+            searchResults: new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */]({
+                pagination: {
+                    from: null,
+                    to: null,
+                    total: null,
+                    last_page: 0,
+                    first_page_url: '',
+                    prev_page_url: '',
+                    next_page_url: '',
+                    last_page_url: '',
+                    current_page: 0,
+                    per_page: 0
+                },
+                properties: []
+            })
         };
     },
     mounted: function mounted() {
@@ -53131,6 +53143,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             });
         },
         onSubmit: function onSubmit(form) {
+            // TODO: Clean this
             this.searchTerms.omni = form.omni.value;
             this.searchTerms.propertyType = form.propertyType.value;
             this.searchTerms.minPrice = form.minPrice.value;
@@ -53139,9 +53152,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             this.searchTerms.bathrooms = form.bathrooms.value;
             this.searchTerms.sq_ft = form.sq_ft.value;
             this.searchTerms.acreage = form.acreage.value;
-            this.searchTerms.openHouses = form.openHouses.value;
-            this.searchTerms.waterFront = form.waterFront.value;
-            this.searchTerms.pool = form.pool.value;
+            this.searchTerms.openHouses = form.openHouses.checked ? 1 : 0;
+            this.searchTerms.waterFront = form.waterFront.checked ? 1 : 0;
+            this.searchTerms.pool = form.pool.checked ? 1 : 0;
+            this.searchTerms.status = [];
             if (form.active.checked) {
                 this.searchTerms.status.push('active');
             }
@@ -53154,12 +53168,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             this.getProperties(this.searchTerms);
         },
         getProperties: function getProperties(searchTerms) {
+            var _this2 = this;
+
+            searchTerms.status = searchTerms.status.join('|');
             var queryString = this.buildQueryString(searchTerms);
             window.axios.get('/search' + queryString).then(function (response) {
-                return console.log(response.data);
+                _this2.searchResults = new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */](response.data);
             });
         },
         buildQueryString: function buildQueryString(searchTerms) {
+            // loop through searchTerms object and build a url query string from it
             var queryString = '?';
             var i = 0;
             Object.keys(searchTerms).forEach(function (key) {
@@ -53198,7 +53216,16 @@ var render = function() {
       _vm._v(" "),
       !_vm.mapView
         ? _c("div", { staticClass: "properties grid pb-4" }, [
-            _c("div", { staticClass: "container mx-auto" })
+            _c(
+              "div",
+              { staticClass: "container mx-auto" },
+              [
+                _c("property-search-results", {
+                  attrs: { searchResults: _vm.searchResults }
+                })
+              ],
+              1
+            )
           ])
         : _vm._e()
     ],
@@ -53243,6 +53270,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(544)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(506)
@@ -53251,7 +53282,7 @@ var __vue_template__ = __webpack_require__(507)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -53307,40 +53338,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        dataParams: {
+        searchResults: {
             type: Object,
-            default: {}
+            default: this.searchResults
         }
-    },
-    data: function data() {
-        return {
-            properties: [],
-            params: ''
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        var params = this.dataParams;
-        var numParams = Object.keys(params).length;
-
-        for (var i = 0; i < numParams; i++) {
-            var key = Object.keys(params)[i];
-            var value = Object.values(params)[i];
-            this.params += key + '=' + (value !== null ? value : '');
-            if (i < numParams - 1) {
-                this.params += '&';
-            }
-        }
-
-        window.axios.get('/search?' + this.params).then(function (response) {
-            _this.properties = response.data;
-        }).catch(function (error) {
-            console.log(error);
-        });
     }
 });
 
@@ -53354,21 +53363,29 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "grid-container" }, [
-      _c("div", { staticClass: "container mx-auto" }, [
-        _c(
-          "div",
-          {
-            staticClass: "flex flex-wrap justify-center items-start min-h-full"
-          },
-          _vm._l(_vm.properties.data, function(listing) {
-            return _c("mini-listing", {
-              key: listing.id,
-              staticClass: "w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2",
-              attrs: { listing: listing }
+      _c(
+        "div",
+        { staticClass: "container mx-auto" },
+        [
+          _c(
+            "transition-group",
+            {
+              staticClass:
+                "w-full flex flex-wrap justify-center items-start min-h-full",
+              attrs: { tag: "div", name: "list", mode: "out-in" }
+            },
+            _vm._l(_vm.searchResults.data, function(listing) {
+              return _c("mini-listing", {
+                key: listing.id,
+                staticClass:
+                  "w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 py-2 inline-block",
+                attrs: { listing: listing }
+              })
             })
-          })
-        )
-      ])
+          )
+        ],
+        1
+      )
     ])
   ])
 }
@@ -55773,6 +55790,67 @@ var Content = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SearchResults = function SearchResults(data) {
+    _classCallCheck(this, SearchResults);
+
+    for (var field in data) {
+        this[field] = data[field];
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (SearchResults);
+
+/***/ }),
+/* 544 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(545);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(45)("4922bba3", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d139f19c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PropertySearchResults.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d139f19c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PropertySearchResults.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 545 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(44)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.4s;\n  transition: all 0.4s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  -webkit-transform: translateY(200px);\n      -ms-transform: translateY(200px);\n          transform: translateY(200px);\n}\n.list-move {\n    -webkit-transition: -webkit-transform .4s;\n    transition: -webkit-transform .4s;\n    transition: transform .4s;\n    transition: transform .4s, -webkit-transform .4s;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
