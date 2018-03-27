@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select name="propertyType" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
+        <select name="propertyType" v-model="selected" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
             <option value="">Property Type</option>
             <option>Single Family Home</option>
             <option>Condo / Townhome</option>
@@ -17,3 +17,22 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            fieldValue: {
+                type: String,
+                default: this.fieldValue
+            }
+        },
+        data () {
+            return {
+                selected: this.fieldValue
+            }
+        },
+        mounted () {
+            console.log(this.$refs.selectbox);
+        }
+    }
+</script>

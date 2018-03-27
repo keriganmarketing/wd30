@@ -1,6 +1,10 @@
 <template>
     <div>
-        <select name="minPrice" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
+        <select
+            name="minPrice"
+            class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8"
+            v-model="selected"
+        >
             <option value="">Min-price</option>
             <option v-for="option in options" :value="option" >${{ option.toLocaleString() }}</option>
         </select>
@@ -19,6 +23,17 @@
 </template>
 <script>
 export default {
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
+    data () {
+        return {
+            selected: this.fieldValue
+        }
+    },
     computed: {
         options: function() {
             let options = [];

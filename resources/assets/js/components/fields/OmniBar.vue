@@ -58,9 +58,15 @@ class Results {
 }
 
 export default {
+    props: {
+        fieldValue: {
+            type: String,
+            default: this.fieldValue
+        }
+    },
     data () {
         return {
-            omni: '',
+            omni: this.fieldValue,
             results: new Results,
             showResults: false
         }
