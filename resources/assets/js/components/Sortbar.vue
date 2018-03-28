@@ -2,7 +2,7 @@
 <div class="flex flex-wrap justify-center md:justify-between items-center">
     <div class="w-auto flex-grow">
         <p class="py-4 px-2 text-center md:text-left text-grey-darker">
-            Showing {{ dataFrom }} - {{ dataTo }} of {{ dataTotal }} results
+            Showing {{ dataFrom.toLocaleString() }} - {{ dataTo.toLocaleString() }} of {{ dataTotal.toLocaleString() }} results
         </p>
     </div>
     <div class="w-auto flex-grow text-right">
