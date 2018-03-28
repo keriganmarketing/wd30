@@ -24,21 +24,27 @@
                 :searchResults="searchResults"
                 :fetchingProperties="fetchingProperties"
             />
-            <!-- <property-pagination /> -->
+            <property-pagination
+                :searchResults="searchResults"
+                v-on:first-page="firstPage"
+                v-on:prev-page="prevPage"
+                v-on:next-page="nextPage"
+                v-on:last-page="lastPage"
+            />
         </div>
     </div>
-    <!-- <div v-if="dataMapModule">
-        <div v-if="mapView" >
+    <div v-if="mapView">
+        <div v-if="dataMapModule" >
             <map-search
-                :latitude="{{ $properties->data[0]->latitude }}"
-                :longitude="{{ $properties->data[0]->longitude }}"
-                :data-params="{{ $searchParams }}"
-                :zoom="16"
-                api="{{ config('google.api_key') }}"
+                :latitude="searchResults.data[0].latitude"
+                :longitude="searchResults.data[0].longitude"
+                :data-params="searchTerms"
+                :zoom="10"
+                :api="googleKey"
                 class="border-b-2 border-secondary-light"
             />
         </div>
-    </div> -->
+    </div>
 </div>
 </template>
 
@@ -48,16 +54,20 @@ import SearchResults from '../models/search-results';
 export default {
     props: {
         dataMapModule: {
-            type: Boolean,
-            default: this.dataMapModule
+            type: String,
+            default: this.dataMapModule === 'true'
         },
         initialSearchTerms: {
-            type: Object,
+            type: Array,
             default: this.initialSearchTerms
         },
         initialSearchResults: {
             type: Object,
             default: this.initialSearchResults
+        },
+        googleKey: {
+            type: String,
+            default: ''
         }
     },
     data () {
@@ -79,14 +89,18 @@ export default {
                 waterFront: 1,
                 pool: 0,
                 sortBy: 'date_modified',
-                orderBy: 'DESC'
+                orderBy: 'DESC',
+                page: 1
             },
             searchResults: new SearchResults()
         }
     },
     created () {
         this.getMapAvailability();
+        // Determine if the page is loaded with search criteria (i.e. from the homepage or a hyperlink).
+        // If so, use the data provided in the request. Otherwise, use the default seed data from the searchterms object
         this.searchTerms = this.initialSearchTerms != '' ? this.initialSearchTerms : this.searchTerms;
+        // Since the user can't specify a status from the quick search, we'll seed the status of active
         this.searchTerms.status = ['active'];
         this.searchResults = this.initialSearchResults;
     },
@@ -114,6 +128,7 @@ export default {
             this.searchTerms.waterFront   = form.waterFront.checked ? 1: 0;
             this.searchTerms.pool         = form.pool.checked       ? 1: 0;
             this.searchTerms.status       = [];
+            this.searchTerms.page         = 1;
             this.searchTerms.sortBy       = '',
             this.searchTerms.orderBy      = ''
 
@@ -126,26 +141,24 @@ export default {
             if (form.pending.checked) {
                 this.searchTerms.status.push('pending');
             }
-            this.$Progress.start();
             this.getProperties(this.searchTerms);
-            this.$Progress.finish();
-
         },
         getProperties (searchTerms, sortBy = 'date_modified', orderBy = 'DESC') {
 
+            this.$Progress.start();
             // this can be an array, so we need to stringify it before building the query string
             searchTerms.sortBy  = sortBy;
             searchTerms.orderBy = orderBy;
             searchTerms.status  = Array.isArray(searchTerms.status) ? searchTerms.status.join('|') : searchTerms.status;
 
             let queryString     = this.buildQueryString(searchTerms);
-            // alert(queryString);
 
             window.axios.get('/search' + queryString)
                 .then(response => {
                     this.searchResults = new SearchResults(response.data);
                 });
 
+            this.$Progress.finish();
         },
         buildQueryString(searchTerms) {
             // loop through searchTerms object and build a url query string from it
@@ -162,12 +175,27 @@ export default {
             return queryString;
         },
         onSort(sortBy, orderBy) {
-            this.$Progress.start();
+            // start the progress bar
             this.getProperties(this.searchTerms, sortBy, orderBy);
-            this.$Progress.finish();
         },
         onViewChange (viewingMap) {
             this.mapView = viewingMap;
+        },
+        firstPage () {
+            this.searchTerms.page = 1;
+            this.getProperties(this.searchTerms);
+        },
+        prevPage() {
+            this.searchTerms.page -= 1;
+            this.getProperties(this.searchTerms);
+        },
+        nextPage() {
+            this.searchTerms.page += 1;
+            this.getProperties(this.searchTerms);
+        },
+        lastPage() {
+            this.searchTerms.page = this.searchResults.last_page;
+            this.getProperties(this.searchTerms);
         }
     }
 }
