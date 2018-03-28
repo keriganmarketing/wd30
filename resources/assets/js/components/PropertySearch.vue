@@ -19,6 +19,7 @@
                 :data-total="searchResults.total"
                 v-on:new-sort="onSort"
             />
+            <vue-progress-bar></vue-progress-bar>
             <property-search-results
                 :searchResults="searchResults"
                 :fetchingProperties="fetchingProperties"
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import VueProgressBar from '../../../../node_modules/vue-progressbar';
 import SearchResults from '../models/search-results';
 export default {
     props: {
@@ -124,11 +126,12 @@ export default {
             if (form.pending.checked) {
                 this.searchTerms.status.push('pending');
             }
+            this.$Progress.start();
             this.getProperties(this.searchTerms);
+            this.$Progress.finish();
 
         },
         getProperties (searchTerms, sortBy = 'date_modified', orderBy = 'DESC') {
-            this.fetchingProperties = true;
 
             // this can be an array, so we need to stringify it before building the query string
             searchTerms.sortBy  = sortBy;
@@ -143,7 +146,6 @@ export default {
                     this.searchResults = new SearchResults(response.data);
                 });
 
-            this.fetchingProperties = false;
         },
         buildQueryString(searchTerms) {
             // loop through searchTerms object and build a url query string from it
@@ -160,7 +162,9 @@ export default {
             return queryString;
         },
         onSort(sortBy, orderBy) {
+            this.$Progress.start();
             this.getProperties(this.searchTerms, sortBy, orderBy);
+            this.$Progress.finish();
         },
         onViewChange (viewingMap) {
             this.mapView = viewingMap;

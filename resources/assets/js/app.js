@@ -6,6 +6,22 @@ window.TWEEN = require('@tweenjs/tween.js');
 require('./load-components');
 import User from './models/user';
 import Content from './models/content';
+import VueProgressBar from 'vue-progressbar'
+const options = {
+    color: '#1DB3DD',
+    failedColor: '#874b4b',
+    thickness: '5px',
+    transition: {
+        speed: '0.4s',
+        opacity: '0.6s',
+        termination: 300
+    },
+    autoRevert: true,
+    location: 'bottom',
+    inverse: false
+};
+
+Vue.use(VueProgressBar, options);
 
 const app = new Vue({
     el: '#app',

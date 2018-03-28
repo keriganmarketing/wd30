@@ -5286,6 +5286,8 @@ module.exports = __webpack_require__(547);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_user__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_content__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_progressbar__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_progressbar__);
 __webpack_require__(140);
 
 window.Vue = __webpack_require__(364);
@@ -5294,6 +5296,22 @@ window.TWEEN = __webpack_require__(367);
 __webpack_require__(368);
 
 
+
+var options = {
+    color: '#1DB3DD',
+    failedColor: '#874b4b',
+    thickness: '5px',
+    transition: {
+        speed: '0.4s',
+        opacity: '0.6s',
+        termination: 300
+    },
+    autoRevert: true,
+    location: 'bottom',
+    inverse: false
+};
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_progressbar___default.a, options);
 
 var app = new Vue({
     el: '#app',
@@ -53759,7 +53777,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_search_results__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_progressbar__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_vue_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_search_results__ = __webpack_require__(509);
 //
 //
 //
@@ -53803,6 +53823,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53841,7 +53863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 sortBy: 'date_modified',
                 orderBy: 'DESC'
             },
-            searchResults: new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */]()
+            searchResults: new __WEBPACK_IMPORTED_MODULE_1__models_search_results__["a" /* default */]()
         };
     },
     created: function created() {
@@ -53886,7 +53908,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (form.pending.checked) {
                 this.searchTerms.status.push('pending');
             }
+            this.$Progress.start();
             this.getProperties(this.searchTerms);
+            this.$Progress.finish();
         },
         getProperties: function getProperties(searchTerms) {
             var _this2 = this;
@@ -53894,7 +53918,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var sortBy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'date_modified';
             var orderBy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DESC';
 
-            this.fetchingProperties = true;
 
             // this can be an array, so we need to stringify it before building the query string
             searchTerms.sortBy = sortBy;
@@ -53905,10 +53928,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // alert(queryString);
 
             window.axios.get('/search' + queryString).then(function (response) {
-                _this2.searchResults = new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */](response.data);
+                _this2.searchResults = new __WEBPACK_IMPORTED_MODULE_1__models_search_results__["a" /* default */](response.data);
             });
-
-            this.fetchingProperties = false;
         },
         buildQueryString: function buildQueryString(searchTerms) {
             // loop through searchTerms object and build a url query string from it
@@ -53925,7 +53946,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return queryString;
         },
         onSort: function onSort(sortBy, orderBy) {
+            this.$Progress.start();
             this.getProperties(this.searchTerms, sortBy, orderBy);
+            this.$Progress.finish();
         },
         onViewChange: function onViewChange(viewingMap) {
             this.mapView = viewingMap;
@@ -53985,6 +54008,8 @@ var render = function() {
                   },
                   on: { "new-sort": _vm.onSort }
                 }),
+                _vm._v(" "),
+                _c("vue-progress-bar"),
                 _vm._v(" "),
                 _c("property-search-results", {
                   attrs: {
@@ -54120,7 +54145,7 @@ exports = module.exports = __webpack_require__(33)(false);
 
 
 // module
-exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.4s;\n  transition: all 0.4s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  -webkit-transform: translateY(200px);\n      -ms-transform: translateY(200px);\n          transform: translateY(200px);\n}\n.list-move {\n    -webkit-transition: -webkit-transform .4s;\n    transition: -webkit-transform .4s;\n    transition: transform .4s;\n    transition: transform .4s, -webkit-transform .4s;\n}\n", ""]);
+exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.2s;\n  transition: all 0.2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  -webkit-transform: translateY(200px);\n      -ms-transform: translateY(200px);\n          transform: translateY(200px);\n}\n.list-move {\n    -webkit-transition: -webkit-transform .2s;\n    transition: -webkit-transform .2s;\n    transition: transform .2s;\n    transition: transform .2s, -webkit-transform .2s;\n}\n", ""]);
 
 // exports
 
@@ -55559,15 +55584,13 @@ var render = function() {
       _c("div", { staticClass: "w-auto flex-grow text-right" }, [
         _c(
           "div",
-          {
-            staticClass: "flex flex-wrap h-full items-center justify-end pr-2"
-          },
+          { staticClass: "flex flex-wrap h-full items-center justify-end" },
           [
             _c(
               "div",
               {
                 staticClass:
-                  "flex w-auto mb-2 block items-center justify-end rounded"
+                  "flex w-auto mb-2 block items-center justify-end rounded relative px-2 py-2"
               },
               [
                 _c(
@@ -57041,6 +57064,17 @@ var Content = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,o){ true?module.exports=o():"function"==typeof define&&define.amd?define(o):t.VueProgressBar=o()}(this,function(){"use strict";!function(){if("undefined"!=typeof document){var t=document.head||document.getElementsByTagName("head")[0],o=document.createElement("style"),i=" .__cov-progress { position: fixed; opacity: 1; z-index: 999999; } ";o.type="text/css",o.styleSheet?o.styleSheet.cssText=i:o.appendChild(document.createTextNode(i)),t.appendChild(o)}}();var t="undefined"!=typeof window,r={render:function(){var t=this,o=t.$createElement;return(t._self._c||o)("div",{staticClass:"__cov-progress",style:t.style})},staticRenderFns:[],name:"VueProgress",serverCacheKey:function(){return"Progress"},computed:{style:function(){var t=this.progress.options.location,o={"background-color":this.progress.options.canSuccess?this.progress.options.color:this.progress.options.failedColor,opacity:this.progress.options.show?1:0};return"top"==t||"bottom"==t?("top"===t?o.top="0px":o.bottom="0px",this.progress.options.inverse?o.right="0px":o.left="0px",o.width=this.progress.percent+"%",o.height=this.progress.options.thickness,o.transition="width "+this.progress.options.transition.speed+", opacity "+this.progress.options.transition.opacity):"left"!=t&&"right"!=t||("left"===t?o.left="0px":o.right="0px",this.progress.options.inverse?o.top="0px":o.bottom="0px",o.height=this.progress.percent+"%",o.width=this.progress.options.thickness,o.transition="height "+this.progress.options.transition.speed+", opacity "+this.progress.options.transition.opacity),o},progress:function(){return t?window.VueProgressBarEventBus.RADON_LOADING_BAR:{percent:0,options:{canSuccess:!0,show:!1,color:"rgb(19, 91, 55)",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},location:"top",autoRevert:!0,inverse:!1}}}}};return{install:function(o){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},i=(o.version.split(".")[0],"undefined"!=typeof window),e={$vm:null,state:{tFailColor:"",tColor:"",timer:null,cut:0},init:function(t){this.$vm=t},start:function(t){var o=this;this.$vm&&(t||(t=3e3),this.$vm.RADON_LOADING_BAR.percent=0,this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.state.cut=1e4/Math.floor(t),clearInterval(this.state.timer),this.state.timer=setInterval(function(){o.increase(o.state.cut*Math.random()),95<o.$vm.RADON_LOADING_BAR.percent&&o.$vm.RADON_LOADING_BAR.options.autoFinish&&o.finish()},100))},set:function(t){this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.$vm.RADON_LOADING_BAR.percent=Math.floor(t)},get:function(){return Math.floor(this.$vm.RADON_LOADING_BAR.percent)},increase:function(t){this.$vm.RADON_LOADING_BAR.percent=Math.min(99,this.$vm.RADON_LOADING_BAR.percent+Math.floor(t))},decrease:function(t){this.$vm.RADON_LOADING_BAR.percent=this.$vm.RADON_LOADING_BAR.percent-Math.floor(t)},hide:function(){var t=this;clearInterval(this.state.timer),this.state.timer=null,setTimeout(function(){t.$vm.RADON_LOADING_BAR.options.show=!1,o.nextTick(function(){setTimeout(function(){t.$vm.RADON_LOADING_BAR.percent=0},100),t.$vm.RADON_LOADING_BAR.options.autoRevert&&setTimeout(function(){t.revert()},300)})},this.$vm.RADON_LOADING_BAR.options.transition.termination)},pause:function(){clearInterval(this.state.timer)},finish:function(){this.$vm&&(this.$vm.RADON_LOADING_BAR.percent=100,this.hide())},fail:function(){this.$vm.RADON_LOADING_BAR.options.canSuccess=!1,this.$vm.RADON_LOADING_BAR.percent=100,this.hide()},setFailColor:function(t){this.$vm.RADON_LOADING_BAR.options.failedColor=t},setColor:function(t){this.$vm.RADON_LOADING_BAR.options.color=t},setLocation:function(t){this.$vm.RADON_LOADING_BAR.options.location=t},setTransition:function(t){this.$vm.RADON_LOADING_BAR.options.transition=t},tempFailColor:function(t){this.state.tFailColor=this.$vm.RADON_LOADING_BAR.options.failedColor,this.$vm.RADON_LOADING_BAR.options.failedColor=t},tempColor:function(t){this.state.tColor=this.$vm.RADON_LOADING_BAR.options.color,this.$vm.RADON_LOADING_BAR.options.color=t},tempLocation:function(t){this.state.tLocation=this.$vm.RADON_LOADING_BAR.options.location,this.$vm.RADON_LOADING_BAR.options.location=t},tempTransition:function(t){this.state.tTransition=this.$vm.RADON_LOADING_BAR.options.transition,this.$vm.RADON_LOADING_BAR.options.transition=t},revertColor:function(){this.$vm.RADON_LOADING_BAR.options.color=this.state.tColor,this.state.tColor=""},revertFailColor:function(){this.$vm.RADON_LOADING_BAR.options.failedColor=this.state.tFailColor,this.state.tFailColor=""},revertLocation:function(){this.$vm.RADON_LOADING_BAR.options.location=this.state.tLocation,this.state.tLocation=""},revertTransition:function(){this.$vm.RADON_LOADING_BAR.options.transition=this.state.tTransition,this.state.tTransition={}},revert:function(){this.$vm.RADON_LOADING_BAR.options.autoRevert&&(this.state.tColor&&this.revertColor(),this.state.tFailColor&&this.revertFailColor(),this.state.tLocation&&this.revertLocation(),!this.state.tTransition||void 0===this.state.tTransition.speed&&void 0===this.state.tTransition.opacity||this.revertTransition())},parseMeta:function(t){for(var o in t.func){var i=t.func[o];switch(i.call){case"color":switch(i.modifier){case"set":this.setColor(i.argument);break;case"temp":this.tempColor(i.argument)}break;case"fail":switch(i.modifier){case"set":this.setFailColor(i.argument);break;case"temp":this.tempFailColor(i.argument)}break;case"location":switch(i.modifier){case"set":this.setLocation(i.argument);break;case"temp":this.tempLocation(i.argument)}break;case"transition":switch(i.modifier){case"set":this.setTransition(i.argument);break;case"temp":this.tempTransition(i.argument)}}}}},s=function(t,o){for(var i,e,s=1;s<arguments.length;++s)for(i in e=arguments[s])Object.prototype.hasOwnProperty.call(e,i)&&(t[i]=e[i]);return t}({canSuccess:!0,show:!1,color:"#73ccec",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},autoRevert:!0,location:"top",inverse:!1,autoFinish:!0},t),n=new o({data:{RADON_LOADING_BAR:{percent:0,options:s}}});i&&(window.VueProgressBarEventBus=n,e.init(n)),o.component("vue-progress-bar",r),o.prototype.$Progress=e}}});
+
 
 /***/ })
 /******/ ]);

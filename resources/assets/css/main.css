@@ -233,3 +233,6 @@ select::-ms-expand {
     display: none;
 }
 
+.__cov-progress {
+    position: relative !important;
+}

@@ -32,14 +32,14 @@ export default {
 
 <style>
 .list-enter-active, .list-leave-active {
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(200px);
 }
 .list-move {
-    transition: transform .4s;
+    transition: transform .2s;
 }
 </style>
 
