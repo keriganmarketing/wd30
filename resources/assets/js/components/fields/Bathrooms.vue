@@ -46,7 +46,7 @@
     export default {
         props: {
             fieldValue: {
-                type: Number,
+                type: String,
                 default: this.fieldValue
             }
         },
