@@ -61,8 +61,8 @@ export default {
                 sq_ft: '',
                 acreage: '',
                 status: ['active'],
-                bedrooms: 3,
-                bathrooms: 2,
+                bedrooms: '3',
+                bathrooms: '2',
                 openHouses: 0,
                 waterFront: 1,
                 pool: 0
