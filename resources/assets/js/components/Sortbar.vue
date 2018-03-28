@@ -6,8 +6,8 @@
         </p>
     </div>
     <div class="w-auto flex-grow text-right">
-        <div class="flex flex-wrap h-full items-center justify-end pr-2">
-            <div class="flex w-auto mb-2 block items-center justify-end rounded">
+        <div class="flex flex-wrap h-full items-center justify-end">
+            <div class="flex w-auto mb-2 block items-center justify-end rounded relative px-2 py-2" >
                 <select name="sq_ft" v-model="selected" @change="onChange" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey justify-end h-10 px-3 py-2 pr-8">
                     <option disabled value="">Sort By:</option>
                     <option>Newest</option>

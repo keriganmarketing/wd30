@@ -6490,6 +6490,10 @@ select::-ms-expand {
   display: none;
 }
 
+.__cov-progress {
+  position: relative !important;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
