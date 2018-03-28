@@ -40860,7 +40860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         fieldValue: {
             type: String,
-            default: this.fieldValue
+            default: ""
         }
     },
     data: function data() {
@@ -40910,7 +40910,9 @@ var render = function() {
         }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Acreage")]),
+        _c("option", { attrs: { disabled: "", value: "" } }, [
+          _vm._v("Acreage")
+        ]),
         _vm._v(" "),
         _c("option", { attrs: { value: ".5" } }, [_vm._v("1/2 or more")]),
         _vm._v(" "),
@@ -49431,7 +49433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         fieldValue: {
             type: String,
-            default: this.fieldValue
+            default: ""
         }
     },
     data: function data() {
@@ -49495,7 +49497,7 @@ var render = function() {
       },
       [
         _c("option", { attrs: { disabled: "", value: "" } }, [
-          _vm._v("Max-price")
+          _vm._v("Maximum Price")
         ]),
         _vm._v(" "),
         _vm._l(_vm.options, function(option) {
@@ -49632,7 +49634,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         fieldValue: {
             type: String,
-            default: this.fieldValue
+            default: ""
         }
     },
     data: function data() {
@@ -49695,7 +49697,9 @@ var render = function() {
         }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Min-price")]),
+        _c("option", { attrs: { disabled: "", value: "" } }, [
+          _vm._v("Minimum Price")
+        ]),
         _vm._v(" "),
         _vm._l(_vm.options, function(option) {
           return _c("option", { domProps: { value: option } }, [
@@ -53192,7 +53196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         fieldValue: {
             type: String,
-            default: this.fieldValue
+            default: 'Single Family Home'
         }
     },
     data: function data() {
@@ -53245,7 +53249,9 @@ var render = function() {
         }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Property Type")]),
+        _c("option", { attrs: { disabled: "", value: "" } }, [
+          _vm._v("Property Type")
+        ]),
         _vm._v(" "),
         _c("option", [_vm._v("Single Family Home")]),
         _vm._v(" "),
@@ -53796,6 +53802,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53803,12 +53810,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         dataMapModule: {
             type: Boolean,
             default: this.dataMapModule
+        },
+        initialSearchTerms: {
+            type: Object,
+            default: this.initialSearchTerms
+        },
+        initialSearchResults: {
+            type: Object,
+            default: this.initialSearchResults
         }
     },
     data: function data() {
         return {
             hasMapModule: false,
             mapView: false,
+            fetchingProperties: false,
             searchTerms: {
                 omni: 'Panama City Beach',
                 propertyType: 'Single Family Home',
@@ -53821,28 +53837,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bathrooms: '2',
                 openHouses: 0,
                 waterFront: 1,
-                pool: 0
+                pool: 0,
+                sortBy: 'date_modified',
+                orderBy: 'DESC'
             },
-            searchResults: new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */]({
-                pagination: {
-                    from: null,
-                    to: null,
-                    total: null,
-                    last_page: 0,
-                    first_page_url: '',
-                    prev_page_url: '',
-                    next_page_url: '',
-                    last_page_url: '',
-                    current_page: 0,
-                    per_page: 0
-                },
-                properties: []
-            })
+            searchResults: new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */]()
         };
     },
-    mounted: function mounted() {
+    created: function created() {
         this.getMapAvailability();
-        this.getProperties(this.searchTerms);
+        this.searchTerms = this.initialSearchTerms != '' ? this.initialSearchTerms : this.searchTerms;
+        this.searchTerms.status = ['active'];
+        this.searchResults = this.initialSearchResults;
     },
 
     methods: {
@@ -53869,6 +53875,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.searchTerms.waterFront = form.waterFront.checked ? 1 : 0;
             this.searchTerms.pool = form.pool.checked ? 1 : 0;
             this.searchTerms.status = [];
+            this.searchTerms.sortBy = '', this.searchTerms.orderBy = '';
+
             if (form.active.checked) {
                 this.searchTerms.status.push('active');
             }
@@ -53883,13 +53891,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getProperties: function getProperties(searchTerms) {
             var _this2 = this;
 
+            var sortBy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'date_modified';
+            var orderBy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DESC';
+
+            this.fetchingProperties = true;
+
             // this can be an array, so we need to stringify it before building the query string
-            searchTerms.status = searchTerms.status.join('|');
-            //
+            searchTerms.sortBy = sortBy;
+            searchTerms.orderBy = orderBy;
+            searchTerms.status = Array.isArray(searchTerms.status) ? searchTerms.status.join('|') : searchTerms.status;
+
             var queryString = this.buildQueryString(searchTerms);
+            // alert(queryString);
+
             window.axios.get('/search' + queryString).then(function (response) {
                 _this2.searchResults = new __WEBPACK_IMPORTED_MODULE_0__models_search_results__["a" /* default */](response.data);
             });
+
+            this.fetchingProperties = false;
         },
         buildQueryString: function buildQueryString(searchTerms) {
             // loop through searchTerms object and build a url query string from it
@@ -53898,12 +53917,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Object.keys(searchTerms).forEach(function (key) {
                 queryString += key + '=' + searchTerms[key];
                 i++;
-                if (i < Object.keys(searchTerms).length - 1) {
+                if (i < Object.keys(searchTerms).length) {
                     queryString += '&';
                 }
             });
 
             return queryString;
+        },
+        onSort: function onSort(sortBy, orderBy) {
+            this.getProperties(this.searchTerms, sortBy, orderBy);
         },
         onViewChange: function onViewChange(viewingMap) {
             this.mapView = viewingMap;
@@ -53955,8 +53977,20 @@ var render = function() {
               "div",
               { staticClass: "container mx-auto" },
               [
+                _c("sortbar", {
+                  attrs: {
+                    "data-from": _vm.searchResults.from,
+                    "data-to": _vm.searchResults.to,
+                    "data-total": _vm.searchResults.total
+                  },
+                  on: { "new-sort": _vm.onSort }
+                }),
+                _vm._v(" "),
                 _c("property-search-results", {
-                  attrs: { searchResults: _vm.searchResults }
+                  attrs: {
+                    searchResults: _vm.searchResults,
+                    fetchingProperties: _vm.fetchingProperties
+                  }
                 })
               ],
               1
@@ -55436,22 +55470,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    // props: {
-    //     dataFrom: {
-    //         type: Number,
-    //         default: this.dataFrom
-    //     },
-    //     dataTo: {
-    //         type: Number,
-    //         default: this.dataTo
-    //     },
-    //     dataTotal: {
-    //         type: Number,
-    //         default: this.dataTotal
-    //     }
-    // }
+    props: {
+        dataFrom: {
+            type: Number,
+            default: this.dataFrom
+        },
+        dataTo: {
+            type: Number,
+            default: this.dataTo
+        },
+        dataTotal: {
+            type: Number,
+            default: this.dataTotal
+        }
+    },
+    data: function data() {
+        return {
+            selected: 'Newest'
+        };
+    },
+
+    methods: {
+        onChange: function onChange() {
+            var sortBy = '';
+            var orderBy = '';
+            switch (this.selected) {
+                case 'Newest':
+                    sortBy = 'date_modified';
+                    orderBy = 'DESC';
+                    break;
+                case 'Oldest':
+                    sortBy = 'date_modified';
+                    orderBy = 'ASC';
+                    break;
+                case 'Price - Lo to Hi':
+                    sortBy = 'price';
+                    orderBy = 'ASC';
+                    break;
+                case 'Price - Hi to Lo':
+                    sortBy = 'price';
+                    orderBy = 'DESC';
+                    break;
+            }
+
+            this.$emit('new-sort', sortBy, orderBy);
+        }
+    }
 });
 
 /***/ }),
@@ -55462,7 +55529,134 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    {
+      staticClass:
+        "flex flex-wrap justify-center md:justify-between items-center"
+    },
+    [
+      _c("div", { staticClass: "w-auto flex-grow" }, [
+        _c(
+          "p",
+          {
+            staticClass: "py-4 px-2 text-center md:text-left text-grey-darker"
+          },
+          [
+            _vm._v(
+              "\n            Showing " +
+                _vm._s(_vm.dataFrom) +
+                " - " +
+                _vm._s(_vm.dataTo) +
+                " of " +
+                _vm._s(_vm.dataTotal) +
+                " results\n        "
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-auto flex-grow text-right" }, [
+        _c(
+          "div",
+          {
+            staticClass: "flex flex-wrap h-full items-center justify-end pr-2"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "flex w-auto mb-2 block items-center justify-end rounded"
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.selected,
+                        expression: "selected"
+                      }
+                    ],
+                    staticClass:
+                      "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey justify-end h-10 px-3 py-2 pr-8",
+                    attrs: { name: "sq_ft" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selected = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        _vm.onChange
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { disabled: "", value: "" } }, [
+                      _vm._v("Sort By:")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Newest")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Oldest")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Price - Lo to Hi")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Price - Hi to Lo")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-4 w-6",
+                        staticStyle: {
+                          "enable-background": "new 0 0 20 20",
+                          width: "20px"
+                        },
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20",
+                          "xml:space": "preserve"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55897,7 +56091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         fieldValue: {
             type: String,
-            default: this.fieldValue
+            default: ""
         }
     },
     data: function data() {
@@ -55957,7 +56151,9 @@ var render = function() {
         }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Total H/C SqFt")]),
+        _c("option", { attrs: { disabled: "", value: "" } }, [
+          _vm._v("Total H/C SqFt")
+        ]),
         _vm._v(" "),
         _vm._l(_vm.options, function(option) {
           return _c("option", { domProps: { value: option } }, [

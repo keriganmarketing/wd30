@@ -1,7 +1,7 @@
 <template>
     <div>
         <select name="propertyType" v-model="selected" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-            <option value="">Property Type</option>
+            <option disabled value="">Property Type</option>
             <option>Single Family Home</option>
             <option>Condo / Townhome</option>
             <option>Commercial</option>
@@ -23,7 +23,7 @@
         props: {
             fieldValue: {
                 type: String,
-                default: this.fieldValue
+                default: 'Single Family Home'
             }
         },
         data () {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <select name="sq_ft" v-model="selected" class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 px-3 py-2 pr-8">
-            <option value="">Total H/C SqFt</option>
+            <option disabled value="">Total H/C SqFt</option>
             <option v-for="option in options" :value="option" >{{ option.toLocaleString() }}</option>
         </select>
         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -22,7 +22,7 @@
         props: {
             fieldValue: {
                 type: String,
-                default: this.fieldValue
+                default: ""
             }
         },
         data () {
