@@ -22,7 +22,7 @@ class PropertySearchController extends Controller
     public function index(Request $request)
     {
         $realtor    = (new Realtor())->getProfile();
-        $properties = Mothership::search($request);
+        $properties = json_encode(Mothership::search($request));
         $searchParams = json_encode($request->all());
 
         return view('properties.index', compact('properties', 'realtor', 'searchParams'));
