@@ -3,7 +3,8 @@
 
 {{ $lead->name }},
 
-Thank you so much for considering me to help you with your real estate needs. I look forward to speaking with you soon!
+Thank you so much for considering me to help you with your
+real estate needs. I look forward to speaking with you soon!
 
 The information you submitted is listed below:
 
