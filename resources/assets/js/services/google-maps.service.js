@@ -141,7 +141,6 @@ export default class GoogleMap {
                     }));
                 });
             }
-
         }
         if (mapData.markerClusterer) {
             mapData.markerClusterer.clearMarkers();

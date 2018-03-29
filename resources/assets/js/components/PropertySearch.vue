@@ -40,7 +40,7 @@
                 :longitude="searchResults.data[0].longitude"
                 :data-params="searchTerms"
                 ref="map"
-                :zoom="10"
+                :zoom="16"
                 :api="googleKey"
                 class="border-b-2 border-secondary-light"
             />
@@ -84,10 +84,10 @@ export default {
                 sq_ft: '',
                 acreage: '',
                 status: ['active'],
-                bedrooms: '3',
-                bathrooms: '2',
+                bedrooms: '',
+                bathrooms: '',
                 openHouses: 0,
-                waterFront: 1,
+                waterFront: 0,
                 pool: 0,
                 sortBy: 'date_modified',
                 orderBy: 'DESC',
