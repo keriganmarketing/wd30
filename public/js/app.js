@@ -49146,7 +49146,7 @@ exports = module.exports = __webpack_require__(33)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49236,32 +49236,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.setCenter();
     },
 
+    watch: {
+        latitude: function latitude() {
+            alert('hi');
+            this.buildQuery();
+            this.setCenter();
+        }
+    },
     methods: {
         buildQuery: function buildQuery() {
-            // TODO: make Query Builder Object
-            ////////////////////////////////
-            var params = this.dataParams;
-            var numParams = Object.keys(params).length;
+            var _this = this;
 
-            for (var i = 0; i < numParams; i++) {
-                var key = Object.keys(params)[i];
-                var value = Object.values(params)[i];
-                this.params += key + '=' + (value !== null ? value : '');
-                if (i < numParams - 1) {
-                    this.params += '&';
+            var queryString = '?';
+            var i = 0;
+            Object.keys(this.dataParams).forEach(function (key) {
+                queryString += key + '=' + _this.dataParams[key];
+                i++;
+                if (i < Object.keys(_this.dataParams).length) {
+                    queryString += '&';
                 }
-            }
-            ///////////////////////////////////
+            });
+            this.params = queryString;
         },
         setCenter: function setCenter() {
-            if (this.dataParams.length === 0) {
-                this.getUserLocation();
-            } else {
-                this.getMarkers();
-            }
+            this.getMarkers();
         },
         getUserLocation: function getUserLocation() {
-            var _this = this;
+            var _this2 = this;
 
             this.isLoading = true;
             var vm = this;
@@ -49271,7 +49272,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     vm.config.center = position;
                     vm.getMarkers();
                 }).catch(function (e) {
-                    _this.errors.push(e);
+                    _this2.errors.push(e);
                 });
             }
         },
@@ -49285,30 +49286,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getMarkers: function getMarkers() {
-            var _this2 = this;
+            var _this3 = this;
 
             // TODO: Use a service to perform this action
             /////////////////////////////////////////////
             var vm = this;
 
-            window.axios.get('/map-search?' + this.params).then(function (response) {
+            window.axios.get('/map-search' + this.params).then(function (response) {
                 vm.config.markers = response.data;
                 vm.renderMap();
                 vm.isLoading = false;
             }).catch(function (e) {
-                _this2.errors.push(e);
+                _this3.errors.push(e);
             });
             /////////////////////////////////////////////
         },
         getProperty: function getProperty(mlsAccount) {
-            var _this3 = this;
+            var _this4 = this;
 
             var vm = this;
             window.axios.get('/full-listing/' + mlsAccount).then(function (response) {
                 vm.selectedProperty = response.data;
                 vm.propOpen = true;
             }).catch(function (e) {
-                _this3.errors.push(e);
+                _this4.errors.push(e);
             });
         }
     }
@@ -54019,6 +54020,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -54120,7 +54122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var sortBy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'date_modified';
             var orderBy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DESC';
 
-
+            // loading bar
             this.$Progress.start();
             // this can be an array, so we need to stringify it before building the query string
             searchTerms.sortBy = sortBy;
@@ -54259,6 +54261,7 @@ var render = function() {
                   "div",
                   [
                     _c("map-search", {
+                      ref: "map",
                       staticClass: "border-b-2 border-secondary-light",
                       attrs: {
                         latitude: _vm.searchResults.data[0].latitude,

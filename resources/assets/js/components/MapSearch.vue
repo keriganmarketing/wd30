@@ -74,29 +74,28 @@ export default {
         this.buildQuery();
         this.setCenter();
     },
+    watch: {
+        latitude: function () {
+            alert('hi');
+            this.buildQuery();
+            this.setCenter();
+        }
+    },
     methods: {
         buildQuery() {
-            // TODO: make Query Builder Object
-            ////////////////////////////////
-            let params = this.dataParams;
-            let numParams = Object.keys(params).length;
-
-            for (let i = 0; i < numParams; i++) {
-                let key = Object.keys(params)[i];
-                let value = Object.values(params)[i];
-                this.params += key + '=' + (value !== null ? value : '');
-                if (i < numParams - 1) {
-                    this.params += '&';
+            let queryString = '?';
+            let i = 0;
+            Object.keys(this.dataParams).forEach(key => {
+                queryString += key + '=' + this.dataParams[key];
+                i++;
+                if (i < (Object.keys(this.dataParams).length)) {
+                    queryString += '&';
                 }
-            }
-            ///////////////////////////////////
+            });
+            this.params = queryString;
         },
         setCenter(){
-            if(this.dataParams.length === 0){
-                this.getUserLocation();
-            }else{
-                this.getMarkers();
-            }
+            this.getMarkers();
         },
         getUserLocation() {
             this.isLoading = true;
@@ -129,7 +128,7 @@ export default {
             /////////////////////////////////////////////
             let vm = this;
 
-            window.axios.get('/map-search?' + this.params)
+            window.axios.get('/map-search' + this.params)
                 .then(response => {
                     vm.config.markers = response.data;
                     vm.renderMap();

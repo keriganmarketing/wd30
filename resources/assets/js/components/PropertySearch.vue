@@ -39,6 +39,7 @@
                 :latitude="searchResults.data[0].latitude"
                 :longitude="searchResults.data[0].longitude"
                 :data-params="searchTerms"
+                ref="map"
                 :zoom="10"
                 :api="googleKey"
                 class="border-b-2 border-secondary-light"
@@ -144,7 +145,7 @@ export default {
             this.getProperties(this.searchTerms);
         },
         getProperties (searchTerms, sortBy = 'date_modified', orderBy = 'DESC') {
-
+            // loading bar
             this.$Progress.start();
             // this can be an array, so we need to stringify it before building the query string
             searchTerms.sortBy  = sortBy;
