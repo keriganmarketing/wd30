@@ -76,7 +76,16 @@ export default {
     },
     watch: {
         latitude: function () {
-            alert('hi');
+            this.config = {
+                zoom: this.zoom,
+                center: {
+                    latitude: this.latitude,
+                    longitude: this.longitude
+                },
+                mapElement: this.$refs.map,
+                markers: [],
+                origin: {}
+            };
             this.buildQuery();
             this.setCenter();
         }
