@@ -30,6 +30,6 @@ class LeadCreated extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.leads.created')->with(['lead' => $this->lead]);
+        return $this->subject('Thanks for your interest')->markdown('emails.leads.created')->with(['lead' => $this->lead]);
     }
 }
