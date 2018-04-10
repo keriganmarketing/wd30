@@ -26,7 +26,12 @@
             </h2>
             <featured-properties
                 class="flex flex-wrap w-full items-center justify-center"
-                :properties="{{ json_encode($realtor->listings) }}"
+                :properties="{{ json_encode($activeListings) }}"
+            >
+            </featured-properties>
+            <featured-properties
+                class="flex flex-wrap w-full items-center justify-center"
+                :properties="{{ json_encode($otherListings) }}"
             >
             </featured-properties>
         </div>
