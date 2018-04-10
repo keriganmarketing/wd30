@@ -46,9 +46,14 @@ class LeadsController extends Controller
 
         $realtor = User::realtor();
         $lead = Lead::create($request->all());
+        $emailConfirmation = (new LeadCreated($lead))
+                        ->onQueue(config('queue.connections.redis.queue'));
+        $leadNotification = (new LeadReceived($lead))
+                        ->onQueue(config('queue.connections.redis.queue'));
 
-        Mail::to($request->email)->send(new LeadCreated($lead));
-        Mail::to($realtor->email)->send(new LeadReceived($lead));
+
+        Mail::to($request->email)->send($emailConfirmation);
+        Mail::to($realtor->email)->send($leadNotification);
 
         return $lead;
     }
