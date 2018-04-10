@@ -4,8 +4,8 @@ namespace App;
 
 use App\User;
 use App\MlsNumber;
-use Facades\KeriganSolutions\Drone\Mothership;
 use Illuminate\Database\Eloquent\Model;
+use Facades\KeriganSolutions\Drone\Mothership;
 
 class Realtor
 {
@@ -38,5 +38,20 @@ class Realtor
         $this->listings = Mothership::agentListings($agentMlsNumberString);
 
         return $this;
+    }
+
+    public function shouldHaveFacebook()
+    {
+        return (config('modules.facebook') && $this->data->fb_page_id && $this->data->fb_access_token);
+    }
+
+    public function shouldHaveYoutube()
+    {
+        return (config('modules.youtube') && $this->data->youtube_channel_id);
+    }
+
+    public function hasListings()
+    {
+        return (count($this->listings) > 0);
     }
 }

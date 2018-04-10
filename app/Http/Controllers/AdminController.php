@@ -6,11 +6,11 @@ use App\Lead;
 use App\User;
 use App\Avatar;
 use App\Realtor;
+use App\MlsNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Facades\KeriganSolutions\Drone\Mothership;
-use App\MlsNumber;
 
 class AdminController extends Controller
 {

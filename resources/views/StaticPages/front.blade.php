@@ -17,7 +17,7 @@
             </div>
         </div>
     </section>
-    @if(count($realtor->listings) > 0)
+    @if($realtor->hasListings())
     <section id="featured-listings" class="featured-listings bg-brand-dark py-8 lg:py-16 xl:py-24">
         <div class="container mx-auto flex flex-wrap items-center justify-center py-2">
 
@@ -25,12 +25,14 @@
                 {{ $realtor->data->name }}'s Listings
             </h2>
             <featured-properties
-                    class="flex flex-wrap w-full items-center justify-center"
-                    :properties="{{ json_encode($realtor->listings) }}" ></featured-properties>
+                class="flex flex-wrap w-full items-center justify-center"
+                :properties="{{ json_encode($realtor->listings) }}"
+            >
+            </featured-properties>
         </div>
     </section>
     @endif
-    @if(config('modules.facebook') && $realtor->data->fb_page_id && $realtor->data->fb_access_token)
+    @if($realtor->shouldHaveFacebook())
         <section class="bg-grey-lightest py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
                 <h2 class="text-brand w-full text-center pb-4 text-3xl">
@@ -54,7 +56,7 @@
             </div>
         </section>
     @endif
-    @if(config('modules.youtube') && $realtor->data->youtube_channel_id)
+    @if($realtor->shouldHaveYoutube())
         <section class="bg-grey-dark py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
                 <h2 class="text-white text-center pb-4 text-3xl">
