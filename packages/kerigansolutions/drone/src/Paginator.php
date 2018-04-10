@@ -43,6 +43,7 @@ class Paginator
     {
         return $this->url . $this->appendPage($this->properties->last_page);
     }
+
     protected function nextPage()
     {
         $nextPage = $this->request->page > 0 ? ($this->request->page + 1) : 2;
