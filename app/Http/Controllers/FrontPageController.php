@@ -28,9 +28,18 @@ class FrontPageController extends Controller
         MetaData::generate();
 
         $realtor = (new Realtor())->getProfile()->withListings();
+        $activeListings = [];
+        $otherListings = [];
+        array_map(function ($listing) use (&$activeListings, &$otherListings) {
+           if ($listing->status == 'Active') {
+               $activeListings[] = $listing;
+           } else {
+               $otherListings[] = $listing;
+           }
+        }, $realtor->listings);
+
         $content = Content::first();
 
-
-        return view('StaticPages.front', compact('realtor', 'content'));
+        return view('StaticPages.front', compact('realtor', 'content', 'activeListings', 'otherListings'));
     }
 }
