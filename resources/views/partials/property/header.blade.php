@@ -1,6 +1,6 @@
 <section
     class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full"
-    style="background-image: url('{{ asset('/storage/'. $header_photo_path) }}')"
+    style="background-image: url('{{ $header_photo_path }}')"
 >
     <div class="container mx-auto text-center md:text-left">
         <h1 class="text-white text-center md:text-left text-shadow">
