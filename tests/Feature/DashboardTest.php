@@ -14,6 +14,7 @@ class DashboardTest extends TestCase
     public function an_authenticated_user_can_see_the_dashboard()
     {
         $user = factory('App\User')->create();
+        factory('App\Content')->create();
 
         $this->actingAs($user);
 
