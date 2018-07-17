@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full" style="background-image: url('{{ $header_photo_path }}')">
+    <section class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full" style="background-image: url('{{ $headerPhoto }}')">
         <div class="container mx-auto text-center md:text-left">
             <h1 class="text-white">Property Search</h1>
         </div>

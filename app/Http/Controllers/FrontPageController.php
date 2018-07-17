@@ -39,7 +39,9 @@ class FrontPageController extends Controller
         }, $realtor->listings);
 
         $content = Content::first();
+        $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');
+        $brokerLogo = ($content->broker_logo_path != null && $content->broker_logo_path != '') ? asset('/storage/' . Content::first()->broker_logo_path) : asset('/img/beachy-beach-logo.png');
 
-        return view('StaticPages.front', compact('realtor', 'content', 'activeListings', 'otherListings'));
+        return view('StaticPages.front', compact('realtor', 'content', 'activeListings', 'otherListings', 'headerPhoto', 'brokerLogo'));
     }
 }

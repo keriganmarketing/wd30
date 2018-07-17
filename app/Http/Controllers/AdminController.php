@@ -36,9 +36,9 @@ class AdminController extends Controller
         $avatarPath = $user->avatar_path != null ? asset('storage/'. $user->avatar_path): $user->default_photo;
 
         $content    = Content::first();
-        $header_photo_path = $content->header_photo_path != null ? asset('storage/'. $content->header_photo_path) : 'http://via.placeholder.com/1920x750';
+        $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');
 
-        return view('home', compact('user', 'header_photo_path', 'avatarPath'));
+        return view('home', compact('user', 'header_photo_path', 'avatarPath', 'headerPhoto'));
     }
 
     /**

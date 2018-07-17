@@ -58,7 +58,7 @@ class Feature extends Model
     /**
      * Return the contents of a specific feature as an array.
      *
-     * @param string$value What a feature contains.
+     * @param string $value What a feature contains.
      * @return array
      */
     protected function arrayify($value)
