@@ -16,18 +16,12 @@ class HeaderPhotoController extends Controller
      */
     public function index()
     {
-        // if (Avatar::where('user_id', 1)->exists()) {
-        //     return '/storage/' . Avatar::first()->path;
-        // }
-
         return 'http://via.placeholder.com/1920x750';
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store()
     {
@@ -35,10 +29,12 @@ class HeaderPhotoController extends Controller
             'header_photo' => 'required|image'
         ]);
 
-        if (Storage::disk('public')->exists(Content::first()->header_photo_path)) {
-            Content::first()->update([ 'header_photo_path' => null ]);
+        $content = Content::first();
+
+        if (Storage::disk('public')->exists($content->header_photo_path)) {
+            Storage::disk('public')->delete($content->header_photo_path);
         }
-        Content::first()->update([
+        $content->update([
             'header_photo_path' => request()->file('header_photo')->store('/header_photo', 'public')
         ]);
 

@@ -69,7 +69,7 @@ export default {
     },
     mounted() {
         this.reset();
-        this.src = this.brokerLogoPath != null ? this.brokerLogoPath : 'http://via.placeholder.com/250x150';
+        this.src = this.brokerLogoPath != null  && this.brokerLogoPath != '' ? this.brokerLogoPath : '/img/beachy-beach-logo.png';
     },
     methods: {
         reset() {

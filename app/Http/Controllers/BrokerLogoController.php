@@ -16,10 +16,6 @@ class BrokerLogoController extends Controller
      */
     public function index()
     {
-        // if (Avatar::where('user_id', 1)->exists()) {
-        //     return '/storage/' . Avatar::first()->path;
-        // }
-
         return 'http://via.placeholder.com/150x150';
     }
 

@@ -25,11 +25,11 @@ class PropertySearchController extends Controller
         $realtor      = (new Realtor())->getProfile();
         $properties   = json_encode(Mothership::search($request));
         $searchParams = json_encode($request->all());
-        
-        $content    = Content::first();
-        $header_photo_path = $content->header_photo_path != null ? asset('storage/'. $content->header_photo_path) : 'http://via.placeholder.com/1920x750';
 
-        return view('properties.index', compact('properties', 'realtor', 'searchParams', 'header_photo_path'));
+        $content    = Content::first();
+        $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');
+
+        return view('properties.index', compact('properties', 'realtor', 'searchParams', 'headerPhoto'));
     }
 
     /**
@@ -46,7 +46,7 @@ class PropertySearchController extends Controller
         $realtor    = (new Realtor())->getProfile();
 
         $content    = Content::first();
-        $header_photo_path = $content->header_photo_path != null ? asset('storage/'. $content->header_photo_path) : 'http://via.placeholder.com/1920x750';
+        $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');
 
         return view(
             'properties.show',
@@ -57,7 +57,7 @@ class PropertySearchController extends Controller
                 'property',
                 'openHouses',
                 'featuresCount',
-                'header_photo_path'
+                'headerPhoto'
             )
         );
     }
