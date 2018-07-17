@@ -69,7 +69,7 @@ export default {
     },
     mounted() {
         this.reset();
-        this.src = this.headerPhotoPath != null ? this.headerPhotoPath : 'http://via.placeholder.com/1920x750';
+        this.src = this.headerPhotoPath != null && this.headerPhotoPath != '' ? '/storage/' + this.headerPhotoPath : 'http://via.placeholder.com/1920x750';
     },
     methods: {
         reset() {

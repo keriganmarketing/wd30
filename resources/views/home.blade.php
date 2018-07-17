@@ -63,6 +63,7 @@
             ></bio-card>
             <content-card
                     :data-content="content"
+                    header-photo-path="{{ $headerPhoto }}"
                     v-if="selected === 'settings'"
                     v-on:content-edited="updateContent"
             ></content-card>
