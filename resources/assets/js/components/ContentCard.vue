@@ -11,13 +11,13 @@
                 Tagline:
             </div>
             <input
-                type="text"
-                class="font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
+                ref="tagline"
+                v-model="content.title"
                 :class="{
                     'border-secondary': tagline
                 }"
-                ref="tagline"
-                v-model="content.title"
+                type="text"
+                class="font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
                 @focus="edit('tagline')"
                 @blur="submit('tagline')"
             >
@@ -27,15 +27,15 @@
                 Body:
             </div>
             <textarea
-                class="border border-transparent flex items-center py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
+                ref="body"
+                v-model="content.body"
                 :class="{
                     'border-secondary': body
                 }"
-                ref="body"
-                v-model="content.body"
+                class="border border-transparent flex items-center py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
+                rows="5"
                 @focus="edit('body')"
                 @blur="submit('body')"
-                rows="5"
             />
         </div>
         <div class="w-full py-2 bg-white flex flex-wrap items-center border-b">
@@ -43,7 +43,7 @@
                 Header Photo:
             </div>
             <div class="px-12 lg:px-4">
-            <header-photo-upload :header-photo-path="content.header_photo_path" />
+                <header-photo-upload :header-photo-path="content.header_photo_path" />
             </div>
         </div>
     </div>

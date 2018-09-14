@@ -5305,78 +5305,78 @@ __webpack_require__(369);
 
 
 var options = {
-    color: '#1DB3DD',
-    failedColor: '#874b4b',
-    thickness: '5px',
-    transition: {
-        speed: '1s',
-        opacity: '0.6s',
-        termination: 1000
-    },
-    autoRevert: false,
-    location: 'bottom',
-    inverse: false
+  color: '#1DB3DD',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '1s',
+    opacity: '0.6s',
+    termination: 1000
+  },
+  autoRevert: false,
+  location: 'bottom',
+  inverse: false
 };
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_progressbar___default.a, options);
 
 var app = new Vue({
-    el: '#app',
-    data: {
-        user: new __WEBPACK_IMPORTED_MODULE_0__models_user__["a" /* default */]({
-            id: null,
-            name: null,
-            email: null,
-            cell_phone: null,
-            office_phone: null,
-            primary_phone: null,
-            company: null,
-            address: null,
-            avatar_path: null,
-            fb_page_id: null,
-            youtube_channel_id: null,
-            twitter_handle: null,
-            instagram_handle: null
-        }),
-        content: new __WEBPACK_IMPORTED_MODULE_1__models_content__["a" /* default */]({
-            id: '',
-            title: null,
-            body: null
-        }),
-        selected: 'leads',
-        activeLeadsCount: 0,
-        archivedLeadsCount: 0,
-        viewType: 'grid'
-    },
-    computed: {
-        boilerplate: function boilerplate() {
-            return this.user.name === '';
-        }
-    },
-    mounted: function mounted() {
-        this.user.authenticate();
-        this.content.fetch();
-        this.updateLeadsCount();
-    },
-
-    methods: {
-        sbc: function sbc(data) {
-            this.user.update(data);
-        },
-        updateContent: function updateContent(data) {
-            this.content.update(data);
-        },
-        updateLeadsCount: function updateLeadsCount() {
-            var _this = this;
-
-            window.axios.get('/leads/count').then(function (response) {
-                _this.activeLeadsCount = response.data;
-            });
-        },
-        switchView: function switchView() {
-            this.viewType = this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map';
-        }
+  el: '#app',
+  data: {
+    user: new __WEBPACK_IMPORTED_MODULE_0__models_user__["a" /* default */]({
+      id: null,
+      name: null,
+      email: null,
+      cell_phone: null,
+      office_phone: null,
+      primary_phone: null,
+      company: null,
+      address: null,
+      avatar_path: null,
+      fb_page_id: null,
+      youtube_channel_id: null,
+      twitter_handle: null,
+      instagram_handle: null
+    }),
+    content: new __WEBPACK_IMPORTED_MODULE_1__models_content__["a" /* default */]({
+      id: '',
+      title: null,
+      body: null
+    }),
+    selected: 'blog',
+    activeLeadsCount: 0,
+    archivedLeadsCount: 0,
+    viewType: 'grid'
+  },
+  computed: {
+    boilerplate: function boilerplate() {
+      return this.user.name === '';
     }
+  },
+  mounted: function mounted() {
+    this.user.authenticate();
+    this.content.fetch();
+    this.updateLeadsCount();
+  },
+
+  methods: {
+    sbc: function sbc(data) {
+      this.user.update(data);
+    },
+    updateContent: function updateContent(data) {
+      this.content.update(data);
+    },
+    updateLeadsCount: function updateLeadsCount() {
+      var _this = this;
+
+      window.axios.get('/leads/count').then(function (response) {
+        _this.activeLeadsCount = response.data;
+      });
+    },
+    switchView: function switchView() {
+      this.viewType = this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map';
+    }
+  }
 });
 
 /***/ }),
@@ -40767,6 +40767,7 @@ Vue.component('featured-properties', __webpack_require__(407));
 Vue.component('google-map', __webpack_require__(410));
 Vue.component('header-photo-upload', __webpack_require__(415));
 Vue.component('install-form', __webpack_require__(418));
+Vue.component('add-blog', __webpack_require__(563));
 Vue.component('lead', __webpack_require__(421));
 Vue.component('leads', __webpack_require__(424));
 Vue.component('lead-pagination', __webpack_require__(431));
@@ -57867,6 +57868,379 @@ var Content = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(564)
+/* template */
+var __vue_template__ = __webpack_require__(565)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AddBlog.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-40755308", Component.options)
+  } else {
+    hotAPI.reload("data-v-40755308", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 564 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            title: '',
+            body: '',
+            blogInfo: new FormData()
+        };
+    },
+
+    methods: {
+        loadFile: function loadFile(name, files) {
+            if (!files.length) {
+                return;
+            }
+
+            this.blogInfo.append(name, files[0], files[0].name);
+        },
+        submit: function submit() {
+            var _this = this;
+
+            this.blogInfo.append('title', this.title);
+            this.blogInfo.append('body', this.body);
+            window.axios.post('/blog', this.blogInfo).then(function (response) {
+                _this.title = '';
+                _this.body = '';
+                _this.blogInfo = new FormData();
+                _this.$refs.fileInput.value = null;
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 565 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "container mx-auto bg-white flex flex-wrap justify-center mb-8"
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "w-full",
+          attrs: { enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full py-2 bg-white flex flex-wrap items-center border-b"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                },
+                [_vm._v("\n                Title:\n            ")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                ref: "title",
+                staticClass:
+                  "font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left",
+                class: {
+                  "border-secondary": _vm.title
+                },
+                attrs: { type: "text" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full py-2 bg-white flex flex-wrap items-start border-b pr-2"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                },
+                [_vm._v("\n                Body:\n            ")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
+                  }
+                ],
+                ref: "body",
+                staticClass:
+                  "border border-transparent flex items-center py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker",
+                class: {
+                  "border-secondary": _vm.body
+                },
+                attrs: { rows: "5" },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full py-2 bg-white flex flex-wrap items-center border-b"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold w-1/3 sm:w-1/4 md:w-1/6 py-2 px-4 text-left"
+                },
+                [_vm._v("\n                Featured Photo:\n            ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "px-12 lg:px-4" }, [
+                _c("input", {
+                  ref: "fileInput",
+                  attrs: {
+                    id: "file",
+                    type: "file",
+                    name: "file",
+                    enctype: "multipart/form-data"
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.loadFile($event.target.name, $event.target.files)
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full py-2 bg-white flex flex-wrap items-center border-b items-center justify-center"
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.submit($event)
+                    }
+                  }
+                },
+                [_vm._v("Create Blog")]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      {
+        staticClass:
+          "w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary"
+      },
+      [
+        _c(
+          "span",
+          {
+            staticClass:
+              "text-left w-auto text-3xl font-brand font-bold text-secondary"
+          },
+          [_vm._v("\n            ADD BLOG\n        ")]
+        ),
+        _vm._v(" "),
+        _c("small", { staticClass: "text-xs w-auto flex-grow text-right" }, [
+          _vm._v("Click on the text you want to edit")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-40755308", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
