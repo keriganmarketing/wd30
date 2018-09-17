@@ -7,6 +7,8 @@ require('./load-components');
 import User from './models/user';
 import Content from './models/content';
 import VueProgressBar from 'vue-progressbar';
+import wysiwyg from 'vue-wysiwyg';
+
 const options = {
   color: '#1DB3DD',
   failedColor: '#874b4b',
@@ -22,6 +24,7 @@ const options = {
 };
 
 Vue.use(VueProgressBar, options);
+Vue.use(wysiwyg, {});
 
 const app = new Vue({
   el: '#app',
@@ -50,6 +53,7 @@ const app = new Vue({
     activeLeadsCount: 0,
     archivedLeadsCount: 0,
     viewType: 'grid',
+    blogs: [],
   },
   computed: {
     boilerplate: function() {
@@ -60,6 +64,7 @@ const app = new Vue({
     this.user.authenticate();
     this.content.fetch();
     this.updateLeadsCount();
+    this.fetchBlogs();
   },
   methods: {
     sbc(data) {
@@ -76,6 +81,16 @@ const app = new Vue({
     switchView() {
       this.viewType =
         this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map';
+    },
+    fetchBlogs() {
+      window.axios
+        .get('/blog')
+        .then(response => {
+          this.blogs = response.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
   },
 });
