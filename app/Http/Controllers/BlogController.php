@@ -95,6 +95,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         if (Auth::check()) {
+            $blog->deletePhoto();
             $blog->delete();
         }
     }

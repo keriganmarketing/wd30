@@ -35,8 +35,9 @@ class WriteBlogTest extends TestCase
     /** @test */
     public function an_authenticated_user_can_create_a_blog()
     {
-        $blog = $this->createBlog();
+        $blog = $this->postBlog();
 
+        Storage::disk('public')->assertExists($blog->featured_photo_path);
         $this->assertDatabaseHas('blogs', ['title' => $blog['title']]);
     }
 
@@ -49,13 +50,13 @@ class WriteBlogTest extends TestCase
 
         $this->patch("/blog/{$blog->id}", $updated->toArray());
 
+        Storage::disk('public')->assertExists($blog->featured_photo_path);
         $this->assertDatabaseMissing('blogs', $updated->toArray());
     }
 
     /** @test */
     public function an_authenticated_user_can_update_a_blog()
     {
-        $this->signIn($this->user);
         $blog = $this->createBlog();
         $updated = $this->makeBlog();
 
@@ -68,11 +69,15 @@ class WriteBlogTest extends TestCase
     /** @test */
     public function an_authenticated_user_can_delete_a_blog()
     {
+        $this->signIn($this->user);
         $blog = $this->createBlog();
+        Storage::disk('public')->assertExists($blog->featured_photo_path);
 
+        
         $this->delete("/blog/{$blog->id}");
 
         $this->assertDatabaseMissing('blogs', ['title' => $blog->title]);
+        Storage::disk('public')->assertMissing($blog->featured_photo_path);
     }
 
     /** @test */
@@ -106,28 +111,32 @@ class WriteBlogTest extends TestCase
 
     public function createBlog()
     {
+        $this->signIn($this->user);
         $image = UploadedFile::fake()->image('featured_photo.jpg');
         $blog = new Blog();
 
-        $blog->title = 'Here is the title';
-        $blog->body = 'Here is the body';
-        $blog->featured_photo_path = Storage::put('/blog_photos/'. $image->hashName());
+        $blog->title = 'Title';
+        $blog->body = 'Body';
+        $blog->featured_photo_path = Storage::put('blog_photos', $image);
         $blog->save();
+
         return $blog;
-
-        /* $this->signIn($this->user); */
-
-        /* $blog = make(Blog::class)->toArray(); */
-    
-        /* $this->post('/blog', $blog); */
-
-        /* return Blog::first(); */
-
     }
 
     public function makeBlog()
     {
 
         return $blog = make(Blog::class)->toArray();
+    }
+
+    public function postBlog()
+    {
+        $this->signIn($this->user);
+        $blog = make(Blog::class)->toArray();
+    
+        $this->post('/blog', $blog);
+
+        return Blog::first();
+        
     }
 }
