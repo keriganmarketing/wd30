@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Blog;
 use App\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -104,13 +106,22 @@ class WriteBlogTest extends TestCase
 
     public function createBlog()
     {
-        $this->signIn($this->user);
+        $image = UploadedFile::fake()->image('featured_photo.jpg');
+        $blog = new Blog();
 
-        $blog = make(Blog::class)->toArray();
+        $blog->title = 'Here is the title';
+        $blog->body = 'Here is the body';
+        $blog->featured_photo_path = Storage::put('/blog_photos/'. $image->hashName());
+        $blog->save();
+        return $blog;
+
+        /* $this->signIn($this->user); */
+
+        /* $blog = make(Blog::class)->toArray(); */
     
-        $this->post('/blog', $blog);
+        /* $this->post('/blog', $blog); */
 
-        return Blog::first();
+        /* return Blog::first(); */
 
     }
 
