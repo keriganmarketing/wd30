@@ -25,7 +25,7 @@
     "indent": ["warn", 2],
     "vue/html-indent": [
       "error",
-      4,
+      2,
       {
         "attribute": 1,
         "closeBracket": 0,

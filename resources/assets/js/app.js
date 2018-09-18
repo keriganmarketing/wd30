@@ -64,7 +64,6 @@ const app = new Vue({
     this.user.authenticate();
     this.content.fetch();
     this.updateLeadsCount();
-    this.fetchBlogs();
   },
   methods: {
     sbc(data) {
@@ -81,16 +80,6 @@ const app = new Vue({
     switchView() {
       this.viewType =
         this.viewType === 'map' || this.viewType === '' ? 'grid' : 'map';
-    },
-    fetchBlogs() {
-      window.axios
-        .get('/blog')
-        .then(response => {
-          this.blogs = response.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
     },
   },
 });

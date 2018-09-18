@@ -1,11 +1,8 @@
 Vue.component('acreage-field', require('./components/fields/Acreage.vue'));
-Vue.component('add-blog-form', require('./components/AddBlogForm.vue'));
 Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 Vue.component('bathrooms-field', require('./components/fields/Bathrooms.vue'));
 Vue.component('bedrooms-field', require('./components/fields/Bedrooms.vue'));
 Vue.component('bio-card', require('./components/BioCard.vue'));
-Vue.component('blog-item', require('./components/BlogItem.vue'));
-Vue.component('blog-list', require('./components/BlogList.vue'));
 Vue.component(
   'broker-logo-upload',
   require('./components/BrokerLogoUpload.vue'),
@@ -24,7 +21,7 @@ Vue.component(
   require('./components/HeaderPhotoUpload.vue'),
 );
 Vue.component('install-form', require('./components/InstallForm.vue'));
-Vue.component('add-blog', require('./components/AddBlog.vue'));
+Vue.component('kma-blog', require('./components/KmaBlog.vue'));
 Vue.component('lead', require('./components/Lead.vue'));
 Vue.component('leads', require('./components/Leads.vue'));
 Vue.component('lead-pagination', require('./components/LeadPagination.vue'));

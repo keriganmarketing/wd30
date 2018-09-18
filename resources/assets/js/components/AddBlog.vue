@@ -6,8 +6,7 @@
             </span>
             <small class="text-xs w-auto flex-grow text-right">Click on the text you want to edit</small>
         </p>
-        <add-blog-form>
-        </add-blog-form>
+        <add-blog-form />
     </div>
 </template>
 

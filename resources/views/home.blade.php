@@ -87,16 +87,7 @@
             class="container mx-auto bg-white flex flex-wrap justify-center mb-8 mt-4"
             >
         </social-card>
-        <add-blog 
-            v-if="selected === 'blog'"
-        >
-        </add-blog>
-        <blog-list 
-            v-if="selected === 'blog'"
-            :data-blogs="blogs"
-            @blog-submitted="fetchBlogs"
-        >
-        </blog-list>
+        <kma-blog v-if="selected === 'blog'"></kma-blog>
     </div>
 </div>
 </div>
