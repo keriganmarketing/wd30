@@ -64392,6 +64392,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64413,6 +64414,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       window.axios.get('/blog').then(function (response) {
         _this.blogs = response.data;
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
+    deleteBlog: function deleteBlog(id) {
+      var _this2 = this;
+
+      window.axios.delete('/blog/' + id).then(function () {
+        _this2.fetchBlogs();
       }).catch(function (err) {
         console.log(err);
       });
@@ -64525,6 +64535,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     submitted: function submitted() {
       this.$emit('blog-submitted');
+    },
+    deleteBlog: function deleteBlog(id) {
+      this.$emit('delete-blog', id);
     }
   }
 });
@@ -65021,6 +65034,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65033,7 +65058,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       isExpanded: false,
-      editTitle: false
+      editTitle: false,
+      updatedImage: this.blog.featured_photo_path,
+      updatedImageName: '',
+      updated: new FormData()
     };
   },
 
@@ -65044,12 +65072,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     toggleEditor: function toggleEditor() {
       this.isExpanded = !this.isExpanded;
     },
-    submitted: function submitted() {
-      this.$emit('submitted');
-      this.isExpanded = false;
-    },
     deleteBlog: function deleteBlog() {
-      this.$emit('deleteBlog', this.blog.id);
+      this.$emit('delete-blog', this.blog.id);
+    },
+    updateBlog: function updateBlog() {
+      var _this = this;
+
+      this.updated.append('title', this.blog.title);
+      this.updated.append('body', this.blog.body);
+      this.updated.append('_method', 'PATCH');
+      window.axios({
+        method: 'POST',
+        url: '/blog/' + this.blog.id,
+        data: this.updated
+      }).then(function () {
+        _this.updated = new FormData();
+        _this.$emit('submitted');
+        _this.isExpanded = false;
+      }).catch(function (err) {
+        alert(err);
+      });
+    },
+    loadFile: function loadFile(image) {
+      if (!image.files.length) {
+        return;
+      }
+
+      this.updatedImageName = image.files[0].name;
+      this.updatedImage = URL.createObjectURL(image.files[0]);
+
+      this.updated.append('file', image.files[0], image.files[0].name);
     }
   }
 });
@@ -65332,37 +65384,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-full flex flex-wrap items-center" }, [
     _c("form", { staticClass: "w-full flex flex-wrap items-center" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.blog.featured_photo_path,
-            expression: "blog.featured_photo_path"
-          }
-        ],
-        attrs: { type: "hidden" },
-        domProps: { value: _vm.blog.featured_photo_path },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c(
+        "label",
+        { staticClass: "w-1/6", attrs: { for: "blog_" + _vm.blog.id } },
+        [
+          _vm.updatedImage !== ""
+            ? _c("img", {
+                staticClass: "w-full h-auto",
+                attrs: { src: _vm.updatedImage, alt: "Featured photo" }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("input", {
+            ref: "blog_" + _vm.blog.id,
+            staticClass: "hidden",
+            attrs: {
+              id: "blog_" + _vm.blog.id,
+              type: "file",
+              enctype: "multipart/form-data"
+            },
+            on: {
+              change: function($event) {
+                _vm.loadFile($event.target)
+              }
             }
-            _vm.$set(_vm.blog, "featured_photo_path", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-1/6" }, [
-        _c("img", {
-          staticClass:
-            "w-full h-auto p-4 border border-secondary rounded justify-center",
-          attrs: { src: "/storage/" + _vm.blog.featured_photo_path, alt: "" }
-        })
-      ]),
+          })
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "w-5/6 flex flex-wrap" }, [
-        _vm.editTitle
+        _vm.isExpanded
           ? _c("input", {
               directives: [
                 {
@@ -65389,11 +65440,7 @@ var render = function() {
               "span",
               {
                 staticClass: "w-5/6 text-5xl pl-4 text-brand font-brand mb-4",
-                on: {
-                  click: function($event) {
-                    _vm.editTitle = true
-                  }
-                }
+                on: { click: _vm.toggleEditor }
               },
               [_vm._v("\n        " + _vm._s(_vm.blog.title) + "\n      ")]
             ),
@@ -65405,20 +65452,22 @@ var render = function() {
               "w-full rounded flex flex-wrap justify-start items-end bg-grey-lighter py-4"
           },
           [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "p-2 border border-brand w-1/4 mx-4 bg-secondary text-white text-md",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.toggleEditor($event)
-                  }
-                }
-              },
-              [_vm._v("Show Content")]
-            ),
+            _vm.isExpanded
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "p-2 border border-brand w-1/4 mx-4 bg-secondary text-white text-md",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.toggleEditor($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Hide Content")]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "button",
@@ -65477,7 +65526,7 @@ var render = function() {
                 on: {
                   click: function($event) {
                     $event.preventDefault()
-                    _vm.submitted($event)
+                    _vm.updateBlog($event)
                   }
                 }
               },
@@ -65528,7 +65577,7 @@ var render = function() {
           [
             _c("blog-item", {
               attrs: { blog: blog },
-              on: { submitted: _vm.submitted }
+              on: { submitted: _vm.submitted, "delete-blog": _vm.deleteBlog }
             })
           ],
           1
@@ -65594,7 +65643,7 @@ var render = function() {
       _vm._v(" "),
       _c("blog-list", {
         attrs: { "data-blogs": _vm.blogs },
-        on: { "blog-submitted": _vm.fetchBlogs }
+        on: { "blog-submitted": _vm.fetchBlogs, "delete-blog": _vm.deleteBlog }
       })
     ],
     1

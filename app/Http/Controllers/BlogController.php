@@ -70,17 +70,17 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required',
-            'file' => 'required|image'
+            'title' => 'max:255',
+            'file'  => 'image'
         ]);
-
-        $path = request()->file('file')->store('/blog_photos', 'public');
+        $title = $request->title ?? $blog->title;
+        $body = $request->body ?? $blog->body;
+        $path = isset($request->file) ? request()->file('file')->store('/blog_photos', 'public') : $blog->featured_photo_path;
 
         if (Auth::check()) {
             $blog->update([
-                'title'               => $request->title,
-                'body'                => $request->body,
+                'title'               => $title,
+                'body'                => $body,
                 'featured_photo_path' => $path
             ]);
         }

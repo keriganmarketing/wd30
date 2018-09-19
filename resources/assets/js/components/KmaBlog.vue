@@ -9,6 +9,7 @@
     <blog-list 
       :data-blogs="blogs"
       @blog-submitted="fetchBlogs"
+      @delete-blog="deleteBlog"
     />
   </div>
 </template>
@@ -38,6 +39,17 @@ export default {
           console.log(err);
         });
     },
+    deleteBlog(id) {
+      window.axios
+        .delete('/blog/' + id)
+        .then(() => {
+          this.fetchBlogs();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+    }
   }
 }
 

@@ -10,7 +10,7 @@
       <small class="text-xs w-auto flex-grow text-right">Click on the blog you want to edit</small>
     </p>
     <div v-for="blog in blogs" :key="blog.id" class="w-full justify-between flex font-bold items-center text-secondary p-4 border-b border-secondary">
-      <blog-item :blog="blog" @submitted="submitted" />
+      <blog-item :blog="blog" @submitted="submitted" @delete-blog="deleteBlog" />
     </div>
   </div>
 
@@ -43,6 +43,9 @@ export default {
   methods: {
     submitted() {
       this.$emit('blog-submitted');
+    },
+    deleteBlog(id) {
+      this.$emit('delete-blog', id);
     }
   }
 }
