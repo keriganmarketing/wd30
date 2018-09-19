@@ -40,7 +40,12 @@
 <script>
 import moment from 'moment';
 export default {
-  props: ['blog'],
+  props: { 
+    blog: { 
+      type: Object, 
+      default: () => {} 
+    } 
+  },
   data() {
     return {
       isExpanded: false,
