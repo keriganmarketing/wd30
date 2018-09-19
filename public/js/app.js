@@ -64902,7 +64902,7 @@ var render = function() {
             "button",
             {
               staticClass:
-                "bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand",
+                "bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand text-3xl",
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -64982,8 +64982,6 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddBlogForm_vue__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddBlogForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__AddBlogForm_vue__);
 //
 //
 //
@@ -65006,17 +65004,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    AddBlogForm: __WEBPACK_IMPORTED_MODULE_1__AddBlogForm_vue___default.a
-  },
   props: ['blog'],
   data: function data() {
     return {
-      isExpanded: false
+      isExpanded: false,
+      editTitle: false
     };
   },
 
@@ -65030,6 +65042,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     submitted: function submitted() {
       this.$emit('submitted');
       this.isExpanded = false;
+    },
+    deleteBlog: function deleteBlog() {
+      this.$emit('deleteBlog', this.blog.id);
     }
   }
 });
@@ -65311,56 +65326,161 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-full flex flex-wrap items-center" }, [
-    !_vm.isExpanded
-      ? _c("div", { staticClass: "w-full flex flex-wrap items-center" }, [
-          _c("img", {
+    _c("form", { staticClass: "w-full flex flex-wrap items-center" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.blog.featured_photo_path,
+            expression: "blog.featured_photo_path"
+          }
+        ],
+        attrs: { type: "hidden" },
+        domProps: { value: _vm.blog.featured_photo_path },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.blog, "featured_photo_path", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-1/6" }, [
+        _c("img", {
+          staticClass:
+            "w-full h-auto p-4 border border-secondary rounded justify-center",
+          attrs: { src: "/storage/" + _vm.blog.featured_photo_path, alt: "" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-5/6 flex flex-wrap" }, [
+        _vm.editTitle
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.blog.title,
+                  expression: "blog.title"
+                }
+              ],
+              staticClass: "w-full text-4xl pl-4 text-brand font-brand mb-4",
+              class: { "border border-brand": _vm.editTitle },
+              attrs: { type: "text", autofocus: "" },
+              domProps: { value: _vm.blog.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.blog, "title", $event.target.value)
+                }
+              }
+            })
+          : _c(
+              "span",
+              {
+                staticClass: "w-5/6 text-5xl pl-4 text-brand font-brand mb-4",
+                on: {
+                  click: function($event) {
+                    _vm.editTitle = true
+                  }
+                }
+              },
+              [_vm._v("\n        " + _vm._s(_vm.blog.title) + "\n      ")]
+            ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
             staticClass:
-              "w-1/6 h-auto p-4 border border-secondary rounded justify-center",
-            attrs: { src: "/storage/" + _vm.blog.featured_photo_path, alt: "" }
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "w-1/2 text-3xl pl-4 text-brand font-brand" },
-            [_vm._v(_vm._s(_vm.blog.title))]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "bg-brand rounded border border-secondary p-4",
-              on: { click: _vm.toggleEditor }
-            },
-            [_vm._v("Edit")]
-          ),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/4 font-sm text-right" }, [
-            _vm._v(_vm._s(_vm.diffForHumans(_vm.blog.created_at)))
-          ])
-        ])
-      : _c(
+              "w-full rounded flex flex-wrap justify-start items-end bg-grey-lighter py-4"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "p-2 border border-brand w-1/4 mx-4 bg-secondary text-white text-md",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.toggleEditor($event)
+                  }
+                }
+              },
+              [_vm._v("Show Content")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "p-2 border border-brand w-1/4 mx-4 bg-red text-white text-md",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.deleteBlog($event)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "w-full font-xs text-right" }, [
+        _vm._v(
+          "Last updated: " + _vm._s(_vm.diffForHumans(_vm.blog.updated_at))
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.isExpanded
+      ? _c(
           "div",
           { staticClass: "w-full flex flex-wrap items-center" },
           [
-            _vm.isExpanded
-              ? _c("add-blog-form", {
-                  staticClass: "w-full",
-                  attrs: {
-                    "data-title": _vm.blog.title,
-                    "data-body": _vm.blog.body,
-                    "data-photo-path":
-                      "/storage/" + _vm.blog.featured_photo_path,
-                    "submit-method": {
-                      method: "PATCH",
-                      route: "/blog/" + _vm.blog.id
-                    }
-                  },
-                  on: { submitted: _vm.submitted }
-                })
-              : _vm._e()
+            _c("wysiwyg", {
+              model: {
+                value: _vm.blog.body,
+                callback: function($$v) {
+                  _vm.$set(_vm.blog, "body", $$v)
+                },
+                expression: "blog.body"
+              }
+            })
           ],
           1
         )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isExpanded
+      ? _c(
+          "div",
+          { staticClass: "w-full flex justify-center items-center my-2" },
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand text-3xl",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.submitted($event)
+                  }
+                }
+              },
+              [_vm._v("Update")]
+            )
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

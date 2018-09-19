@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="w-full py-2 bg-white flex flex-wrap items-center border-b items-center justify-center">
-      <button class="bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand" @click.prevent="submit">Create Blog</button>
+      <button class="bg-brand p-4 text-uppercase rounded w-1/3 text-white font-brand text-3xl" @click.prevent="submit">Create Blog</button>
     </div>
   </form>
 
