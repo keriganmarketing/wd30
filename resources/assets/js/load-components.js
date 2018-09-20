@@ -3,6 +3,7 @@ Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 Vue.component('bathrooms-field', require('./components/fields/Bathrooms.vue'));
 Vue.component('bedrooms-field', require('./components/fields/Bedrooms.vue'));
 Vue.component('bio-card', require('./components/BioCard.vue'));
+Vue.component('blog-feed', require('./components/BlogFeed.vue'));
 Vue.component(
   'broker-logo-upload',
   require('./components/BrokerLogoUpload.vue'),
