@@ -13,6 +13,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    @php
+        if( config('google.has_analytics') && config('google.analytics_code')) {
+            echo "<script> window.analytics_code = '" . config('google.analytics_code') . "'; </script>";
+        }
+    @endphp
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    @if( config('google.has_analytics') && config('google.analytics_code') )
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('google.analytics_code') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', window.analytics_code);
+        </script>
+    @endif
 </head>
 <body class="bg-white h-screen antialiased">
     <div id="app" class="flex flex-col min-h-full justify-between">
