@@ -3,34 +3,34 @@
     <form class="w-full flex flex-wrap items-center justify-center">
       <label :for="'blog_' + blog.id" class="sm:w-1/2 md:w-1/6 cursor-pointer mb-2">
         <span class="absolute inline-block p-1 px-2 text-sm border border-grey bg-grey-light text-grey-darker">Edit</span>
-        <img 
-          v-if="updatedImage !== ''" 
-          :src="updatedImage" 
-          alt="Featured photo" 
+        <img
+          v-if="updatedImage !== ''"
+          :src="updatedImage"
+          alt="Featured photo"
           class="w-full h-auto"
         >
-        <input 
+        <input
           :id="'blog_' + blog.id"
           :ref="'blog_' + blog.id"
-          type="file" 
+          type="file"
           enctype="multipart/form-data"
           class="hidden"
           @change="loadFile($event.target)"
         >
       </label>
       <div class="w-full md:w-5/6 flex flex-wrap md:px-4">
-        <input 
-          v-if="isExpanded" 
-          v-model="blog.title" 
+        <input
+          v-if="isExpanded"
+          v-model="blog.title"
           :class="{'border border-brand': editTitle}"
-          type="text"  
-          class="w-full text-2xl md:text-3xl text-brand font-brand mb-2" 
+          type="text"
+          class="w-full text-2xl md:text-3xl text-brand font-brand mb-2"
           autofocus
         >
-        <span 
-          v-else 
-          class="w-5/6 text-2xl md:text-3xl text-brand font-brand mb-2" 
-          @click="toggleEditor" 
+        <span
+          v-else
+          class="w-5/6 text-2xl md:text-3xl text-brand font-brand mb-2"
+          @click="toggleEditor"
         >
           {{ blog.title }}
         </span>
@@ -41,7 +41,7 @@
           <button class="p-2 border border-red w-auto bg-red text-white text-md" @click.prevent="deleteBlog" >Delete</button>
         </div>
       </div>
-      
+
     </form>
     <div v-if="isExpanded" class="w-full font-normal flex text-black flex-wrap items-center py-4" >
       <wysiwyg v-model="blog.body" />
@@ -55,11 +55,11 @@
 <script>
 import moment from 'moment';
 export default {
-  props: { 
-    blog: { 
-      type: Object, 
-      default: () => {} 
-    } 
+  props: {
+    blog: {
+      type: Object,
+      default: () => {}
+    }
   },
   data() {
     return {
@@ -78,7 +78,7 @@ export default {
       this.isExpanded = ! this.isExpanded;
     },
     deleteBlog() {
-      this.$emit('delete-blog', this.blog.id);
+      this.$emit('delete-blog', this.blog.slug);
     },
     updateBlog() {
       this.updated.append('title', this.blog.title);
@@ -86,7 +86,7 @@ export default {
       this.updated.append('_method', 'PATCH');
       window.axios({
         method: 'POST',
-        url: '/blog/' + this.blog.id,
+        url: '/blog/' + this.blog.slug,
         data: this.updated
       })
         .then(() => {
@@ -102,7 +102,7 @@ export default {
       if (! image.files.length) {
         return;
       }
-      
+
       this.updatedImageName = image.files[0].name;
       this.updatedImage = URL.createObjectURL(image.files[0]);
 

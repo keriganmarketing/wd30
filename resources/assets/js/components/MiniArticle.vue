@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
-      <a 
-        :href="'/blog/' + post.id" 
+      <a
+        :href="'/blog/' + post.slug"
         class="absolute pin hover:shadow-inner z-20"
       />
       <div class="md:overflow-hidden">
-        <img 
+        <img
           :src="post.featured_photo_path"
           class="w-auto h-auto min-h-full min-w-full"
         >
@@ -21,9 +21,9 @@
           </p>
         </div>
         <div class="flex flex-wrap items-center justify-center">
-          <a 
-            :href="'/blog/' + post.id" 
-            class="facebook text-center w-full no-underline" 
+          <a
+            :href="'/blog/' + post.slug"
+            class="facebook text-center w-full no-underline"
             target="_blank"
           >
             <p class="text-center text-brand w-full pb-2 text-white" >

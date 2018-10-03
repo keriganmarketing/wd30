@@ -43,7 +43,7 @@ class BlogController extends Controller
             return Blog::create([
                 'title'               => $request->title,
                 'body'                => $request->body,
-                'featured_photo_path' => $path
+                'featured_photo_path' => $path,
             ]);
         }
     }
@@ -81,7 +81,7 @@ class BlogController extends Controller
             $blog->update([
                 'title'               => $title,
                 'body'                => $body,
-                'featured_photo_path' => $path
+                'featured_photo_path' => $path,
             ]);
         }
     }
