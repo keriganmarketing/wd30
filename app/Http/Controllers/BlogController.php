@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class BlogController extends Controller
 {
@@ -56,6 +57,9 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+        $description = $blog->metaDescription();
+        SEOMeta::setTitle($blog->title);
+        SEOMeta::setDescription($description);
         return view('blogs.single', compact('blog'));
     }
 

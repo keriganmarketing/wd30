@@ -28,4 +28,17 @@ class Blog extends Model
             Storage::disk('public')->delete($this->featured_photo_path);
         }
     }
+
+    public function metaDescription()
+    {
+        $string = trim($this->body);
+
+        if (strlen($string) > 300) {
+            $string = wordwrap($string, 300, '!!@#$%^&*(()');
+            $string = explode('!!@#$%^&*(()', $string, 2);
+            $string = $string[0] . '...';
+        }
+
+        return  $string;
+    }
 }
