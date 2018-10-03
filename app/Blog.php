@@ -18,7 +18,7 @@ class Blog extends Model
     {
         parent::boot();
         static::saving(function ($instance) {
-            $instance->slug = strtolower(str_replace(' ', '-', $instance->title));
+            $instance->slug = str_slug($instance->title);
         });
     }
 
@@ -39,6 +39,6 @@ class Blog extends Model
             $string = $string[0] . '...';
         }
 
-        return  $string;
+        return strip_tags($string);
     }
 }
