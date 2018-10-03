@@ -40,10 +40,10 @@
     </section>
     @endif
     @if($realtor->shouldHaveBlogs())
-        <section class="bg-grey-lightest py-8 lg:py-16 xl:py-24">
+        <section class="bg-grey-light py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
                 <h2 class="text-brand w-full text-center pb-4 text-3xl">
-                    Latest Blogs
+                    Latest Blog Posts
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 -28 48 48"
@@ -59,7 +59,7 @@
                         <circle cx="5" cy="19" r="1"></circle>
                     </svg>
                 </h2>
-                <blog-feed class="flex flex-wrap w-full items-center justify-center"></blog-feed>
+                <blog-feed class="flex flex-wrap w-full justify-center"></blog-feed>
             </div>
         </section>
     @endif
@@ -83,7 +83,7 @@
                         <circle cx="5" cy="19" r="1"></circle>
                     </svg>
                 </h2>
-                <facebook-feed class="flex flex-wrap w-full items-center justify-center"></facebook-feed>
+                <facebook-feed class="flex flex-wrap w-full justify-center"></facebook-feed>
             </div>
         </section>
     @endif
