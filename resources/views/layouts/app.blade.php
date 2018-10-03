@@ -10,6 +10,7 @@
 
     {{-- SEO --}}
     {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">

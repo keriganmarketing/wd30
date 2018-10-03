@@ -6,6 +6,7 @@ use App\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class BlogController extends Controller
 {
@@ -57,9 +58,17 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        $description = $blog->metaDescription();
+        $createdAt = \Carbon\Carbon::parse($blog->created_at)->toW3cString();
+
         SEOMeta::setTitle($blog->title);
-        SEOMeta::setDescription($description);
+        SEOMeta::setDescription($blog->metaDescription());
+
+        OpenGraph::setDescription($blog->metaDescription());
+        OpenGraph::setTitle($blog->title);
+        OpenGraph::setUrl(url()->current());
+
+        OpenGraph::addImage(asset('storage/' . $blog->featured_photo_path));
+
         return view('blogs.single', compact('blog'));
     }
 
