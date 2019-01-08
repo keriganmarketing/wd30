@@ -28,15 +28,15 @@ class FrontPageController extends Controller
         MetaData::generate();
 
         $realtor = (new Realtor())->getProfile()->withListings();
-        $activeListings = [];
-        $otherListings = [];
-        array_map(function ($listing) use (&$activeListings, &$otherListings) {
-           if ($listing->status == 'Active') {
-               $activeListings[] = $listing;
-           } else {
-               $otherListings[] = $listing;
-           }
-        }, $realtor->listings);
+        $activeListings = $realtor->listings;
+        $otherListings = (new Realtor())->getProfile()->withSold()->listings;
+        // array_map(function ($listing) use (&$activeListings, &$otherListings) {
+        //    if ($listing->status == 'Active') {
+        //        $activeListings[] = $listing;
+        //    } else {
+        //        $otherListings[] = $listing;
+        //    }
+        // }, $realtor->listings);
 
         $content = Content::first();
         $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');

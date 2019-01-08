@@ -61,6 +61,17 @@ class Mothership
         return [];
     }
 
+    public function agentSold($mlsId)
+    {
+        $response = $this->get('agentsold?agentId='. $mlsId);
+
+        if (! is_array($response)) {
+            return json_decode($response->getBody());
+        }
+
+        return [];
+    }
+
     public function agentListingsWithAnalytics($mlsId)
     {
         $response = $this->get('agentlistings?agentId='. $mlsId .'&analytics=true');

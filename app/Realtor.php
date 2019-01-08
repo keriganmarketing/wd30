@@ -40,6 +40,15 @@ class Realtor
         return $this;
     }
 
+    public function withSold()
+    {
+        $agentMlsNumberString = MlsNumber::toString();
+
+        $this->listings = Mothership::agentSold($agentMlsNumberString);
+
+        return $this;
+    }
+
     public function shouldHaveFacebook()
     {
         return (config('modules.facebook') && $this->data->fb_page_id && $this->data->fb_access_token);
@@ -48,6 +57,11 @@ class Realtor
     public function shouldHaveYoutube()
     {
         return (config('modules.youtube') && $this->data->youtube_channel_id);
+    }
+
+    public function shouldHaveBlogs()
+    {
+        return (config('modules.blog') && (Blog::count() > 0));
     }
 
     public function hasListings()

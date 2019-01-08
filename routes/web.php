@@ -42,6 +42,7 @@ Route::resource('/notes', 'NotesController');
 Route::resource('/content', 'ContentController');
 Route::resource('/metadata', 'MetaDataController');
 Route::resource('/mls-numbers', 'MlsNumbersController');
+Route::resource('/blog', 'BlogController');
 
 // Misc
 Route::get('/leads/{lead}/notes', 'LeadNotesController@index');
