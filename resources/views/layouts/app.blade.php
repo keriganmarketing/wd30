@@ -35,7 +35,7 @@
 </head>
 <body class="bg-white h-screen antialiased">
     <div id="app" class="flex flex-col min-h-full justify-between">
-        <div class="top fixed pin-t pin-l pin-r w-100 z-50 shadow-md border-b-4 border-navborder">
+        <div class="top fixed pin-t pin-l pin-r w-100 z-50 shadow-md">
             <nav class="bg-brand-dark">
                 <div class="container mx-auto">
                     <div class="md:flex items-center justify-between">

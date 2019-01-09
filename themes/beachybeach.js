@@ -170,6 +170,13 @@ let colors = {
 
   'cta-red':'#ad373b',
 
+  'navitem':'#3d4852',
+  'nav':'#FFF',
+  'navhover':'#f8fafc',
+  'quicksearch':'#FFF',
+  'logoprimary':'#2bc3ea',
+  'logosecondary':'#b8c2cc',
+
   get ['brand-darkest']() { return this['beachy-blue-darkest']; },
   get ['brand-darker']() { return this['beachy-blue-darker']; },
   get ['brand-dark']() { return this['beachy-blue-dark']; },

@@ -4,17 +4,8 @@ let glob = require('glob-all')
 let purgeCss = require('purgecss-webpack-plugin')
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .postCss('resources/assets/css/main.css', 'public/css', [
-        tailwindcss('themes/tailwind.js'),
-    ])
     .postCss('resources/assets/css/beachybeach.css', 'public/css', [
-        tailwindcss('themes/beachybeach.js')
-    ])
-    .postCss('resources/assets/css/dark-theme.css', 'public/css', [
-        tailwindcss('themes/tailwind-dark.js')
-    ])
-    .postCss('resources/assets/css/ocean-theme.css', 'public/css', [
-        tailwindcss('themes/ocean.js')
+        tailwindcss('themes/beachybeach.js') 
     ]);
 
 mix.options({

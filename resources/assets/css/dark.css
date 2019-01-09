@@ -12,14 +12,14 @@
  * want loaded *before* the utilities so that the utilities could still
  * override them.
  *
- * Example:
+ * Example: 
  *
  * .btn { ... }
  * .form-input { ... }
  *
  * Or if using a preprocessor:
  *
- * @import "components/buttons";
+ * @import "components/buttons"; 
  * @import "components/forms";
  */
 

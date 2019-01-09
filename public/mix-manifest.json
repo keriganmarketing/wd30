@@ -1,7 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/main.css": "/css/main.css",
-    "/css/beachybeach.css": "/css/beachybeach.css",
-    "/css/dark-theme.css": "/css/dark-theme.css",
-    "/css/ocean-theme.css": "/css/ocean-theme.css"
+    "/css/beachybeach.css": "/css/beachybeach.css"
 }
