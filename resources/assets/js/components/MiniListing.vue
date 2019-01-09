@@ -15,7 +15,7 @@
                 >
                     {{ listing.status }}
                 </div>
-                <img v-if="listing.preferred_image !== null" class="w-full" :src="listing.preferred_image" >
+                <img v-if="listing.preferred_image !== null" class="w-full" :src="listing.preferred_image.replace('http://', '//')" >
                 <div v-if="listing.preferred_image === null" class="text-grey-lighter w-full h-full bg-white text-center">
                     <svg class="h-full " version="1.1" xmlns="http://www.w3.org/2000/svg"
                          x="0px" y="0px" viewBox="0 0 1000 1000"
