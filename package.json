@@ -23,7 +23,7 @@
         "@tweenjs/tween.js": "^17.2.0",
         "autoprefixer": "^8.0.0",
         "babel-polyfill": "^6.26.0",
-        "css-purge": "^3.0.4",
+        "css-purge": "^3.1.5",
         "google-maps": "^3.2.1",
         "marker-clusterer-plus": "^2.1.4",
         "moment": "^2.22.2",

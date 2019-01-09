@@ -144,7 +144,7 @@ let colors = {
   'beachy-blue-darker': '#2e92b1',
   'beachy-blue-darkest': '#016d89',
 
-  'beachy-green-lightest': '',
+  'beachy-green-lightest': '#fafafa',
   'beachy-green-lighter': '#65b8a8',
   'beachy-green-light': '#53bd8d',
   'beachy-green': '#42bc7b',
@@ -170,21 +170,28 @@ let colors = {
 
   'cta-red':'#ad373b',
 
-  get ['brand-darkest']() { return this['beachy-blue-darkest']; },
-  get ['brand-darker']() { return this['beachy-blue-darker']; },
-  get ['brand-dark']() { return this['beachy-blue-dark']; },
-  get ['brand']() { return this['beachy-blue']; },
-  get ['brand-light']() { return this['beachy-blue-light']; },
-  get ['brand-lighter']() { return this['beachy-blue-lighter']; },
-  get ['brand-lightest']() { return this['beachy-blue-lightest']; },
+  get ['brand-darkest']() { return this['blue-darkest']; },
+  get ['brand-darker']() { return this['blue-darker']; },
+  get ['brand-dark']() { return this['blue-dark']; },
+  get ['brand']() { return this['blue']; },
+  get ['brand-light']() { return this['blue-light']; },
+  get ['brand-lighter']() { return this['blue-lighter']; },
+  get ['brand-lightest']() { return this['blue-lightest']; },
 
-  get ['secondary-darkest']() { return this['beachy-green-darkest']; },
-  get ['secondary-darker']() { return this['beachy-green-darker']; },
-  get ['secondary-dark']() { return this['beachy-green-dark']; },
-  get ['secondary']() { return this['beachy-green']; },
-  get ['secondary-light']() { return this['beachy-green-light']; },
-  get ['secondary-lighter']() { return this['beachy-green-lighter']; },
-  get ['secondary-lightest']() { return this['beachy-green-lightest']; },
+  get ['secondary-darkest']() { return this['dbblue-darkest']; },
+  get ['secondary-darker']() { return this['dbblue-darker']; },
+  get ['secondary-dark']() { return this['dbblue-dark']; },
+  get ['secondary']() { return this['dbblue']; },
+  get ['secondary-light']() { return this['dbblue-light']; },
+  get ['secondary-lighter']() { return this['dbblue-lighter']; },
+  get ['secondary-lightest']() { return this['dbblue-lightest']; },
+
+  // Template Specific Variables
+  get ['navitem']() { return this['white']; },
+  get ['nav']() { return this['smoke']; },
+  get ['navhover']() { return this['smoke-dark']; },
+  get ['navborder']() { return this['smoke-dark']; },
+  get ['quicksearch']() { return this['smoke']; },
 }
 
 module.exports = {

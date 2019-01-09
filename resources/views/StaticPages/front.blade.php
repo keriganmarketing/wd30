@@ -31,6 +31,10 @@
                 :properties="{{ json_encode($activeListings) }}"
             >
             </featured-properties>
+        </div>
+    </section>
+    <section id="featured-listings" class="featured-listings bg-brand-darker py-8 lg:py-16 xl:py-24">
+        <div class="container mx-auto flex flex-wrap items-center justify-center py-2">
             <h2 class="text-white w-full text-center pb-4 mt-6 text-3xl">
                 {{ $realtor->data->name }}'s Listings Sold<br>
                 <span class="text-xl text-brand-lightest leading-none">in the last 6 months</span>
@@ -44,9 +48,9 @@
     </section>
     @endif
     @if($realtor->shouldHaveBlogs())
-        <section class="bg-grey-light py-8 lg:py-16 xl:py-24">
+        <section class="bg-white py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
-                <h2 class="text-brand w-full text-center pb-4 text-3xl">
+                <h2 class="text-brand-darker w-full text-center pb-4 text-3xl">
                     Latest Blog Posts
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -68,9 +72,9 @@
         </section>
     @endif
     @if($realtor->shouldHaveFacebook())
-        <section class="bg-grey-lightest py-8 lg:py-16 xl:py-24">
+        <section class="bg-secondary-lightest py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
-                <h2 class="text-brand w-full text-center pb-4 text-3xl">
+                <h2 class="text-white w-full text-center pb-4 text-3xl">
                     Latest News
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +96,7 @@
         </section>
     @endif
     @if($realtor->shouldHaveYoutube())
-        <section class="bg-grey-dark py-8 lg:py-16 xl:py-24">
+        <section class="bg-secondary py-8 lg:py-16 xl:py-24">
             <div class="container flex flex-wrap items-center justify-center mx-auto py-2">
                 <h2 class="text-white text-center pb-4 text-3xl">
                     Featured Videos

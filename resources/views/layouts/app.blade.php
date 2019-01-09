@@ -13,7 +13,7 @@
     {!! OpenGraph::generate() !!}
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/' . config('modules.theme') . '.css') }}" rel="stylesheet">
 
     @php
         if( config('google.has_analytics') && config('google.analytics_code')) {
@@ -35,7 +35,7 @@
 </head>
 <body class="bg-white h-screen antialiased">
     <div id="app" class="flex flex-col min-h-full justify-between">
-        <div class="top shadow-md border-b-4 border-secondary">
+        <div class="top fixed pin-t pin-l pin-r w-100 z-50 shadow-md border-b-4 border-navborder">
             <nav class="bg-brand-dark">
                 <div class="container mx-auto">
                     <div class="md:flex items-center justify-between">
@@ -68,18 +68,18 @@
                     </div>
                 </div>
             </nav>
-            <nav class="bg-white">
+            <nav class="bg-nav">
                 <div class="container mx-auto h-full">
                     <div class="md:flex items-center justify-between">
                         <div class="text-center md:mr-6 md:text-left py-4 md:py-0">
                             @include('partials.logo')
                         </div>
                         <div class="flex text-right">
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/">Home</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/property-search/">Property Search</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#featured-listings">Featured Listings</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#about">About Me</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="#contact">Contact</a>
+                            <a class="hidden md:inline-block no-underline text-navitem text-sm h-full h-12 align-middle px-4 py-6 hover:bg-navhover" href="/">Home</a>
+                            <a class="hidden md:inline-block no-underline text-navitem text-sm h-full h-12 align-middle px-4 py-6 hover:bg-navhover" href="/property-search/">Property Search</a>
+                            <a class="hidden md:inline-block no-underline text-navitem text-sm h-full h-12 align-middle px-4 py-6 hover:bg-navhover" href="/#featured-listings">Featured Listings</a>
+                            <a class="hidden md:inline-block no-underline text-navitem text-sm h-full h-12 align-middle px-4 py-6 hover:bg-navhover" href="/#about">About Me</a>
+                            <a class="hidden md:inline-block no-underline text-navitem text-sm h-full h-12 align-middle px-4 py-6 hover:bg-navhover" href="#contact">Contact</a>
                         </div>
                     </div>
                 </div>
