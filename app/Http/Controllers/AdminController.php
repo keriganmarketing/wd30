@@ -38,7 +38,7 @@ class AdminController extends Controller
         $content    = Content::first();
         $headerPhoto = ($content->header_photo_path != null && $content->header_photo_path != '') ? asset('/storage/' . $content->header_photo_path) : asset('/img/default-header.jpg');
 
-        return view('home', compact('user', 'header_photo_path', 'avatarPath', 'headerPhoto'));
+        return view('home', compact('user', 'avatarPath', 'headerPhoto'));
     }
 
     /**
