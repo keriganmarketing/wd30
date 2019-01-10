@@ -1,0 +1,310 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ */
+@tailwind preflight;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+@import 'fonts.css';
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor..
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+@import '~vue-wysiwyg/dist/vueWysiwyg.css';
+* {
+  font-family: 'Lato';
+}
+.active-tab {
+  @apply .text-primary .border-l .border-t .border-r .border-white;
+}
+.button-primary {
+  @apply .bg-tertiary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-primary:hover {
+  @apply .bg-tertiary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary {
+  @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary:hover {
+  @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker {
+  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker:hover {
+  @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark {
+  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark:hover {
+  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-primary:hover {
+    @apply .bg-tertiary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary {
+    @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary:hover {
+    @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker:hover {
+    @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark {
+    @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark:hover {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey {
+  @apply .bg-grey .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey:hover {
+  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.bg-image-full {
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+.omni-input-open {
+  @apply .rounded-t .border-primary .border-t .border-l .border-r;
+}
+.omni-input-closed {
+  @apply .rounded .border;
+}
+.omni-results-open {
+  @apply .rounded-b .border-primary;
+}
+.omni-results-closed {
+  @apply .rounded;
+}
+
+.max-w-icon {
+  max-width: 8rem;
+}
+
+.min-w-mobile {
+  min-width: 300px;
+}
+
+.main-navigation {
+  background-color: #FFF;
+}
+
+.logo-text-primary {
+  @apply .text-primary
+}
+
+.logo-text-secondary {
+  @apply .text-grey
+}
+
+.main-navigation .nav-items a {
+  @apply .text-grey-darker
+}
+
+.main-navigation .nav-items a:hover {
+  @apply .text-grey-darkest .bg-light
+}
+
+.quicksearch {
+  @apply .bg-white
+}
+
+
+.grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2e92b1+0,37cbf0+100 */
+  background: rgb(46, 146, 177); /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(46, 146, 177, 1) 0%,
+    rgba(55, 203, 240, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(46, 146, 177, 1) 0%,
+    rgba(55, 203, 240, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    rgba(46, 146, 177, 1) 0%,
+    rgba(55, 203, 240, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#2e92b1',
+      endColorstr='#37cbf0',
+      GradientType=1
+    ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.custom-input-container {
+  align-items: center;
+  position: relative;
+  padding: 0.5rem 10px 0.5rem 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.custom-input-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.custom-input {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
+
+.custom-input.checkmark {
+  border-radius: 0;
+}
+
+.top {
+  border-bottom: 4px solid #42bc7b;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-input-container:hover input ~ .custom-input {
+  @apply .bg-grey;
+}
+
+/* When the radio button is checked, add a blue background */
+.custom-input-container input:checked ~ .custom-input {
+  @apply .bg-primary .border-tertiary-dark;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.custom-input:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.custom-input-container input:checked ~ .custom-input:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.custom-input-container .custom-input.radio:after {
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.custom-input-container .custom-input.checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+h1,
+h2,
+h3,
+h1 span,
+h2 span,
+h3 span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
+}
+
+.font-brand {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.min-h-64 {
+  min-height: 16rem;
+}
+
+@responsive {
+  .text-shadow {
+    text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
+  }
+  .is-4by3 {
+    height: 0;
+    padding-bottom: 60%;
+  }
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+  .order-3 {
+    order: 3;
+  }
+  .order-4 {
+    order: 4;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.__cov-progress {
+  position: relative !important;
+}

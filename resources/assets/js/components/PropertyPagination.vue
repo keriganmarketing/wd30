@@ -6,7 +6,7 @@
     <ul class="list-reset flex justify-center my-2">
         <li class="mr-2">
             <a
-                class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow rounded-l border border-brand"
+                class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow rounded-l border border-primary"
                 @click="firstPage()"
             >
                 First
@@ -14,20 +14,20 @@
         </li>
         <li class="mr-2">
             <a
-                class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow border border-brand"
+                class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow border border-primary"
                 @click="prevPage()"
             >
                 Prev
             </a>
         </li>
         <li class="mr-2">
-            <a class="text-grey bg-white px-4 py-2 text-center flex shadow items-center border border-grey ">
+            <a class="text-grey bg-white px-4 py-2 text-center shadow items-center border border-grey ">
                 {{ searchResults.current_page }}
             </a>
         </li>
         <li class="mr-2">
             <a
-                class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow border border-brand"
+                class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow border border-primary"
                 @click="nextPage()"
             >
                 Next
@@ -35,7 +35,7 @@
         </li>
         <li class="mr-2">
             <a
-                class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow rounded-r border border-brand"
+                class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow rounded-r border border-primary"
                 @click="lastPage()"
             >
                 Last

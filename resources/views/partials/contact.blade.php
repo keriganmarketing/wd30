@@ -1,4 +1,4 @@
-<section id="contact" class="contact flex bg-brand-light py-8 lg:py-16 xl:py-24">
+<section id="contact" class="contact flex bg-primary py-8 lg:py-16 xl:py-24">
     <div class="w-full lg:max-w-lg mx-auto py-2 text-center">
         <h2 class="text-white text-center pb-4 text-3xl">Contact</h2>
         <p><a class="no-underline text-2xl text-white text-bold" href="tel:{{ $realtor->data->primary_phone }}" >{{ $realtor->data->primary_phone }}</a></p>

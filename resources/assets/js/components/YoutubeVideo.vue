@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
+        <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
             <div class="md:h-52 md:overflow-hidden" v-if="! playVideo">
                 <div
                 class="absolute flex w-full h-52 items-center justify-center text-red"

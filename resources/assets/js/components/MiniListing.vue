@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
+        <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
             <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-20" ></a>
             <div class="property-image md:h-48 md:overflow-hidden">
                 <div
@@ -36,7 +36,7 @@
                     </p>
                 </div>
                 <div class="price">
-                    <p class="py-2 text-center text-brand text-3xl font-brand">${{ price }}</p>
+                    <p class="py-2 text-center text-primary text-3xl font-brand">${{ price }}</p>
                 </div>
                 <div class="prop-type">
                     <p class="pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase">{{ listing.property_type }}</p>

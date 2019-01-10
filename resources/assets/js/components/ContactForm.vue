@@ -3,18 +3,18 @@
         <div class="w-full px-2 py-2">
             <transition name="success" mode="out-in">
                 <div
-                    class="flex-auto relative items-center text-secondary text-2xl bg-green-lighter rounded py-8 px-3 w-full"
+                    class="flex-auto relative items-center text-secondary text-2xl bg-secondary rounded py-8 px-3 w-full"
                     v-if="form.success"
                     v-text="form.successMessage"
                 />
             </transition>
             <transition name="slide-fade" mode="out-in">
                 <div
-                    class="flex-auto relative items-center text-red-darker text-2xl bg-red-lighter rounded py-8 px-3 w-full"
+                    class="flex-auto relative items-center text-red-darker text-2xl bg-red rounded py-8 px-3 w-full"
                     v-if="Object.keys(form.errors).length > 0"
                 >
-                    <ul v-for="error in form.errors" class="list-reset">
-                        <li v-for="e in error" class="w-full text-left px-4 py-2">{{ e }}</li>
+                    <ul v-for="error in form.errors" v-bind:key="error.index" class="list-reset">
+                        <li v-for="e in error" v-bind:key="e.index" class="w-full text-left px-4 py-2">{{ e }}</li>
                     </ul>
                 </div>
             </transition>

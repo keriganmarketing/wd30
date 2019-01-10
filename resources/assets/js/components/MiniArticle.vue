@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
+        <div class="relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
             <a :href="post.permalink_url" class="absolute pin hover:shadow-inner z-20" v-if="post.type !== 'video'"></a>
             <div v-if="!textFeatured">
                 <div class="md:h-52 md:overflow-hidden" v-if="post.type !== 'video'">

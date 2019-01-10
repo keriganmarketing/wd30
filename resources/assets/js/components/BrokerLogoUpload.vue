@@ -13,7 +13,7 @@
         >
             <label
                 for="broker_logo"
-                class="bg-brand absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
+                class="bg-primary absolute w-full font-semibold text-xl text-white opacity-0 border p-8 text-center flex items-center justify-center rounded shadow"
                 :class="{'pin': imageHover, 'opacity-75': imageHover}"
                 @mouseout="imageHover = false"
             >

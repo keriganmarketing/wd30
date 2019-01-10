@@ -17,7 +17,7 @@
                     'border-secondary': tagline
                 }"
                 type="text"
-                class="font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
+                class="font-brand text-primary border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
                 @focus="edit('tagline')"
                 @blur="submit('tagline')"
             >

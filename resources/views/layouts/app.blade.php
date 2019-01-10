@@ -13,7 +13,7 @@
     {!! OpenGraph::generate() !!}
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/' . config('modules.theme') . '.css') }}" rel="stylesheet">
 
     @php
         if( config('google.has_analytics') && config('google.analytics_code')) {
@@ -35,8 +35,8 @@
 </head>
 <body class="bg-white h-screen antialiased">
     <div id="app" class="flex flex-col min-h-full justify-between">
-        <div class="top shadow-md border-b-4 border-secondary">
-            <nav class="bg-brand-dark">
+        <div class="top fixed pin-t pin-l pin-r w-100 z-50 shadow-md">
+            <nav class="bg-primary-dark">
                 <div class="container mx-auto">
                     <div class="md:flex items-center justify-between">
                         <div class="flex flex-wrap text-center md:text-right sm:flex-row-reverse w-full">
@@ -48,7 +48,7 @@
                             @else
                                 <a
                                     href="{{ route('logout') }}"
-                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
+                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-tertiary"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                 >
                                     Logout
@@ -57,7 +57,7 @@
                                     {{ csrf_field() }}
                                 </form>
                                 <a
-                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-brand-darker"
+                                    class="inline-block w-full sm:w-auto no-underline text-white text-xs px-2 py-1 pt-3 sm:py-3 md:py-1 bg-tertiary"
                                     href="{{ route('home') }}"
                                 >
                                         Dashboard
@@ -68,18 +68,18 @@
                     </div>
                 </div>
             </nav>
-            <nav class="bg-white">
+            <nav class="main-navigation">
                 <div class="container mx-auto h-full">
-                    <div class="md:flex items-center justify-between">
-                        <div class="text-center md:mr-6 md:text-left py-4 md:py-0">
+                    <div class="md:flex justify-between">
+                        <div class="text-center md:mr-6 md:text-left md:py-0">
                             @include('partials.logo')
                         </div>
-                        <div class="flex text-right">
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/">Home</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/property-search/">Property Search</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#featured-listings">Featured Listings</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="/#about">About Me</a>
-                            <a class="hidden md:inline-block no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-6 hover:bg-grey-lightest" href="#contact">Contact</a>
+                        <div class="flex text-right nav-items">
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/">Home</a>
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/property-search/">Property Search</a>
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/#featured-listings">Featured Listings</a>
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/#about">About Me</a>
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="#contact">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -89,16 +89,16 @@
         @yield('content')
         </div>
         <div class="bot">
-            <nav class="bg-brand-darker">
+            <nav class="bg-tertiary">
                 <div class="mx-auto h-full justify-center md:flex align-middle text-center">
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/">Home</a>
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/property-search/">Property Search</a>
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#featured-listings">Featured Listings</a>
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="/#about">About Me</a>
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-brand-darkest" href="#contact">Contact</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/">Home</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/property-search/">Property Search</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/#featured-listings">Featured Listings</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/#about">About Me</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="#contact">Contact</a>
                 </div>
             </nav>
-            <section class="bg-brand-darkest text-center py-8" >
+            <section class="bg-tertiary-dark text-center py-8" >
                 <p class="text-xs text-white">&copy; @php echo date('Y'); @endphp {{ config('app.name', 'Realtor') }}. All rights reserved.
                 <p class="text-xs text-white pt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.5 8.7" class="h-2">

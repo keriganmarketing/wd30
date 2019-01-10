@@ -7,7 +7,7 @@
             <div class="flex align-middle justify-between h-screen flex-wrap items-center">
                 <div class="flex left-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center order-2 md:order-1" >
                     <span
-                        class="text-white text-bold text-xl p-6 bg-brand text-center"
+                        class="text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none"
                         @click="prevPhoto"
                     >
                         &lsaquo;
@@ -19,7 +19,7 @@
                 ></div>
                 <div class="flex right-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center order-3" >
                     <span
-                        class="text-white text-bold text-xl p-6 bg-brand text-center"
+                        class="text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none"
                         @click="nextPhoto"
                     >
                         &rsaquo;
