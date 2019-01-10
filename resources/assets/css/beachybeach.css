@@ -50,58 +50,58 @@
   font-family: 'Lato';
 }
 .active-tab {
-  @apply .text-brand .border-l .border-t .border-r .border-white;
+  @apply .text-primary .border-l .border-t .border-r .border-white;
 }
-.button-brand {
-  @apply .bg-brand-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+.button-primary {
+  @apply .bg-tertiary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
-.button-brand:hover {
-  @apply .bg-brand-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-secondary {
-  @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-secondary:hover {
-  @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-grey-darker {
-  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-grey-darker:hover {
-  @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-grey-dark {
-  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-grey-dark:hover {
-  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
-}
-.button-brand:hover {
-    @apply .bg-brand-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+.button-primary:hover {
+  @apply .bg-tertiary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-secondary {
-    @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-secondary:hover {
-    @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey-darker {
-    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey-darker:hover {
-    @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey-dark {
-    @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey-dark:hover {
-    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-primary:hover {
+    @apply .bg-tertiary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary {
+    @apply .bg-secondary .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-secondary:hover {
+    @apply .bg-secondary-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-darker:hover {
+    @apply .bg-grey-darkest .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark {
+    @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
+}
+.button-grey-dark:hover {
+    @apply .bg-grey-darker .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey {
-  @apply .bg-grey .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .button-grey:hover {
-  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-brand-darkest .rounded .px-3 .py-2;
+  @apply .bg-grey-dark .text-white .shadow .appearance-none .inline-block .border-tertiary-dark .rounded .px-3 .py-2;
 }
 .bg-image-full {
   -webkit-background-size: cover;
@@ -109,13 +109,13 @@
   background-position: center;
 }
 .omni-input-open {
-  @apply .rounded-t .border-brand .border-t .border-l .border-r;
+  @apply .rounded-t .border-primary .border-t .border-l .border-r;
 }
 .omni-input-closed {
   @apply .rounded .border;
 }
 .omni-results-open {
-  @apply .rounded-b .border-brand;
+  @apply .rounded-b .border-primary;
 }
 .omni-results-closed {
   @apply .rounded;
@@ -128,6 +128,31 @@
 .min-w-mobile {
   min-width: 300px;
 }
+
+.main-navigation {
+  background-color: #FFF;
+}
+
+.logo-text-primary {
+  @apply .text-primary
+}
+
+.logo-text-secondary {
+  @apply .text-grey
+}
+
+.main-navigation .nav-items a {
+  @apply .text-grey-darker
+}
+
+.main-navigation .nav-items a:hover {
+  @apply .text-grey-darkest .bg-light
+}
+
+.quicksearch {
+  @apply .bg-white
+}
+
 
 .grey-gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2e92b1+0,37cbf0+100 */
@@ -199,7 +224,7 @@
 
 /* When the radio button is checked, add a blue background */
 .custom-input-container input:checked ~ .custom-input {
-  @apply .bg-brand .border-brand-dark;
+  @apply .bg-primary .border-tertiary-dark;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

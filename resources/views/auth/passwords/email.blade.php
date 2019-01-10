@@ -4,7 +4,7 @@
 <div class="flex items-center">
     <div class="md:w-1/2 md:mx-auto">
         <div class="rounded shadow">
-            <div class="font-medium text-lg text-brand-darker bg-brand-lighter p-3 rounded-t">
+            <div class="font-medium text-lg text-brand-darker bg-brand p-3 rounded-t">
                 Reset Password
             </div>
             <div class="bg-white p-3 rounded-b">

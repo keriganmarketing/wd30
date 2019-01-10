@@ -11,9 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/' . config('modules.theme') . '.css') }}" rel="stylesheet">
+
 </head>
-<body class="h-screen font-Lato text-smoke-darkest bg-brand">
+<body class="h-screen font-Lato text-smoke-darkest bg-primary">
     <div id="app" class="relative">
         <nav class="fixed bg-white w-full z-50 shadow">
             <div class="container mx-auto h-full">

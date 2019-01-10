@@ -9,8 +9,8 @@
             <small class="text-smoke-lighter"><em>{{ lead.diff }}</em></small>
             <p class="w-full block py-3 text-3xl">{{ lead.name }}</p>
             <p class="w-full flex flex-wrap block text-sm justify-start mb-2 md:mb-0">
-                <a class="text-brand no-underline pr-4 mb-2" :href="`mailto:${lead.email}`">{{ lead.email }}</a>
-                <a class="text-brand no-underline" :href="`tel:${lead.phone}`">{{ lead.phone }}</a>
+                <a class="text-primary no-underline pr-4 mb-2" :href="`mailto:${lead.email}`">{{ lead.email }}</a>
+                <a class="text-primary no-underline" :href="`tel:${lead.phone}`">{{ lead.phone }}</a>
             </p>
         </div>
         <div class="w-full md:w-5/6 lg:w-5/6 xl:w-5/6 flex flex-wrap items-around justify-center text-grey-darkest">
@@ -23,13 +23,13 @@
                 <p class="block w-full mb-4 pl-4">{{ lead.listing_address }}</p>
                 <a
                     :href="'https://www.google.com/maps/dir/?api=1&destination=' + lead.listing_latitude + ',' + lead.listing_longitude"
-                    class="text-brand w-full md:w-1/3 block mb-4 pl-4"
+                    class="text-primary w-full md:w-1/3 block mb-4 pl-4"
                 >
                     DIRECTIONS
                 </a>
                 <a
                     :href="'/listing/' + lead.listing"
-                    class="text-brand w-auto block px-4"
+                    class="text-primary w-auto block px-4"
                 >
                     VIEW PROPERTY
                 </a>
@@ -37,14 +37,14 @@
             <div class="w-full md:w-1/2 flex flex-wrap py-3 px-4">
                 <p class="block w-full mb-4 text-lg font-bold">Listing Agent:</p>
                 <p class="block w-full mb-4 pl-4">Name: {{ lead.agent }}</p>
-                <a href="#" class="text-brand w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4">Email: {{ lead.agent_email }}</a>
-                <a href="#" class="text-brand no-underline w-auto block px-4">Phone: {{ lead.agent_phone }}</a>
+                <a href="#" class="text-primary w-full  no-underline md:w-1/2 block pr-4 mb-4 pl-4">Email: {{ lead.agent_email }}</a>
+                <a href="#" class="text-primary no-underline w-auto block px-4">Phone: {{ lead.agent_phone }}</a>
             </div>
         </div>
         <div class="w-full xl:w-1/4 lg:w-1/3 xl:mt-2 lg:mt-1 py-4 lg:p-4 xl:p-4  xl:pin-r xl:pin-t lg:pin-r lg:pin-t flex justify-between relative lg:absolute xl:absolute items-center text-grey-darker">
             <a
                 @click="toggleImportant(lead.id)"
-                class="cursor-pointer text-center mr-4 w-16 h-16"
+                class="cursor-pointer text-center mr-4 w-16 h-16 hover:text-dark"
                 :class="{'text-red': lead.important}"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
@@ -53,7 +53,7 @@
                 <span class="block text-xs">Important</span>
             </a>
             <a
-                class="cursor-pointer hover:text-green text-center mr-4 w-16 h-16"
+                class="cursor-pointer hover:text-dark text-center mr-4 w-16 h-16"
                 @click="getNotes(lead.id)"
                 v-if="!notesExpanded"
             >
@@ -63,7 +63,7 @@
                 <span class="block text-xs">Show Notes</span>
             </a>
             <a
-                class="cursor-pointer text-green hover:text-grey-darker text-center mr-4 w-16 h-16"
+                class="cursor-pointer text-green hover:text-dark text-center mr-4 w-16 h-16"
                 @click="notesExpanded = false"
                 v-if="notesExpanded"
             >
@@ -74,7 +74,7 @@
             </a>
             <a
                 @click="archive(lead.id)"
-                class="cursor-pointer hover:text-red text-center mr-4 w-16 h-16"
+                class="cursor-pointer hover:text-dark text-center mr-4 w-16 h-16"
                 v-if="lead.active"
             >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-plus">
@@ -84,7 +84,7 @@
             </a>
             <a
                 @click="unarchive(lead.id)"
-                class="cursor-pointer hover:text-red text-center mr-4 w-16 h-16"
+                class="cursor-pointer hover:text-dark text-center mr-4 w-16 h-16"
                 v-else
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-minus">

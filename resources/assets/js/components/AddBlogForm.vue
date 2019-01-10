@@ -11,7 +11,7 @@
           'border-secondary': title
         }"
         type="text"
-        class="font-brand text-brand border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
+        class="font-brand text-primary border border-transparent text-3xl py-2 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left"
       >
     </div>
     <div class="w-full bg-white flex flex-wrap items-start border-b p-4">
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="w-full py-2 bg-white flex flex-wrap items-center border-b items-center justify-center">
-      <button class="bg-brand px-4 py-2 my-2 text-uppercase rounded w-auto text-white font-brand text-3xl" @click.prevent="submit">Create Blog Post</button>
+      <button class="bg-primary px-4 py-2 my-2 text-uppercase rounded w-auto text-white font-brand text-3xl" @click.prevent="submit">Create Blog Post</button>
     </div>
   </form>
 

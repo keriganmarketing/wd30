@@ -5,21 +5,21 @@
                 class="text-center px-4"
                 v-if="! building"
             >
-                <p class="text-4xl font-brand text-brand">Welcome to your new agent website!</p>
+                <p class="text-4xl font-brand text-primary">Welcome to your new agent website!</p>
                 <p class="text-grey-darker">We just need a couple of things to get started.</p>
             </div>
             <div
                 class="text-center px-4"
                 v-if="duplicatesFound"
             >
-                <p class="text-4xl font-brand text-brand">Awesome!</p>
+                <p class="text-4xl font-brand text-primary">Awesome!</p>
                 <p class="text-grey-darker">We noticed some duplicate information in your MLS data, select the most accurate choice for each field below. If you're not sure, you can always change this later.</p>
             </div>
             <div
                 class="text-center px-4"
                 v-if="! duplicatesFound && building"
             >
-                <p class="text-4xl font-brand text-brand">All set!</p>
+                <p class="text-4xl font-brand text-primary">All set!</p>
                 <p class="text-grey-darker">Easy, huh? Click the button below to login to your site. Happy Selling!</p>
             </div>
         </p>
@@ -31,7 +31,7 @@
                     </div>
                     <input
                         type="text"
-                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left"
+                        class="border border-primary sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left"
                         v-model="name"
                         autocomplete="name"
                         name="name"
@@ -43,7 +43,7 @@
                     </div>
                     <input
                         type="text"
-                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        class="border border-primary sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
                         v-model="email"
                         autocomplete="email"
                         name="email"
@@ -55,7 +55,7 @@
                     </div>
                     <input
                         type="text"
-                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        class="border border-primary sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
                         v-model="company"
                         autocomplete="company"
                         name="company"
@@ -67,7 +67,7 @@
                     </div>
                     <input
                         type="password"
-                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        class="border border-primary sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
                         v-model="password"
                         autocomplete="password"
                         name="password"
@@ -79,7 +79,7 @@
                     </div>
                     <input
                         type="password"
-                        class="border border-brand sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
+                        class="border border-primary sm:ml-4 md:text-xl py-2 md:px-2 bg-white w-4/5 sm:w-1/2 text-left text-center sm:text-left"
                         v-model="password_confirmation"
                         autocomplete="password_confirmation"
                         name="password_confirmation"
@@ -114,6 +114,7 @@
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="op in office_phone"
                         @click="select('office_phone', op)"
+                        v-bind:key="op.index"
                     >
                         {{ op }}
                     </button>
@@ -131,6 +132,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="cp in cell_phone"
+                        v-bind:key="cp.index"
                         @click="select('cell_phone', cp)"
                     >
                         {{ cp }}
@@ -149,6 +151,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="s1 in street_1"
+                        v-bind:key="s1.index"
                         @click="select('street_1', s1)"
                     >
                         {{ s1 }}
@@ -167,6 +170,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="s2 in street_2"
+                        v-bind:key="s2.index"
                         @click="select('street_2', s2)"
                     >
                         {{ s2 }}
@@ -185,6 +189,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="c in city"
+                        v-bind:key="c.index"
                         @click="select('city', c)"
                     >
                         {{ c }}
@@ -203,6 +208,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="st in state"
+                        v-bind:key="st.index"
                         @click="select('state', st)"
                     >
                         {{ st }}
@@ -221,6 +227,7 @@
                     <button
                         class="bg-grey text-white appearance-none inline-block border-4 border-white rounded p-3 w-full sm:w-1/3 hover:bg-grey-darker"
                         v-for="z in zip"
+                        v-bind:key="z.index"
                         @click="select('zip', z)"
                     >
                         {{ z }}

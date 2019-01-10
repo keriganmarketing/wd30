@@ -5,9 +5,9 @@
         :key="mlsNumber.id"
         :mls-number="mlsNumber"
         @delete-number="deleteNumber"
-        class="w-2/3 md:w-1/3 lg:w-1/4 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-brand text-white items-center"
+        class="w-2/3 md:w-1/3 lg:w-1/4 flex flex-wrap rounded px-2 py-1 m-1 text-center bg-primary text-white items-center"
     />
-    <div class="w-full text-brand flex flex-wrap items-center justify-center md:justify-start h-auto py-2 md:py-0 md:h-12">
+    <div class="w-full text-primary flex flex-wrap items-center justify-center md:justify-start h-auto py-2 md:py-0 md:h-12">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="36"

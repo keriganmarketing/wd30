@@ -22,22 +22,22 @@
         <input
           v-if="isExpanded"
           v-model="blog.title"
-          :class="{'border border-brand': editTitle}"
+          :class="{'border border-primary': editTitle}"
           type="text"
-          class="w-full text-2xl md:text-3xl text-brand font-brand mb-2"
+          class="w-full text-2xl md:text-3xl text-primary font-brand mb-2"
           autofocus
         >
         <span
           v-else
-          class="w-5/6 text-2xl md:text-3xl text-brand font-brand mb-2"
+          class="w-5/6 text-2xl md:text-3xl text-primary font-brand mb-2"
           @click="toggleEditor"
         >
           {{ blog.title }}
         </span>
         <span class="w-full text-xs font-normal text-grey-dark py-2 text-left">Last updated: {{ diffForHumans(blog.updated_at) }}</span>
         <div class="w-full rounded flex flex-wrap justify-between items-end bg-grey-lighter p-4">
-          <button v-if="isExpanded" class="p-2 border border-brand w-auto bg-secondary text-white text-md" @click.prevent="toggleEditor">Close Editor</button>
-          <button v-if="!isExpanded" class="p-2 border border-brand w-auto bg-secondary text-white text-md" @click.prevent="toggleEditor">Edit Post</button>
+          <button v-if="isExpanded" class="p-2 border border-primary w-auto bg-secondary text-white text-md" @click.prevent="toggleEditor">Close Editor</button>
+          <button v-if="!isExpanded" class="p-2 border border-primary w-auto bg-secondary text-white text-md" @click.prevent="toggleEditor">Edit Post</button>
           <button class="p-2 border border-red w-auto bg-red text-white text-md" @click.prevent="deleteBlog" >Delete</button>
         </div>
       </div>
@@ -47,7 +47,7 @@
       <wysiwyg v-model="blog.body" />
     </div>
     <div v-if="isExpanded" class="w-full flex justify-center items-center my-2">
-      <button class="bg-brand px-4 py-2 my-2 text-uppercase rounded w-auto text-white font-brand text-3xl" @click.prevent="updateBlog">Update Blog Post</button>
+      <button class="bg-primary px-4 py-2 my-2 text-uppercase rounded w-auto text-white font-brand text-3xl" @click.prevent="updateBlog">Update Blog Post</button>
     </div>
   </div>
 </template>

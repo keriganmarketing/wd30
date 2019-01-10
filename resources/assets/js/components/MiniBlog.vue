@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class=" relative flex flex-col bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary h-full">
+    <div class=" relative flex flex-col bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
       <a
         :href="'/blog/' + post.slug"
         class="absolute pin hover:shadow-inner z-20"
@@ -13,7 +13,7 @@
       </div>
       <div class="bg-white flex flex-col justify-between flex-grow">
         <div class="title-area">
-          <p class="p-4 px-6 text-center text-brand font-brand text-4xl">
+          <p class="p-4 px-6 text-center text-primary font-brand text-4xl">
             {{ post.title }}
           </p>
           <p class="text-xs text-center text-grey">posted {{ postDate }} </p>
@@ -27,7 +27,7 @@
           <p class="text-center w-full pb-4 text-white" >
               <a
                 :href="'/blog/' + post.slug"
-                class="facebook text-center w-full no-underline text-brand"
+                class="facebook text-center w-full no-underline text-primary"
                 target="_blank"
               >
               Read more...

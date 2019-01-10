@@ -7,7 +7,7 @@
                  'absolute': isLoading,
                  'pin': isLoading
             }">
-                <ring-loader :loading="isLoading" :color="'bg-brand'" :size="'150px'"></ring-loader>
+                <ring-loader :loading="isLoading" :color="'bg-primary'" :size="'150px'"></ring-loader>
             </div>
             <div ref="map" class="relative w-full flex-grow md:w-3/4 h-48 md:h-64 z-10"></div>
             <div v-if="propOpen"

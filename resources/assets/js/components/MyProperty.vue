@@ -1,6 +1,6 @@
 <template>
     <div class="w-full md:w-1/2 lg:w-1/3 px-2 py-2" >
-        <div class="w-full flex bg-white py-2 text-brand">
+        <div class="w-full flex bg-white py-2 text-primary">
             <p class="flex flex-wrap items-start text-center justify-center py-2 w-1/3 border-r">
                 {{ listing.clicks.toLocaleString() }}
                 <br>
@@ -18,7 +18,7 @@
             </p>
         </div>
         <div
-            class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-brand hover:border-secondary"
+            class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary"
         >
             <a
                 :href="'/listing/' + listing.mls_account"
@@ -51,7 +51,7 @@
                     </p>
                 </div>
                 <div class="price">
-                    <p class="py-2 text-center text-brand text-3xl font-brand">${{ listing.price.toLocaleString() }}</p>
+                    <p class="py-2 text-center text-primary text-3xl font-brand">${{ listing.price.toLocaleString() }}</p>
                 </div>
                 <div class="prop-type">
                     <p class="pb-2 text-grey-darkest text-center text-xs text-grey-dark text-uppercase">{{ listing.property_type }}</p>

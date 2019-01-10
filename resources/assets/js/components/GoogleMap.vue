@@ -6,17 +6,17 @@
                  'absolute': isLoading,
                  'pin': isLoading
             }">
-            <ring-loader :loading="isLoading" :color="'bg-brand'" :size="'150px'"></ring-loader>
+            <ring-loader :loading="isLoading" :color="'bg-primary'" :size="'150px'"></ring-loader>
         </div>
         <a
-            class="font-brand block w-full px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded-t text-white no-underline text-center md:hidden"
+            class="font-brand block w-full px-4 py-2 cursor-pointer border-white justify-center items-center bg-primary text-2xl rounded-t text-white no-underline text-center md:hidden"
             :href="'https://www.google.com/maps/dir/?api=1&destination=' + latitude + ',' + longitude"
         >
             GET DIRECTIONS
         </a>
         <div
             ref="directionsButton"
-            class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center absolute z-50 bg-brand-light text-2xl rounded-br text-white invisible md:visible text-center"
+            class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center absolute z-50 bg-primary text-2xl rounded-br text-white invisible md:visible text-center"
             :class="{'hidden': showDirections}"
             @click="getUserLocation"
         >
@@ -24,10 +24,10 @@
         </div>
         <div ref="map" class="relative w-full h-64 z-10"></div>
         <div
-            class="w-full bg-white text-brand-darket p-8 overflow-auto h-auto overflow-y-scroll"
+            class="w-full bg-white text-tertiary-dark p-8 overflow-auto h-auto overflow-y-scroll"
             :class="{'hidden': !showDirections}"
         >
-            <a class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center bg-brand-light text-2xl rounded text-white text-center"
+            <a class="font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center bg-primary text-2xl rounded text-white text-center"
                @click="closeDirections">CLOSE DIRECTIONS</a>
             <div class="directions" ref="directionsPanel">
             </div>

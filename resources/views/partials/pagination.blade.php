@@ -4,7 +4,7 @@
 <ul class="list-reset flex justify-center my-2">
     <li class="mr-2">
         <a
-            class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow rounded-l border border-brand"
+            class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow rounded-l border border-primary"
             href="{{ $properties->first_page_url }}"
         >
             First
@@ -12,7 +12,7 @@
     </li>
     <li class="mr-2">
         <a
-            class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow border border-brand"
+            class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow border border-primary"
             href="{{ $properties->prev_page_url }}"
         >
             Prev
@@ -25,7 +25,7 @@
     </li>
     <li class="mr-2">
         <a
-            class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow border border-brand"
+            class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow border border-primary"
             href="{{ $properties->next_page_url }}"
         >
             Next
@@ -33,7 +33,7 @@
     </li>
     <li class="mr-2">
         <a
-            class="text-white bg-brand px-4 py-2 text-center cursor-pointer shadow rounded-r border border-brand"
+            class="text-white bg-primary px-4 py-2 text-center cursor-pointer shadow rounded-r border border-primary"
             href="{{ $properties->last_page_url }}"
         >
             Last

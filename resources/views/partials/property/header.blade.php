@@ -1,5 +1,5 @@
 <section
-    class="flex hero lg:h-16 bg-brand-darker py-4 bg-image-full"
+    class="flex hero lg:h-48 bg-brand-darker py-4 pt-32 bg-image-full"
     style="background-image: url('{{ $headerPhoto }}')"
 >
     <div class="container mx-auto text-center md:text-left">
