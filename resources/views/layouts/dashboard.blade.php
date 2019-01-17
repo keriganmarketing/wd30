@@ -12,6 +12,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/' . config('modules.theme') . '.css') }}" rel="stylesheet">
+    <style>
+        .editr--content {
+
+        min-height: 400px;
+        padding: 1rem;
+        border: 1px solid #ddd;
+            border-top-color: rgb(221, 221, 221);
+            border-top-style: solid;
+            border-top-width: 1px;
+        border-top: 0;
+        font-family: 'Lato', sans-serif;
+
+    }
+    </style>
 
 </head>
 <body class="h-screen font-Lato text-smoke-darkest bg-primary">
