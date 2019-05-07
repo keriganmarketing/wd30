@@ -18,7 +18,7 @@ export default {
     },
 
     mounted () {
-        window.axios.get('youtube-gallery')
+        window.axios.get('/youtube-gallery')
             .then(response => {
                 this.videos = response.data;
             });

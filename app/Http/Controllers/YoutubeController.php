@@ -16,8 +16,7 @@ class YoutubeController extends Controller
     public function index()
     {
         $realtor = User::realtor();
-
-        return response()->json(Youtube::listChannelVideos($realtor->youtube_channel_id, 3, 'date'));
+        return response()->json(Youtube::listChannelVideos($realtor->youtube_channel_id, 3, ['id', 'snippet','date']));
     }
 
 }

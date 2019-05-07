@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbfef8c11a1dd9708851c389f1c0434c",
+    "content-hash": "5f68fa7e4e8fd4a5cf5f35656257eec3",
     "packages": [
         {
             "name": "alaouy/youtube",
-            "version": "v2.1.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alaouy/Youtube.git",
-                "reference": "e6c00565975c0fdc43286121aa623877293f72d7"
+                "reference": "5318c07f8909e006e9f6fd51195ee0d729babedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alaouy/Youtube/zipball/e6c00565975c0fdc43286121aa623877293f72d7",
-                "reference": "e6c00565975c0fdc43286121aa623877293f72d7",
+                "url": "https://api.github.com/repos/alaouy/Youtube/zipball/5318c07f8909e006e9f6fd51195ee0d729babedc",
+                "reference": "5318c07f8909e006e9f6fd51195ee0d729babedc",
                 "shasum": ""
             },
             "require": {
@@ -27,6 +27,16 @@
                 "phpunit/phpunit": "^6.1"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alaouy\\Youtube\\YoutubeServiceProvider"
+                    ],
+                    "aliases": {
+                        "Youtube": "Alaouy\\Youtube\\Facades\\Youtube"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Alaouy\\Youtube\\": "src"
@@ -50,7 +60,7 @@
                 "video",
                 "youtube"
             ],
-            "time": "2017-07-14T12:12:39+00:00"
+            "time": "2018-06-14T14:20:59+00:00"
         },
         {
             "name": "artesaos/seotools",
