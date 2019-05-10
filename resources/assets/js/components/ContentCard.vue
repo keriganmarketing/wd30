@@ -26,14 +26,13 @@
             <div class="font-bold w-full sm:w-1/4 md:w-1/6 py-2 px-4 text-left">
                 Body:
             </div>
-            <textarea
+            <wysiwyg 
                 ref="body"
-                v-model="content.body"
                 :class="{
                     'border-secondary': body
                 }"
-                class="border border-transparent flex items-center py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
-                rows="5"
+                class="border border-transparent py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
+                v-model="content.body" 
                 @focus="edit('body')"
                 @blur="submit('body')"
             />
