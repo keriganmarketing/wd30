@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
-            <a @click="registerClick()" class="absolute pin hover:shadow-inner z-20 cursor-pointer" ></a>
+            <a :href="'/listing/' + listing.mls_account + '/'" class="absolute pin hover:shadow-inner z-20" ></a>
             <div class="property-image md:h-48 md:overflow-hidden">
                 <div
                     class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
@@ -85,20 +85,6 @@ export default {
     computed: {
         price: function(){
             return this.listing.price.toLocaleString();
-        }
-    },
-    methods: {
-        registerClick(){     
-            window.axios({
-                method: 'GET',
-                url: 'https://mothership.kerigan.com/api/v1/click/' + this.listing.mls_account,
-                headers: {
-                    'crossDomain': true,
-                    'Referrer': navigator.userAgent
-                },
-            }).then(
-                window.location = '/listing/' + this.listing.mls_account
-            );
         }
     }
 }
