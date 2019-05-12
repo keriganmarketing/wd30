@@ -11,7 +11,11 @@ trait CallsMothership {
     public function __construct()
     {
         $this->client = new Client([
-            'base_uri' => 'https://mothership.kerigan.com/api/v1/'
+            'base_uri'    => 'https://mothership.kerigan.com/api/v1/',
+            'http_errors' => false,
+            'headers'     => [
+                'Referrer' => $_SERVER['HTTP_USER_AGENT']
+            ]
         ]);
     }
 
