@@ -96,9 +96,9 @@ export default {
                     'crossDomain': true,
                     'Referrer': navigator.userAgent
                 },
-            }).then(res => { 
+            }).then(
                 window.location = '/listing/' + this.listing.mls_account
-            });
+            );
         }
     }
 }
