@@ -97,10 +97,8 @@ export default {
                     'Referrer': navigator.userAgent
                 },
             }).then(res => { 
-                console.log(res);
-            }).catch(error => {
-                console.log('error', error);
-            })
+                window.location = '/listing/' + this.listing.mls_account
+            });
         }
     }
 }
