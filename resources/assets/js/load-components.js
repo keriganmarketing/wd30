@@ -47,6 +47,7 @@ Vue.component(
   'property-pagination',
   require('./components/PropertyPagination.vue'),
 );
+Vue.component('listing-photo', require('./components/ListingPhoto.vue'));
 Vue.component('property-photo', require('./components/PropertyPhoto.vue'));
 Vue.component('property-gallery', require('./components/PropertyGallery.vue'));
 Vue.component('property-search', require('./components/PropertySearch.vue'));

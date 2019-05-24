@@ -26,6 +26,19 @@ const options = {
 Vue.use(VueProgressBar, options);
 Vue.use(wysiwyg, {});
 
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '/img/nophoto.jpg',
+  loading: '',
+  attempt: 1,
+  observer: true,
+  observerOptions: {
+    rootMargin: '0px',
+    threshold: 0.1
+  }
+})
+
 const app = new Vue({
   el: '#app',
   data: {
