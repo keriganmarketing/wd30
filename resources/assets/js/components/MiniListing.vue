@@ -99,7 +99,7 @@ export default {
         click() {
             window.axios.get('https://mothership.kerigan.com/api/v1/click/' + this.listing.mls_account, {
                 headers: {
-                    'Host': window.location.hostname,
+                    'SITE_KEY': window.location.hostname,
                     'Referrer': navigator.userAgent,
                 },
             })

@@ -15,7 +15,7 @@ trait CallsMothership {
             'http_errors' => false,
             'headers'     => [
                 'Referrer' => $_SERVER['HTTP_USER_AGENT'],
-                'Host' => $_SERVER['HTTP_HOST']
+                'SITE_KEY' => $_SERVER['HTTP_HOST']
             ]
         ]);
     }
