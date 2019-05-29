@@ -108,6 +108,7 @@ export default {
             })
             .catch(err => {
                 console.log(err.message);
+                window.location = '/listing/' + this.listing.mls_account + '/';
             });            
         }
     }
