@@ -1,7 +1,11 @@
 <template>
     <div>
-        <div class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full">
-            <a @click="click()" class="absolute pin hover:shadow-inner z-20" ></a>
+        <div 
+            @click="click()"
+            @keydown.enter="click()"
+            class="property relative bg-white shadow-md md:rounded overflow-hidden border-b-4 border-primary hover:border-secondary h-full" 
+            tabindex="0">
+
             <div class="property-image md:h-48 md:overflow-hidden">
                 <div
                     class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"

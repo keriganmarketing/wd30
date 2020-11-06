@@ -1,6 +1,10 @@
 <div class="md:max-w-md mx-auto my-auto text-center flex flex-col items-center">
     <div class="p-4">
-        <img class="h-24 -mt-6" src="{{ $brokerLogo }}" >
+        <img 
+            class="h-24 -mt-6" src="{{ $brokerLogo }}"
+            alt="{{ $realtor->data->company }} logo"
+            tabindex="0"
+        >
     </div>
     <form class="quicksearch shadow-md md:rounded px-8 pt-6 pb-8 align-top flex flex-wrap h-auto" action="/property-search" method="GET">
         {{ csrf_field() }}

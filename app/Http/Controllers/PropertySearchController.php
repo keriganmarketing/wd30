@@ -56,7 +56,6 @@ class PropertySearchController extends Controller
                 'features',
                 'property',
                 'openHouses',
-                'featuresCount',
                 'headerPhoto'
             )
         );

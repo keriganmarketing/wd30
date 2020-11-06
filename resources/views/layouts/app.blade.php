@@ -34,6 +34,7 @@
     @endif
 </head>
 <body class="bg-white h-screen antialiased">
+    <a class="skip-link screen-reader-text" href="#content">Skip to Content</a>
     <div id="app" class="flex flex-col min-h-full justify-between">
         <div class="top fixed pin-t pin-l pin-r w-100 z-50 shadow-md">
             <nav class="bg-primary-dark">
@@ -85,7 +86,7 @@
                 </div>
             </nav>
         </div>
-        <div class="mid flex-grow pt-32 md:pt-24">
+        <div id="content" class="mid flex-grow pt-32 md:pt-24">
         @yield('content')
         </div>
         <div class="bot">
