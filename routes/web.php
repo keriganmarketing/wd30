@@ -4,6 +4,7 @@ Auth::routes();
 
 // View Routes
 Route::get('/', 'FrontPageController@index')->name('frontpage');
+Route::get('/accessibility','GenericPageController@accessibility')->name('accessibility');
 Route::get('/home', 'AdminController@home')->name('home');
 Route::get('/property-search', 'PropertySearchController@index')->name('property.index');
 Route::get('/listing/{mlsNumber}', 'PropertySearchController@show')->name('property.show');

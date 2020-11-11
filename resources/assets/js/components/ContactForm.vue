@@ -1,38 +1,45 @@
 <template>
-    <form class="pt-6 pb-8 align-top flex flex-wrap" @submit.prevent>
-        <div class="w-full px-2 py-2">
-            <transition name="success" mode="out-in">
-                <div
-                    class="flex-auto relative items-center text-secondary text-2xl bg-secondary rounded py-8 px-3 w-full"
-                    v-if="form.success"
-                    v-text="form.successMessage"
-                />
-            </transition>
-            <transition name="slide-fade" mode="out-in">
-                <div
-                    class="flex-auto relative items-center text-red-darker text-2xl bg-red rounded py-8 px-3 w-full"
-                    v-if="Object.keys(form.errors).length > 0"
-                >
-                    <ul v-for="error in form.errors" v-bind:key="error.index" class="list-reset">
-                        <li v-for="e in error" v-bind:key="e.index" class="w-full text-left px-4 py-2">{{ e }}</li>
-                    </ul>
-                </div>
-            </transition>
-        </div>
-        <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
-            <input type="hidden" :value="token">
-            <input type="hidden" :value="listing">
-            <input type="hidden" :value="listingAddress">
-            <input type="hidden" :value="listingLatitude">
-            <input type="hidden" :value="listingLongitude">
-            <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.name" placeholder="Name" >
-            <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.email" placeholder="Email Address" >
-            <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3" type="text" v-model="form.phone" placeholder="Phone Number" >
-        </div>
-        <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
-            <textarea class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-gray h-24 py-2 px-3 mb-4" v-model="form.message" ></textarea>
-            <button class="button-secondary w-full h-10" @click.prevent="submit">Submit</button>
-        </div>
+    <form class="pt-6 pb-8 align-top" @submit.prevent>
+        <fieldset class="w-100 flex flex-wrap">
+            <legend class="sr-only" tabindex="0"> Send a message using the following form.</legend>
+            <div class="w-full px-2 py-2">
+                <transition name="success" mode="out-in">
+                    <div
+                        class="flex-auto relative items-center text-secondary text-2xl bg-secondary rounded py-8 px-3 w-full"
+                        v-if="form.success"
+                        v-text="form.successMessage"
+                    />
+                </transition>
+                <transition name="slide-fade" mode="out-in">
+                    <div
+                        class="flex-auto relative items-center text-red-darker text-2xl bg-red rounded py-8 px-3 w-full"
+                        v-if="Object.keys(form.errors).length > 0"
+                    >
+                        <ul v-for="error in form.errors" v-bind:key="error.index" class="list-reset">
+                            <li v-for="e in error" v-bind:key="e.index" class="w-full text-left px-4 py-2">{{ e }}</li>
+                        </ul>
+                    </div>
+                </transition>
+            </div>
+            <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
+                <input type="hidden" :value="token">
+                <input type="hidden" :value="listing">
+                <input type="hidden" :value="listingAddress">
+                <input type="hidden" :value="listingLatitude">
+                <input type="hidden" :value="listingLongitude">
+                <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.name" placeholder="Name" >
+                <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4" type="text" v-model="form.email" placeholder="Email Address" >
+                <input class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3" type="text" v-model="form.phone" placeholder="Phone Number" >
+            </div>
+            <div class="flex-auto relative px-2 py-2 w-full md:w-1/2">
+                <textarea 
+                    class="block shadow appearance-none w-full border rounded text-grey-darker hover:border-gray h-24 py-2 px-3 mb-4" 
+                    v-model="form.message" 
+                    placeholder="Message"
+                ></textarea>
+                <button class="button-secondary w-full h-10" @click.prevent="submit">Send Message</button>
+            </div>
+        </fieldset>
     </form>
 </template>
 <script>

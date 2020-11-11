@@ -7,3 +7,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.bebas {
+    font-family: 'Bebas Neue';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

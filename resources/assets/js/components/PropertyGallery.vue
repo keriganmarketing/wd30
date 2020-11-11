@@ -3,14 +3,16 @@
         <div class="hidden lg:flex flex-wrap">
             <slot />
         </div>
-        <modal :modal-open="modalOpen">
+        <modal ref="modal" :modal-open="modalOpen">
             <div class="flex align-middle justify-between h-screen flex-wrap items-center">
                 <div class="flex left-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex-col justify-center order-2 md:order-1" >
                     <span
+                        tabindex="0"
+                        ref="prevButton"
                         class="text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none"
                         @click="prevPhoto"
                     >
-                        &lsaquo;
+                        &lsaquo; <span class="sr-only">Previous photo</span>
                     </span>
                 </div>
                 <div
@@ -19,10 +21,14 @@
                 ></div>
                 <div class="flex right-arrow w-1/2 md:w-auto align-middle text-center p-4 cursor-pointer flex flex-col justify-center order-3" >
                     <span
+                        tabindex="0"
+                        ref="nextButton"
                         class="text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none"
                         @click="nextPhoto"
+                        @keydown.tab.prevent.stop="modal.$refs.closeButton.focus()"
+                        @keydown.shift.tab.prevent.stop="$refs.prevButton.focus()"
                     >
-                        &rsaquo;
+                        &rsaquo; <span class="sr-only">Next photo</span>
                     </span>
                 </div>
             </div>
@@ -36,14 +42,18 @@ export default {
             photos: this.$children,
             activePhoto: 0,
             modalOpen: false,
-            activePhotoUrl: ''
+            activePhotoUrl: '',
+            modal: ''
         };
     },
     mounted(){
-        this.activePhotoUrl = this.photos[this.activePhoto].photourl;
+        this.activePhotoUrl = this.photos[this.activePhoto].photourl
+        let photoGallery = this
+        this.modal = this.$refs.modal
 
         this.$parent.$on('openPhotoViewer', function () {
-            this.$children[0].openPhotoViewer(0);
+            // this.$children[0].openPhotoViewer(0);
+            photoGallery.openPhotoViewer(0);
         });
 
     },
@@ -52,9 +62,15 @@ export default {
             this.modalOpen = true;
             this.activePhoto = (index !== undefined ? index : this.activePhoto);
             let vm = this;
+            let modal = this.$refs.modal
+
             setTimeout(function(){
                 vm.activePhotoUrl = vm.photos[vm.activePhoto].photourl
+                vm.focusClose()
             }, 200);
+        },
+        focusClose(){
+            this.modal.$refs.closeButton.focus()
         },
         closeViewer(){
             this.modalOpen = false;
@@ -77,4 +93,4 @@ export default {
         }
     }
 }
-</script>
+</script> 

@@ -66005,6 +66005,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -66153,7 +66160,7 @@ var render = function() {
   return _c(
     "form",
     {
-      staticClass: "pt-6 pb-8 align-top flex flex-wrap",
+      staticClass: "pt-6 pb-8 align-top",
       on: {
         submit: function($event) {
           $event.preventDefault()
@@ -66161,194 +66168,205 @@ var render = function() {
       }
     },
     [
-      _c(
-        "div",
-        { staticClass: "w-full px-2 py-2" },
-        [
-          _c("transition", { attrs: { name: "success", mode: "out-in" } }, [
-            _vm.form.success
-              ? _c("div", {
-                  staticClass:
-                    "flex-auto relative items-center text-secondary text-2xl bg-secondary rounded py-8 px-3 w-full",
-                  domProps: { textContent: _vm._s(_vm.form.successMessage) }
-                })
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-            Object.keys(_vm.form.errors).length > 0
-              ? _c(
-                  "div",
-                  {
+      _c("fieldset", { staticClass: "w-100 flex flex-wrap" }, [
+        _c("legend", { staticClass: "sr-only", attrs: { tabindex: "0" } }, [
+          _vm._v(" Send a message using the following form.")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-full px-2 py-2" },
+          [
+            _c("transition", { attrs: { name: "success", mode: "out-in" } }, [
+              _vm.form.success
+                ? _c("div", {
                     staticClass:
-                      "flex-auto relative items-center text-red-darker text-2xl bg-red rounded py-8 px-3 w-full"
-                  },
-                  _vm._l(_vm.form.errors, function(error) {
-                    return _c(
-                      "ul",
-                      { key: error.index, staticClass: "list-reset" },
-                      _vm._l(error, function(e) {
+                      "flex-auto relative items-center text-secondary text-2xl bg-secondary rounded py-8 px-3 w-full",
+                    domProps: { textContent: _vm._s(_vm.form.successMessage) }
+                  })
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "transition",
+              { attrs: { name: "slide-fade", mode: "out-in" } },
+              [
+                Object.keys(_vm.form.errors).length > 0
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "flex-auto relative items-center text-red-darker text-2xl bg-red rounded py-8 px-3 w-full"
+                      },
+                      _vm._l(_vm.form.errors, function(error) {
                         return _c(
-                          "li",
-                          {
-                            key: e.index,
-                            staticClass: "w-full text-left px-4 py-2"
-                          },
-                          [_vm._v(_vm._s(e))]
+                          "ul",
+                          { key: error.index, staticClass: "list-reset" },
+                          _vm._l(error, function(e) {
+                            return _c(
+                              "li",
+                              {
+                                key: e.index,
+                                staticClass: "w-full text-left px-4 py-2"
+                              },
+                              [_vm._v(_vm._s(e))]
+                            )
+                          }),
+                          0
                         )
                       }),
                       0
                     )
-                  }),
-                  0
-                )
-              : _vm._e()
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex-auto relative px-2 py-2 w-full md:w-1/2" },
-        [
-          _c("input", {
-            attrs: { type: "hidden" },
-            domProps: { value: _vm.token }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden" },
-            domProps: { value: _vm.listing }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden" },
-            domProps: { value: _vm.listingAddress }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden" },
-            domProps: { value: _vm.listingLatitude }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden" },
-            domProps: { value: _vm.listingLongitude }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.name,
-                expression: "form.name"
-              }
-            ],
-            staticClass:
-              "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4",
-            attrs: { type: "text", placeholder: "Name" },
-            domProps: { value: _vm.form.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex-auto relative px-2 py-2 w-full md:w-1/2" },
+          [
+            _c("input", {
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.token }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.listing }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.listingAddress }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.listingLatitude }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.listingLongitude }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
                 }
-                _vm.$set(_vm.form, "name", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.email,
-                expression: "form.email"
-              }
-            ],
-            staticClass:
-              "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4",
-            attrs: { type: "text", placeholder: "Email Address" },
-            domProps: { value: _vm.form.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "email", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.phone,
-                expression: "form.phone"
-              }
-            ],
-            staticClass:
-              "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3",
-            attrs: { type: "text", placeholder: "Phone Number" },
-            domProps: { value: _vm.form.phone },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "phone", $event.target.value)
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex-auto relative px-2 py-2 w-full md:w-1/2" },
-        [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.message,
-                expression: "form.message"
-              }
-            ],
-            staticClass:
-              "block shadow appearance-none w-full border rounded text-grey-darker hover:border-gray h-24 py-2 px-3 mb-4",
-            domProps: { value: _vm.form.message },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "message", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "button-secondary w-full h-10",
+              ],
+              staticClass:
+                "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4",
+              attrs: { type: "text", placeholder: "Name" },
+              domProps: { value: _vm.form.name },
               on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.submit($event)
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
                 }
               }
-            },
-            [_vm._v("Submit")]
-          )
-        ]
-      )
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
+                }
+              ],
+              staticClass:
+                "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3 mb-4",
+              attrs: { type: "text", placeholder: "Email Address" },
+              domProps: { value: _vm.form.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.phone,
+                  expression: "form.phone"
+                }
+              ],
+              staticClass:
+                "block shadow appearance-none w-full border rounded text-grey-darker hover:border-grey h-10 py-2 px-3",
+              attrs: { type: "text", placeholder: "Phone Number" },
+              domProps: { value: _vm.form.phone },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "phone", $event.target.value)
+                }
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex-auto relative px-2 py-2 w-full md:w-1/2" },
+          [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.message,
+                  expression: "form.message"
+                }
+              ],
+              staticClass:
+                "block shadow appearance-none w-full border rounded text-grey-darker hover:border-gray h-24 py-2 px-3 mb-4",
+              attrs: { placeholder: "Message" },
+              domProps: { value: _vm.form.message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "message", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button-secondary w-full h-10",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.submit($event)
+                  }
+                }
+              },
+              [_vm._v("Send Message")]
+            )
+          ]
+        )
+      ])
     ]
   )
 }
@@ -67292,6 +67310,10 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_geolocator_service_js__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_google_maps_service_js__ = __webpack_require__(146);
+//
+//
+//
+//
 //
 //
 //
@@ -69333,6 +69355,7 @@ var render = function() {
         staticClass:
           "font-brand block w-full px-4 py-2 cursor-pointer border-white justify-center items-center bg-primary text-2xl rounded-t text-white no-underline text-center md:hidden",
         attrs: {
+          tabindex: "0",
           href:
             "https://www.google.com/maps/dir/?api=1&destination=" +
             _vm.latitude +
@@ -69350,6 +69373,7 @@ var render = function() {
         staticClass:
           "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center absolute z-50 bg-primary text-2xl rounded-br text-white invisible md:visible text-center",
         class: { hidden: _vm.showDirections },
+        attrs: { tabindex: "0" },
         on: { click: _vm.getUserLocation }
       },
       [_vm._v("\n        GET DIRECTIONS\n    ")]
@@ -69370,6 +69394,7 @@ var render = function() {
           {
             staticClass:
               "font-brand w-auto px-4 py-2 cursor-pointer border-white justify-center items-center bg-primary text-2xl rounded text-white text-center",
+            attrs: { tabindex: "0" },
             on: { click: _vm.closeDirections }
           },
           [_vm._v("CLOSE DIRECTIONS")]
@@ -77183,6 +77208,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -77194,6 +77225,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         closeModal: function closeModal() {
             this.$parent._data.modalOpen = false;
+            setTimeout(function () {
+                this.$root.$refs['content'].focus();
+            }, 200);
         }
     }
 });
@@ -77214,11 +77248,27 @@ var render = function() {
           _c(
             "div",
             {
+              ref: "closeButton",
               staticClass:
                 "fixed inline-block p-4 pin-t pin-r bg-primary text-white cursor-pointer",
-              on: { click: _vm.closeModal }
+              attrs: { tabindex: "0" },
+              on: {
+                click: _vm.closeModal,
+                keydown: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "esc", 27, $event.key, [
+                      "Esc",
+                      "Escape"
+                    ])
+                  ) {
+                    return null
+                  }
+                  return _vm.closeModal($event)
+                }
+              }
             },
-            [_vm._v("X")]
+            [_vm._v("CLOSE")]
           ),
           _vm._v(" "),
           _vm._t("default")
@@ -78874,6 +78924,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -78884,6 +78936,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         photourl: {
             type: String,
             default: this.photourl
+        },
+        caption: {
+            type: String,
+            default: ''
         }
     }
 });
@@ -78897,14 +78953,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", {
-      staticClass: "w-full is-4by3 cursor-pointer",
-      staticStyle: {
-        "background-position": "center",
-        "background-size": "cover"
+    _c(
+      "div",
+      {
+        staticClass: "w-full is-4by3 cursor-pointer",
+        staticStyle: {
+          "background-position": "center",
+          "background-size": "cover"
+        },
+        style: { "background-image": "url(" + _vm.photourl + ")" }
       },
-      style: { "background-image": "url(" + _vm.photourl + ")" }
-    })
+      [
+        _c("p", { staticStyle: { opacity: "0" } }, [
+          _vm._v(_vm._s(_vm.caption))
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -79001,6 +79065,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -79008,14 +79078,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             photos: this.$children,
             activePhoto: 0,
             modalOpen: false,
-            activePhotoUrl: ''
+            activePhotoUrl: '',
+            modal: ''
         };
     },
     mounted: function mounted() {
         this.activePhotoUrl = this.photos[this.activePhoto].photourl;
+        var photoGallery = this;
+        this.modal = this.$refs.modal;
 
         this.$parent.$on('openPhotoViewer', function () {
-            this.$children[0].openPhotoViewer(0);
+            // this.$children[0].openPhotoViewer(0);
+            photoGallery.openPhotoViewer(0);
         });
     },
 
@@ -79024,9 +79098,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modalOpen = true;
             this.activePhoto = index !== undefined ? index : this.activePhoto;
             var vm = this;
+            var modal = this.$refs.modal;
+
             setTimeout(function () {
                 vm.activePhotoUrl = vm.photos[vm.activePhoto].photourl;
+                vm.focusClose();
             }, 200);
+        },
+        focusClose: function focusClose() {
+            this.modal.$refs.closeButton.focus();
         },
         closeViewer: function closeViewer() {
             this.modalOpen = false;
@@ -79068,7 +79148,7 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("modal", { attrs: { "modal-open": _vm.modalOpen } }, [
+      _c("modal", { ref: "modal", attrs: { "modal-open": _vm.modalOpen } }, [
         _c(
           "div",
           {
@@ -79086,11 +79166,18 @@ var render = function() {
                 _c(
                   "span",
                   {
+                    ref: "prevButton",
                     staticClass:
                       "text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none",
+                    attrs: { tabindex: "0" },
                     on: { click: _vm.prevPhoto }
                   },
-                  [_vm._v("\n                    ‹\n                ")]
+                  [
+                    _vm._v("\n                    ‹ "),
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("Previous photo")
+                    ])
+                  ]
                 )
               ]
             ),
@@ -79111,11 +79198,47 @@ var render = function() {
                 _c(
                   "span",
                   {
+                    ref: "nextButton",
                     staticClass:
                       "text-white text-bold text-4xl p-6 pt-4 bg-primary text-center leading-none",
-                    on: { click: _vm.nextPhoto }
+                    attrs: { tabindex: "0" },
+                    on: {
+                      click: _vm.nextPhoto,
+                      keydown: [
+                        function($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k($event.keyCode, "tab", 9, $event.key, "Tab")
+                          ) {
+                            return null
+                          }
+                          $event.preventDefault()
+                          $event.stopPropagation()
+                          return _vm.modal.$refs.closeButton.focus()
+                        },
+                        function($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k($event.keyCode, "tab", 9, $event.key, "Tab")
+                          ) {
+                            return null
+                          }
+                          if (!$event.shiftKey) {
+                            return null
+                          }
+                          $event.preventDefault()
+                          $event.stopPropagation()
+                          return _vm.$refs.prevButton.focus()
+                        }
+                      ]
+                    }
                   },
-                  [_vm._v("\n                    ›\n                ")]
+                  [
+                    _vm._v("\n                    › "),
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("Next photo")
+                    ])
+                  ]
                 )
               ]
             )

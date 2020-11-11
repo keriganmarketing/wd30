@@ -308,3 +308,11 @@ select::-ms-expand {
 .__cov-progress {
   position: relative !important;
 }
+
+.sr-only {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+}
