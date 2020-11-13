@@ -8,9 +8,9 @@
     <section id="about" class="about bg-white py-8 lg:py-16 xl:py-24">
         <div class="container mx-auto py-2">
             <div class="flex flex-wrap items-center">
-                <div class="flex-auto w-full md:w-3/4 px-3 py-2 text-center md:text-left" tabindex="0">
+                <div class="flex-auto w-full md:w-3/4 px-3 py-2 text-center md:text-left " tabindex="0">
                     <h1 class="mb-4 text-secondary">{{ $content->title }}</h1>
-                    <p class="leading-normal text-grey-darker">{!! nl2br($content->body) !!}</p>
+                    <div class="home-page-content leading-normal text-grey-darker">{!! $content->body !!}</div>
                     <a href="/property-search/" class="button-primary w-auto mt-4 no-underline" >Property Search</a>
                 </div>
                 <div class="flex-auto w-full md:w-1/4 px-3 justify-center text-center py-2" tabindex="0">
