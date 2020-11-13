@@ -19,7 +19,15 @@
         Blog Content:
       </div>
       <div class="w-full md:w-5/6">
-      <wysiwyg v-model="body" />
+      <trumbowyg 
+          ref="body"
+          v-model="body" 
+          :value="body"
+          :modelValue="body"
+          :config="editorconfig" 
+          class="border border-transparent py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
+          name="contentbody"
+      ></trumbowyg>
       </div>
     </div>
     <div class="w-full bg-white flex flex-wrap items-start border-b p-4">
@@ -92,6 +100,9 @@ export default {
       photoPath: this.dataPhotoPath,
       blogInfo: new FormData(),
       tmpImage: '',
+      editorconfig: {
+          autogrow: true
+      }
     }
   },
   methods: {

@@ -44,7 +44,10 @@
 
     </form>
     <div v-if="isExpanded" class="w-full font-normal flex text-black flex-wrap items-center py-4" >
-      <wysiwyg v-model="blog.body" />
+      <trumbowyg 
+        v-model="blog.body" 
+        :modelValue="blog.body"
+      ></trumbowyg>
     </div>
     <div v-if="isExpanded" class="w-full flex justify-center items-center my-2">
       <button class="bg-primary px-4 py-2 my-2 text-uppercase rounded w-auto text-white font-brand text-3xl" @click.prevent="updateBlog">Update Blog Post</button>
@@ -54,6 +57,7 @@
 
 <script>
 import moment from 'moment';
+
 export default {
   props: {
     blog: {
@@ -67,7 +71,10 @@ export default {
       editTitle: false,
       updatedImage: this.blog.featured_photo_path,
       updatedImageName: '',
-      updated: new FormData()
+      updated: new FormData(),
+      editorconfig: {
+          autogrow: true
+      }
     }
   },
   methods: {

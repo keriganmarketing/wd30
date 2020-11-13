@@ -7,7 +7,6 @@ require('./load-components');
 import User from './models/user';
 import Content from './models/content';
 import VueProgressBar from 'vue-progressbar';
-import wysiwyg from 'vue-wysiwyg';
 
 const options = {
   color: '#1DB3DD',
@@ -24,7 +23,6 @@ const options = {
 };
 
 Vue.use(VueProgressBar, options);
-Vue.use(wysiwyg, {});
 
 import VueLazyload from 'vue-lazyload';
 Vue.use(VueLazyload, {
@@ -38,6 +36,10 @@ Vue.use(VueLazyload, {
     threshold: 0.1
   }
 })
+
+import VueTrumbowyg from 'vue-trumbowyg';
+import 'trumbowyg/dist/ui/trumbowyg.css';
+Vue.use(VueTrumbowyg);
 
 const app = new Vue({
   el: '#app',

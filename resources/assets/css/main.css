@@ -45,7 +45,6 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
-@import '~vue-wysiwyg/dist/vueWysiwyg.css';
 * {
   font-family: 'Lato';
 }

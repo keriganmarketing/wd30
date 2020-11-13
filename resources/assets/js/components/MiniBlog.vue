@@ -24,15 +24,14 @@
           </p>
         </div>
         <div class="cta-area">
-          <p class="text-center w-full pb-4 text-white" >
-              <a
-                :href="'/blog/' + post.slug"
-                class="facebook text-center w-full no-underline text-primary bebas text-2xl"
-                target="_blank"
-                title="Read full article"
-              >
-              Read more...
-              </a>
+          <p class="pb-4 px-6 text-center mt-auto ">
+              <a 
+                  :href="'/blog/' + post.slug"
+                  tabindex="0"
+                  target="_blank"
+                  title="Read full article"
+                  class="text-primary button-primary w-auto"
+              >Read the full article</a>
           </p>
         </div>
       </div>
