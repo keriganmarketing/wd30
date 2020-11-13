@@ -6,7 +6,7 @@
         :href="'/blog/' + post.slug"
         >
         <img
-          :src="post.featured_photo_path"
+          :src="'storage/' +post.featured_photo_path"
           class="w-auto h-auto min-h-full min-w-full"
           :alt="'Photo of' + post.title"
         ></a>

@@ -22,8 +22,6 @@
       <trumbowyg 
           ref="body"
           v-model="body" 
-          :value="body"
-          :modelValue="body"
           :config="editorconfig" 
           class="border border-transparent py-4 px-4 md:px-2 bg-white w-full md:w-auto flex-grow text-left leading-normal text-grey-darker"
           name="contentbody"

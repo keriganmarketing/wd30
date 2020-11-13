@@ -46,7 +46,6 @@
     <div v-if="isExpanded" class="w-full font-normal flex text-black flex-wrap items-center py-4" >
       <trumbowyg 
         v-model="blog.body" 
-        :modelValue="blog.body"
       ></trumbowyg>
     </div>
     <div v-if="isExpanded" class="w-full flex justify-center items-center my-2">
