@@ -287,3 +287,12 @@ select::-ms-expand {
   opacity: 0;
   position: absolute;
 }
+
+
+.text-content p {
+  margin-bottom: 1rem;
+}
+
+.text-content h2, .text-content h3 {
+  margin-top: 1rem;
+}
