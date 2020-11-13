@@ -16,7 +16,6 @@
           <p class="p-4 px-6 text-center text-primary font-brand text-4xl" tabindex="0">
             {{ post.title }}
           </p>
-          <p class="text-xs text-center text-grey" tabindex="0">posted {{ postDate }} </p>
         </div>
         <div class="article-area">
           <p class="py-4 px-6 text-center text-grey-dark font-normal text-lg leading-normal" tabindex="0">

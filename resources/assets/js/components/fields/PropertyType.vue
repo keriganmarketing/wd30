@@ -7,7 +7,6 @@
             <option>Commercial</option>
             <option>Lots / Land</option>
             <option>Multi-Family Home</option>
-            <option>Rental</option>
             <option>Manufactured</option>
             <option>Farms / Agricultural</option>
             <option>Other</option>

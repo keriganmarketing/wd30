@@ -17,7 +17,7 @@
                     class="inline-block absolute flag pin-t pin-l w-auto bg-secondary text-white p-1 px-4 mt-2 z-10 font-brand text-xl"
                     v-if="listing.status !== 'Active'"
                 >
-                    {{ listing.status }}
+                    {{ listing.status == 'Active-Contingent' ? 'Contingent' : listing.status }}
                 </div>
 
                 <listing-photo 
