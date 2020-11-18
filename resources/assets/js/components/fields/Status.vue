@@ -7,18 +7,27 @@
         </div>
         <div class="w-full sm:w-auto flex-grow p-0 m-0">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-center flex-wrap px-2">
-                <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="active" class="radio-input" v-model="active">
+                <label 
+                    @keydown.enter="set('active')"
+                    class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap" 
+                    tabindex="0">
+                    <input type="checkbox" name="active" class="radio-input" v-model="active" tabindex="-1">
                     <span class="input-description checkbox px-1 text-grey-darker">Active</span>
                     <span class="custom-input checkmark"></span>
                 </label>
-                <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="sold" class="radio-input" v-model="sold">
+                <label 
+                    @keydown.enter="set('sold')"
+                    class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap" 
+                    tabindex="0">
+                    <input type="checkbox" name="sold" class="radio-input" v-model="sold" tabindex="-1">
                     <span class="input-description checkbox px-1 text-grey-darker">Sold</span>
                     <span class="custom-input checkmark"></span>
                 </label>
-                <label class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap">
-                    <input type="checkbox" name="pending" class="radio-input" v-model="pending">
+                <label 
+                    @keydown.enter="set('pending')"
+                    class="custom-input-container h-auto md:h-10 flex items-center justify-center flex-wrap" 
+                    tabindex="0">
+                    <input type="checkbox" name="pending" class="radio-input" v-model="pending" tabindex="-1">
                     <span class="input-description checkbox px-1 text-grey-darker">Pending</span>
                     <span class="custom-input checkmark"></span>
                 </label>
@@ -47,6 +56,11 @@
             this.status.forEach(key => {
                 this[key] = true;
             });
+        },
+        methods: {
+            set(key){
+                this[key] = !this[key]
+            }
         }
     }
 </script>

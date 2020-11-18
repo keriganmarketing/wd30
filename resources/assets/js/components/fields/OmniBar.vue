@@ -4,8 +4,8 @@
             v-model="omni"
             @click="showResults=true"
             @focus="onFocus"
-            @keydown.tab="tabPressed"
-            @blur="onBlur()"
+            @keydown.down="focusNext"
+            @keydown.up="focusPrev"
             name="omni"
             type="text"
             autocomplete="new-omni"
@@ -28,15 +28,16 @@
             class="block shadow w-full border z-50 absolute text-grey-darker hover:border-grey bg-white overflow-hidden overflow-y-scroll"
         >
             <ul class="list-reset mb-px">
-                <li v-for="result in results" :key="result.text">
+                <li v-for="result in results" :key="result.index">
                     <strong><span class="block px-2 py-2">{{ result.text }}</span></strong>
                     <ul class="list-reset mb-2">
                         <li
-                            class="hover:bg-teal hover:text-white cursor-pointer px-4 py-2"
+                            class="focus:bg-primary focus:text-white hover:bg-primary hover:text-white cursor-pointer px-4 py-2"
                             v-for="child in result.children"
-                            :key="child.id"
+                            :key="child.index"
                             @click="onResultsClick(child.text)"
-                            @mousedown.prevent="onBlur"
+                            @keydown.enter.prevent="onResultsClick(child.text)"
+                            tabindex="0"
                         >
                             <span class="block">{{ child.text }}</span>
                         </li>
@@ -67,7 +68,9 @@ export default {
         return {
             omni: this.fieldValue,
             results: new Results,
-            showResults: false
+            showResults: false,
+            currentIndex: 0,
+            currentType: 0,
         }
     },
     watch: {
@@ -100,6 +103,7 @@ export default {
         ),
         onFocus () {
             this.showResults = true;
+            this.omni = '';
         },
         onResultsClick(value) {
             this.omni = value;
@@ -113,7 +117,12 @@ export default {
         },
         tabPressed () {
             this.omni = this.results[0].children[0].text;
+        },
+        focusItem(type,child){
+            this.currentIndex = child
+            this.currentType = type
         }
+
     }
 }
 </script>

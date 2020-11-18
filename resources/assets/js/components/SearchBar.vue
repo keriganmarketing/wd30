@@ -2,18 +2,22 @@
     <div class="search-bar">
         <div class="container mx-auto">
             <form class="flex flex-wrap pt-4 pb-2 mt-4" action="" method="GET" ref="form" @submit.prevent="onSubmit()">
+                <fieldset class="w-full lg:w-2/3 flex flex-wrap ">
+                <legend class="sr-only">Search for Real Estate</legend>
                 <omni-bar
-                    class="relative px-2 py-2 w-full sm:w-1/2 md:w-3/5 lg:w-1/3"
+                    class="relative px-2 py-2 w-full sm:w-1/2 md:w-3/5"
                     :field-value="searchTerms.omni"
                 >
                 </omni-bar>
                 <property-type
-                    class="relative px-2 py-2 w-full sm:w-1/2 md:w-2/5 lg:w-1/4"
+                    class="relative px-2 py-2 w-full sm:w-1/2 md:w-2/5"
                     :field-value="searchTerms.propertyType"
                 >
                 </property-type>
+                </fieldset>
+                
                 <div
-                    class="flex flex-auto relative justify-end w-full lg:w-1/8"
+                    class="flex flex-auto relative justify-end w-full sm:w-1/3 lg:w-auto"
                     v-if="dataMapModule"
                 >
                     <div class="relative px-2 py-2 w-full">
@@ -25,7 +29,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex flex-auto relative justify-end w-full sm:w-1/2 lg:w-1/8">
+                <div class="flex flex-auto relative justify-end w-full sm:w-1/3 lg:w-auto">
                     <div class="relative px-2 py-2 w-full">
                         <button
                             class="button-grey-darker h-10 block w-full"
@@ -36,7 +40,8 @@
                     </div>
                 </div>
                 <div class="flex-auto advanced-menu w-full" :class="{ 'hidden': !this.advancedOpen  }" >
-                    <div class="my-4">
+                    <fieldset class="my-4" ref="advanced-search-fields">
+                        <legend class="sr-only">Advanced Search Fields</legend>
                         <div class="flex border-grey-lighter border-t border-b py-3 flex-wrap">
                             <div class="flex-auto w-full md:w-1/3 lg:w-1/2">
                                 <div class="flex py-1 flex-wrap">
@@ -87,14 +92,14 @@
                                 </features-field>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </div>
                 <div class="flex relative justify-end w-full" :class="{
-                    'sm:w-1/2': !this.advancedOpen,
+                    'sm:w-1/3': !this.advancedOpen,
                     'lg:w-1/8': !this.advancedOpen
                 }">
                     <div class="relative px-2 py-2 w-full" :class="{
-                    'sm:w-1/2': this.advancedOpen,
+                    'sm:w-full': this.advancedOpen,
                     'lg:w-1/8': this.advancedOpen
                 }" >
                         <button class="button-secondary h-10 w-full" type="submit" >Submit</button>
@@ -134,6 +139,10 @@
             toggleAdvanced(event){
                 if (event) event.preventDefault();
                 this.advancedOpen = !this.advancedOpen;
+
+                if(this.advancedOpen){
+                    this.$refs['advanced-search-fields'].focus();
+                }
             },
             onViewToggle () {
                 this.mapViewSelected = ! this.mapViewSelected;
