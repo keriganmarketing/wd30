@@ -79,7 +79,7 @@
                             <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/">Home</a>
                             <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/property-search/">Property Search</a>
                             <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/#featured-listings">Featured Listings</a>
-                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/#about">About Me</a>
+                            <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="/#about">About {{ env('TEAM_MODE') ? 'Us' : 'Me' }} </a>
                             <a class="hidden md:flex items-center no-underline text-navitem text-sm h-full align-middle px-4 py-6 hover:bg-navhover" href="#contact">Contact</a>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/">Home</a>
                     <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/property-search/">Property Search</a>
                     <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/#featured-listings">Featured Listings</a>
-                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/#about">About Me</a>
+                    <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="/#about">About {{ env('TEAM_MODE') ? 'Us' : 'Me' }}</a>
                     <a class="block md:inline-block text-white no-underline text-grey-darker text-sm h-full h-12 align-middle px-4 py-4 hover:bg-tertiary-dark" href="#contact">Contact</a>
                 </div>
             </nav>

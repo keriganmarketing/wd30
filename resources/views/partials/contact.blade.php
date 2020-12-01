@@ -1,6 +1,6 @@
 <section id="contact" class="contact flex bg-primary py-8 lg:py-16 xl:py-24">
     <div class="w-full lg:max-w-lg mx-auto py-2 text-center">
-        <h2 class="text-white text-center pb-4 text-3xl" tabindex="0">Contact</h2>
+        <h2 class="text-white text-center pb-4 text-3xl" tabindex="0">Contact  {{ env('TEAM_MODE') ? 'Us' : 'Me' }}</h2>
         <p><a class="no-underline text-2xl text-white text-bold" tabindex="0" href="tel:{{ $realtor->data->primary_phone }}" >{{ $realtor->data->primary_phone }}</a></p>
         <p class="text-lg text-white mt-4" tabindex="0">{!! nl2br($realtor->data->address) !!}</p>
         <p class="text-lg text-white mt-4" tabindex="0"><a class="text-white" href="mailto:{{ $realtor->data->email }}" >{{ $realtor->data->email }}</a></p>
