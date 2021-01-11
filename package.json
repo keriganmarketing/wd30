@@ -10,7 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.21.0",
+        "axios": "^0.21.1",
         "cross-env": "^5.2.1",
         "glob-all": "^3.2.1",
         "laravel-mix": "^1.0",
@@ -25,7 +25,7 @@
         "babel-polyfill": "^6.26.0",
         "css-purge": "^3.1.8",
         "google-maps": "^3.3.0",
-        "jquery": "^3.3.1",
+        "jquery": "^3.5.1",
         "marker-clusterer-plus": "^2.1.4",
         "moment": "^2.29.1",
         "trumbowyg": "^2.21.0",
