@@ -16,6 +16,8 @@
                     tabindex="0"
                     class="w-full sm:w-1/2 md:w-1/6 lg:w-1/4 px-1 py-1 overflow-hidden lazy-img-fadein"
                     lazy="loading"
+                    lazy="loaded"
+                    lazy="error"
                     :photoid="{{ $key }}"
                     photourl="{{ str_replace('http://','//', $photo->url) }}"
                     caption="Photo {{$key .' of '. count($property->photos) . ' | ' . $property->street_number }} {{ $property->street_name }} {{ $property->street_suffix }}"

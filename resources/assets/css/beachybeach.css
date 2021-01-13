@@ -57,11 +57,11 @@
     -o-transition: opacity 2.9s linear;
 } */
 
-.lazy-img-fadein {
+.lazy-img-fadein::before {
     opacity: 0 !important;
     transition: opacity linear 0.5s;
 }
-.lazy-img-fadein[lazy="loading"] {
+.lazy-img-fadein[lazy="loading"]::after {
     opacity: 0 !important;
 }
 .lazy-img-fadein[lazy="loaded"],
