@@ -90154,20 +90154,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['src', 'alt'],
-    data: function data() {
-        return {
-            url: {
-                src: this.src,
-                error: '/img/nophoto.jpg',
-                loading: ''
-            },
-            size: 'cover'
-        };
-    }
+  props: ["src", "alt"],
+  data: function data() {
+    return {
+      url: {
+        src: this.src,
+        error: "/img/nophoto.jpg",
+        loading: ""
+      },
+      size: "cover"
+    };
+  }
 });
 
 /***/ }),
@@ -90190,8 +90189,10 @@ var render = function() {
           arg: "background-image"
         }
       ],
-      staticClass: "w-full is-4by3 bg-center bg-cover bg-no-repeat",
-      style: "background-size: " + _vm.size + ";"
+      staticClass:
+        "w-full is-4by3 bg-center bg-cover bg-no-repeat lazy-img-fadein",
+      style: "background-size: " + _vm.size + ";",
+      attrs: { lazy: "loaded" }
     },
     [_vm._t("default")],
     2
