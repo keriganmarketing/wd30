@@ -1764,12 +1764,27 @@ button,
   font-family: 'Lato';
 }
 
-.lazy-img-fadein[lazy=loading] {
-          transition: opacity .5s linear;
-  -webkit-transition: opacity .5s linear;
-     -moz-transition: opacity .5s linear;
-      -ms-transition: opacity .5s linear;
-       -o-transition: opacity .5s linear;
+/* .lazy-img-fadein[lazy=loading] {
+    transition: opacity 2.9s linear;
+    -webkit-transition: opacity 2.9s linear;
+    -moz-transition: opacity 2.9s linear;
+    -ms-transition: opacity 2.9s linear;
+    -o-transition: opacity 2.9s linear;
+} */
+
+.lazy-img-fadein {
+  opacity: 0 !important;
+  -webkit-transition: opacity linear .5s;
+  transition: opacity linear .5s;
+}
+
+.lazy-img-fadein[lazy="loading"] {
+  opacity: 0 !important;
+}
+
+.lazy-img-fadein[lazy="loaded"],
+.lazy-img-fadein[lazy="error"] {
+  opacity: 1 !important;
 }
 
 .button-primary {

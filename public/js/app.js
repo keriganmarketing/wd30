@@ -90271,6 +90271,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -90301,12 +90305,16 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "w-full is-4by3 cursor-pointer",
+        staticClass: "w-full is-4by3 cursor-pointer lazy-img-fadein",
         staticStyle: {
           "background-position": "center",
           "background-size": "cover"
         },
-        style: { "background-image": "url(" + _vm.photourl + ")" }
+        style: {
+          "background-image":
+            "url(" + _vm.photourl + "); transition: opacity 2.9s linear;"
+        },
+        attrs: { lazy: "loading" }
       },
       [
         _c("p", { staticStyle: { opacity: "0" } }, [
