@@ -14,7 +14,7 @@
             <!-- <transition mode="in" enter-active-class="animate__animated animate__fadeIn"> -->
                 <property-photo
                     tabindex="0"
-                    class="w-full sm:w-1/2 md:w-1/6 lg:w-1/4 px-1 py-1 overflow-hidden lazy-img-fadein animate:transition ease-in duration-700"
+                    class="w-full sm:w-1/2 md:w-1/6 lg:w-1/4 px-1 py-1 overflow-hidden lazy-img-fadein"
                     lazy="loading"
                     :photoid="{{ $key }}"
                     photourl="{{ str_replace('http://','//', $photo->url) }}"
