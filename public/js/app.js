@@ -98385,7 +98385,7 @@ module.exports = function (css) {
 /* 731 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: Syntax Error \n\n(undefined:undefined) Unknown word\n\n\n\n    at C:\\Users\\Gene Howell Jr\\DevSites\\wd30\\node_modules\\webpack\\lib\\NormalModule.js:195:19\n    at C:\\Users\\Gene Howell Jr\\DevSites\\wd30\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\Gene Howell Jr\\DevSites\\wd30\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Users\\Gene Howell Jr\\DevSites\\wd30\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Users\\Gene Howell Jr\\DevSites\\wd30\\node_modules\\postcss-loader\\lib\\index.js:194:44\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
